@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Dark background -->
+  <circle cx="50" cy="50" r="50" fill="#0A1A12"/>
+
+  <!-- Arms from hub to nodes -->
+  <line x1="50" y1="50" x2="25" y2="31" stroke="#0A4A3A" stroke-width="4" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="74" y2="58" stroke="#1D9E75" stroke-width="3" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="72" y2="27" stroke="#0A4A3A" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M50,50 Q34,57 24,65" fill="none" stroke="#5DCAA5" stroke-width="3" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="47" y2="18" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"/>
+  <path d="M50,50 Q53,64 56,76" fill="none" stroke="#E8A020" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Cross-connections -->
+  <path d="M25,31 Q35,13 72,27" fill="none" stroke="#0A4A3A" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
+  <path d="M25,31 Q12,45 24,65" fill="none" stroke="#5DCAA5" stroke-width="1.2" stroke-linecap="round" opacity=".35"/>
+  <path d="M74,58 Q50,70 24,65" fill="none" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".32"/>
+  <path d="M56,76 Q65,67 74,58" fill="none" stroke="#E8A020" stroke-width="1" stroke-linecap="round" opacity=".3"/>
+  <path d="M56,76 Q38,71 24,65" fill="none" stroke="#E8A020" stroke-width="1" stroke-linecap="round" opacity=".28"/>
+
+  <!-- N1 Nonprofits — upper left, largest -->
+  <circle cx="25" cy="31" r="8" fill="#0A4A3A"/>
+  <circle cx="25" cy="31" r="4" fill="#E8A020" opacity=".85"/>
+  <circle cx="25" cy="31" r="1.5" fill="#F8F5EE"/>
+
+  <!-- N2 Providers — mid right -->
+  <circle cx="74" cy="58" r="6" fill="#1D9E75"/>
+  <circle cx="74" cy="58" r="3" fill="#E8A020" opacity=".7"/>
+
+  <!-- N3 Donors — upper right -->
+  <circle cx="72" cy="27" r="5" fill="#0A4A3A" opacity=".9"/>
+  <circle cx="72" cy="27" r="2.5" fill="#E8A020" opacity=".65"/>
+
+  <!-- N4 Individuals — lower left -->
+  <circle cx="24" cy="65" r="5.5" fill="#5DCAA5"/>
+  <circle cx="24" cy="65" r="2.5" fill="#E8A020" opacity=".65"/>
+
+  <!-- N5 Platform — top center -->
+  <circle cx="47" cy="18" r="3.5" fill="#1D9E75" opacity=".6"/>
+  <circle cx="47" cy="18" r="1.5" fill="#E8A020" opacity=".5"/>
+
+  <!-- N6 Volunteers — lower center -->
+  <circle cx="56" cy="76" r="5" fill="#E8A020" opacity=".85"/>
+  <circle cx="56" cy="76" r="2.5" fill="#0A4A3A" opacity=".75"/>
+
+  <!-- Hub — amber bullseye center -->
+  <circle cx="50" cy="50" r="11" fill="#E8A020"/>
+  <circle cx="50" cy="50" r="7" fill="none" stroke="#F8F5EE" stroke-width="1.5" opacity=".4"/>
+  <circle cx="50" cy="50" r="3.5" fill="none" stroke="#F8F5EE" stroke-width="1.2" opacity=".6"/>
+  <circle cx="50" cy="50" r="1.2" fill="#F8F5EE" opacity=".8"/>
+</svg>
