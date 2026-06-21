@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>QuestCare LifeStyle Solutions | Community Ecosystem · Henry &amp; Madison County, Indiana</title>
+<meta name="description" content="QuestCare LifeStyle Solutions connects individuals to services, strengthens nonprofits through the FoundationReady CARES Framework, and builds accountable community systems. Serving Henry &amp; Madison County, Indiana."/>
+<meta property="og:title" content="QuestCare LifeStyle Solutions"/>
+<meta property="og:description" content="The catalyst at the center of the community ecosystem. FoundationReady assessments, community navigation, and verified access for every person we serve."/>
+<meta property="og:url" content="https://quest4care.org"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"QuestCare LifeStyle Solutions","alternateName":"QCLS","url":"https://quest4care.org","email":"info@quest4care.org","telephone":"765-810-2000","address":{"@type":"PostalAddress","addressLocality":"Spiceland","addressRegion":"IN","postalCode":"47385","addressCountry":"US"},"areaServed":["Henry County, Indiana","Madison County, Indiana"],"knowsAbout":["FoundationReady","CARES Framework","Community Navigation","Nonprofit Capacity Building"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Oswald:wght@500;600&family=Grand+Hotel&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#0A1A12;--deep:#0A4A3A;--teal:#1D9E75;
+  --amber:#E8A020;--coral:#E8644A;--sand:#F0E6D0;
+  --nw:#F8F5EE;--border:#E0D8C8;--mid:#4A6558;--light:#7A9588;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(--void);overflow-x:hidden;line-height:1.6}
+
+/* ════════════════════════════════
+   NAV — taller, full brand presence
+════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(10,26,18,0.97);backdrop-filter:blur(16px);
+  height:80px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;
+  border-bottom:2px solid var(--amber);
+}
+.nav-brand{display:flex;align-items:center;gap:1.1rem;text-decoration:none}
+.nav-mark{width:52px;height:52px;flex-shrink:0}
+.nav-wm{display:flex;flex-direction:column;gap:4px;line-height:1}
+.nav-qc{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.9rem;letter-spacing:.01em;
+  color:var(--sand);line-height:1;
+  display:block;
+}
+.nav-qc strong{font-weight:700}
+.nav-qc span{font-weight:300}
+.nav-ls{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.65rem;font-weight:500;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:var(--teal);display:block;
+}
+.nav-amber-rule{width:100%;height:1.5px;background:var(--amber);opacity:.5;margin-top:2px}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-hint{font-size:.76rem;color:rgba(255,255,255,.28);font-style:italic}
+.nav-donate{
+  font-size:.78rem;font-weight:600;
+  color:var(--teal);
+  border:1.5px solid rgba(29,158,117,.4);
+  padding:.45rem 1rem;border-radius:3px;
+  text-decoration:none;transition:all .2s;
+}
+.nav-donate:hover{border-color:var(--teal);color:#fff}
+.nav-cta{
+  font-size:.8rem;font-weight:600;
+  color:var(--void);background:var(--amber);
+  padding:.5rem 1.25rem;border-radius:3px;
+  text-decoration:none;transition:background .2s;
+}
+.nav-cta:hover{background:#f0b030}
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+.hero{
+  min-height:100vh;display:grid;
+  grid-template-columns:40% 60%;
+  padding-top:80px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.2;
+}
+.hero-left{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 2.5rem 4rem 4rem;
+  border-right:1px solid var(--border);
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:2rem;
+}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--teal)}
+.hero-left h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,4.2vw,5rem);
+  font-weight:300;color:var(--void);line-height:.98;letter-spacing:-.025em;
+}
+.hero-left h1 strong{font-weight:700;display:block}
+.hero-left h1 em{font-style:italic;color:var(--teal);display:block}
+.rule{width:60px;height:2px;background:var(--amber);margin:2rem 0}
+.hero-body{font-size:1rem;color:var(--mid);line-height:1.8;max-width:380px;margin-bottom:2rem}
+/* Core principle — Grand Hotel lives in its dedicated section only */
+.explore-hint{
+  font-size:.8rem;color:var(--teal);font-style:italic;opacity:.8;
+  display:flex;align-items:center;gap:.4rem;
+}
+.explore-hint::after{content:'→';font-style:normal;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}55%{transform:translateX(6px)}}
+
+.hero-right{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  padding:2rem 2.5rem 2rem 1rem;
+}
+.eco-svg{
+  width:100%;height:100%;
+  max-width:700px;max-height:calc(100vh - 80px);
+  display:block;overflow:visible;
+}
+/* ════════════════════════════════
+   ECOSYSTEM MODAL OVERLAY
+════════════════════════════════ */
+.eco-modal-backdrop{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(10,26,18,.7);
+  backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s ease;
+}
+.eco-modal-backdrop.open{opacity:1;pointer-events:auto}
+.eco-modal{
+  background:var(--void);
+  border:1px solid rgba(29,158,117,.3);
+  border-top:3px solid var(--amber);
+  border-radius:6px;
+  padding:2.5rem;
+  width:min(520px,90vw);
+  max-height:90vh;
+  overflow-y:auto;
+  transform:scale(.94) translateY(12px);
+  transition:transform .25s ease;
+  box-shadow:0 32px 80px rgba(0,0,0,.6);
+  position:relative;
+}
+.eco-modal-backdrop.open .eco-modal{transform:scale(1) translateY(0)}
+.eco-modal-node{
+  font-family:'Oswald',sans-serif;
+  font-size:.65rem;font-weight:600;
+  letter-spacing:.25em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:.6rem;display:block;
+}
+.eco-modal-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;font-weight:700;color:#fff;
+  line-height:1.1;margin-bottom:1.25rem;display:block;
+}
+.eco-modal-body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.92rem;color:rgba(255,255,255,.65);
+  line-height:1.8;margin-bottom:2rem;
+}
+.eco-modal-actions{display:flex;gap:1rem;align-items:center}
+.eco-modal-learn{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.85rem;font-weight:600;
+  color:var(--void);background:var(--amber);
+  padding:.75rem 1.75rem;border-radius:3px;
+  border:none;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  transition:background .2s;
+}
+.eco-modal-learn:hover{background:#f0b030}
+.eco-modal-close{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.85rem;font-weight:500;
+  color:rgba(255,255,255,.45);
+  background:transparent;
+  border:1.5px solid rgba(255,255,255,.15);
+  padding:.75rem 1.5rem;border-radius:3px;
+  cursor:pointer;transition:all .2s;
+}
+.eco-modal-close:hover{border-color:rgba(255,255,255,.4);color:rgba(255,255,255,.8)}
+.eco-modal-x{
+  position:absolute;top:1.25rem;right:1.25rem;
+  width:28px;height:28px;
+  background:rgba(255,255,255,.08);border:none;
+  border-radius:50%;cursor:pointer;
+  color:rgba(255,255,255,.5);font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+  font-family:sans-serif;
+}
+.eco-modal-x:hover{background:rgba(255,255,255,.18);color:#fff}
+
+/* SVG hover tooltips — small, stays near node */
+.eco-tooltip{
+  position:fixed;z-index:400;
+  background:var(--void);
+  border:1px solid rgba(29,158,117,.35);
+  border-left:3px solid var(--amber);
+  border-radius:4px;
+  padding:.75rem 1rem;
+  width:200px;
+  pointer-events:none;
+  opacity:0;
+  transform:translateY(4px);
+  transition:opacity .18s,transform .18s;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+}
+.eco-tooltip.show{opacity:1;transform:translateY(0)}
+.eco-tooltip-label{
+  font-family:'Oswald',sans-serif;
+  font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:.3rem;display:block;
+}
+.eco-tooltip-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:700;color:#fff;
+  margin-bottom:.25rem;display:block;
+}
+.eco-tooltip-hint{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.7rem;color:rgba(255,255,255,.4);
+  display:block;
+}
+
+
+/* SVG cards rendered as pure SVG — no foreignObject */
+
+/* ════════════════════════════════
+   SHARED SECTION STYLES
+════════════════════════════════ */
+.section{padding:6rem 4rem}
+.section-inner{max-width:1160px;margin:0 auto}
+.sec-eyebrow{
+  font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem;
+  display:block;
+}
+.sec-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,3vw,3rem);font-weight:300;
+  color:var(--void);line-height:1.1;margin-bottom:.75rem;
+}
+.sec-h2 strong{font-weight:700}
+.sec-sub{font-size:1rem;color:var(--mid);max-width:540px;line-height:1.75;margin-bottom:3.5rem}
+.btn{
+  display:inline-block;padding:.9rem 2rem;border-radius:3px;
+  font-weight:600;font-size:.88rem;text-decoration:none;
+  transition:all .2s;border:none;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.btn-deep{background:var(--deep);color:#fff}.btn-deep:hover{background:var(--void)}
+.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--deep)}
+.btn-amber{background:var(--amber);color:var(--void)}.btn-amber:hover{background:#f0b030}
+.btn-outline{background:transparent;color:var(--deep);border:1.5px solid var(--deep)}.btn-outline:hover{background:var(--deep);color:#fff}
+
+/* ════════════════════════════════
+   SCROLL CUE
+════════════════════════════════ */
+.scroll-cue{
+  background:var(--deep);padding:1.25rem;text-align:center;
+  border-top:2px solid var(--amber);
+}
+.scroll-cue p{
+  font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:600;
+  letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.35);
+}
+
+/* ════════════════════════════════
+   MISSION STRIP
+════════════════════════════════ */
+.mission{background:var(--deep);padding:4.5rem 4rem}
+.mission-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1px 1fr;gap:3rem;align-items:center}
+.mission-divider{background:rgba(29,158,117,.3);height:100px;width:1px}
+.mission-quote{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;font-weight:300;color:rgba(255,255,255,.88);line-height:1.75}
+/* Tagline uses Oswald — NOT Grand Hotel */
+.mission-tag{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,2.8vw,2.4rem);
+  font-weight:300;
+  color:#fff;
+  line-height:1.15;
+  margin-bottom:.75rem;
+  display:block;
+  letter-spacing:-.01em;
+}
+.mission-tag strong{
+  font-weight:700;
+  color:var(--amber);
+}
+.mission-sub{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.7}
+
+/* ════════════════════════════════
+   METRICS / WHY HERE
+════════════════════════════════ */
+.metrics{background:var(--nw);padding:6rem 4rem}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:4rem}
+.metric-card{
+  background:var(--sand);border-radius:4px;padding:2rem;
+  border:1px solid var(--border);border-top:3px solid var(--amber);
+  text-align:center;
+}
+.metric-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem;font-weight:700;color:var(--deep);
+  line-height:1;margin-bottom:.5rem;display:block;
+}
+.metric-lbl{font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem;display:block}
+.metric-desc{font-size:.78rem;color:var(--mid);line-height:1.55}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.why-content p{font-size:.95rem;color:var(--mid);line-height:1.8;margin-bottom:1rem}
+.why-content strong{color:var(--void)}
+.why-stats{display:flex;flex-direction:column;gap:1rem}
+.why-stat{
+  display:grid;grid-template-columns:80px 1fr;gap:1.25rem;
+  align-items:start;padding:1.25rem;
+  background:var(--sand);border-radius:4px;border-left:3px solid var(--teal);
+}
+.ws-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem;font-weight:700;color:var(--deep);line-height:1;
+}
+.ws-txt h5{font-size:.88rem;font-weight:600;color:var(--void);margin-bottom:.25rem}
+.ws-txt p{font-size:.78rem;color:var(--mid);line-height:1.55}
+
+/* ════════════════════════════════
+   NONPROFITS / FOUNDATIONREADY
+════════════════════════════════ */
+.fr-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.fr-info h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--void);margin-bottom:1rem;line-height:1.2}
+.fr-info p{font-size:.93rem;color:var(--mid);line-height:1.8;margin-bottom:1rem}
+.fr-tiers{background:var(--nw);border-radius:4px;border:1px solid var(--border);overflow:hidden;margin-top:1.5rem}
+.fr-tier{display:grid;grid-template-columns:1fr auto;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid var(--border)}
+.fr-tier:last-child{border-bottom:none}
+.tier-name{font-weight:600;font-size:.88rem;color:var(--void)}
+.tier-sub{font-size:.75rem;color:var(--mid);margin-top:2px}
+.tier-price{font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;color:var(--teal);white-space:nowrap}
+.cares-domains{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.domain{
+  background:var(--nw);border-radius:4px;padding:1.25rem;
+  border:1px solid var(--border);border-top:3px solid var(--deep);
+  transition:border-top-color .2s;
+}
+.domain:hover{border-top-color:var(--amber)}
+.domain-letter{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--deep);opacity:.1;line-height:1;margin-bottom:.25rem}
+.domain-num{font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.35rem}
+.domain h4{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--void);margin-bottom:.4rem}
+.domain p{font-size:.78rem;color:var(--mid);line-height:1.6}
+
+/* ════════════════════════════════
+   PROVIDERS
+════════════════════════════════ */
+.providers-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
+.pcard{
+  background:var(--sand);border-radius:4px;padding:2rem;
+  border:1px solid var(--border);transition:transform .2s,box-shadow .2s;
+}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(10,74,58,.1)}
+.pcard-icon{width:44px;height:44px;background:var(--deep);border-radius:4px;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.pcard h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--void);margin-bottom:.5rem}
+.pcard p{font-size:.82rem;color:var(--mid);line-height:1.65}
+
+/* ════════════════════════════════
+   DONORS
+════════════════════════════════ */
+.donors-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.donors-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:1rem}
+.donors-h2 strong{font-weight:700}
+.impact-items{display:flex;flex-direction:column;gap:1rem}
+.impact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;background:rgba(255,255,255,.05);border-radius:4px;border-left:3px solid var(--amber)}
+.impact-dot{width:10px;height:10px;background:var(--amber);border-radius:50%;flex-shrink:0;margin-top:4px}
+.impact-item p{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.65}
+.impact-item strong{color:#fff}
+.donate-box{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:4px;padding:2.5rem;
+}
+.donate-box h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#fff;margin-bottom:.5rem}
+.donate-box p{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:1.5rem}
+.donate-btn-wrap{text-align:center;padding:2rem;background:rgba(255,255,255,.04);border-radius:3px;border:1px dashed rgba(232,160,32,.3);margin-bottom:1.5rem}
+.donate-placeholder{font-size:.8rem;color:rgba(255,255,255,.3);font-style:italic;margin-top:.75rem}
+
+/* ════════════════════════════════
+   INDIVIDUALS
+════════════════════════════════ */
+.ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.ind-steps{display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:48px 1fr;gap:1.25rem;padding:1.5rem 0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--amber);line-height:1}
+.step h4{font-size:.92rem;font-weight:600;color:var(--void);margin-bottom:.3rem}
+.step p{font-size:.82rem;color:var(--mid);line-height:1.65}
+.services-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.tag{display:inline-block;font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .8rem;border-radius:2px;background:var(--nw);color:var(--deep);border:1px solid var(--border)}
+
+/* ════════════════════════════════
+   PLATFORM
+════════════════════════════════ */
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pf-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:2rem;transition:border-color .2s}
+.pf-card:hover{border-color:rgba(29,158,117,.35)}
+.pf-badge{font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;display:block}
+.pf-card h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+.pf-card p{font-size:.8rem;color:rgba(255,255,255,.42);line-height:1.65}
+.pf-status{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.25);margin-top:.75rem;letter-spacing:.05em}
+.pf-status::before{content:'';width:6px;height:6px;background:rgba(232,160,32,.4);border-radius:50%}
+
+/* ════════════════════════════════
+   TRANSPARENCY / 990
+════════════════════════════════ */
+.transparency{background:var(--sand);padding:6rem 4rem}
+.trans-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.trans-doc{
+  background:var(--nw);border:1px solid var(--border);border-radius:4px;
+  overflow:hidden;
+}
+.trans-doc-header{
+  background:var(--deep);padding:1rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.trans-doc-header h4{font-family:'Oswald',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--sand)}
+.trans-doc-header a{font-size:.75rem;color:var(--amber);text-decoration:none;font-weight:600}
+.trans-doc-header a:hover{color:#f0b030}
+.trans-doc embed{display:block;width:100%;height:480px;border:none}
+.trans-facts{display:flex;flex-direction:column;gap:1rem}
+.trans-fact{
+  background:var(--nw);border-radius:4px;padding:1.25rem;
+  border:1px solid var(--border);border-left:3px solid var(--amber);
+}
+.tf-label{font-family:'Oswald',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--light);margin-bottom:.35rem;display:block}
+.tf-value{font-size:.92rem;font-weight:600;color:var(--void)}
+.tf-sub{font-size:.78rem;color:var(--mid);margin-top:.2rem}
+.candid-link{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.82rem;font-weight:600;color:var(--deep);
+  border:1.5px solid var(--deep);padding:.6rem 1.25rem;border-radius:3px;
+  text-decoration:none;transition:all .2s;margin-top:1rem;
+}
+.candid-link:hover{background:var(--deep);color:#fff}
+
+/* ════════════════════════════════
+   CORE PRINCIPLE
+════════════════════════════════ */
+.core-principle{background:var(--deep);padding:5rem 4rem;text-align:center}
+/* Grand Hotel IS correct here — this is THE callout moment */
+.cp-quote{font-family:'Grand Hotel',cursive;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--sand);line-height:1.3;margin-bottom:.75rem}
+.cp-attr{
+  font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);
+}
+
+/* ════════════════════════════════
+   ABOUT
+════════════════════════════════ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-content p{font-size:.95rem;color:var(--mid);line-height:1.8;margin-bottom:1rem}
+.about-content strong{color:var(--void)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.fact{padding:1rem 1.25rem;background:var(--sand);border-radius:3px;border-left:3px solid var(--amber)}
+.fact-lbl{font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--light);margin-bottom:.25rem;display:block}
+.fact-val{font-size:.88rem;font-weight:600;color:var(--void)}
+.pillars{background:var(--deep);border-radius:4px;padding:2.5rem}
+.pillars h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:2rem}
+.pillar{padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.pillar:last-child{border-bottom:none;padding-bottom:0}
+.pillar-n{font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.35rem;display:block}
+.pillar h4{font-size:.92rem;font-weight:600;color:#fff;margin-bottom:.35rem}
+.pillar p{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.65}
+
+/* ════════════════════════════════
+   CONTACT
+════════════════════════════════ */
+.contact-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;color:#fff;line-height:1.2;margin-bottom:1rem}
+.contact-h2 strong{font-weight:700}
+.ci{display:flex;align-items:center;gap:1rem;font-size:.88rem;color:rgba(255,255,255,.65);margin-bottom:.85rem}
+.ci-icon{width:36px;height:36px;background:rgba(29,158,117,.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.ci a{color:var(--teal);text-decoration:none}.ci a:hover{color:#5DCAA5}
+.contact-form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:2.5rem}
+.contact-form h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#fff;margin-bottom:.5rem}
+.contact-form>p{font-size:.82rem;color:rgba(255,255,255,.35);margin-bottom:1.75rem}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.4rem}
+.fg input,.fg select,.fg textarea{width:100%;padding:.75rem 1rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:3px;color:#fff;font-size:.88rem;font-family:'Plus Jakarta Sans',sans-serif;transition:border-color .2s;resize:none}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.22)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--teal)}
+.fg select option{background:var(--void)}
+.form-btn{width:100%;padding:.9rem;background:var(--amber);color:var(--void);font-weight:700;font-size:.9rem;border:none;border-radius:3px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;margin-top:.5rem}
+.form-btn:hover{background:#f0b030}
+.form-note{font-size:.7rem;color:rgba(255,255,255,.2);text-align:center;margin-top:.75rem}
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer{background:#060e09;border-top:2px solid var(--amber)}
+.footer-top{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding:4rem 4rem 3rem}
+.foot-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.75rem;color:var(--sand);letter-spacing:.01em;line-height:1;display:block;margin-bottom:.5rem}
+.foot-brand-name strong{font-weight:700}
+.foot-brand-name span{font-weight:300}
+.foot-brand-ls{font-family:'Plus Jakarta Sans',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:1.25rem}
+/* Footer tagline — Oswald, NOT Grand Hotel */
+.foot-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:300;
+  color:rgba(255,255,255,.6);
+  line-height:1.4;margin-bottom:1.25rem;
+  display:block;letter-spacing:-.01em;
+}
+.foot-tagline strong{font-weight:700;color:var(--amber)}
+.foot-ci{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:.4rem}
+.foot-ci a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.foot-ci a:hover{color:var(--teal)}
+.foot-col h4{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.25rem}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.foot-links a{font-size:.82rem;color:rgba(255,255,255,.38);text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;gap:.4rem}
+.foot-links a::before{content:'';width:4px;height:4px;background:rgba(232,160,32,.3);border-radius:50%;flex-shrink:0}
+.foot-links a:hover{color:rgba(255,255,255,.8)}
+.footer-rule{height:1px;background:rgba(255,255,255,.06);margin:0 4rem}
+.footer-bottom{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 4rem 2rem;flex-wrap:wrap;gap:.75rem}
+.foot-legal{font-size:.7rem;color:rgba(255,255,255,.2);line-height:1.7}
+/* Bottom tagline — Oswald, NOT Grand Hotel */
+.foot-501{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.92rem;font-weight:300;
+  color:rgba(255,255,255,.35);
+  display:inline-flex;align-items:center;gap:.5rem;
+  letter-spacing:-.01em;
+}
+.foot-501 strong{font-weight:700;color:rgba(232,160,32,.6)}
+.foot-501::before{content:'';width:6px;height:6px;background:var(--teal);border-radius:50%;opacity:.5}
+
+/* ════════════════════════════════
+   REVEAL
+════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+@media(max-width:1100px){
+  nav{padding:0 2rem}
+  .nav-hint{display:none}
+  .hero{grid-template-columns:46% 54%}
+  .hero-left{padding:3.5rem 2rem 3.5rem 3rem}
+  .section{padding:5rem 3rem}
+  .metrics{padding:5rem 3rem}
+  .transparency{padding:5rem 3rem}
+  .mission{padding:3.5rem 3rem}
+  .metrics-grid{grid-template-columns:1fr 1fr}
+  .footer-top{padding:3rem 3rem 2rem}
+  .footer-rule{margin:0 3rem}
+  .footer-bottom{padding:1.5rem 3rem 2rem}
+}
+@media(max-width:768px){
+  nav{padding:0 1.5rem;height:68px}
+  .nav-qc{font-size:1.5rem}
+  .nav-mark{width:42px;height:42px}
+  .nav-donate{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:3rem 1.5rem 1.5rem;border-right:none;border-bottom:1px solid var(--border)}
+  .hero-right{padding:2rem 1.5rem 3rem;min-height:60vw}
+  .eco-svg{max-height:60vw}
+  .section,.metrics,.transparency{padding:4rem 1.5rem}
+  .mission{padding:3rem 1.5rem}
+  .mission-inner{grid-template-columns:1fr;gap:1.5rem}
+  .mission-divider{display:none}
+  .fr-grid,.donors-inner,.ind-grid,.about-grid,.contact-inner,.trans-grid,.why-grid{grid-template-columns:1fr}
+  .metrics-grid,.cares-domains,.providers-grid,.platform-grid{grid-template-columns:1fr 1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem;padding:2.5rem 1.5rem 2rem}
+  .footer-rule{margin:0 1.5rem}
+  .footer-bottom{padding:1.25rem 1.5rem 1.75rem;flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  nav{padding:0 1rem;height:60px}
+  .nav-qc{font-size:1.3rem}
+  .nav-mark{width:36px;height:36px}
+  .nav-ls{display:none}
+  .nav-cta{padding:.4rem .9rem;font-size:.75rem}
+  .hero-left h1{font-size:clamp(2.4rem,9vw,3rem)}
+  .hero-right{min-height:80vw}
+  .eco-svg{max-height:80vw}
+  .section,.metrics,.transparency{padding:3.5rem 1.25rem}
+  .mission{padding:2.5rem 1.25rem}
+  .metrics-grid,.cares-domains,.providers-grid,.platform-grid{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-rule{margin:0 1.25rem}
+  .footer-bottom{padding:1.25rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  @keyframes nudge{from,to{transform:none}}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#" class="nav-brand">
+    <svg class="nav-mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="60" x2="34" y2="42" stroke="#9FE1CB" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="60" y1="60" x2="90" y2="78" stroke="#5DCAA5" stroke-width="2.8" stroke-linecap="round"/>
+      <line x1="60" y1="60" x2="87" y2="37" stroke="#9FE1CB" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M60,60 Q38,73 32,88" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="60" y1="60" x2="65" y2="20" stroke="#5DCAA5" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M32,42 Q63,14 87,37" fill="none" stroke="#9FE1CB" stroke-width="1.5" stroke-linecap="round" opacity=".48"/>
+      <path d="M32,42 Q18,65 32,88" fill="none" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".38"/>
+      <path d="M90,78 Q58,105 32,88" fill="none" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round" opacity=".4"/>
+      <circle cx="32" cy="42" r="9" fill="#9FE1CB"/><circle cx="32" cy="42" r="4.5" fill="#E8A020" opacity=".8"/><circle cx="32" cy="42" r="1.6" fill="#0A1A12"/>
+      <circle cx="90" cy="78" r="7" fill="#5DCAA5"/><circle cx="90" cy="78" r="3.2" fill="#E8A020" opacity=".65"/>
+      <circle cx="87" cy="37" r="6" fill="#9FE1CB" opacity=".88"/><circle cx="87" cy="37" r="2.5" fill="#E8A020" opacity=".6"/>
+      <circle cx="32" cy="88" r="6.5" fill="#1D9E75"/><circle cx="32" cy="88" r="2.8" fill="#E8A020" opacity=".6"/>
+      <circle cx="65" cy="20" r="4" fill="#5DCAA5" opacity=".55"/><circle cx="65" cy="20" r="1.6" fill="#E8A020" opacity=".45"/>
+      <circle cx="60" cy="60" r="14" fill="#E8A020"/>
+      <circle cx="60" cy="60" r="9" fill="none" stroke="#0A1A12" stroke-width="1.8" opacity=".42"/>
+      <circle cx="60" cy="60" r="4.5" fill="none" stroke="#0A1A12" stroke-width="1.5" opacity=".62"/>
+      <circle cx="60" cy="60" r="1.5" fill="#0A1A12" opacity=".82"/>
+    </svg>
+    <div class="nav-wm">
+      <span class="nav-qc"><span>Quest</span><strong>Care</strong></span>
+      <span class="nav-ls">LifeStyle Solutions</span>
+      <div class="nav-amber-rule"></div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <span class="nav-hint">Hover a node to navigate the ecosystem</span>
+    <a href="#donors" class="nav-donate">Donate</a>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Henry &amp; Madison County, Indiana · Est. 2024</div>
+    <h1>Every<br/><strong>Community<br/>Deserves</strong><br/><em>a Catalyst.</em></h1>
+    <div class="rule"></div>
+    <p class="hero-body">QuestCare LifeStyle Solutions empowers individuals and organizations by connecting people to essential resources, strengthening nonprofit capacity, and building accountable, standards-driven systems that improve quality of life and community outcomes.</p>
+    <p class="explore-hint">Explore the ecosystem</p>
+  </div>
+
+  <div class="hero-right">
+    <!--
+      FULL SVG ECOSYSTEM — viewBox "-20 -80 740 860"
+      Hub: 350,350 r=80
+      N1 Nonprofits: 174,216 r=58 (closest/largest)
+      N2 Providers:  484,406 r=44
+      N3 Donors:     468,184 r=36
+      N4 Individuals:166,438 r=40
+      N5 Platform:   320,112 r=26 (furthest)
+    -->
+    <svg class="eco-svg" id="ecoSvg" viewBox="-20 -80 740 860"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+      <!-- Guidance ring -->
+      <g id="gRing">
+        <animateTransform attributeName="transform" type="rotate"
+          from="0 350 350" to="360 350 350" dur="22s" repeatCount="indefinite"/>
+        <defs><path id="gp" d="M350,350 m-195,0 a195,195 0 1,1 390,0 a195,195 0 1,1 -390,0"/></defs>
+        <text font-family="Oswald,sans-serif" font-size="13" font-weight="600"
+              letter-spacing="5" fill="#0A4A3A" opacity=".3">
+          <textPath href="#gp" startOffset="0%">HOVER A NODE TO EXPLORE · HOVER A NODE TO EXPLORE · </textPath>
+        </text>
+      </g>
+
+      <!-- Arms -->
+      <line x1="350" y1="350" x2="174" y2="216" stroke="#0A4A3A" stroke-width="12" stroke-linecap="round"/>
+      <line x1="350" y1="350" x2="484" y2="406" stroke="#1D9E75" stroke-width="9" stroke-linecap="round"/>
+      <line x1="350" y1="350" x2="468" y2="184" stroke="#0A4A3A" stroke-width="7.5" stroke-linecap="round"/>
+      <path d="M350,350 Q245,396 166,438" fill="none" stroke="#5DCAA5" stroke-width="9" stroke-linecap="round"/>
+      <line x1="350" y1="350" x2="320" y2="112" stroke="#1D9E75" stroke-width="4.5" stroke-linecap="round"/>
+
+      <!-- Cross-connections -->
+      <path d="M174,216 Q246,86 468,184" fill="none" stroke="#0A4A3A" stroke-width="4.8" stroke-linecap="round" opacity=".4"/>
+      <path d="M174,216 Q84,312 166,438" fill="none" stroke="#5DCAA5" stroke-width="4" stroke-linecap="round" opacity=".35"/>
+      <path d="M484,406 Q348,484 166,438" fill="none" stroke="#1D9E75" stroke-width="4.2" stroke-linecap="round" opacity=".35"/>
+      <path d="M484,406 Q562,298 468,184" fill="none" stroke="#1D9E75" stroke-width="3.2" stroke-linecap="round" opacity=".24"/>
+      <path d="M320,112 Q438,88 468,184" fill="none" stroke="#1D9E75" stroke-width="2.8" stroke-linecap="round" opacity=".22"/>
+
+      <!-- N1 Nonprofits -->
+      <g id="n1" style="cursor:pointer">
+        <g id="n1v"><circle cx="174" cy="216" r="58" fill="#0A4A3A"><animate attributeName="opacity" values="1;.68;1" dur="3.2s" begin="0s" repeatCount="indefinite"/></circle><circle cx="174" cy="216" r="30" fill="#E8A020" opacity=".82"/><circle cx="174" cy="216" r="11" fill="#F8F5EE"/></g>
+        <text x="174" y="130" text-anchor="middle" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">NONPROFITS</text>
+        <text x="174" y="150" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">FoundationReady™</text>
+        <circle cx="174" cy="216" r="70" fill="transparent" id="h1" style="cursor:pointer"/>
+      </g>
+
+      <!-- N2 Providers -->
+      <g id="n2" style="cursor:pointer">
+        <g id="n2v"><circle cx="484" cy="406" r="44" fill="#1D9E75"><animate attributeName="opacity" values="1;.68;1" dur="3.2s" begin=".65s" repeatCount="indefinite"/></circle><circle cx="484" cy="406" r="22" fill="#E8A020" opacity=".68"/><circle cx="484" cy="406" r="8" fill="#F8F5EE"/></g>
+        <text x="556" y="400" text-anchor="start" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">PROVIDERS</text>
+        <text x="556" y="420" text-anchor="start" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Join the Network</text>
+        <circle cx="484" cy="406" r="56" fill="transparent" id="h2" style="cursor:pointer"/>
+      </g>
+
+      <!-- N3 Donors -->
+      <g id="n3" style="cursor:pointer">
+        <g id="n3v"><circle cx="468" cy="184" r="36" fill="#0A4A3A" opacity=".9"><animate attributeName="opacity" values=".9;.58;.9" dur="3.2s" begin="1.3s" repeatCount="indefinite"/></circle><circle cx="468" cy="184" r="17" fill="#E8A020" opacity=".62"/></g>
+        <text x="516" y="168" text-anchor="start" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">DONORS</text>
+        <text x="516" y="188" text-anchor="start" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Give with Impact</text>
+        <circle cx="468" cy="184" r="48" fill="transparent" id="h3" style="cursor:pointer"/>
+      </g>
+
+      <!-- N4 Individuals -->
+      <g id="n4" style="cursor:pointer">
+        <g id="n4v"><circle cx="166" cy="438" r="40" fill="#5DCAA5"><animate attributeName="opacity" values="1;.68;1" dur="3.2s" begin="1.95s" repeatCount="indefinite"/></circle><circle cx="166" cy="438" r="19" fill="#E8A020" opacity=".62"/><circle cx="166" cy="438" r="7" fill="#F8F5EE"/></g>
+        <text x="166" y="500" text-anchor="middle" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">INDIVIDUALS</text>
+        <text x="166" y="520" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Find Help</text>
+        <circle cx="166" cy="438" r="52" fill="transparent" id="h4" style="cursor:pointer"/>
+      </g>
+
+      <!-- N5 Platform -->
+      <g id="n5" style="cursor:pointer">
+        <g id="n5v"><circle cx="320" cy="112" r="26" fill="#1D9E75" opacity=".55"><animate attributeName="opacity" values=".55;.3;.55" dur="3.2s" begin="2.6s" repeatCount="indefinite"/></circle><circle cx="320" cy="112" r="11" fill="#E8A020" opacity=".45"/></g>
+        <text x="320" y="56" text-anchor="middle" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">PLATFORM</text>
+        <text x="320" y="76" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Coming 2026</text>
+        <circle cx="320" cy="112" r="40" fill="transparent" id="h5" style="cursor:pointer"/>
+      </g>
+
+      <!-- BULLSEYE HUB -->
+      <g id="nhub" style="cursor:pointer">
+        <circle cx="350" cy="350" r="80" fill="#E8A020"><animate attributeName="opacity" values="1;.82;1" dur="4s" repeatCount="indefinite"/></circle>
+        <circle cx="350" cy="350" r="52" fill="none" stroke="#F8F5EE" stroke-width="8" opacity=".38"/>
+        <circle cx="350" cy="350" r="28" fill="none" stroke="#F8F5EE" stroke-width="7" opacity=".56"/>
+        <circle cx="350" cy="350" r="10" fill="#F8F5EE" opacity=".75"/>
+        <circle cx="350" cy="350" r="95" fill="transparent" id="hhub" style="cursor:pointer"/>
+      </g>
+
+
+    </svg>
+  </div>
+</section>
+
+<!-- Scroll cue -->
+<div class="scroll-cue" id="services">
+  <p>↓ Scroll to explore the ecosystem ↓</p>
+</div>
+
+<!-- ══ MISSION ══ -->
+<div class="mission">
+  <div class="mission-inner">
+    <p class="mission-quote">"QuestCare LifeStyle Solutions empowers individuals and organizations by connecting people to essential resources, strengthening nonprofit capacity, and building accountable, standards-driven systems that improve quality of life and community outcomes."</p>
+    <div class="mission-divider"></div>
+    <div>
+      <span class="mission-tag">We <strong>CARE</strong> for Every Life<br/>and <strong>EMPOWER</strong> Every Ability</span>
+      <p class="mission-sub">QCLS removes barriers and ensures access is achieved — not just referred. Through coordination, standards, and technology, we make the community ecosystem work for everyone in Henry and Madison County, Indiana.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WHY HERE · METRICS ══ -->
+<section class="metrics" id="why">
+  <div class="section-inner">
+    <div class="sec-eyebrow">Why Henry &amp; Madison County</div>
+    <h2 class="sec-h2">The Data Chose <strong>This Community.</strong></h2>
+    <p class="sec-sub">QCLS was founded here because the need is documented, the gaps are measurable, and the community deserves an accountable system designed to close them.</p>
+
+    <div class="metrics-grid reveal">
+      <div class="metric-card">
+        <span class="metric-num">17.3%</span>
+        <span class="metric-lbl">Madison County</span>
+        <p class="metric-desc">of residents under 65 live with a disability — above state average, requiring coordinated access to services that too often remain fragmented.</p>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">16.6%</span>
+        <span class="metric-lbl">Henry County</span>
+        <p class="metric-desc">of residents under 65 live with a disability. More than 22% of Henry County residents rely on Medicaid-supported healthcare coverage.</p>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">40%</span>
+        <span class="metric-lbl">Indiana ALICE Threshold</span>
+        <p class="metric-desc">of Indiana households fall below the combined federal poverty and ALICE survival threshold — one emergency away from serious instability.</p>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">30–50</span>
+        <span class="metric-lbl">Miles to Specialized Care</span>
+        <p class="metric-desc">Many residents must routinely travel 30–50 miles for specialized healthcare, behavioral health, disability, and social support services.</p>
+      </div>
+    </div>
+
+    <div class="why-grid reveal">
+      <div class="why-content">
+        <div class="sec-eyebrow" style="margin-bottom:1rem">The National Context</div>
+        <p>More than <strong>60% of federally designated Mental Health Professional Shortage Areas are located within rural communities</strong> — communities exactly like ours. The nonprofit organizations serving these communities face growing pressure to demonstrate measurable outcomes while operating with limited infrastructure, aging technology systems, and minimal administrative capacity.</p>
+        <p>Nationally, <strong>approximately 30% of nonprofit organizations fail within 10 years</strong>, and more than 50% operate with less than one month of financial reserves. QCLS was built to address these structural failures at the community level — not by adding another isolated service, but by building the accountability infrastructure that makes every existing service work better.</p>
+        <p>The data did not simply suggest Henry and Madison County. It confirmed what 20+ years of direct operational leadership in Medicaid-funded disability services, nonprofit administration, and community support operations made undeniable — this community needs a catalyst.</p>
+        <a href="#nonprofits" class="btn btn-deep" style="margin-top:1.5rem">See How We Respond</a>
+      </div>
+      <div class="why-stats">
+        <div class="why-stat">
+          <div class="ws-num">771K+</div>
+          <div class="ws-txt"><h5>Point-in-Time Homelessness Count</h5><p>Individuals identified nationally in the 2024 count — an 18% increase from the prior year, with 1.5M+ homeless students identified in public schools.</p></div>
+        </div>
+        <div class="why-stat">
+          <div class="ws-num">60%+</div>
+          <div class="ws-txt"><h5>Mental Health Shortage Areas Are Rural</h5><p>Federally designated Mental Health Professional Shortage Areas are concentrated in rural communities — disproportionately affecting the populations QCLS serves.</p></div>
+        </div>
+        <div class="why-stat">
+          <div class="ws-num">$78.5K</div>
+          <div class="ws-txt"><h5>First Year Gross Receipts</h5><p>QCLS generated $78,500 in gross receipts in its first operational year (2025), entirely through contributions — zero government grants, zero investment income.</p></div>
+        </div>
+        <div class="why-stat">
+          <div class="ws-num">5</div>
+          <div class="ws-txt"><h5>Independent Governing Board</h5><p>QCLS is governed by a 5-member independent board of directors.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NONPROFITS ══ -->
+<section class="section" id="nonprofits" style="background:var(--sand)">
+  <div class="section-inner">
+    <div class="sec-eyebrow">For Nonprofits</div>
+    <h2 class="sec-h2">Build the <strong>Foundation</strong><br/>Funders Require.</h2>
+    <p class="sec-sub">FoundationReady™ is a structured capacity assessment built on the CARES Framework. We evaluate your organization across five domains and deliver a roadmap for sustainable funding and governance excellence.</p>
+    <div class="fr-grid reveal">
+      <div class="fr-info">
+        <h3>The FoundationReady™ Assessment</h3>
+        <p>Every assessment delivers scored results with written justification tied to specific evidence — not generic observations. Each finding is clearly labeled Evidence, Assessment, or Recommended so your team knows exactly where you stand and why.</p>
+        <p>The result is a clear, honest picture of your organization's infrastructure maturity and a prioritized roadmap for improvement — the foundation funders are increasingly required to see.</p>
+        <div class="fr-tiers">
+          <div class="fr-tier"><div><div class="tier-name">Tier 1 — Public Assessment</div><div class="tier-sub">Core CARES scoring with written findings</div></div><div class="tier-price">From $400</div></div>
+          <div class="fr-tier"><div><div class="tier-name">Tier 2 — Full Package</div><div class="tier-sub">Assessment + improvement roadmap + coaching</div></div><div class="tier-price">From $1,500</div></div>
+          <div class="fr-tier"><div><div class="tier-name">Tier 3 — Implementation</div><div class="tier-sub">Partnership through execution of recommendations</div></div><div class="tier-price">Custom</div></div>
+        </div>
+        <a href="#contact" class="btn btn-deep" style="margin-top:1.5rem">Start a FoundationReady Inquiry</a>
+      </div>
+      <div class="cares-domains reveal">
+        <div class="domain"><div class="domain-letter">C</div><div class="domain-num">Domain 01</div><h4>Compliance &amp; Governance</h4><p>Board structure, bylaws, IRS compliance, conflict of interest policies, and board oversight effectiveness.</p></div>
+        <div class="domain"><div class="domain-letter">A</div><div class="domain-num">Domain 02</div><h4>Accountability &amp; Finance</h4><p>Independent audits, 990 accuracy, budget processes, internal controls, and fiscal transparency.</p></div>
+        <div class="domain"><div class="domain-letter">R</div><div class="domain-num">Domain 03</div><h4>Results &amp; Outcomes</h4><p>Logic models, data collection, KPIs, impact measurement, and outcome reporting for funders.</p></div>
+        <div class="domain"><div class="domain-letter">E</div><div class="domain-num">Domain 04</div><h4>Engagement &amp; Presence</h4><p>Stakeholder engagement, communications, community partnerships, and organizational visibility.</p></div>
+        <div class="domain"><div class="domain-letter">S</div><div class="domain-num">Domain 05</div><h4>Sustainability</h4><p>Funding diversity, operating reserves, succession planning, and long-term financial resilience.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROVIDERS ══ -->
+<section class="section" id="providers">
+  <div class="section-inner">
+    <div class="sec-eyebrow">For Service Providers</div>
+    <h2 class="sec-h2">Join a Network <strong>Built on Verification.</strong></h2>
+    <p class="sec-sub">QCLS doesn't just list providers — we build verified relationships. Every provider in the QCLS network is vetted, connected, and accountable to real outcomes.</p>
+    <div class="providers-grid">
+      <div class="pcard reveal"><div class="pcard-icon">🏥</div><h3>Healthcare &amp; Behavioral Health</h3><p>Clinics, mental health providers, substance use treatment, and primary care — connected to individuals navigated by QCLS with follow-up tracking.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">🏠</div><h3>Housing &amp; Stability</h3><p>Emergency housing, transitional programs, utility assistance, and long-term housing support — verified and connected through the QCLS navigation system.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">♿</div><h3>Disability &amp; Independence</h3><p>Medicaid waiver providers, supported employment, independent living programs, and disability services — matched to individuals who need your specific support.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">🚗</div><h3>Transportation &amp; Access</h3><p>Non-emergency medical transport, community rides, and mobility solutions — the last-mile access that makes every other referral possible.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">🍎</div><h3>Food &amp; Basic Needs</h3><p>Food pantries, meal programs, clothing closets, and emergency assistance — connected to families when they need it, not when they can navigate a system alone.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">📋</div><h3>Benefits &amp; Navigation</h3><p>Benefits enrollment, SNAP, Medicaid, SSI, and government program assistance — expertise that turns eligibility into actual enrollment.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <a href="#contact" class="btn btn-teal reveal">Join the Provider Network</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DONORS ══ -->
+<section class="section" id="donors" style="background:var(--deep);padding:6rem 4rem">
+  <div class="section-inner">
+    <div class="donors-inner">
+      <div class="reveal">
+        <span class="sec-eyebrow" style="color:var(--amber)">For Donors &amp; Funders</span>
+        <h2 class="donors-h2"><strong>Your Dollar Goes Further</strong><br/>When You Can<br/><em style="font-style:italic;color:var(--teal);font-family:'Cormorant Garamond',serif">See It Work.</em></h2>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.62);line-height:1.8;margin-bottom:2rem">QCLS provides donors and funders with verified outcomes — not just activity reports. When you give to QCLS or fund a FoundationReady assessment for a local nonprofit, you see exactly what changed and why it matters.</p>
+        <div class="impact-items">
+          <div class="impact-item"><div class="impact-dot"></div><p><strong>Fund a FoundationReady Assessment</strong> — invest directly in a local nonprofit's governance, financial systems, and accountability infrastructure.</p></div>
+          <div class="impact-item"><div class="impact-dot"></div><p><strong>Support Community Navigation</strong> — fund the coordination that ensures individuals actually receive the services they need.</p></div>
+          <div class="impact-item"><div class="impact-dot"></div><p><strong>Give to QCLS Operations</strong> — strengthen the catalyst at the center of the ecosystem that makes everything else possible.</p></div>
+        </div>
+      </div>
+      <div class="donate-box reveal">
+        <h3>Make a Gift to QCLS</h3>
+        <p>QuestCare LifeStyle Solutions, Inc. is a 501(c)(3) nonprofit (EIN: 33-3036616). All donations are tax-deductible to the extent allowed by law.</p>
+        <div class="donate-btn-wrap">
+          <!-- PLACEHOLDER: Replace href with Neon One donation page URL when available -->
+          <a href="https://app.neoncrm.com/np/clients/questcare/donation.jsp"
+             target="_blank" rel="noopener"
+             class="btn btn-amber"
+             style="display:inline-block;font-size:.95rem;padding:1rem 2.5rem;">
+            Donate Now →
+          </a>
+          <p class="donate-placeholder">Secure giving powered by Neon One · Donations processed at app.neoncrm.com<br/>Update URL with your specific Neon One campaign link</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INDIVIDUALS ══ -->
+<section class="section" id="individuals" style="background:var(--sand)">
+  <div class="section-inner">
+    <div class="sec-eyebrow">For Individuals &amp; Families</div>
+    <h2 class="sec-h2">Help That Follows<br/><strong>Through to Access.</strong></h2>
+    <p class="sec-sub">QCLS is not a 211 list. We are human navigators who make contact, confirm services, follow up, and document access — because a referral is only complete when someone actually gets help.</p>
+    <div class="ind-grid">
+      <div class="ind-steps reveal">
+        <div class="step"><div class="step-num">01</div><div><h4>Intake &amp; Needs Identification</h4><p>We listen to understand your full situation — not just the presenting need. Every person has a unique set of circumstances and goals.</p></div></div>
+        <div class="step"><div class="step-num">02</div><div><h4>Verified Referral Coordination</h4><p>We connect you to services we know are active, accepting, and appropriate — not a list of phone numbers to call on your own.</p></div></div>
+        <div class="step"><div class="step-num">03</div><div><h4>Follow-Up &amp; Barrier Removal</h4><p>We follow up to confirm you received the service. If something blocked access, we work to remove that barrier before closing the case.</p></div></div>
+        <div class="step"><div class="step-num">04</div><div><h4>Access Confirmed &amp; Documented</h4><p>Cases are only closed when access is confirmed — not when a referral was made. This is the QCLS difference.</p></div></div>
+        <a href="#contact" class="btn btn-teal" style="margin-top:1.5rem;display:inline-block">Request Navigation Support</a>
+      </div>
+      <div class="reveal">
+        <span class="sec-eyebrow" style="margin-bottom:1.25rem;display:block">We Navigate Access To</span>
+        <div class="services-tags">
+          <span class="tag">Healthcare</span><span class="tag">Mental Health</span><span class="tag">Substance Use Treatment</span>
+          <span class="tag">Housing Assistance</span><span class="tag">Emergency Shelter</span><span class="tag">Food Access</span>
+          <span class="tag">Disability Services</span><span class="tag">Medicaid Waivers</span><span class="tag">Supported Employment</span>
+          <span class="tag">Transportation</span><span class="tag">Benefits Enrollment</span><span class="tag">SNAP</span>
+          <span class="tag">Childcare</span><span class="tag">Senior Services</span><span class="tag">Legal Aid</span>
+          <span class="tag">Financial Coaching</span><span class="tag">Utility Assistance</span><span class="tag">Clothing &amp; Household</span>
+        </div>
+        <div style="margin-top:2.5rem;padding:1.5rem;background:var(--nw);border-radius:4px;border-left:3px solid var(--teal)">
+          <span class="sec-eyebrow" style="margin-bottom:.5rem;display:block">Service Area</span>
+          <p style="font-size:.88rem;color:var(--mid);line-height:1.7">Currently serving <strong style="color:var(--void)">Henry County and Madison County, Indiana</strong>. Expanding to additional counties as the platform scales.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLATFORM ══ -->
+<section class="section" id="platform" style="background:var(--void)">
+  <div class="section-inner" style="text-align:center">
+    <span class="sec-eyebrow" style="display:inline-block;margin-bottom:.75rem">Platform</span>
+    <h2 class="sec-h2" style="color:#fff;text-align:center">The Full Ecosystem.<br/><strong>Coming 2026.</strong></h2>
+    <p class="sec-sub" style="margin:0 auto 3.5rem;text-align:center;color:rgba(255,255,255,.5)">The QCLS platform will bring every portal together — live dashboards, online assessments, community provider directory, and real-time navigation — in one accountable digital ecosystem.</p>
+    <div class="platform-grid reveal">
+      <div class="pf-card"><span class="pf-badge">Phase 1</span><h4>FoundationReady Portal</h4><p>Online assessment intake, document upload, scoring dashboard, and roadmap delivery.</p><span class="pf-status">Building Now</span></div>
+      <div class="pf-card"><span class="pf-badge">Phase 2</span><h4>Provider Directory</h4><p>Searchable, verified, always-updated directory of service providers across Henry and Madison County.</p><span class="pf-status">In Design</span></div>
+      <div class="pf-card"><span class="pf-badge">Phase 3</span><h4>Navigation Dashboard</h4><p>Case management, referral tracking, access confirmation, and outcome documentation.</p><span class="pf-status">Planned</span></div>
+      <div class="pf-card"><span class="pf-badge">Phase 4</span><h4>Donor Impact Portal</h4><p>Real-time visibility into funded assessments, individual impact, and community outcomes.</p><span class="pf-status">Planned</span></div>
+      <div class="pf-card"><span class="pf-badge">Phase 5</span><h4>Community Data Dashboard</h4><p>Aggregate, anonymized community need data — resource gaps, access barriers, and trend reporting.</p><span class="pf-status">Planned</span></div>
+      <div class="pf-card" style="border-color:rgba(232,160,32,.3)"><span class="pf-badge">Always</span><h4>Stay Updated</h4><p>The platform is being built in public. Sign up to receive updates as each phase launches.</p><a href="#contact" class="btn btn-amber" style="display:inline-block;font-size:.8rem;padding:.6rem 1.25rem;margin-top:1rem">Get Platform Updates</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CORE PRINCIPLE ══ -->
+<div class="core-principle">
+  <!-- Grand Hotel is correct here — this is a deliberate brand callout moment -->
+  <p class="cp-quote">"No referral is complete until access is confirmed."</p>
+  <p class="cp-attr">QCLS Core Principle · MarQuest Higgins, Executive Director</p>
+</div>
+
+<!-- ══ TRANSPARENCY / 990 ══ -->
+<section class="transparency" id="transparency">
+  <div class="section-inner">
+    <div class="sec-eyebrow">Transparency &amp; Accountability</div>
+    <h2 class="sec-h2">We Hold Ourselves<br/><strong>to the Same Standard.</strong></h2>
+    <p class="sec-sub">QCLS requires accountability from the organizations we assess. We hold ourselves to the same standard — our Form 990, governance documents, and financial information are publicly available.</p>
+
+    <div class="trans-grid reveal">
+
+      <!-- LEFT: 990 download + Candid seal -->
+      <div style="display:flex;flex-direction:column;gap:1.5rem">
+
+        <!-- 990 Download Card -->
+        <div style="background:var(--nw);border:1px solid var(--border);border-radius:4px;overflow:hidden">
+          <div class="trans-doc-header">
+            <h4>Form 990 · 2025 Tax Year · Filed</h4>
+          </div>
+          <div style="padding:2rem">
+            <p style="font-size:.88rem;color:var(--mid);line-height:1.7;margin-bottom:1.5rem">Our 2025 Form 990 is publicly filed and available for download. This includes all program service accomplishments, financial statements, governance disclosures, and board compensation information.</p>
+            <a href="Form990Package_QCLS_2025.pdf" download="QCLS_Form990_2025.pdf"
+               class="btn btn-deep"
+               style="display:inline-flex;align-items:center;gap:.5rem;font-size:.88rem">
+              ↓ Download Form 990 (PDF)
+            </a>
+          </div>
+        </div>
+
+        <!-- Candid Seal -->
+        <div style="background:var(--nw);border:1px solid var(--border);border-radius:4px;padding:2rem;display:flex;align-items:center;gap:1.5rem">
+          <a aria-label="Questcare Lifestyle Solutions Inc"
+             href="https://app.candid.org/profile/16181088/questcare-lifestyle-solutions-inc-33-3036616/?pkId=e0a8e154-3152-4a76-a989-9de902af2e60"
+             target="_blank" rel="noopener" style="flex-shrink:0">
+            <img alt="Candid Transparency Seal — QuestCare LifeStyle Solutions"
+                 src="https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/16181088/svg"
+                 style="height:80px;width:auto;display:block"/>
+          </a>
+          <div>
+            <p style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem">Candid Verified Organization</p>
+            <p style="font-size:.82rem;color:var(--mid);line-height:1.6;margin-bottom:.75rem">Our Candid profile is verified and publicly accessible. Governance documents, financial data, and organizational information available for review.</p>
+            <a href="https://app.candid.org/profile/16181088/questcare-lifestyle-solutions-inc-33-3036616/?pkId=e0a8e154-3152-4a76-a989-9de902af2e60"
+               target="_blank" rel="noopener" class="candid-link">
+              View Candid Profile ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Key org facts — clean, minimal -->
+      <div class="trans-facts">
+        <div class="trans-fact">
+          <span class="tf-label">Legal Name</span>
+          <div class="tf-value">QuestCare LifeStyle Solutions, Inc.</div>
+          <div class="tf-sub">501(c)(3) · Corporation · Indiana · Founded 2024</div>
+        </div>
+        <div class="trans-fact">
+          <span class="tf-label">EIN</span>
+          <div class="tf-value">33-3036616</div>
+          <div class="tf-sub">Determination received January 24, 2025</div>
+        </div>
+        <div class="trans-fact">
+          <span class="tf-label">2025 Gross Receipts</span>
+          <div class="tf-value">$78,500</div>
+          <div class="tf-sub">100% contributions · No government grants</div>
+        </div>
+        <div class="trans-fact">
+          <span class="tf-label">Executive Director Compensation</span>
+          <div class="tf-value">$0 in Year One</div>
+          <div class="tf-sub">All resources reinvested into infrastructure and program development</div>
+        </div>
+        <div class="trans-fact">
+          <span class="tf-label">Governing Board</span>
+          <div class="tf-value">5 Members · All Independent</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-content reveal">
+        <span class="sec-eyebrow">About QCLS</span>
+        <h2 class="sec-h2">Built on Nearly<br/><strong>Two Decades of<br/>Systems Experience.</strong></h2>
+        <p>QuestCare LifeStyle Solutions was founded by <strong>MarQuest Higgins</strong>, who brings nearly two decades of operational leadership in Medicaid-funded disability services — including compliance, financial controls, board governance, program documentation, and outcome measurement from the inside.</p>
+        <p>QCLS received its 501(c)(3) determination on <strong>January 24, 2025</strong>. We are incorporated in Indiana, operating with a documented strategic plan, an independent governing board, and a clear three-pillar mission.</p>
+        <p>We are not consultants. We are a <strong>community systems organization</strong> — building the accountability infrastructure that enables nonprofits to earn trust, access funding, and deliver measurable outcomes.</p>
+        <div class="facts">
+          <div class="fact"><span class="fact-lbl">Legal Name</span><div class="fact-val">QuestCare LifeStyle Solutions, Inc.</div></div>
+          <div class="fact"><span class="fact-lbl">EIN</span><div class="fact-val">33-3036616</div></div>
+          <div class="fact"><span class="fact-lbl">501(c)(3) Since</span><div class="fact-val">January 24, 2025</div></div>
+          <div class="fact"><span class="fact-lbl">Service Area</span><div class="fact-val">Henry &amp; Madison County, IN</div></div>
+          <div class="fact"><span class="fact-lbl">Executive Director</span><div class="fact-val">MarQuest Higgins</div></div>
+          <div class="fact"><span class="fact-lbl">Mailing Address</span><div class="fact-val">P.O. Box 236, Spiceland, IN 47385</div></div>
+        </div>
+      </div>
+      <div class="pillars reveal">
+        <h3>Three Strategic Pillars</h3>
+        <div class="pillar"><span class="pillar-n">Pillar 01</span><h4>Community Access Navigation</h4><p>Connecting individuals and families to verified services with follow-up until access is confirmed — not just referred.</p></div>
+        <div class="pillar"><span class="pillar-n">Pillar 02</span><h4>Organizational Support &amp; Compliance</h4><p>FoundationReady assessments, capacity building, and governance coaching for nonprofits seeking sustainable infrastructure.</p></div>
+        <div class="pillar"><span class="pillar-n">Pillar 03</span><h4>Standards, Accountability &amp; System Development</h4><p>Building the accountability infrastructure across the community ecosystem — standards that hold organizations to outcomes, not just activities.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="section" id="contact" style="background:var(--void);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(29,158,117,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(29,158,117,.04) 1px,transparent 1px);background-size:48px 48px"></div>
+  <div class="contact-inner" style="position:relative;z-index:2">
+    <div class="reveal">
+      <span class="sec-eyebrow" style="color:var(--amber)">Get In Touch</span>
+      <h2 class="contact-h2">Ready to Start<br/><strong>the Conversation?</strong></h2>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:2.5rem">Whether you're a nonprofit seeking FoundationReady, an individual looking for navigation support, a provider ready to join the network, or a donor — we want to hear from you. We respond within one business day.</p>
+      <div class="ci"><div class="ci-icon">✉</div><span><a href="mailto:info@quest4care.org">info@quest4care.org</a> <span style="color:rgba(255,255,255,.3);font-size:.82rem">— General Inquiries</span></span></div>
+      <div class="ci"><div class="ci-icon">☎</div><span><a href="tel:7658102000">765-810-2000</a></span></div>
+      <div class="ci"><div class="ci-icon">◎</div><span>P.O. Box 236, Spiceland, IN 47385<br/>Henry &amp; Madison County, Indiana</span></div>
+      <div class="ci"><div class="ci-icon">⊕</div><span>quest4care.org</span></div>
+      <p style="font-size:.75rem;color:rgba(255,255,255,.2);margin-top:2rem;line-height:1.6">
+        <strong style="color:rgba(255,255,255,.3)">Note on form submission:</strong> Messages are currently sent directly to info@quest4care.org. A Neon One workflow integration is planned for 2026 that will automate intake routing and trigger appropriate follow-up sequences.
+      </p>
+    </div>
+    <div class="contact-form reveal">
+      <h3>Tell Us About Your Needs</h3>
+      <p>We'll respond within one business day.</p>
+      <form id="contactForm" action="mailto:info@quest4care.org" method="post" enctype="text/plain">
+        <div class="fg"><label>Your Name *</label><input type="text" name="name" placeholder="Full name" required/></div>
+        <div class="fg"><label>Email Address *</label><input type="email" name="email" placeholder="your@email.com" required/></div>
+        <div class="fg"><label>Organization</label><input type="text" name="organization" placeholder="Organization name (if applicable)"/></div>
+        <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="765-000-0000"/></div>
+        <div class="fg">
+          <label>I am reaching out as a... *</label>
+          <select name="type" required>
+            <option value="">Select one</option>
+            <option>Nonprofit seeking FoundationReady assessment</option>
+            <option>Individual seeking navigation support</option>
+            <option>Service provider joining the network</option>
+            <option>Donor or funder</option>
+            <option>Community partner or collaborator</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>Message</label><textarea name="message" rows="4" placeholder="Tell us more about your needs..."></textarea></div>
+        <button type="submit" class="form-btn" id="submitBtn">Send Message →</button>
+        <p class="form-note">Your information is used only to respond to your inquiry. We do not sell or share contact data.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="foot-brand-name"><span>Quest</span><strong>Care</strong></span>
+      <span class="foot-brand-ls">LifeStyle Solutions</span>
+      <!-- Tagline: Oswald, NOT Grand Hotel -->
+      <span class="foot-tagline">We <strong>CARE</strong> for Every Life<br/>&amp; <strong>EMPOWER</strong> Every Ability</span>
+      <div class="foot-ci"><a href="mailto:info@quest4care.org">info@quest4care.org</a> — General</div>
+      <div class="foot-ci"><a href="tel:7658102000">765-810-2000</a></div>
+      <div class="foot-ci">P.O. Box 236, Spiceland, IN 47385</div>
+      <div class="foot-ci">Henry &amp; Madison County, Indiana</div>
+    </div>
+    <div class="foot-col">
+      <h4>Services</h4>
+      <ul class="foot-links">
+        <li><a href="#nonprofits">FoundationReady™</a></li>
+        <li><a href="#nonprofits">CARES Framework</a></li>
+        <li><a href="#individuals">Community Navigation</a></li>
+        <li><a href="#providers">Provider Network</a></li>
+        <li><a href="#platform">Platform 2026</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Who We Serve</h4>
+      <ul class="foot-links">
+        <li><a href="#nonprofits">Nonprofits</a></li>
+        <li><a href="#providers">Service Providers</a></li>
+        <li><a href="#donors">Donors &amp; Funders</a></li>
+        <li><a href="#individuals">Individuals &amp; Families</a></li>
+        <li><a href="#why">Why Here</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Organization</h4>
+      <ul class="foot-links">
+        <li><a href="#about">About QCLS</a></li>
+        <li><a href="#transparency">Transparency &amp; 990</a></li>
+        <li><a href="#contact">Get In Touch</a></li>
+        <li><a href="#donors">Donate</a></li>
+        <li><a href="https://app.candid.org/profile/16181088/questcare-lifestyle-solutions-inc-33-3036616/?pkId=e0a8e154-3152-4a76-a989-9de902af2e60" target="_blank">Candid Profile ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-rule"></div>
+  <div class="footer-bottom">
+    <p class="foot-legal">
+      &copy; 2026 QuestCare LifeStyle Solutions, Inc. All rights reserved. &nbsp;·&nbsp;
+      EIN: 33-3036616 &nbsp;·&nbsp; 501(c)(3) Nonprofit &nbsp;·&nbsp; Incorporated in Indiana
+    </p>
+    <div style="display:flex;align-items:center;gap:1.25rem">
+      <a aria-label="Questcare Lifestyle Solutions Inc"
+         href="https://app.candid.org/profile/16181088/questcare-lifestyle-solutions-inc-33-3036616/?pkId=e0a8e154-3152-4a76-a989-9de902af2e60"
+         target="_blank" rel="noopener">
+        <img alt="Candid Transparency Seal"
+             src="https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/16181088/svg"
+             style="height:44px;width:auto;display:block;opacity:.8;transition:opacity .2s"
+             onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.8'"/>
+      </a>
+      <span class="foot-501">We <strong>CARE</strong> for Every Life &amp; <strong>EMPOWER</strong> Every Ability</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ ECOSYSTEM MODAL ══ -->
+<div class="eco-modal-backdrop" id="ecoModal" role="dialog" aria-modal="true">
+  <div class="eco-modal">
+    <button class="eco-modal-x" id="ecoModalX" aria-label="Close">✕</button>
+    <span class="eco-modal-node" id="modalNode"></span>
+    <span class="eco-modal-title" id="modalTitle"></span>
+    <p class="eco-modal-body" id="modalBody"></p>
+    <div class="eco-modal-actions">
+      <a class="eco-modal-learn" id="modalLearn" href="#">Learn More ↓</a>
+      <button class="eco-modal-close" id="modalClose">← Back to Ecosystem</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HOVER TOOLTIP (small, follows cursor) ══ -->
+<div class="eco-tooltip" id="ecoTooltip">
+  <span class="eco-tooltip-label" id="ttLabel"></span>
+  <span class="eco-tooltip-title" id="ttTitle"></span>
+  <span class="eco-tooltip-hint">Click to learn more</span>
+</div>
+
+
+<script>
+// ═══════════════════════════════════════
+// ECOSYSTEM INTERACTION
+// Hover → small tooltip near cursor
+// Click → modal overlay with summary + actions
+// Close → return to ecosystem (no page disruption)
+// ═══════════════════════════════════════
+
+const nodeData = {
+  h1: {
+    label: 'Nonprofits',
+    title: 'FoundationReady™',
+    body: 'A structured capacity assessment built on the CARES Framework across 5 domains — Compliance & Governance, Accountability & Finance, Results & Outcomes, Engagement & Presence, and Sustainability. Every finding is scored 1–5 and delivered with written, evidence-based justification tied to specific organizational evidence. You leave with a clear picture of where you stand and a prioritized roadmap for improvement.',
+    target: '#nonprofits',
+    sv: 'n1v'
+  },
+  h2: {
+    label: 'Service Providers',
+    title: 'Provider Network',
+    body: 'Join a vetted network built on verified relationships — not just a directory listing. QCLS navigators make referrals to providers they know are active, accepting, and appropriate. Every referral includes follow-up to confirm access was achieved. Providers in the network receive documented referrals and contribute to a measurable community accountability system.',
+    target: '#providers',
+    sv: 'n2v'
+  },
+  h3: {
+    label: 'Donors & Funders',
+    title: 'Give with Impact',
+    body: 'Your contribution to QCLS or a FoundationReady assessment for a local nonprofit comes with verified outcomes — not just activity reports. You can fund an assessment, support community navigation operations, or give to QCLS general operations. Every dollar is tracked, reported, and connected to measurable community change in Henry and Madison County.',
+    target: '#donors',
+    sv: 'n3v'
+  },
+  h4: {
+    label: 'Individuals & Families',
+    title: 'Find Help Near You',
+    body: 'QCLS is not a 211 list. We are human navigators who make contact, verify services are available and accepting, coordinate the connection, and follow up until access is confirmed — not just referred. We navigate healthcare, housing, disability services, behavioral health, transportation, food access, benefits enrollment, and more across Henry and Madison County.',
+    target: '#individuals',
+    sv: 'n4v'
+  },
+  h5: {
+    label: 'Platform',
+    title: 'Coming 2026',
+    body: 'The full QCLS digital platform will bring every portal together — online FoundationReady assessments, a verified provider directory, case management and referral tracking, a donor impact portal with real-time outcome data, and a community data dashboard for funders and planners. The platform is being built in public. Sign up for updates as each phase launches.',
+    target: '#platform',
+    sv: 'n5v'
+  },
+  hhub: {
+    label: 'The Catalyst',
+    title: 'QuestCare LifeStyle Solutions',
+    body: 'QCLS sits at the center of the community ecosystem — enabling every connection without replacing any of them. Founded by MarQuest Higgins after nearly two decades of operational leadership in Medicaid-funded disability services, nonprofit administration, and community support operations. QCLS received its 501(c)(3) determination on January 24, 2025 and generated $78,500 in gross receipts in its first operational year — entirely from contributions, with $0 in executive compensation.',
+    target: '#about',
+    sv: 'nhub'
+  }
+};
+
+const tooltip  = document.getElementById('ecoTooltip');
+const ttLabel  = document.getElementById('ttLabel');
+const ttTitle  = document.getElementById('ttTitle');
+const modal    = document.getElementById('ecoModal');
+const modalNode  = document.getElementById('modalNode');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody  = document.getElementById('modalBody');
+const modalLearn = document.getElementById('modalLearn');
+const modalClose = document.getElementById('modalClose');
+const modalX     = document.getElementById('ecoModalX');
+
+let tooltipTimer = null;
+let touched = false;
+
+// ── Tooltip ──
+function showTooltip(label, title, x, y){
+  ttLabel.textContent = label;
+  ttTitle.textContent = title;
+  positionTooltip(x, y);
+  tooltip.classList.add('show');
+}
+function positionTooltip(x, y){
+  const tw = 210;
+  const left = (x + 16 + tw > window.innerWidth) ? x - tw - 10 : x + 16;
+  const top  = Math.min(y - 20, window.innerHeight - 140);
+  tooltip.style.left = left + 'px';
+  tooltip.style.top  = top  + 'px';
+}
+function hideTooltip(){
+  tooltip.classList.remove('show');
+}
+
+// ── Modal ──
+function openModal(nodeId){
+  const d = nodeData[nodeId];
+  if(!d) return;
+  modalNode.textContent  = d.label;
+  modalTitle.textContent = d.title;
+  modalBody.textContent  = d.body;
+  modalLearn.setAttribute('href', d.target);
+  modalLearn.onclick = (e)=>{
+    e.preventDefault();
+    closeModal();
+    setTimeout(()=>{
+      const el = document.querySelector(d.target);
+      if(el) el.scrollIntoView({behavior:'smooth'});
+    }, 280);
+  };
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+modalX.addEventListener('click', closeModal);
+modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+// ── Node interactions ──
+let guidanceHidden = false;
+
+Object.keys(nodeData).forEach(nodeId => {
+  const hEl = document.getElementById(nodeId);
+  const vEl = document.getElementById(nodeData[nodeId].sv);
+  if(!hEl) return;
+
+  hEl.addEventListener('mouseenter', e=>{
+    if(!guidanceHidden){
+      guidanceHidden = true;
+      const ring = document.getElementById('gRing');
+      if(ring){ring.style.transition='opacity .6s';ring.style.opacity='0';setTimeout(()=>{ring.style.display='none'},700);}
+    }
+    if(tooltipTimer){clearTimeout(tooltipTimer);tooltipTimer=null;}
+    const rect = e.target.getBoundingClientRect();
+    showTooltip(nodeData[nodeId].label, nodeData[nodeId].title, rect.right, rect.top + rect.height/2);
+    if(vEl) vEl.style.filter='brightness(1.25) drop-shadow(0 0 12px rgba(232,160,32,.5))';
+  });
+
+  hEl.addEventListener('mousemove', e=>{
+    positionTooltip(e.clientX, e.clientY);
+  });
+
+  hEl.addEventListener('mouseleave', ()=>{
+    tooltipTimer = setTimeout(hideTooltip, 300);
+    if(vEl) vEl.style.filter='';
+  });
+
+  hEl.addEventListener('click', ()=>{
+    hideTooltip();
+    openModal(nodeId);
+  });
+
+  hEl.addEventListener('touchstart', e=>{
+    e.preventDefault();
+    hideTooltip();
+    openModal(nodeId);
+  },{passive:false});
+});
+
+// ═══════════════════════════════════════
+// CONTACT FORM
+// Currently: mailto fallback (opens email client)
+// Future: POST to Make.com webhook
+// To upgrade: change form action to Make webhook URL
+// and change method to "post", add hidden field for source
+// ═══════════════════════════════════════
+const form = document.getElementById('contactForm');
+if(form){
+  form.addEventListener('submit',function(e){
+    // Currently using mailto — let it submit
+    // When Make webhook is ready, uncomment below:
+    /*
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const data = new FormData(form);
+    fetch('https://hook.make.com/YOUR_WEBHOOK_URL', {
+      method:'POST',
+      body: JSON.stringify(Object.fromEntries(data)),
+      headers:{'Content-Type':'application/json'}
+    }).then(()=>{
+      btn.textContent = 'Message Sent ✓';
+      btn.style.background = '#0A4A3A';
+      btn.disabled = true;
+      form.reset();
+    }).catch(()=>{
+      btn.textContent = 'Error — Try Again';
+      btn.style.background = '#E8644A';
+    });
+    */
+  });
+}
+
+// ═══════════════════════════════════════
+// SCROLL REVEAL
+// ═══════════════════════════════════════
+if('IntersectionObserver' in window){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+  },{threshold:.07});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+// ═══════════════════════════════════════
+// SMOOTH SCROLL for nav links
+// ═══════════════════════════════════════
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href = a.getAttribute('href');
+    if(href==='#') return;
+    e.preventDefault();
+    const t=document.querySelector(href);
+    if(t) t.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
