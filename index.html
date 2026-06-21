@@ -657,6 +657,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
       N3 Donors:     468,184 r=36
       N4 Individuals:166,438 r=40
       N5 Platform:   320,112 r=26 (furthest)
+      N6 Volunteers: 390,520 r=38 (lower center — bridge between Individuals and Providers)
     -->
     <svg class="eco-svg" id="ecoSvg" viewBox="-20 -80 740 860"
          xmlns="http://www.w3.org/2000/svg"
@@ -679,6 +680,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
       <line x1="350" y1="350" x2="468" y2="184" stroke="#0A4A3A" stroke-width="7.5" stroke-linecap="round"/>
       <path d="M350,350 Q245,396 166,438" fill="none" stroke="#5DCAA5" stroke-width="9" stroke-linecap="round"/>
       <line x1="350" y1="350" x2="320" y2="112" stroke="#1D9E75" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M350,350 Q372,436 390,520" fill="none" stroke="#E8A020" stroke-width="7" stroke-linecap="round"/>
 
       <!-- Cross-connections -->
       <path d="M174,216 Q246,86 468,184" fill="none" stroke="#0A4A3A" stroke-width="4.8" stroke-linecap="round" opacity=".4"/>
@@ -686,6 +688,9 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
       <path d="M484,406 Q348,484 166,438" fill="none" stroke="#1D9E75" stroke-width="4.2" stroke-linecap="round" opacity=".35"/>
       <path d="M484,406 Q562,298 468,184" fill="none" stroke="#1D9E75" stroke-width="3.2" stroke-linecap="round" opacity=".24"/>
       <path d="M320,112 Q438,88 468,184" fill="none" stroke="#1D9E75" stroke-width="2.8" stroke-linecap="round" opacity=".22"/>
+      <!-- Volunteer cross-connections — bridges Individuals and Providers -->
+      <path d="M390,520 Q278,488 166,438" fill="none" stroke="#E8A020" stroke-width="3.2" stroke-linecap="round" opacity=".32"/>
+      <path d="M390,520 Q438,466 484,406" fill="none" stroke="#E8A020" stroke-width="3" stroke-linecap="round" opacity=".28"/>
 
       <!-- N1 Nonprofits -->
       <g id="n1" style="cursor:pointer">
@@ -725,6 +730,14 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <text x="320" y="56" text-anchor="middle" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">PLATFORM</text>
         <text x="320" y="76" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Coming 2026</text>
         <circle cx="320" cy="112" r="40" fill="transparent" id="h5" style="cursor:pointer"/>
+      </g>
+
+      <!-- N6 Volunteers — lower center, bridges Individuals and Providers -->
+      <g id="n6" style="cursor:pointer">
+        <g id="n6v"><circle cx="390" cy="520" r="38" fill="#E8A020" opacity=".85"><animate attributeName="opacity" values=".85;.58;.85" dur="3.2s" begin="3.2s" repeatCount="indefinite"/></circle><circle cx="390" cy="520" r="18" fill="#0A4A3A" opacity=".75"/><circle cx="390" cy="520" r="7" fill="#F8F5EE"/></g>
+        <text x="390" y="578" text-anchor="middle" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">VOLUNTEERS</text>
+        <text x="390" y="598" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Serve the Community</text>
+        <circle cx="390" cy="520" r="50" fill="transparent" id="h6" style="cursor:pointer"/>
       </g>
 
       <!-- BULLSEYE HUB -->
@@ -932,7 +945,38 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
   </div>
 </section>
 
-<!-- ══ PLATFORM ══ -->
+<!-- ══ VOLUNTEERS ══ -->
+<section class="section" id="volunteers">
+  <div class="section-inner">
+    <div class="sec-eyebrow">For Volunteers</div>
+    <h2 class="sec-h2">Be the Bridge<br/><strong>That Makes It Work.</strong></h2>
+    <p class="sec-sub">Volunteers are not an afterthought at QCLS — they are the connective tissue of the ecosystem. Every volunteer directly supports the navigation, outreach, and coordination work that ensures individuals in Henry and Madison County actually access the services they need.</p>
+    <div class="ind-grid">
+      <div class="reveal">
+        <div class="sec-eyebrow" style="margin-bottom:1.25rem;display:block">How Volunteers Serve</div>
+        <div class="ind-steps">
+          <div class="step"><div class="step-num">01</div><div><h4>Community Navigation Support</h4><p>Assist QCLS navigators in following up with individuals to confirm access, remove barriers, and document outcomes.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div><h4>Outreach &amp; Awareness</h4><p>Represent QCLS in the community — at events, faith communities, healthcare settings, and neighborhood gatherings.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div><h4>Nonprofit Support</h4><p>Support FoundationReady clients with data entry, document organization, and administrative capacity during assessments.</p></div></div>
+          <div class="step"><div class="step-num">04</div><div><h4>Platform &amp; Technology</h4><p>Help build and test the QCLS digital platform — especially if you bring technology, design, or research skills.</p></div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="sec-eyebrow" style="margin-bottom:1.25rem;display:block">Volunteer Application</div>
+        <div style="background:var(--sand);border:1px solid var(--border);border-radius:4px;padding:2rem">
+          <p style="font-size:.9rem;color:var(--mid);line-height:1.75;margin-bottom:1.5rem">QCLS volunteers are vetted, trained, and matched to roles that fit their skills and availability. Background check consent required for direct-service roles. We serve Henry and Madison County — local volunteers preferred.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem">
+            <span class="tag">Henry County</span><span class="tag">Madison County</span>
+            <span class="tag">Navigation Support</span><span class="tag">Community Outreach</span>
+            <span class="tag">Technology</span><span class="tag">Administrative</span>
+            <span class="tag">Research</span><span class="tag">Event Support</span>
+          </div>
+          <a href="#contact" class="btn btn-deep">Apply to Volunteer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="section" id="platform" style="background:var(--void)">
   <div class="section-inner" style="text-align:center">
     <span class="sec-eyebrow" style="display:inline-block;margin-bottom:.75rem">Platform</span>
@@ -1139,6 +1183,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <li><a href="#providers">Service Providers</a></li>
         <li><a href="#donors">Donors &amp; Funders</a></li>
         <li><a href="#individuals">Individuals &amp; Families</a></li>
+        <li><a href="#volunteers">Volunteers</a></li>
         <li><a href="#why">Why Here</a></li>
       </ul>
     </div>
@@ -1238,6 +1283,13 @@ const nodeData = {
     body: 'The full QCLS digital platform will bring every portal together — online FoundationReady assessments, a verified provider directory, case management and referral tracking, a donor impact portal with real-time outcome data, and a community data dashboard for funders and planners. The platform is being built in public. Sign up for updates as each phase launches.',
     target: '#platform',
     sv: 'n5v'
+  },
+  h6: {
+    label: 'Volunteers',
+    title: 'Serve the Community',
+    body: 'Volunteers are the connective tissue of the QCLS ecosystem — supporting navigation, community outreach, and organizational capacity. QCLS volunteers bridge the gap between individuals who need help and the providers and nonprofits that serve them. Apply to volunteer and become part of the accountability infrastructure that makes access real in Henry and Madison County.',
+    target: '#volunteers',
+    sv: 'n6v'
   },
   hhub: {
     label: 'The Catalyst',
