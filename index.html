@@ -22,6 +22,7 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(--void);overflow-x:hidden;line-height:1.6}
+html{overflow-x:hidden}
 
 /* ════════════════════════════════
    NAV — taller, full brand presence
@@ -122,6 +123,9 @@ nav{
   max-width:600px;
   display:block;overflow:visible;
   margin:0 auto;
+}
+@media(max-width:768px){
+  .eco-svg{max-width:100%;margin:0}
 }
 /* ════════════════════════════════
    ECOSYSTEM MODAL OVERLAY
@@ -566,9 +570,10 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
   .nav-mark{width:42px;height:42px}
   .nav-donate{display:none}
   .hero{grid-template-columns:1fr;min-height:auto}
-  .hero-left{padding:3rem 1.5rem 1.5rem;border-right:none;border-bottom:1px solid var(--border)}
-  .hero-right{padding:2rem 1.5rem 3rem;min-height:60vw}
-  .eco-svg{max-height:60vw}
+  .hero-left{padding:3rem 1.25rem 1.5rem 1.25rem;border-right:none;border-bottom:1px solid var(--border)}
+  .hero-right{padding:1.5rem 1rem 2rem;min-height:auto}
+  .eco-svg{max-width:100%;max-height:none;width:100%;height:auto}
+  #eco-wrap{border-radius:6px;overflow:hidden;width:100%}
   .section,.metrics,.transparency{padding:4rem 1.5rem}
   .mission{padding:3rem 1.5rem}
   .mission-inner{grid-template-columns:1fr;gap:1.5rem}
@@ -587,8 +592,8 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
   .nav-ls{display:none}
   .nav-cta{padding:.4rem .9rem;font-size:.75rem}
   .hero-left h1{font-size:clamp(2.4rem,9vw,3rem)}
-  .hero-right{min-height:80vw}
-  .eco-svg{max-height:80vw}
+  .hero-right{min-height:auto;padding:1rem}
+  .eco-svg{max-width:100%;width:100%;height:auto}
   .section,.metrics,.transparency{padding:3.5rem 1.25rem}
   .mission{padding:2.5rem 1.25rem}
   .metrics-grid,.cares-domains,.providers-grid,.platform-grid{grid-template-columns:1fr}
