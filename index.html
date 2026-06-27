@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>QuestCare LifeStyle Solutions | Community Ecosystem · Henry &amp; Madison County, Indiana</title>
-<meta name="description" content="QuestCare LifeStyle Solutions connects individuals to services, strengthens nonprofits through the FoundationReady CARES Framework, and builds accountable community systems. Serving Henry &amp; Madison County, Indiana."/>
-<meta property="og:title" content="QuestCare LifeStyle Solutions"/>
-<meta property="og:description" content="The catalyst at the center of the community ecosystem. FoundationReady assessments, community navigation, and verified access for every person we serve."/>
+<title>QuestCare LifeStyle Solutions | UnoSphere™ · Henry &amp; Madison County, Indiana</title>
+<meta name="description" content="QuestCare LifeStyle Solutions builds community infrastructure through the UnoSphere™ — connecting individuals to services via OurWalk™, strengthening nonprofits through FoundationReady™, and generating ecosystem intelligence through Phorsyte™. Serving Henry &amp; Madison County, Indiana."/>
+<meta property="og:title" content="QuestCare LifeStyle Solutions | UnoSphere™"/>
+<meta property="og:description" content="The one world where community intelligence connects. FoundationReady™ assessments, OurWalk™ navigation, Phorsyte™ foresight, and verified access for every person we serve."/>
 <meta property="og:url" content="https://quest4care.org"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"QuestCare LifeStyle Solutions","alternateName":"QCLS","url":"https://quest4care.org","email":"info@quest4care.org","telephone":"765-810-2000","address":{"@type":"PostalAddress","addressLocality":"Spiceland","addressRegion":"IN","postalCode":"47385","addressCountry":"US"},"areaServed":["Henry County, Indiana","Madison County, Indiana"],"knowsAbout":["FoundationReady","CARES Framework","Community Navigation","Nonprofit Capacity Building"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"QuestCare LifeStyle Solutions","alternateName":"QCLS","url":"https://quest4care.org","email":"info@quest4care.org","telephone":"574-227-3669","address":{"@type":"PostalAddress","addressLocality":"Spiceland","addressRegion":"IN","postalCode":"47385","addressCountry":"US"},"areaServed":["Henry County, Indiana","Madison County, Indiana"],"knowsAbout":["FoundationReady™","CARES Framework","Community Navigation","Nonprofit Capacity Building"]}</script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -115,12 +115,13 @@ nav{
 .hero-right{
   position:relative;z-index:2;
   display:flex;align-items:center;justify-content:center;
-  padding:2rem 2.5rem 2rem 1rem;
+  padding:2rem 2rem 2rem 2rem;
 }
 .eco-svg{
-  width:100%;height:100%;
-  max-width:700px;max-height:calc(100vh - 80px);
+  width:100%;height:auto;
+  max-width:600px;
   display:block;overflow:visible;
+  margin:0 auto;
 }
 /* ════════════════════════════════
    ECOSYSTEM MODAL OVERLAY
@@ -336,12 +337,12 @@ nav{
 .fr-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
 .fr-info h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--void);margin-bottom:1rem;line-height:1.2}
 .fr-info p{font-size:.93rem;color:var(--mid);line-height:1.8;margin-bottom:1rem}
-.fr-tiers{background:var(--nw);border-radius:4px;border:1px solid var(--border);overflow:hidden;margin-top:1.5rem}
-.fr-tier{display:grid;grid-template-columns:1fr auto;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid var(--border)}
+
+
 .fr-tier:last-child{border-bottom:none}
-.tier-name{font-weight:600;font-size:.88rem;color:var(--void)}
-.tier-sub{font-size:.75rem;color:var(--mid);margin-top:2px}
-.tier-price{font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;color:var(--teal);white-space:nowrap}
+
+
+
 .cares-domains{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .domain{
   background:var(--nw);border-radius:4px;padding:1.25rem;
@@ -633,8 +634,8 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
     </div>
   </a>
   <div class="nav-right">
-    <span class="nav-hint">Hover a node to navigate the ecosystem</span>
-    <a href="#donors" class="nav-donate">Donate</a>
+    <span class="nav-hint">Hover a node to explore the UnoSphere™</span>
+    <a href="#contributors" class="nav-donate">Contribute</a>
     <a href="#contact" class="nav-cta">Get Started</a>
   </div>
 </nav>
@@ -646,112 +647,159 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
     <h1>Every<br/><strong>Community<br/>Deserves</strong><br/><em>a Catalyst.</em></h1>
     <div class="rule"></div>
     <p class="hero-body">QuestCare LifeStyle Solutions empowers individuals and organizations by connecting people to essential resources, strengthening nonprofit capacity, and building accountable, standards-driven systems that improve quality of life and community outcomes.</p>
-    <p class="explore-hint">Explore the ecosystem</p>
+    <p class="explore-hint">Explore the UnoSphere™</p>
   </div>
 
-  <div class="hero-right">
-    <!--
-      FULL SVG ECOSYSTEM — viewBox "-20 -80 740 860"
-      Hub: 350,350 r=80
-      N1 Nonprofits: 174,216 r=58 (closest/largest)
-      N2 Providers:  484,406 r=44
-      N3 Donors:     468,184 r=36
-      N4 Individuals:166,438 r=40
-      N5 Platform:   320,112 r=26 (furthest)
-      N6 Volunteers: 390,520 r=38 (lower center — bridge between Individuals and Providers)
-    -->
-    <svg class="eco-svg" id="ecoSvg" viewBox="-20 -80 740 860"
-         xmlns="http://www.w3.org/2000/svg"
-         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <div class="hero-right" style="position:relative;overflow:hidden">
+    <div id="eco-wrap" style="position:relative;width:100%;background:#F0E6D0;border-radius:8px;overflow:hidden;margin:0 auto">
+      <svg id="ecoSvg" class="eco-svg" viewBox="0 0 800 880" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+      <radialGradient id="eco-ga" cx="50%" cy="48%" r="55%">
+        <stop offset="0%" stop-color="#1D9E75" stop-opacity=".13"/>
+        <stop offset="100%" stop-color="#F0E6D0" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="eco-qg" cx="50%" cy="50%" r="55%">
+        <stop offset="0%" stop-color="#1D9E75" stop-opacity=".9"/>
+        <stop offset="42%" stop-color="#0A4A3A" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#0A1A12" stop-opacity="1"/>
+      </radialGradient>
+      </defs>
+      <rect width="800" height="880" fill="#F0E6D0"/>
+      <rect width="800" height="880" fill="url(#eco-ga)"/>
 
-      <!-- Guidance ring -->
+      <!-- Guidance ring — orbits qOHR center at 400,440 -->
       <g id="gRing">
         <animateTransform attributeName="transform" type="rotate"
-          from="0 350 350" to="360 350 350" dur="22s" repeatCount="indefinite"/>
-        <defs><path id="gp" d="M350,350 m-195,0 a195,195 0 1,1 390,0 a195,195 0 1,1 -390,0"/></defs>
-        <text font-family="Oswald,sans-serif" font-size="13" font-weight="600"
-              letter-spacing="5" fill="#0A4A3A" opacity=".3">
+          from="0 400 440" to="360 400 440" dur="24s" repeatCount="indefinite"/>
+        <defs><path id="gp" d="M400,440 m-210,0 a210,210 0 1,1 420,0 a210,210 0 1,1 -420,0"/></defs>
+        <text font-family="Oswald,sans-serif" font-size="11" font-weight="600"
+              letter-spacing="6" fill="#0A4A3A" opacity=".25">
           <textPath href="#gp" startOffset="0%">HOVER A NODE TO EXPLORE · HOVER A NODE TO EXPLORE · </textPath>
         </text>
       </g>
-
-      <!-- Arms -->
-      <line x1="350" y1="350" x2="174" y2="216" stroke="#0A4A3A" stroke-width="12" stroke-linecap="round"/>
-      <line x1="350" y1="350" x2="484" y2="406" stroke="#1D9E75" stroke-width="9" stroke-linecap="round"/>
-      <line x1="350" y1="350" x2="468" y2="184" stroke="#0A4A3A" stroke-width="7.5" stroke-linecap="round"/>
-      <path d="M350,350 Q245,396 166,438" fill="none" stroke="#5DCAA5" stroke-width="9" stroke-linecap="round"/>
-      <line x1="350" y1="350" x2="320" y2="112" stroke="#1D9E75" stroke-width="4.5" stroke-linecap="round"/>
-      <path d="M350,350 Q372,436 390,520" fill="none" stroke="#E8A020" stroke-width="7" stroke-linecap="round"/>
-
-      <!-- Cross-connections -->
-      <path d="M174,216 Q246,86 468,184" fill="none" stroke="#0A4A3A" stroke-width="4.8" stroke-linecap="round" opacity=".4"/>
-      <path d="M174,216 Q84,312 166,438" fill="none" stroke="#5DCAA5" stroke-width="4" stroke-linecap="round" opacity=".35"/>
-      <path d="M484,406 Q348,484 166,438" fill="none" stroke="#1D9E75" stroke-width="4.2" stroke-linecap="round" opacity=".35"/>
-      <path d="M484,406 Q562,298 468,184" fill="none" stroke="#1D9E75" stroke-width="3.2" stroke-linecap="round" opacity=".24"/>
-      <path d="M320,112 Q438,88 468,184" fill="none" stroke="#1D9E75" stroke-width="2.8" stroke-linecap="round" opacity=".22"/>
-      <!-- Volunteer cross-connections — bridges Individuals and Providers -->
-      <path d="M390,520 Q278,488 166,438" fill="none" stroke="#E8A020" stroke-width="3.2" stroke-linecap="round" opacity=".32"/>
-      <path d="M390,520 Q438,466 484,406" fill="none" stroke="#E8A020" stroke-width="3" stroke-linecap="round" opacity=".28"/>
-
-      <!-- N1 Nonprofits -->
-      <g id="n1" style="cursor:pointer">
-        <g id="n1v"><circle cx="174" cy="216" r="58" fill="#0A4A3A"><animate attributeName="opacity" values="1;.68;1" dur="3.2s" begin="0s" repeatCount="indefinite"/></circle><circle cx="174" cy="216" r="30" fill="#E8A020" opacity=".82"/><circle cx="174" cy="216" r="11" fill="#F8F5EE"/></g>
-        <text x="174" y="130" text-anchor="middle" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">NONPROFITS</text>
-        <text x="174" y="150" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">FoundationReady™</text>
-        <circle cx="174" cy="216" r="70" fill="transparent" id="h1" style="cursor:pointer"/>
+      <circle cx="400" cy="440" r="312" fill="none" stroke="#0A4A3A" stroke-dasharray="5 15" stroke-width="1.2" opacity=".13"/>
+      <circle cx="400" cy="440" r="248" fill="none" stroke="#1D9E75" stroke-dasharray="3 18" stroke-width="1"   opacity=".10"/>
+      <circle cx="400" cy="440" r="178" fill="none" stroke="#0A4A3A" stroke-dasharray="4 14" stroke-width="1"   opacity=".10"/>
+      <circle cx="400" cy="440" r="112" fill="none" stroke="#1D9E75" stroke-dasharray="3 16" stroke-width="1"   opacity=".09"/>
+      <path fill="none" stroke="#0A4A3A" stroke-width="8"   stroke-linecap="round" opacity=".82" d="M400,440 C368,390 335,338 292,272 C268,234 242,205 205,168"/>
+      <path fill="none" stroke="#1D9E75" stroke-width="6"   stroke-linecap="round" opacity=".76" d="M400,440 C432,395 472,352 525,308 C568,272 608,250 660,222"/>
+      <path fill="none" stroke="#0A4A3A" stroke-width="5"   stroke-linecap="round" opacity=".68" d="M488,360 C528,342 568,330 622,318"/>
+      <path fill="none" stroke="#1D9E75" stroke-width="7"   stroke-linecap="round" opacity=".78" d="M400,440 C462,438 524,436 595,434 C638,432 668,430 712,428"/>
+      <path fill="none" stroke="#E8644A" stroke-width="8"   stroke-linecap="round" opacity=".82" d="M400,440 C395,500 388,552 378,612 C370,658 362,688 352,728"/>
+      <path fill="none" stroke="#E8A020" stroke-width="5.5" stroke-linecap="round" opacity=".72" d="M382,588 C340,600 298,610 248,622 C218,630 192,635 158,642"/>
+      <path fill="none" stroke="#E8644A" stroke-width="6"   stroke-linecap="round" opacity=".68" d="M400,440 C348,438 292,430 228,418 C178,408 140,398 92,382"/>
+      <path fill="none" stroke="#1D9E75" stroke-width="4.5" stroke-linecap="round" opacity=".62" d="M400,440 C404,378 412,315 422,248 C430,198 438,165 448,122"/>
+      <path fill="none" stroke="#E8A020" stroke-width="4.5" stroke-linecap="round" opacity=".60" d="M400,440 C448,488 498,528 552,562 C588,585 618,600 658,618"/>
+      <path fill="none" stroke="#1D9E75" stroke-width="2.8" stroke-linecap="round" opacity=".28" stroke-dasharray="6 8"  d="M240,200 C360,155 520,175 660,222"/>
+      <path fill="none" stroke="#0A4A3A" stroke-width="2.5" stroke-linecap="round" opacity=".25" stroke-dasharray="5 9"  d="M660,222 C648,262 638,290 622,318"/>
+      <path fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round" opacity=".22" stroke-dasharray="4 10" d="M622,318 C668,358 698,392 712,428"/>
+      <path fill="none" stroke="#E8644A" stroke-width="2.5" stroke-linecap="round" opacity=".24" stroke-dasharray="5 8"  d="M352,728 C468,706 588,580 712,428"/>
+      <path fill="none" stroke="#E8644A" stroke-width="2.2" stroke-linecap="round" opacity=".20" stroke-dasharray="4 10" d="M92,382 C128,305 168,242 205,168"/>
+      <path fill="none" stroke="#E8644A" stroke-width="2.2" stroke-linecap="round" opacity=".20" stroke-dasharray="4 10" d="M92,382 C135,472 215,582 278,668 C308,705 330,722 352,728"/>
+      <path fill="none" stroke="#E8A020" stroke-width="2.5" stroke-linecap="round" opacity=".26" stroke-dasharray="5 9"  d="M158,642 C222,572 298,508 400,440"/>
+      <path fill="none" stroke="#1D9E75" stroke-width="2"   stroke-linecap="round" opacity=".20" stroke-dasharray="4 10" d="M448,122 C365,115 295,135 205,168"/>
+      <path fill="none" stroke="#E8A020" stroke-width="2"   stroke-linecap="round" opacity=".22" stroke-dasharray="4 10" d="M658,618 C498,628 338,636 158,642"/>
+      <path fill="none" stroke="#E8A020" stroke-width="1.8" stroke-linecap="round" opacity=".18" stroke-dasharray="4 11" d="M658,618 C595,468 522,295 448,122"/>
+      <path fill="none" stroke="#0A4A3A" stroke-width="1.8" stroke-linecap="round" opacity=".16" stroke-dasharray="3 12" d="M205,168 C235,335 295,518 352,728"/>
+      <g fill="#E8A020"><circle cx="348" cy="388" r="7.5"/><circle cx="310" cy="338" r="6.5"/><circle cx="270" cy="278" r="6"/><circle cx="462" cy="398" r="7"/><circle cx="528" cy="355" r="6.5"/><circle cx="596" cy="435" r="6.5"/><circle cx="388" cy="518" r="7.5"/><circle cx="372" cy="592" r="6"/><circle cx="358" cy="658" r="6"/><circle cx="285" cy="602" r="6.5"/><circle cx="340" cy="432" r="6"/><circle cx="430" cy="272" r="6.5"/><circle cx="440" cy="185" r="5.5"/><circle cx="548" cy="555" r="6"/><circle cx="162" cy="428" r="5.5"/></g>
+      <g fill="#1D9E75" opacity=".78"><circle cx="278" cy="238" r="5"/><circle cx="600" cy="268" r="5"/><circle cx="668" cy="428" r="4.5"/><circle cx="208" cy="548" r="4.5"/><circle cx="368" cy="695" r="5"/><circle cx="578" cy="312" r="4.5"/><circle cx="138" cy="395" r="4"/><circle cx="448" cy="208" r="4"/><circle cx="608" cy="578" r="4"/></g>
+      <g fill="#0A4A3A" opacity=".20"><circle cx="322" cy="308" r="4"/><circle cx="448" cy="318" r="3.8"/><circle cx="358" cy="558" r="3.8"/><circle cx="512" cy="498" r="4"/><circle cx="638" cy="398" r="3.8"/><circle cx="178" cy="485" r="3.8"/></g>
+      <g fill="#E8644A" opacity=".48"><circle cx="368" cy="638" r="4"/><circle cx="348" cy="695" r="3.5"/><circle cx="198" cy="592" r="3.5"/><circle cx="135" cy="410" r="3.5"/></g>
+      <g class="eco-node" id="en-qo" style="cursor:pointer">
+        <circle cx="400" cy="440" r="78"  fill="none" stroke="#1D9E75" stroke-width="1.2" stroke-dasharray="8 22" opacity=".22"/>
+        <circle cx="400" cy="440" r="57"  fill="none" stroke="#E8A020" stroke-width="5.5" opacity=".82"/>
+        <circle cx="400" cy="440" r="45"  fill="url(#eco-qg)"/>
+        <circle cx="400" cy="440" r="30"  fill="none" stroke="#F0E6D0" stroke-width="1"   opacity=".18"/>
+        <circle cx="400" cy="440" r="15"  fill="#1D9E75" opacity=".65"/>
+        <circle cx="400" cy="440" r="6"   fill="#E8A020" opacity=".96"/>
+        <text x="400" y="436" text-anchor="middle" font-family="Oswald,sans-serif" font-size="13" font-weight="600" letter-spacing="1" fill="#F0E6D0" opacity=".95">qOHR&#x2122;</text>
+        <text x="400" y="450" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="8" fill="#E8A020" opacity=".82">INTELLIGENCE</text>
       </g>
-
-      <!-- N2 Providers -->
-      <g id="n2" style="cursor:pointer">
-        <g id="n2v"><circle cx="484" cy="406" r="44" fill="#1D9E75"><animate attributeName="opacity" values="1;.68;1" dur="3.2s" begin=".65s" repeatCount="indefinite"/></circle><circle cx="484" cy="406" r="22" fill="#E8A020" opacity=".68"/><circle cx="484" cy="406" r="8" fill="#F8F5EE"/></g>
-        <text x="556" y="400" text-anchor="start" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">PROVIDERS</text>
-        <text x="556" y="420" text-anchor="start" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Join the Network</text>
-        <circle cx="484" cy="406" r="56" fill="transparent" id="h2" style="cursor:pointer"/>
+      <g class="eco-node" id="en-fr" style="cursor:pointer">
+        <circle cx="205" cy="168" r="52" fill="#0A4A3A" opacity=".96"/>
+        <circle cx="205" cy="168" r="30" fill="none" stroke="#F0E6D0" stroke-width="2.5" opacity=".90"/>
+        <circle cx="205" cy="168" r="18" fill="none" stroke="#E8A020" stroke-width="2"   opacity=".85"/>
+        <circle cx="205" cy="168" r="7"  fill="#E8A020" opacity=".95"/>
+        <text x="145" y="172" text-anchor="end" font-family="Plus Jakarta Sans,sans-serif" font-size="12" font-weight="600" fill="#0A4A3A">FoundationReady&#x2122;</text>
       </g>
-
-      <!-- N3 Donors -->
-      <g id="n3" style="cursor:pointer">
-        <g id="n3v"><circle cx="468" cy="184" r="36" fill="#0A4A3A" opacity=".9"><animate attributeName="opacity" values=".9;.58;.9" dur="3.2s" begin="1.3s" repeatCount="indefinite"/></circle><circle cx="468" cy="184" r="17" fill="#E8A020" opacity=".62"/></g>
-        <text x="516" y="168" text-anchor="start" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">DONORS</text>
-        <text x="516" y="188" text-anchor="start" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Give with Impact</text>
-        <circle cx="468" cy="184" r="48" fill="transparent" id="h3" style="cursor:pointer"/>
+      <g class="eco-node" id="en-ph" style="cursor:pointer">
+        <circle cx="660" cy="222" r="44" fill="#E8A020" opacity=".95"/>
+        <circle cx="660" cy="222" r="14" fill="#F0E6D0" opacity=".95"/>
+        <line x1="660" y1="199" x2="660" y2="189" stroke="#F0E6D0" stroke-width="3"   stroke-linecap="round"/>
+        <line x1="660" y1="245" x2="660" y2="255" stroke="#F0E6D0" stroke-width="3"   stroke-linecap="round"/>
+        <line x1="637" y1="222" x2="627" y2="222" stroke="#F0E6D0" stroke-width="3"   stroke-linecap="round"/>
+        <line x1="683" y1="222" x2="693" y2="222" stroke="#F0E6D0" stroke-width="3"   stroke-linecap="round"/>
+        <line x1="644" y1="206" x2="637" y2="199" stroke="#F0E6D0" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="676" y1="206" x2="683" y2="199" stroke="#F0E6D0" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="644" y1="238" x2="637" y2="245" stroke="#F0E6D0" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="676" y1="238" x2="683" y2="245" stroke="#F0E6D0" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="712" y="226" text-anchor="start" font-family="Plus Jakarta Sans,sans-serif" font-size="12" font-weight="600" fill="#0A4A3A">Phorsyte&#x2122;</text>
       </g>
-
-      <!-- N4 Individuals -->
-      <g id="n4" style="cursor:pointer">
-        <g id="n4v"><circle cx="166" cy="438" r="40" fill="#5DCAA5"><animate attributeName="opacity" values="1;.68;1" dur="3.2s" begin="1.95s" repeatCount="indefinite"/></circle><circle cx="166" cy="438" r="19" fill="#E8A020" opacity=".62"/><circle cx="166" cy="438" r="7" fill="#F8F5EE"/></g>
-        <text x="166" y="500" text-anchor="middle" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">INDIVIDUALS</text>
-        <text x="166" y="520" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Find Help</text>
-        <circle cx="166" cy="438" r="52" fill="transparent" id="h4" style="cursor:pointer"/>
+      <g class="eco-node" id="en-ts" style="cursor:pointer">
+        <circle cx="622" cy="318" r="34" fill="#0A4A3A" opacity=".94"/>
+        <path d="M606,308 A18,18 0 0,1 638,308" fill="none" stroke="#F0E6D0" stroke-width="3"   stroke-linecap="round" opacity=".88"/>
+        <path d="M606,328 A18,18 0 0,0 638,328" fill="none" stroke="#E8A020" stroke-width="3"   stroke-linecap="round" opacity=".88"/>
+        <text x="662" y="322" text-anchor="start" font-family="Plus Jakarta Sans,sans-serif" font-size="12" font-weight="600" fill="#0A4A3A">theShift&#x2122;</text>
       </g>
-
-      <!-- N5 Platform -->
-      <g id="n5" style="cursor:pointer">
-        <g id="n5v"><circle cx="320" cy="112" r="26" fill="#1D9E75" opacity=".55"><animate attributeName="opacity" values=".55;.3;.55" dur="3.2s" begin="2.6s" repeatCount="indefinite"/></circle><circle cx="320" cy="112" r="11" fill="#E8A020" opacity=".45"/></g>
-        <text x="320" y="56" text-anchor="middle" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">PLATFORM</text>
-        <text x="320" y="76" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Coming 2026</text>
-        <circle cx="320" cy="112" r="40" fill="transparent" id="h5" style="cursor:pointer"/>
+      <g class="eco-node" id="en-qp" style="cursor:pointer">
+        <circle cx="712" cy="428" r="38" fill="#1D9E75" opacity=".95"/>
+        <circle cx="703" cy="428" r="14" fill="none" stroke="#F0E6D0" stroke-width="2.5" opacity=".92"/>
+        <circle cx="721" cy="428" r="14" fill="none" stroke="#F0E6D0" stroke-width="2.5" opacity=".92"/>
+        <text x="712" y="484" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" font-weight="600" fill="#0A4A3A">qPartner&#x2122;</text>
       </g>
-
-      <!-- N6 Volunteers — lower center, bridges Individuals and Providers -->
-      <g id="n6" style="cursor:pointer">
-        <g id="n6v"><circle cx="390" cy="520" r="38" fill="#E8A020" opacity=".85"><animate attributeName="opacity" values=".85;.58;.85" dur="3.2s" begin="3.2s" repeatCount="indefinite"/></circle><circle cx="390" cy="520" r="18" fill="#0A4A3A" opacity=".75"/><circle cx="390" cy="520" r="7" fill="#F8F5EE"/></g>
-        <text x="390" y="578" text-anchor="middle" font-family="Oswald,sans-serif" font-size="15" font-weight="600" letter-spacing="2" fill="#0A4A3A">VOLUNTEERS</text>
-        <text x="390" y="598" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#1D9E75">Serve the Community</text>
-        <circle cx="390" cy="520" r="50" fill="transparent" id="h6" style="cursor:pointer"/>
+      <g class="eco-node" id="en-ow" style="cursor:pointer">
+        <circle cx="352" cy="728" r="48" fill="#E8644A" opacity=".96"/>
+        <circle cx="339" cy="726" r="15" fill="#F0E6D0" opacity=".92"/>
+        <circle cx="360" cy="730" r="12" fill="#F0E6D0" opacity=".75"/>
+        <path d="M339,741 Q350,750 360,742" fill="none" stroke="#F0E6D0" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+        <text x="352" y="794" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" font-weight="600" fill="#0A4A3A">OurWalk&#x2122;</text>
       </g>
-
-      <!-- BULLSEYE HUB -->
-      <g id="nhub" style="cursor:pointer">
-        <circle cx="350" cy="350" r="80" fill="#E8A020"><animate attributeName="opacity" values="1;.82;1" dur="4s" repeatCount="indefinite"/></circle>
-        <circle cx="350" cy="350" r="52" fill="none" stroke="#F8F5EE" stroke-width="8" opacity=".38"/>
-        <circle cx="350" cy="350" r="28" fill="none" stroke="#F8F5EE" stroke-width="7" opacity=".56"/>
-        <circle cx="350" cy="350" r="10" fill="#F8F5EE" opacity=".75"/>
-        <circle cx="350" cy="350" r="95" fill="transparent" id="hhub" style="cursor:pointer"/>
+      <g class="eco-node" id="en-wc" style="cursor:pointer">
+        <circle cx="158" cy="642" r="38" fill="#E8A020" opacity=".95"/>
+        <circle cx="149" cy="634" r="9"  fill="#F0E6D0" opacity=".90"/>
+        <circle cx="167" cy="634" r="9"  fill="#F0E6D0" opacity=".90"/>
+        <circle cx="158" cy="649" r="9"  fill="#F0E6D0" opacity=".90"/>
+        <text x="158" y="698" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" font-weight="600" fill="#0A4A3A">weCARES&#x2122;</text>
       </g>
+      <g class="eco-node" id="en-aq" style="cursor:pointer">
+        <circle cx="448" cy="122" r="36" fill="#1D9E75" opacity=".94"/>
+        <path d="M434,114 Q448,96 462,114 Q462,126 448,130" fill="none" stroke="#F0E6D0" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="448" cy="142" r="4" fill="#F0E6D0" opacity=".92"/>
+        <text x="404" y="126" text-anchor="end" font-family="Plus Jakarta Sans,sans-serif" font-size="12" font-weight="600" fill="#0A4A3A">AskQCLS&#x2122;</text>
+      </g>
+      <g class="eco-node" id="en-co" style="cursor:pointer">
+        <circle cx="658" cy="618" r="38" fill="#0A4A3A" opacity=".94"/>
+        <path d="M658,634 C636,618 632,600 646,598 C652,597 658,604 658,604 C658,604 664,597 670,598 C684,600 680,618 658,634Z" fill="#E8A020" opacity=".90"/>
+        <text x="658" y="674" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" font-weight="600" fill="#0A4A3A">Contributors</text>
+      </g>
+      <g class="eco-node" id="en-mj" style="cursor:pointer">
+        <circle cx="92" cy="382" r="48" fill="#E8644A" opacity=".96"/>
+        <rect x="76" y="358" width="32" height="50" rx="5" fill="#F0E6D0" opacity=".95"/>
+        <rect x="82" y="364" width="20" height="36" rx="2" fill="#E8644A" opacity=".12"/>
+        <circle cx="92" cy="380" r="12" fill="#F0E6D0" opacity=".95"/>
+        <text x="92" y="385" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="16" font-weight="700" fill="#E8644A">M</text>
+        <circle cx="104" cy="383" r="2.5" fill="#E8644A" opacity=".6"/>
+        <text x="92" y="448" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" font-weight="600" fill="#0A4A3A">Marjy&#x2122;</text>
+      </g>
+      <g opacity=".32">
+        <circle cx="495" cy="72"  r="17" fill="#0A4A3A"/>
+        <circle cx="732" cy="512" r="15" fill="#1D9E75"/>
+        <circle cx="258" cy="772" r="14" fill="#E8A020"/>
+        <circle cx="725" cy="272" r="13" fill="#1D9E75"/>
+        <circle cx="62"  cy="525" r="13" fill="#E8A020"/>
+      </g>
+      <line x1="200" y1="832" x2="600" y2="832" stroke="#0A4A3A" stroke-width="1" opacity=".15"/>
+      <text x="400" y="852" text-anchor="middle" font-family="Oswald,sans-serif" font-size="24" font-weight="600" letter-spacing="2.5" fill="#0A4A3A">UnoSphere&#x2122;</text>
+      <text x="400" y="872" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" fill="#1D9E75">Every Community Deserves a Catalyst</text>
+      </svg>
 
-
-    </svg>
+      <!-- Tooltip -->
+      <div class="eco-tooltip" id="ecoTooltip">
+        <span class="eco-tooltip-label" id="ttLabel"></span>
+        <span class="eco-tooltip-title" id="ttTitle"></span>
+        <span class="eco-tooltip-hint">Click to explore</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -759,18 +807,18 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
 <section id="ecosystem-map" style="background:var(--sand);padding:5rem 2rem;text-align:center">
   <div style="max-width:1160px;margin:0 auto">
 
-    <span style="font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:.75rem">The Platform</span>
+    <span style="font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:.75rem">The UnoSphere™ Platform</span>
 
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3rem);font-weight:300;color:var(--void);line-height:1.1;margin-bottom:.75rem">How the <strong style="font-weight:700">Ecosystem Works</strong></h2>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3rem);font-weight:300;color:var(--void);line-height:1.1;margin-bottom:.75rem">How the <strong style="font-weight:700">UnoSphere™ Works</strong></h2>
 
     <div style="width:48px;height:2px;background:var(--amber);margin:.5rem auto 1.5rem"></div>
 
-    <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;color:var(--mid);max-width:580px;margin:0 auto 2.5rem;line-height:1.75">QCLS is community infrastructure. Three client-facing services feed a central Correlation Engine — generating intelligence no individual organization can see on its own.</p>
+    <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;color:var(--mid);max-width:580px;margin:0 auto 2.5rem;line-height:1.75">QCLS is community infrastructure. Three client-facing portals feed qOHR™ — the QuestCare Organizational Human Reality layer — generating intelligence no individual organization can see on its own.</p>
 
     <div style="border-radius:8px;overflow:hidden;box-shadow:0 8px 48px rgba(10,26,18,.15);display:inline-block;width:100%">
       <img
-        src="QCLS_Ecosystem_Map_06_24_26.png"
-        alt="QCLS Ecosystem Map — Community Infrastructure. Connected People. Smarter Decisions. Stronger Communities."
+        src="QCLS_UnoSphere_Map_June26_2026.png"
+        alt="QCLS UnoSphere™ Map — Community Infrastructure. Connected People. Smarter Decisions. Stronger Communities."
         style="width:100%;height:auto;display:block"
       />
     </div>
@@ -782,8 +830,66 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
 
 <!-- Scroll cue -->
 <div class="scroll-cue" id="services">
-  <p>↓ Scroll to explore the ecosystem ↓</p>
+  <p>↓ Scroll to explore the UnoSphere™ ↓</p>
 </div>
+
+<!-- ══ MARJY ══ -->
+<section class="section" id="marjy" style="background:var(--void);padding:6rem 4rem">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+      <div class="reveal">
+        <span class="sec-eyebrow" style="color:var(--amber)">Marjy · The Human Interface</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3.2rem);font-weight:300;color:#fff;line-height:1.05;margin-bottom:.75rem;letter-spacing:-.02em"><span style="font-weight:300;display:block">One Login.</span><span style="font-weight:700;display:block">Every Portal.</span><em style="font-style:italic;color:var(--amber);display:block">Always With You.</em></h2>
+        <div style="width:48px;height:2px;background:var(--amber);margin:1.5rem 0"></div>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:1.25rem">Marjy™ is the authenticated access layer for the entire QCLS UnoSphere™ — one secure login, and every portal you belong to is right there. One relationship with the community that follows you across every interaction.</p>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:1.25rem">Marjy™ is not software. It is a relationship. The human interface between every person the UnoSphere™ serves and the intelligence it holds for them. Named for the founder's mother, Marjorie — whose name now opens the door for thousands of people who need someone to walk with them.</p>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:2rem">Every constituent type has their own portal inside Marjy™. One login recognizes who you are and shows you exactly what is yours — your case status, your assessment results, your volunteer hours, your giving history, your action plan. Nothing more. Nothing less. Exactly what you need.</p>
+        <div style="display:inline-block;padding:.5rem 1.25rem;background:rgba(232,160,32,.12);border:1px solid rgba(232,160,32,.3);border-radius:3px;margin-bottom:2rem">
+          <span style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)">Coming 2026 · Sign Up for Updates</span>
+        </div>
+        <br/>
+        <a href="#contact" class="btn btn-amber">Stay Informed About Marjy™</a>
+      </div>
+      <div class="reveal">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--teal);border-radius:4px;padding:1.5rem">
+            <div style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Individuals</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem">OurWalk™</div>
+            <p style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6">Check your navigation case status. See your confirmed access. Know where you stand.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--teal);border-radius:4px;padding:1.5rem">
+            <div style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Nonprofits</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem">FoundationReady™</div>
+            <p style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6">Your CARES score. Your Phorsyte™ map. Your theShift™ action plan. All in one place.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--amber);border-radius:4px;padding:1.5rem">
+            <div style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Volunteers</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem">weCARES™</div>
+            <p style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6">Check in to events. Capture field intelligence. See your hours and your impact.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--coral);border-radius:4px;padding:1.5rem">
+            <div style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Contributors</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem">Contributor Dashboard</div>
+            <p style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6">Your giving history. Your volunteer hours. Your combined impact on the community.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--teal);border-radius:4px;padding:1.5rem">
+            <div style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Providers</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem">qPartner™</div>
+            <p style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6">Manage referrals. Update your capacity. Confirm Access when participants arrive.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--amber);border-radius:4px;padding:1.5rem">
+            <div style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Funders</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem">AskQCLS™</div>
+            <p style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6">Enter any EIN. See the evidence. Request a full assessment before you invest.</p>
+          </div>
+        </div>
+        <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.2);border-radius:4px">
+          <p style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;text-align:center">One person can hold multiple roles. Marjy™ recognizes all of them — and shows you the right dashboard for each. Your entry. Your access. Your journey.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ══ MISSION ══ -->
 <div class="mission">
@@ -792,7 +898,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
     <div class="mission-divider"></div>
     <div>
       <span class="mission-tag">We <strong>CARE</strong> for Every Life<br/>and <strong>EMPOWER</strong> Every Ability</span>
-      <p class="mission-sub">QCLS removes barriers and ensures access is achieved — not just referred. Through coordination, standards, and technology, we make the community ecosystem work for everyone in Henry and Madison County, Indiana.</p>
+      <p class="mission-sub">QCLS removes barriers and ensures access is achieved — not just referred. Through coordination, standards, and technology, we make the UnoSphere™ work for everyone in Henry and Madison County, Indiana.</p>
     </div>
   </div>
 </div>
@@ -857,30 +963,142 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
   </div>
 </section>
 
-<!-- ══ NONPROFITS ══ -->
+<!-- ══ NONPROFITS OVERVIEW ══ -->
 <section class="section" id="nonprofits" style="background:var(--sand)">
   <div class="section-inner">
     <div class="sec-eyebrow">For Nonprofits</div>
+    <h2 class="sec-h2">Three Portals. <strong>One Ecosystem.</strong><br/>Built for Your Stage.</h2>
+    <p class="sec-sub">QCLS serves nonprofits through three connected portals inside the UnoSphere™. FoundationReady™ tells you where you are. Phorsyte™ reveals where you are likely going. theShift™ builds the action plan that gets you there. Each portal feeds the next — and all of it feeds qOHR™, the intelligence layer that makes the whole UnoSphere™ smarter.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;margin-bottom:3rem" class="reveal">
+      <div style="background:var(--nw);border-radius:4px;padding:2rem;border-top:3px solid var(--deep)">
+        <div style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Where Are You?</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--void);margin-bottom:.75rem">FoundationReady™</h3>
+        <p style="font-size:.88rem;color:var(--mid);line-height:1.7;margin-bottom:1rem">Evidence-based capacity assessment across five CARES domains. Scored findings labeled Evidence-Based, Probable, or Speculative. Stage 1 through Stage 4 determination. A roadmap funders require.</p>
+        <a href="#foundationready" style="font-size:.82rem;font-weight:600;color:var(--deep);text-decoration:none">Explore FoundationReady™ →</a>
+      </div>
+      <div style="background:var(--nw);border-radius:4px;padding:2rem;border-top:3px solid var(--amber)">
+        <div style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Where Are You Going?</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--void);margin-bottom:.75rem">Phorsyte™</h3>
+        <p style="font-size:.88rem;color:var(--mid);line-height:1.7;margin-bottom:1rem">Funding chain analysis three layers deep. Governance network mapping. Ecosystem opportunity mapping. STABLE, WATCH, FRAGILE, or UNKNOWN ratings for every funding relationship.</p>
+        <a href="#phorsyte" style="font-size:.82rem;font-weight:600;color:var(--deep);text-decoration:none">Explore Phorsyte™ →</a>
+      </div>
+      <div style="background:var(--nw);border-radius:4px;padding:2rem;border-top:3px solid var(--teal)">
+        <div style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">What Do You Do Next?</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--void);margin-bottom:.75rem">theShift™</h3>
+        <p style="font-size:.88rem;color:var(--mid);line-height:1.7;margin-bottom:1rem">Strategic Human Impact Focused Transformation. A 90-day action plan calibrated to your actual capacity. Do First, Plan and Execute, Delegate, Eliminate. Every recommendation tied to evidence.</p>
+        <a href="#theshift" style="font-size:.82rem;font-weight:600;color:var(--deep);text-decoration:none">Explore theShift™ →</a>
+      </div>
+    </div>
+    <div style="text-align:center"><a href="#contact" class="btn btn-deep reveal">Start a Nonprofit Inquiry</a></div>
+  </div>
+</section>
+
+<!-- ══ FOUNDATIONREADY ══ -->
+<section class="section" id="foundationready" style="background:var(--nw)">
+  <div class="section-inner">
+    <div class="sec-eyebrow">FoundationReady · Assessment Portal</div>
     <h2 class="sec-h2">Build the <strong>Foundation</strong><br/>Funders Require.</h2>
-    <p class="sec-sub">FoundationReady™ is a structured capacity assessment built on the CARES Framework. We evaluate your organization across five domains and deliver a roadmap for sustainable funding and governance excellence.</p>
+    <p class="sec-sub">FoundationReady™ is a structured capacity assessment built on the QCLS CARES Framework. It delivers scored results with written justification tied to specific evidence — not generic observations. Every finding is clearly labeled so your team knows exactly where you stand and why.</p>
     <div class="fr-grid reveal">
       <div class="fr-info">
-        <h3>The FoundationReady™ Assessment</h3>
-        <p>Every assessment delivers scored results with written justification tied to specific evidence — not generic observations. Each finding is clearly labeled Evidence, Assessment, or Recommended so your team knows exactly where you stand and why.</p>
-        <p>The result is a clear, honest picture of your organization's infrastructure maturity and a prioritized roadmap for improvement — the foundation funders are increasingly required to see.</p>
-        <div class="fr-tiers">
-          <div class="fr-tier"><div><div class="tier-name">Tier 1 — Public Assessment</div><div class="tier-sub">Core CARES scoring with written findings</div></div><div class="tier-price">From $400</div></div>
-          <div class="fr-tier"><div><div class="tier-name">Tier 2 — Full Package</div><div class="tier-sub">Assessment + improvement roadmap + coaching</div></div><div class="tier-price">From $1,500</div></div>
-          <div class="fr-tier"><div><div class="tier-name">Tier 3 — Implementation</div><div class="tier-sub">Partnership through execution of recommendations</div></div><div class="tier-price">Custom</div></div>
+        <h3>What FoundationReady™ Delivers</h3>
+        <p>Every assessment produces a CARES score — a numeric measure of organizational maturity across five domains — and a stage determination from Stage 1 Emerging through Stage 4 Grant Ready. Each finding is labeled Evidence-Based, Probable, or Speculative, and every conclusion is tied to specific organizational evidence you provide during the assessment process.</p>
+        <p>The result is a complete picture of your organization's infrastructure maturity: where it is strong, where it is fragile, where funders will have questions, and what to address first. Not a checklist. A diagnostic with a roadmap.</p>
+        <p>FoundationReady™ findings feed directly into Phorsyte™ foresight mapping and theShift™ action planning — the assessment is the foundation every next step is built on.</p>
+        <div style="margin-top:1.5rem;padding:1.25rem;background:var(--sand);border-radius:4px;border-left:3px solid var(--deep)">
+          <p style="font-size:.88rem;color:var(--mid);line-height:1.7"><strong style="color:var(--void)">Who FoundationReady™ serves:</strong> Nonprofits at any stage — from organizations just receiving their 501(c)(3) determination to established organizations preparing for major funder relationships. Funders who want an independent assessment of an organization before investing. Boards seeking an honest picture of organizational health.</p>
         </div>
-        <a href="#contact" class="btn btn-deep" style="margin-top:1.5rem">Start a FoundationReady Inquiry</a>
+        <a href="#contact" class="btn btn-deep" style="margin-top:1.5rem">Start a FoundationReady™ Inquiry</a>
       </div>
       <div class="cares-domains reveal">
-        <div class="domain"><div class="domain-letter">C</div><div class="domain-num">Domain 01</div><h4>Compliance &amp; Governance</h4><p>Board structure, bylaws, IRS compliance, conflict of interest policies, and board oversight effectiveness.</p></div>
-        <div class="domain"><div class="domain-letter">A</div><div class="domain-num">Domain 02</div><h4>Accountability &amp; Finance</h4><p>Independent audits, 990 accuracy, budget processes, internal controls, and fiscal transparency.</p></div>
-        <div class="domain"><div class="domain-letter">R</div><div class="domain-num">Domain 03</div><h4>Results &amp; Outcomes</h4><p>Logic models, data collection, KPIs, impact measurement, and outcome reporting for funders.</p></div>
-        <div class="domain"><div class="domain-letter">E</div><div class="domain-num">Domain 04</div><h4>Engagement &amp; Presence</h4><p>Stakeholder engagement, communications, community partnerships, and organizational visibility.</p></div>
-        <div class="domain"><div class="domain-letter">S</div><div class="domain-num">Domain 05</div><h4>Sustainability</h4><p>Funding diversity, operating reserves, succession planning, and long-term financial resilience.</p></div>
+        <div class="domain"><div class="domain-letter">C</div><div class="domain-num">Domain 01</div><h4>Compliance &amp; Governance</h4><p>Board structure, bylaws, IRS compliance, conflict of interest policies, executive oversight, and board governance effectiveness.</p></div>
+        <div class="domain"><div class="domain-letter">A</div><div class="domain-num">Domain 02</div><h4>Accountability &amp; Finance</h4><p>Independent audits, 990 accuracy, budget processes, internal controls, financial reserves, and fiscal transparency to the public.</p></div>
+        <div class="domain"><div class="domain-letter">R</div><div class="domain-num">Domain 03</div><h4>Results &amp; Outcomes</h4><p>Logic models, data collection systems, KPIs, impact measurement methodology, and outcome reporting capacity for funders.</p></div>
+        <div class="domain"><div class="domain-letter">E</div><div class="domain-num">Domain 04</div><h4>Engagement &amp; Presence</h4><p>Stakeholder engagement strategy, communications infrastructure, community partnerships, and organizational visibility and trust.</p></div>
+        <div class="domain"><div class="domain-letter">S</div><div class="domain-num">Domain 05</div><h4>Sustainability</h4><p>Funding source diversity, operating reserves, succession planning, earned revenue strategy, and long-term financial resilience.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHORSYTE ══ -->
+<section class="section" id="phorsyte" style="background:var(--sand)">
+  <div class="section-inner">
+    <div class="sec-eyebrow">Phorsyte · Foresight Portal</div>
+    <h2 class="sec-h2">See <strong>Tomorrow.</strong><br/>Act Today.</h2>
+    <p class="sec-sub">Phorsyte™ maps the external environment your organization is navigating — funding chains, governance networks, ecosystem opportunities and threats — and projects where your organization is likely heading based on evidence, not aspiration.</p>
+    <div class="fr-grid reveal">
+      <div class="fr-info">
+        <h3>What Phorsyte™ Reveals</h3>
+        <p>Most organizations know who their funders are. Phorsyte™ goes three layers deeper — mapping your funders, their funders, and their funders' funders. Each relationship receives a rating: STABLE, WATCH, FRAGILE, or UNKNOWN. A grant that looks secure on the surface may be one leadership change or one policy shift away from disappearing. Phorsyte™ surfaces that risk before it becomes a crisis.</p>
+        <p>Phorsyte™ also maps governance networks — board member overlaps with other organizations and funders, funder-board interlocks that create conflicts of interest, vendor relationships that may not be visible in a standard 990 review. The Governance Transparency Score produced by Phorsyte™ gives funders and boards an honest picture of organizational independence.</p>
+        <p>The output is a Phorsyte™ Ecosystem Opportunity Map — a client-specific visual showing where your organization sits in the community ecosystem, which relationships are strengthening it, which are threatening it, and where the opportunities are that no individual organization can see alone.</p>
+        <div style="margin-top:1.5rem;padding:1.25rem;background:var(--nw);border-radius:4px;border-left:3px solid var(--amber)">
+          <p style="font-size:.88rem;color:var(--mid);line-height:1.7"><strong style="color:var(--void)">Phorsyte™ follows FoundationReady™.</strong> The assessment tells you where you are. Phorsyte™ tells you where you are likely going. Together they give your organization the clearest picture of its situation available anywhere in Henry and Madison County.</p>
+        </div>
+        <a href="#contact" class="btn btn-deep" style="margin-top:1.5rem">Request a Phorsyte™ Assessment</a>
+      </div>
+      <div class="reveal">
+        <div style="display:flex;flex-direction:column;gap:1.25rem">
+          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-left:3px solid var(--deep)">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Funding Chain Analysis</h4>
+            <p style="font-size:.85rem;color:var(--mid);line-height:1.7">Three layers deep. Your funders, their funders, their funders' funders. STABLE · WATCH · FRAGILE · UNKNOWN ratings for every relationship. Compound fragility scoring for organizations dependent on a single funding chain.</p>
+          </div>
+          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-left:3px solid var(--amber)">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Governance Network Mapping</h4>
+            <p style="font-size:.85rem;color:var(--mid);line-height:1.7">Board overlap analysis. Funder-board interlocks. Vendor conflict identification. Governance Transparency Score. Conflict Flag Register. Governance Gap Register.</p>
+          </div>
+          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-left:3px solid var(--teal)">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Ecosystem Opportunity Map</h4>
+            <p style="font-size:.85rem;color:var(--mid);line-height:1.7">A client-specific visual map of your organization's position in the community ecosystem. Three scenarios: Conservative, Expected, Accelerated. Shows where growth is possible and where risk is concentrated.</p>
+          </div>
+          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-left:3px solid var(--coral)">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Trajectory Intelligence</h4>
+            <p style="font-size:.85rem;color:var(--mid);line-height:1.7">Where is your organization likely heading if nothing changes? Where could it go if the right moves are made? Phorsyte™ answers both questions with evidence, not projection.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THESHIFT ══ -->
+<section class="section" id="theshift" style="background:var(--nw)">
+  <div class="section-inner">
+    <div class="sec-eyebrow">theShift · Action Portal</div>
+    <h2 class="sec-h2">Strategic Human Impact<br/><strong>Focused Transformation.</strong></h2>
+    <p class="sec-sub">theShift™ converts FoundationReady™ assessment findings and Phorsyte™ foresight intelligence into a prioritized 90-day action plan calibrated to your actual organizational capacity — not your aspirational capacity. Every recommendation is tied to evidence. Every step is sequenced to what your organization can actually execute.</p>
+    <div class="fr-grid reveal">
+      <div class="fr-info">
+        <h3>What theShift™ Produces</h3>
+        <p>Most strategic plans fail because they are built for an organization that does not yet exist — staffed, funded, and capacitated at a level the organization hopes to reach, not where it actually is. theShift™ is different. Every recommendation is calibrated to the CARES stage determined by FoundationReady™ and weighted by the trajectory intelligence produced by Phorsyte™.</p>
+        <p>The output is an Action Matrix — four quadrants that answer the most important question any organization can ask: of everything we could do, what should we do first? Do First, Plan and Execute, Delegate, and Eliminate. The matrix is built from evidence, not consensus or aspiration.</p>
+        <p>theShift™ plans are living documents. As the organization executes the 90-day plan, FoundationReady™ rescores the relevant domains, Phorsyte™ updates the trajectory, and theShift™ recalibrates the next cycle. The system never stops learning. The organization never stops improving.</p>
+        <a href="#contact" class="btn btn-deep" style="margin-top:1.5rem">Request a theShift™ Plan</a>
+      </div>
+      <div class="reveal">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div style="background:var(--sand);border-radius:4px;padding:1.5rem;border-top:3px solid var(--deep)">
+            <div style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Quadrant 1</div>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Do First</h4>
+            <p style="font-size:.82rem;color:var(--mid);line-height:1.6">High impact, immediately executable. Actions your organization has the capacity to complete now that will produce the greatest return on the investment of attention.</p>
+          </div>
+          <div style="background:var(--sand);border-radius:4px;padding:1.5rem;border-top:3px solid var(--teal)">
+            <div style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Quadrant 2</div>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Plan &amp; Execute</h4>
+            <p style="font-size:.82rem;color:var(--mid);line-height:1.6">High impact, requires preparation. Actions worth doing that need resources, planning, or capacity building before execution begins.</p>
+          </div>
+          <div style="background:var(--sand);border-radius:4px;padding:1.5rem;border-top:3px solid var(--amber)">
+            <div style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Quadrant 3</div>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Delegate</h4>
+            <p style="font-size:.82rem;color:var(--mid);line-height:1.6">Lower impact, can be handled by others. Actions that need to happen but do not require leadership attention. Assign, automate, or partner.</p>
+          </div>
+          <div style="background:var(--sand);border-radius:4px;padding:1.5rem;border-top:3px solid var(--coral)">
+            <div style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem">Quadrant 4</div>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Eliminate</h4>
+            <p style="font-size:.82rem;color:var(--mid);line-height:1.6">Low impact, consuming capacity. Activities and commitments that are not producing value relative to what they cost. Stop doing them.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -889,51 +1107,19 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
 <!-- ══ PROVIDERS ══ -->
 <section class="section" id="providers">
   <div class="section-inner">
-    <div class="sec-eyebrow">For Service Providers</div>
-    <h2 class="sec-h2">Join a Network <strong>Built on Verification.</strong></h2>
-    <p class="sec-sub">QCLS doesn't just list providers — we build verified relationships. Every provider in the QCLS network is vetted, connected, and accountable to real outcomes.</p>
+    <div class="sec-eyebrow">For Service Providers · qPartner</div>
+    <h2 class="sec-h2">Join qPartner™ — <strong>Built on Verification.</strong></h2>
+    <p class="sec-sub">qPartner™ is not a directory listing — it is a verified partnership network. Every provider in qPartner™ is vetted, connected, and accountable to real outcomes. When OurWalk™ walks an individual to your door, qPartner™ confirms they arrived.</p>
     <div class="providers-grid">
-      <div class="pcard reveal"><div class="pcard-icon">🏥</div><h3>Healthcare &amp; Behavioral Health</h3><p>Clinics, mental health providers, substance use treatment, and primary care — connected to individuals navigated by QCLS with follow-up tracking.</p></div>
-      <div class="pcard reveal"><div class="pcard-icon">🏠</div><h3>Housing &amp; Stability</h3><p>Emergency housing, transitional programs, utility assistance, and long-term housing support — verified and connected through the QCLS navigation system.</p></div>
-      <div class="pcard reveal"><div class="pcard-icon">♿</div><h3>Disability &amp; Independence</h3><p>Medicaid waiver providers, supported employment, independent living programs, and disability services — matched to individuals who need your specific support.</p></div>
-      <div class="pcard reveal"><div class="pcard-icon">🚗</div><h3>Transportation &amp; Access</h3><p>Non-emergency medical transport, community rides, and mobility solutions — the last-mile access that makes every other referral possible.</p></div>
-      <div class="pcard reveal"><div class="pcard-icon">🍎</div><h3>Food &amp; Basic Needs</h3><p>Food pantries, meal programs, clothing closets, and emergency assistance — connected to families when they need it, not when they can navigate a system alone.</p></div>
-      <div class="pcard reveal"><div class="pcard-icon">📋</div><h3>Benefits &amp; Navigation</h3><p>Benefits enrollment, SNAP, Medicaid, SSI, and government program assistance — expertise that turns eligibility into actual enrollment.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">🏥</div><h3>Healthcare &amp; Behavioral Health</h3><p>Clinics, mental health providers, substance use treatment, and primary care — connected to individuals navigated by OurWalk™ with follow-up tracking until Access Confirmed.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">🏠</div><h3>Housing &amp; Stability</h3><p>Emergency housing, transitional programs, utility assistance, and long-term housing support — verified and connected through the OurWalk™ navigation system.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">♿</div><h3>Disability &amp; Independence</h3><p>Medicaid waiver providers, supported employment, independent living programs, and disability services — matched to individuals navigated by OurWalk™ who need your specific support.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">🚗</div><h3>Transportation &amp; Access</h3><p>Non-emergency medical transport, community rides, and mobility solutions — the last-mile access that makes every OurWalk™ referral possible.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">🍎</div><h3>Food &amp; Basic Needs</h3><p>Food pantries, meal programs, clothing closets, and emergency assistance — connected to families through OurWalk™ when they need it, not when they can navigate a system alone.</p></div>
+      <div class="pcard reveal"><div class="pcard-icon">📋</div><h3>Benefits &amp; Navigation</h3><p>Benefits enrollment, SNAP, Medicaid, SSI, and government program assistance — expertise that turns OurWalk™ referrals into confirmed enrollment.</p></div>
     </div>
     <div style="text-align:center;margin-top:3rem">
-      <a href="#contact" class="btn btn-teal reveal">Join the Provider Network</a>
-    </div>
-  </div>
-</section>
-
-<!-- ══ DONORS ══ -->
-<section class="section" id="donors" style="background:var(--deep);padding:6rem 4rem">
-  <div class="section-inner">
-    <div class="donors-inner">
-      <div class="reveal">
-        <span class="sec-eyebrow" style="color:var(--amber)">For Donors &amp; Funders</span>
-        <h2 class="donors-h2"><strong>Your Dollar Goes Further</strong><br/>When You Can<br/><em style="font-style:italic;color:var(--teal);font-family:'Cormorant Garamond',serif">See It Work.</em></h2>
-        <p style="font-size:.95rem;color:rgba(255,255,255,.62);line-height:1.8;margin-bottom:2rem">QCLS provides donors and funders with verified outcomes — not just activity reports. When you give to QCLS or fund a FoundationReady assessment for a local nonprofit, you see exactly what changed and why it matters.</p>
-        <div class="impact-items">
-          <div class="impact-item"><div class="impact-dot"></div><p><strong>Fund a FoundationReady Assessment</strong> — invest directly in a local nonprofit's governance, financial systems, and accountability infrastructure.</p></div>
-          <div class="impact-item"><div class="impact-dot"></div><p><strong>Support Community Navigation</strong> — fund the coordination that ensures individuals actually receive the services they need.</p></div>
-          <div class="impact-item"><div class="impact-dot"></div><p><strong>Give to QCLS Operations</strong> — strengthen the catalyst at the center of the ecosystem that makes everything else possible.</p></div>
-        </div>
-      </div>
-      <div class="donate-box reveal">
-        <h3>Make a Gift to QCLS</h3>
-        <p>QuestCare LifeStyle Solutions, Inc. is a 501(c)(3) nonprofit (EIN: 33-3036616). All donations are tax-deductible to the extent allowed by law.</p>
-        <div class="donate-btn-wrap">
-          <!-- PLACEHOLDER: Replace href with Neon One donation page URL when available -->
-          <a href="https://app.neoncrm.com/np/clients/questcare/donation.jsp"
-             target="_blank" rel="noopener"
-             class="btn btn-amber"
-             style="display:inline-block;font-size:.95rem;padding:1rem 2.5rem;">
-            Donate Now →
-          </a>
-          <p class="donate-placeholder">Secure giving powered by Neon One · Donations processed at app.neoncrm.com<br/>Update URL with your specific Neon One campaign link</p>
-        </div>
-      </div>
+      <a href="#contact" class="btn btn-teal reveal">Join qPartner™</a>
     </div>
   </div>
 </section>
@@ -941,16 +1127,16 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
 <!-- ══ INDIVIDUALS ══ -->
 <section class="section" id="individuals" style="background:var(--sand)">
   <div class="section-inner">
-    <div class="sec-eyebrow">For Individuals &amp; Families</div>
-    <h2 class="sec-h2">Help That Follows<br/><strong>Through to Access.</strong></h2>
-    <p class="sec-sub">QCLS is not a 211 list. We are human navigators who make contact, confirm services, follow up, and document access — because a referral is only complete when someone actually gets help.</p>
+    <div class="sec-eyebrow">For Individuals &amp; Families · OurWalk</div>
+    <h2 class="sec-h2">OurWalk™ Follows<br/><strong>Through to Access.</strong></h2>
+    <p class="sec-sub">OurWalk™ is not a 211 list. We walk with you — navigators who stay with your case from intake to Access Confirmed. Not referred. Confirmed. The case does not close until you actually receive the service you need.</p>
     <div class="ind-grid">
       <div class="ind-steps reveal">
-        <div class="step"><div class="step-num">01</div><div><h4>Intake &amp; Needs Identification</h4><p>We listen to understand your full situation — not just the presenting need. Every person has a unique set of circumstances and goals.</p></div></div>
-        <div class="step"><div class="step-num">02</div><div><h4>Verified Referral Coordination</h4><p>We connect you to services we know are active, accepting, and appropriate — not a list of phone numbers to call on your own.</p></div></div>
-        <div class="step"><div class="step-num">03</div><div><h4>Follow-Up &amp; Barrier Removal</h4><p>We follow up to confirm you received the service. If something blocked access, we work to remove that barrier before closing the case.</p></div></div>
-        <div class="step"><div class="step-num">04</div><div><h4>Access Confirmed &amp; Documented</h4><p>Cases are only closed when access is confirmed — not when a referral was made. This is the QCLS difference.</p></div></div>
-        <a href="#contact" class="btn btn-teal" style="margin-top:1.5rem;display:inline-block">Request Navigation Support</a>
+        <div class="step"><div class="step-num">01</div><div><h4>OurWalk™ Intake</h4><p>We listen to understand your full situation — not just the presenting need. Every person has a unique set of circumstances. OurWalk™ captures what you need and assigns a navigator who stays with you.</p></div></div>
+        <div class="step"><div class="step-num">02</div><div><h4>Verified Referral to qPartner™</h4><p>OurWalk™ connects you to qPartner™ verified service providers — organizations we know are active, accepting, and appropriate. Not a phone number list. A confirmed, active connection.</p></div></div>
+        <div class="step"><div class="step-num">03</div><div><h4>Follow-Up &amp; Barrier Removal</h4><p>OurWalk™ follows up to confirm you received the service. If something blocked access — transportation, documentation, capacity — we work to remove that barrier before closing the case.</p></div></div>
+        <div class="step"><div class="step-num">04</div><div><h4>Access Confirmed</h4><p>OurWalk™ cases close only when access is confirmed — not when a referral was made. Access Confirmed is the only metric that matters. This is what makes OurWalk™ different from every other navigation service.</p></div></div>
+        <a href="#contact" class="btn btn-teal" style="margin-top:1.5rem;display:inline-block">Start OurWalk™</a>
       </div>
       <div class="reveal">
         <span class="sec-eyebrow" style="margin-bottom:1.25rem;display:block">We Navigate Access To</span>
@@ -974,30 +1160,30 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
 <!-- ══ VOLUNTEERS ══ -->
 <section class="section" id="volunteers">
   <div class="section-inner">
-    <div class="sec-eyebrow">For Volunteers</div>
-    <h2 class="sec-h2">Be the Bridge<br/><strong>That Makes It Work.</strong></h2>
-    <p class="sec-sub">Volunteers are not an afterthought at QCLS — they are the connective tissue of the ecosystem. Every volunteer directly supports the navigation, outreach, and coordination work that ensures individuals in Henry and Madison County actually access the services they need.</p>
+    <div class="sec-eyebrow">For Volunteers · weCARES</div>
+    <h2 class="sec-h2">weCARES™ — <strong>We Chose to Show Up.</strong></h2>
+    <p class="sec-sub">weCARES™ is the QCLS volunteer and field intelligence portal. Volunteers are not an afterthought — they are the human presence of the UnoSphere™ in the community. Every weCARES™ volunteer captures field intelligence that no database can collect and no algorithm can replace.</p>
     <div class="ind-grid">
       <div class="reveal">
-        <div class="sec-eyebrow" style="margin-bottom:1.25rem;display:block">How Volunteers Serve</div>
+        <div class="sec-eyebrow" style="margin-bottom:1.25rem;display:block">How weCARES Volunteers Serve</div>
         <div class="ind-steps">
-          <div class="step"><div class="step-num">01</div><div><h4>Community Navigation Support</h4><p>Assist QCLS navigators in following up with individuals to confirm access, remove barriers, and document outcomes.</p></div></div>
-          <div class="step"><div class="step-num">02</div><div><h4>Outreach &amp; Awareness</h4><p>Represent QCLS in the community — at events, faith communities, healthcare settings, and neighborhood gatherings.</p></div></div>
-          <div class="step"><div class="step-num">03</div><div><h4>Nonprofit Support</h4><p>Support FoundationReady clients with data entry, document organization, and administrative capacity during assessments.</p></div></div>
-          <div class="step"><div class="step-num">04</div><div><h4>Platform &amp; Technology</h4><p>Help build and test the QCLS digital platform — especially if you bring technology, design, or research skills.</p></div></div>
+          <div class="step"><div class="step-num">01</div><div><h4>OurWalk™ Navigation Support</h4><p>Assist QCLS navigators in following up with individuals to confirm access, remove barriers, and document outcomes. Every follow-up a weCARES™ volunteer completes feeds the Access Confirmed metric that closes OurWalk™ cases.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div><h4>Field Intelligence Capture</h4><p>At community events, weCARES™ volunteers capture what no data system can see — photos, participant quotes, GPS-tagged observations, real-time service demand signals. Every submission feeds qOHR™ and strengthens the intelligence layer of the UnoSphere™.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div><h4>FoundationReady™ Support</h4><p>Support FoundationReady™ clients with data entry, document organization, and administrative capacity during assessments. Your hours logged count as verified in-kind support for QCLS grant reporting.</p></div></div>
+          <div class="step"><div class="step-num">04</div><div><h4>UnoSphere™ Build &amp; Technology</h4><p>Help build and test the QCLS UnoSphere™ platform — especially if you bring technology, design, or research skills. The platform is being built in public and weCARES™ volunteers are part of that build.</p></div></div>
         </div>
       </div>
       <div class="reveal">
-        <div class="sec-eyebrow" style="margin-bottom:1.25rem;display:block">Volunteer Application</div>
+        <div class="sec-eyebrow" style="margin-bottom:1.25rem;display:block">weCARES Application</div>
         <div style="background:var(--sand);border:1px solid var(--border);border-radius:4px;padding:2rem">
-          <p style="font-size:.9rem;color:var(--mid);line-height:1.75;margin-bottom:1.5rem">QCLS volunteers are vetted, trained, and matched to roles that fit their skills and availability. Background check consent required for direct-service roles. We serve Henry and Madison County — local volunteers preferred.</p>
+          <p style="font-size:.9rem;color:var(--mid);line-height:1.75;margin-bottom:1.5rem">weCARES™ volunteers are vetted, trained, and matched to roles that fit their skills and availability. Background check consent required for direct-service roles. Field Intelligence consent required before submitting photos or participant quotes. We serve Henry and Madison County — local volunteers preferred.</p>
           <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem">
             <span class="tag">Henry County</span><span class="tag">Madison County</span>
-            <span class="tag">Navigation Support</span><span class="tag">Community Outreach</span>
+            <span class="tag">OurWalk™ Support</span><span class="tag">Field Intelligence</span>
             <span class="tag">Technology</span><span class="tag">Administrative</span>
             <span class="tag">Research</span><span class="tag">Event Support</span>
           </div>
-          <a href="#contact" class="btn btn-deep">Apply to Volunteer</a>
+          <a href="#contact" class="btn btn-deep">Join weCARES™</a>
         </div>
       </div>
     </div>
@@ -1009,12 +1195,129 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
     <h2 class="sec-h2" style="color:#fff;text-align:center">The Full Ecosystem.<br/><strong>Coming 2026.</strong></h2>
     <p class="sec-sub" style="margin:0 auto 3.5rem;text-align:center;color:rgba(255,255,255,.5)">The QCLS platform will bring every portal together — live dashboards, online assessments, community provider directory, and real-time navigation — in one accountable digital ecosystem.</p>
     <div class="platform-grid reveal">
-      <div class="pf-card"><span class="pf-badge">Phase 1</span><h4>FoundationReady Portal</h4><p>Online assessment intake, document upload, scoring dashboard, and roadmap delivery.</p><span class="pf-status">Building Now</span></div>
+      <div class="pf-card"><span class="pf-badge">Phase 1</span><h4>FoundationReady™ Portal</h4><p>Online assessment intake, document upload, scoring dashboard, and roadmap delivery.</p><span class="pf-status">Building Now</span></div>
       <div class="pf-card"><span class="pf-badge">Phase 2</span><h4>Provider Directory</h4><p>Searchable, verified, always-updated directory of service providers across Henry and Madison County.</p><span class="pf-status">In Design</span></div>
       <div class="pf-card"><span class="pf-badge">Phase 3</span><h4>Navigation Dashboard</h4><p>Case management, referral tracking, access confirmation, and outcome documentation.</p><span class="pf-status">Planned</span></div>
       <div class="pf-card"><span class="pf-badge">Phase 4</span><h4>Donor Impact Portal</h4><p>Real-time visibility into funded assessments, individual impact, and community outcomes.</p><span class="pf-status">Planned</span></div>
       <div class="pf-card"><span class="pf-badge">Phase 5</span><h4>Community Data Dashboard</h4><p>Aggregate, anonymized community need data — resource gaps, access barriers, and trend reporting.</p><span class="pf-status">Planned</span></div>
       <div class="pf-card" style="border-color:rgba(232,160,32,.3)"><span class="pf-badge">Always</span><h4>Stay Updated</h4><p>The platform is being built in public. Sign up to receive updates as each phase launches.</p><a href="#contact" class="btn btn-amber" style="display:inline-block;font-size:.8rem;padding:.6rem 1.25rem;margin-top:1rem">Get Platform Updates</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ASKQCLS ══ -->
+<section class="section" id="askqcls" style="background:var(--deep);padding:6rem 4rem">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
+      <div class="reveal">
+        <span class="sec-eyebrow" style="color:var(--amber)">AskQCLS · Funder Intelligence</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3rem);font-weight:300;color:#fff;line-height:1.05;margin-bottom:.75rem;letter-spacing:-.02em"><span style="font-weight:300;display:block">What Does the Evidence Say</span><span style="font-weight:700;display:block">Before You Invest?</span></h2>
+        <div style="width:48px;height:2px;background:var(--amber);margin:1.5rem 0"></div>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:1.25rem">AskQCLS™ is the funder intelligence product of the UnoSphere™. Enter any EIN and see everything QCLS knows about that organization — not what the organization says about itself, but what the evidence shows.</p>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:1.25rem">Every funder in Henry and Madison County — community foundations, corporate giving programs, government agencies, private philanthropists — makes decisions about where to invest community capital. AskQCLS™ gives them an independent, evidence-based view of every organization in the ecosystem before that decision is made.</p>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:2rem">AskQCLS™ is also where funders can request a full FoundationReady™ assessment for any nonprofit they are considering. The assessment is conducted independently by QCLS, delivered to the funder and the organization simultaneously, and added to the UnoSphere™ intelligence record.</p>
+        <a href="#contact" class="btn btn-amber">Inquire About AskQCLS™</a>
+      </div>
+      <div class="reveal">
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:3px solid var(--amber);border-radius:4px;padding:1.5rem">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem">FoundationReady™ Scores</h4>
+            <p style="font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6">CARES domain scores, stage determination, and Evidence-Based findings for every assessed organization. Not self-reported. Independently verified.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:3px solid var(--teal);border-radius:4px;padding:1.5rem">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem">Phorsyte™ Trajectory</h4>
+            <p style="font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6">Funding chain stability ratings, governance network analysis, and trajectory projections. Where is this organization likely heading if nothing changes?</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:3px solid var(--teal);border-radius:4px;padding:1.5rem">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem">Portfolio Health View</h4>
+            <p style="font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6">For funders with multiple grantees, AskQCLS™ provides a portfolio view — compound funding risk, governance network concentration across the portfolio, and aggregate community impact.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:3px solid var(--coral);border-radius:4px;padding:1.5rem">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem">Assessment on Request</h4>
+            <p style="font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6">No FoundationReady™ score on file yet? Request one. QCLS conducts the assessment, delivers findings independently, and adds the organization to the UnoSphere™ record.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTRIBUTORS ══ -->
+<section class="section" id="contributors" data-alias="donors" style="background:var(--sand)">
+  <div class="section-inner">
+    <div class="sec-eyebrow">Contributors · Contributor Dashboard</div>
+    <h2 class="sec-h2">Your Investment — <strong>Time, Money,</strong><br/>or Both — Goes Further Here.</h2>
+    <p class="sec-sub">A Contributor gives time, money, or both. QCLS honors all forms of contribution equally — because the volunteer who spends six hours at a community event and the funder who underwrites a FoundationReady™ assessment are both building the same infrastructure. The Contributor Dashboard inside Marjy™ shows every form of impact in one verified view.</p>
+    <div class="fr-grid reveal">
+      <div class="fr-info">
+        <h3>What Your Contribution Builds</h3>
+        <p>When you fund a FoundationReady™ assessment, you are not making a grant to an organization with a hope and a prayer. You are commissioning an independent, evidence-based picture of that organization's capacity — a picture that follows the organization forward through Phorsyte™ and theShift™ and becomes part of the permanent UnoSphere™ intelligence record.</p>
+        <p>When you support OurWalk™ navigation, you are funding the human beings who walk with individuals from need to Access Confirmed. Not a referral system. A result system. Every case you fund is tracked from intake to confirmed access, and the outcome is documented in qOHR™.</p>
+        <p>When you give to QCLS operations, you are strengthening the infrastructure that makes every other investment in this community more effective. The UnoSphere™ serves every organization and every individual in Henry and Madison County. Its capacity to do that is determined by the resources invested in it.</p>
+        <div style="margin-top:1.5rem;padding:1.25rem;background:var(--nw);border-radius:4px;border-left:3px solid var(--deep)">
+          <p style="font-size:.88rem;color:var(--mid);line-height:1.7"><strong style="color:var(--void)">Contributor Dashboard coming in Marjy™ 2026.</strong> Your giving history, volunteer hours, fund designations, tax receipts, in-kind contribution value, and combined community impact — all in one verified, real-time view inside the UnoSphere™ portal.</p>
+        </div>
+        <a href="#contributors" class="btn btn-deep" style="margin-top:1.5rem">Contribute to QCLS</a>
+      </div>
+      <div class="reveal">
+        <div style="display:flex;flex-direction:column;gap:1.25rem">
+          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-top:3px solid var(--deep)">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Fund a FoundationReady™ Assessment</h4>
+            <p style="font-size:.85rem;color:var(--mid);line-height:1.6">Invest directly in a local nonprofit's capacity. Your contribution produces a CARES score, a Phorsyte™ foresight map, and a theShift™ action plan that follows the organization forward.</p>
+          </div>
+          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-top:3px solid var(--teal)">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Support OurWalk™ Navigation</h4>
+            <p style="font-size:.85rem;color:var(--mid);line-height:1.6">Fund human navigators who walk individuals from need to Access Confirmed. Not a referral. A confirmed outcome. Every case tracked, every result documented.</p>
+          </div>
+          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-top:3px solid var(--amber)">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Volunteer Through weCARES™</h4>
+            <p style="font-size:.85rem;color:var(--mid);line-height:1.6">Your time is a contribution. weCARES™ volunteers capture field intelligence, support navigation, and build the UnoSphere™ in real time. Every hour logged is tracked and counted.</p>
+          </div>
+          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-top:3px solid var(--coral)">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Invest in QCLS Operations</h4>
+            <p style="font-size:.85rem;color:var(--mid);line-height:1.6">Strengthen the UnoSphere™ infrastructure that makes every other investment in this community more effective. The platform, the intelligence, the navigation system — all of it runs on operational capacity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QOHR ══ -->
+<section class="section" id="qohr" style="background:var(--void)">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+      <div class="reveal">
+        <span class="sec-eyebrow" style="color:var(--amber)">qOHR · Intelligence Core</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.2vw,3.4rem);font-weight:300;color:#fff;line-height:1.05;margin-bottom:.75rem;letter-spacing:-.02em"><span style="font-weight:300;display:block">QuestCare</span><span style="font-weight:700;display:block">Organizational Human Reality.</span></h2>
+        <div style="width:48px;height:2px;background:var(--amber);margin:1.5rem 0"></div>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:1.25rem">qOHR™ is the intelligence layer beneath the entire UnoSphere™. It is not a portal any constituent accesses directly. It is the system that connects every data point across every portal into patterns no individual organization can see alone.</p>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:1.25rem">Every FoundationReady™ assessment completed, every OurWalk™ case closed as Access Confirmed, every weCARES™ field observation submitted, every Phorsyte™ funding chain analyzed, every AskQCLS™ inquiry answered — all of it flows into qOHR™ and becomes pattern intelligence.</p>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:2rem">The community loop that qOHR™ powers: Community Reality → Data → qOHR™ → Intelligence → theShift™ → Community Change → Community Reality. The loop never stops. The system never stops learning. Every cycle makes the intelligence more precise and the community outcomes more measurable.</p>
+        <div style="padding:1.25rem;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.25);border-radius:4px">
+          <p style="font-size:.85rem;color:rgba(240,230,208,.65);line-height:1.7"><strong style="color:var(--amber)">qOHR™ is QCLS staff only.</strong> The patterns and correlations qOHR™ generates are used to improve services, inform funder conversations, and strengthen the community ecosystem — never disclosed to individual organizations or shared in ways that identify specific constituents.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--teal);border-radius:4px;padding:1.5rem">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem">Compound Funding Risk Detection</h4>
+            <p style="font-size:.82rem;color:rgba(255,255,255,.48);line-height:1.6">When multiple nonprofits in the ecosystem share a fragile funder, qOHR™ identifies the compound risk before it becomes a community-wide crisis.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--amber);border-radius:4px;padding:1.5rem">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem">Service Desert Identification</h4>
+            <p style="font-size:.82rem;color:rgba(255,255,255,.48);line-height:1.6">Aggregate OurWalk™ navigation data reveals where service demand is unmet — geographic gaps, service category gaps, population gaps that no individual provider can see from their position.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--teal);border-radius:4px;padding:1.5rem">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem">Governance Concentration Patterns</h4>
+            <p style="font-size:.82rem;color:rgba(255,255,255,.48);line-height:1.6">Across all Phorsyte™ assessments, qOHR™ maps governance concentration in the community ecosystem — where power is concentrated, where independence is at risk, where the community is vulnerable.</p>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-top:2px solid var(--coral);border-radius:4px;padding:1.5rem">
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem">Community Demand Trends</h4>
+            <p style="font-size:.82rem;color:rgba(255,255,255,.48);line-height:1.6">Field intelligence from weCARES™ combined with navigation outcomes from OurWalk™ generates a real-time picture of community need that no survey, no 990, and no annual report can replicate.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1117,19 +1420,56 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <p>QCLS received its 501(c)(3) determination on <strong>January 24, 2025</strong>. We are incorporated in Indiana, operating with a documented strategic plan, an independent governing board, and a clear three-pillar mission.</p>
         <p>We are not consultants. We are a <strong>community systems organization</strong> — building the accountability infrastructure that enables nonprofits to earn trust, access funding, and deliver measurable outcomes.</p>
         <div class="facts">
-          <div class="fact"><span class="fact-lbl">Legal Name</span><div class="fact-val">QuestCare LifeStyle Solutions, Inc.</div></div>
-          <div class="fact"><span class="fact-lbl">EIN</span><div class="fact-val">33-3036616</div></div>
-          <div class="fact"><span class="fact-lbl">501(c)(3) Since</span><div class="fact-val">January 24, 2025</div></div>
-          <div class="fact"><span class="fact-lbl">Service Area</span><div class="fact-val">Henry &amp; Madison County, IN</div></div>
-          <div class="fact"><span class="fact-lbl">Executive Director</span><div class="fact-val">MarQuest Higgins</div></div>
-          <div class="fact"><span class="fact-lbl">Mailing Address</span><div class="fact-val">P.O. Box 236, Spiceland, IN 47385</div></div>
+          <div class="fact" style="grid-column:1/-1;border-left:3px solid var(--amber);padding-left:1rem;border-bottom:none;padding-bottom:0">
+            <p style="font-size:.88rem;color:var(--mid);line-height:1.8"><strong style="color:var(--void)">Why infrastructure instead of direct service.</strong> Henry and Madison County already have providers. What they do not have is a system that connects them — that assesses nonprofit capacity honestly, maps funding fragility before it becomes a crisis, navigates individuals to confirmed access rather than a referral, and generates the intelligence that makes every existing service more effective. QCLS was built to be that system.</p>
+          </div>
+          <div class="fact" style="grid-column:1/-1;border-left:3px solid var(--teal);padding-left:1rem;border-bottom:none;padding-bottom:0;margin-top:1.25rem">
+            <p style="font-size:.88rem;color:var(--mid);line-height:1.8"><strong style="color:var(--void)">What nearly two decades actually means.</strong> MarQuest Higgins built and operated Medicaid-funded disability service systems from the inside — writing the compliance documentation, building the financial controls, sitting in the board meetings, measuring the outcomes, and watching what happened when the infrastructure was not there. QCLS is not built on theory. It is built on the specific failures and successes of organizations that served this community before QCLS existed.</p>
+          </div>
+          <div class="fact" style="grid-column:1/-1;border-left:3px solid var(--deep);padding-left:1rem;border-bottom:none;padding-bottom:0;margin-top:1.25rem">
+            <p style="font-size:.88rem;color:var(--mid);line-height:1.8"><strong style="color:var(--void)">The gap no one else was filling.</strong> Community foundations in Henry and Madison County hold more than $88 million in combined assets. The nonprofits they fund — many of them — operate without independent audits, without logic models, without board conflict of interest policies, without reserves. The funders know this. The nonprofits know this. No one had built the infrastructure to close the gap. QCLS did.</p>
+          </div>
         </div>
       </div>
       <div class="pillars reveal">
         <h3>Three Strategic Pillars</h3>
-        <div class="pillar"><span class="pillar-n">Pillar 01</span><h4>Community Access Navigation</h4><p>Connecting individuals and families to verified services with follow-up until access is confirmed — not just referred.</p></div>
-        <div class="pillar"><span class="pillar-n">Pillar 02</span><h4>Organizational Support &amp; Compliance</h4><p>FoundationReady assessments, capacity building, and governance coaching for nonprofits seeking sustainable infrastructure.</p></div>
-        <div class="pillar"><span class="pillar-n">Pillar 03</span><h4>Standards, Accountability &amp; System Development</h4><p>Building the accountability infrastructure across the community ecosystem — standards that hold organizations to outcomes, not just activities.</p></div>
+
+        <div class="pillar">
+          <span class="pillar-n">Pillar 01</span>
+          <h4>Community Access Navigation</h4>
+          <p>Most navigation systems hand people a list of phone numbers and call it a referral. QCLS does not. OurWalk™ assigns a human navigator who stays with the case from intake to Access Confirmed — the only metric that closes a case. If an individual encounters a barrier, the navigator removes it. If a provider cannot deliver, the navigator finds one who can. The case is never closed until the person actually receives the service they need.</p>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.38);margin-top:.75rem;line-height:1.6">Access Confirmed is not a referral milestone. It is proof that the system worked.</p>
+          <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
+            <span style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#E8A020;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.25);padding:.3rem .7rem;border-radius:3px">OurWalk™</span>
+            <span style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#1D9E75;background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.2);padding:.3rem .7rem;border-radius:3px">qPartner™</span>
+            <span style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#1D9E75;background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.2);padding:.3rem .7rem;border-radius:3px">weCARES™</span>
+          </div>
+        </div>
+
+        <div class="pillar">
+          <span class="pillar-n">Pillar 02</span>
+          <h4>Nonprofit Capacity &amp; Intelligence</h4>
+          <p>Nonprofits in Henry and Madison County serve the most vulnerable populations in the region — and most of them operate without the governance infrastructure, financial transparency, or strategic intelligence funders increasingly require. QCLS closes that gap through three connected portals. FoundationReady™ delivers an honest, evidence-based picture of where an organization stands today. Phorsyte™ maps where it is likely heading — funding chain stability, governance risks, ecosystem opportunities. theShift™ converts that intelligence into a 90-day action plan calibrated to what the organization can actually execute, not what it aspires to.</p>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.38);margin-top:.75rem;line-height:1.6">The three portals are designed to be used together. Each one feeds the next. The result is the clearest picture of organizational health available anywhere in this region.</p>
+          <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
+            <span style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#E8A020;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.25);padding:.3rem .7rem;border-radius:3px">FoundationReady™</span>
+            <span style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#E8A020;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.25);padding:.3rem .7rem;border-radius:3px">Phorsyte™</span>
+            <span style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#E8A020;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.25);padding:.3rem .7rem;border-radius:3px">theShift™</span>
+            <span style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#1D9E75;background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.2);padding:.3rem .7rem;border-radius:3px">AskQCLS™</span>
+          </div>
+        </div>
+
+        <div class="pillar" style="border-bottom:none">
+          <span class="pillar-n">Pillar 03</span>
+          <h4>Ecosystem Intelligence &amp; Accountability</h4>
+          <p>The most important intelligence about a community ecosystem cannot be seen from inside any single organization. It only becomes visible when data from every organization — assessments, navigation outcomes, field observations, funder relationships, governance structures — is connected into a single picture. qOHR™, the QuestCare Organizational Human Reality layer, is where that picture is built. It identifies compound funding fragility before it becomes a community-wide crisis. It maps service deserts no individual provider can see from their position. It surfaces governance concentration patterns that put the entire ecosystem at risk. It tracks community demand trends in real time through weCARES™ field intelligence.</p>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.38);margin-top:.75rem;line-height:1.6">qOHR™ is never marketed to constituents. Its intelligence is used to improve every service QCLS delivers — and to give funders and community leaders a level of ecosystem visibility that has never existed in Henry and Madison County before.</p>
+          <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
+            <span style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#E8644A;background:rgba(232,100,74,.1);border:1px solid rgba(232,100,74,.25);padding:.3rem .7rem;border-radius:3px">qOHR™</span>
+            <span style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#1D9E75;background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.2);padding:.3rem .7rem;border-radius:3px">Marjy™</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1142,9 +1482,9 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
     <div class="reveal">
       <span class="sec-eyebrow" style="color:var(--amber)">Get In Touch</span>
       <h2 class="contact-h2">Ready to Start<br/><strong>the Conversation?</strong></h2>
-      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:2.5rem">Whether you're a nonprofit seeking FoundationReady, an individual looking for navigation support, a provider ready to join the network, or a donor — we want to hear from you. We respond within one business day.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:2.5rem">Whether you're a nonprofit seeking FoundationReady™, an individual looking for navigation support, a provider ready to join the network, or a donor — we want to hear from you. We respond within one business day.</p>
       <div class="ci"><div class="ci-icon">✉</div><span><a href="mailto:info@quest4care.org">info@quest4care.org</a> <span style="color:rgba(255,255,255,.3);font-size:.82rem">— General Inquiries</span></span></div>
-      <div class="ci"><div class="ci-icon">☎</div><span><a href="tel:7658102000">765-810-2000</a></span></div>
+      <div class="ci"><div class="ci-icon">☎</div><span><a href="tel:5742273669">574-227-3669</a></span></div>
       <div class="ci"><div class="ci-icon">◎</div><span>P.O. Box 236, Spiceland, IN 47385<br/>Henry &amp; Madison County, Indiana</span></div>
       <div class="ci"><div class="ci-icon">⊕</div><span>quest4care.org</span></div>
       <p style="font-size:.75rem;color:rgba(255,255,255,.2);margin-top:2rem;line-height:1.6">
@@ -1163,7 +1503,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           <label>I am reaching out as a... *</label>
           <select name="type" required>
             <option value="">Select one</option>
-            <option>Nonprofit seeking FoundationReady assessment</option>
+            <option>Nonprofit seeking FoundationReady™ assessment</option>
             <option>Individual seeking navigation support</option>
             <option>Service provider joining the network</option>
             <option>Donor or funder</option>
@@ -1188,7 +1528,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
       <!-- Tagline: Oswald, NOT Grand Hotel -->
       <span class="foot-tagline">We <strong>CARE</strong> for Every Life<br/>&amp; <strong>EMPOWER</strong> Every Ability</span>
       <div class="foot-ci"><a href="mailto:info@quest4care.org">info@quest4care.org</a> — General</div>
-      <div class="foot-ci"><a href="tel:7658102000">765-810-2000</a></div>
+      <div class="foot-ci"><a href="tel:5742273669">574-227-3669</a> &nbsp;·&nbsp; 574-CARE-NOW</div>
       <div class="foot-ci">P.O. Box 236, Spiceland, IN 47385</div>
       <div class="foot-ci">Henry &amp; Madison County, Indiana</div>
     </div>
@@ -1207,7 +1547,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
       <ul class="foot-links">
         <li><a href="#nonprofits">Nonprofits</a></li>
         <li><a href="#providers">Service Providers</a></li>
-        <li><a href="#donors">Donors &amp; Funders</a></li>
+        <li><a href="#contributors">Contributors &amp; Funders</a></li>
         <li><a href="#individuals">Individuals &amp; Families</a></li>
         <li><a href="#volunteers">Volunteers</a></li>
         <li><a href="#why">Why Here</a></li>
@@ -1219,7 +1559,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <li><a href="#about">About QCLS</a></li>
         <li><a href="#transparency">Transparency &amp; 990</a></li>
         <li><a href="#contact">Get In Touch</a></li>
-        <li><a href="#donors">Donate</a></li>
+        <li><a href="#contributors">Contribute</a></li>
         <li><a href="https://app.candid.org/profile/16181088/questcare-lifestyle-solutions-inc-33-3036616/?pkId=e0a8e154-3152-4a76-a989-9de902af2e60" target="_blank">Candid Profile ↗</a></li>
       </ul>
     </div>
@@ -1247,223 +1587,153 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
 <!-- ══ ECOSYSTEM MODAL ══ -->
 <div class="eco-modal-backdrop" id="ecoModal" role="dialog" aria-modal="true">
   <div class="eco-modal">
-    <button class="eco-modal-x" id="ecoModalX" aria-label="Close">✕</button>
+    <button class="eco-modal-x" id="ecoModalX" aria-label="Close">&#x2715;</button>
     <span class="eco-modal-node" id="modalNode"></span>
     <span class="eco-modal-title" id="modalTitle"></span>
     <p class="eco-modal-body" id="modalBody"></p>
     <div class="eco-modal-actions">
-      <a class="eco-modal-learn" id="modalLearn" href="#">Learn More ↓</a>
-      <button class="eco-modal-close" id="modalClose">← Back to Ecosystem</button>
+      <a class="eco-modal-learn" id="modalLearn" href="#">Learn More &#x2192;</a>
+      <button class="eco-modal-close" id="modalClose">&#x2190; Back to UnoSphere&#x2122;</button>
     </div>
   </div>
 </div>
 
-<!-- ══ HOVER TOOLTIP (small, follows cursor) ══ -->
-<div class="eco-tooltip" id="ecoTooltip">
-  <span class="eco-tooltip-label" id="ttLabel"></span>
-  <span class="eco-tooltip-title" id="ttTitle"></span>
-  <span class="eco-tooltip-hint">Click to learn more</span>
-</div>
-
-
 <script>
-// ═══════════════════════════════════════
-// ECOSYSTEM INTERACTION
-// Hover → small tooltip near cursor
-// Click → modal overlay with summary + actions
-// Close → return to ecosystem (no page disruption)
-// ═══════════════════════════════════════
-
-const nodeData = {
-  h1: {
-    label: 'Nonprofits',
+const ecoNodes = {
+  'en-qo': {
+    label: 'Intelligence Core',
+    title: 'qOHR™ — QuestCare Organizational Human Reality',
+    body: 'qOHR™ is the intelligence layer beneath the entire UnoSphere™. Every assessment completed, every navigation case closed, every field observation submitted, every funder inquiry answered — all of it flows into qOHR™ and becomes pattern intelligence no individual organization can see alone. Community Reality → Data → qOHR™ → Intelligence → theShift™ → Community Change → Community Reality. The loop never stops. The system never stops learning.',
+    target: '#qohr'
+  },
+  'en-fr': {
+    label: 'Assessment Portal',
     title: 'FoundationReady™',
-    body: 'A structured capacity assessment built on the CARES Framework across 5 domains — Compliance & Governance, Accountability & Finance, Results & Outcomes, Engagement & Presence, and Sustainability. Every finding is scored 1–5 and delivered with written, evidence-based justification tied to specific organizational evidence. You leave with a clear picture of where you stand and a prioritized roadmap for improvement.',
-    target: '#nonprofits',
-    sv: 'n1v'
+    body: 'FoundationReady™ is a structured capacity assessment built on the QCLS CARES Framework — five domains, evidence-based scoring, and written findings that tell your organization exactly where it stands and why. Every finding is labeled Evidence-Based, Probable, or Speculative so your team knows what is confirmed and what needs attention. You leave with a CARES score, a stage determination from Stage 1 Emerging to Stage 4 Grant Ready, and a prioritized roadmap — the foundation funders are increasingly required to see before they invest.',
+    target: '#foundationready'
   },
-  h2: {
-    label: 'Service Providers',
-    title: 'Provider Network',
-    body: 'Join a vetted network built on verified relationships — not just a directory listing. QCLS navigators make referrals to providers they know are active, accepting, and appropriate. Every referral includes follow-up to confirm access was achieved. Providers in the network receive documented referrals and contribute to a measurable community accountability system.',
-    target: '#providers',
-    sv: 'n2v'
+  'en-ph': {
+    label: 'Foresight Portal',
+    title: 'Phorsyte™',
+    body: 'Phorsyte™ maps the external environment your organization is navigating. It traces your funding chain three layers deep — your funders, their funders, and their funders’ funders — and produces a STABLE, WATCH, FRAGILE, or UNKNOWN rating for each relationship. It maps governance networks, board overlaps, funder-board interlocks, and vendor conflicts. The result is a Phorsyte™ Ecosystem Opportunity Map showing where your organization is likely heading based on evidence — not aspiration. See tomorrow. Act today.',
+    target: '#phorsyte'
   },
-  h3: {
-    label: 'Donors & Funders',
-    title: 'Give with Impact',
-    body: 'Your contribution to QCLS or a FoundationReady assessment for a local nonprofit comes with verified outcomes — not just activity reports. You can fund an assessment, support community navigation operations, or give to QCLS general operations. Every dollar is tracked, reported, and connected to measurable community change in Henry and Madison County.',
-    target: '#donors',
-    sv: 'n3v'
+  'en-ts': {
+    label: 'Action Portal',
+    title: 'theShift™',
+    body: 'theShift™ is Strategic Human Impact Focused Transformation — the action portal that converts Phorsyte™ foresight and FoundationReady™ assessment findings into a prioritized 90-day action plan calibrated to your actual organizational capacity, not your aspirational capacity. theShift™ uses an Action Matrix: Do First, Plan and Execute, Delegate, Eliminate. Every recommendation is connected to a CARES domain finding and a Phorsyte™ intelligence signal. The plan moves when the organization is ready to move — not before.',
+    target: '#theshift'
   },
-  h4: {
-    label: 'Individuals & Families',
-    title: 'Find Help Near You',
-    body: 'QCLS is not a 211 list. We are human navigators who make contact, verify services are available and accepting, coordinate the connection, and follow up until access is confirmed — not just referred. We navigate healthcare, housing, disability services, behavioral health, transportation, food access, benefits enrollment, and more across Henry and Madison County.',
-    target: '#individuals',
-    sv: 'n4v'
+  'en-qp': {
+    label: 'Provider Portal',
+    title: 'qPartner™',
+    body: 'qPartner™ is the QCLS verified service provider network. Every provider in qPartner™ is vetted, active, and accountable to real outcomes — not just listed in a directory. When OurWalk™ walks an individual toward a service, qPartner™ providers receive the referral directly, confirm capacity, manage incoming connections, and submit Access Confirmed when the individual arrives and receives the service. qPartner™ providers are partners in the community infrastructure — every confirmation they submit feeds qOHR™ and strengthens the intelligence the whole ecosystem depends on.',
+    target: '#providers'
   },
-  h5: {
-    label: 'Platform',
-    title: 'Coming 2026',
-    body: 'The full QCLS digital platform will bring every portal together — online FoundationReady assessments, a verified provider directory, case management and referral tracking, a donor impact portal with real-time outcome data, and a community data dashboard for funders and planners. The platform is being built in public. Sign up for updates as each phase launches.',
-    target: '#platform',
-    sv: 'n5v'
+  'en-ow': {
+    label: 'Navigation Portal',
+    title: 'OurWalk™',
+    body: 'OurWalk™ is not a referral list. We do not send people alone. We walk with them — from intake through verified connection to Access Confirmed. A navigator stays with every case until the individual actually receives the service they need, not until a phone number was provided. OurWalk™ navigates healthcare, housing, disability services, behavioral health, transportation, food access, benefits enrollment, Medicaid waivers, and more across Henry and Madison County. Every case closed as Access Confirmed feeds qOHR™ with the community demand data that makes the whole system smarter.',
+    target: '#individuals'
   },
-  h6: {
-    label: 'Volunteers',
-    title: 'Serve the Community',
-    body: 'Volunteers are the connective tissue of the QCLS ecosystem — supporting navigation, community outreach, and organizational capacity. QCLS volunteers bridge the gap between individuals who need help and the providers and nonprofits that serve them. Apply to volunteer and become part of the accountability infrastructure that makes access real in Henry and Madison County.',
-    target: '#volunteers',
-    sv: 'n6v'
+  'en-wc': {
+    label: 'Volunteer Portal',
+    title: 'weCARES™',
+    body: 'weCARES™ — We Chose to Show Up. Volunteers are the human presence of the UnoSphere™ in the community. weCARES™ volunteers check in to community events, capture field intelligence — photos, participant quotes, GPS-tagged observations, service demand signals — and check out. Every submission feeds qOHR™ with the most human data in the ecosystem: what people are asking for, where they are struggling, what services are not reaching them. weCARES™ hours are tracked, verified, and counted as in-kind contribution toward QCLS grant reporting.',
+    target: '#volunteers'
   },
-  hhub: {
-    label: 'The Catalyst',
-    title: 'QuestCare LifeStyle Solutions',
-    body: 'QCLS sits at the center of the community ecosystem — enabling every connection without replacing any of them. Founded by MarQuest Higgins after nearly two decades of operational leadership in Medicaid-funded disability services, nonprofit administration, and community support operations. QCLS received its 501(c)(3) determination on January 24, 2025 and generated $78,500 in gross receipts in its first operational year — entirely from contributions, with $0 in executive compensation.',
-    target: '#about',
-    sv: 'nhub'
-  }
+  'en-aq': {
+    label: 'Funder Intelligence',
+    title: 'AskQCLS™',
+    body: 'AskQCLS™ is the funder intelligence product. Enter any EIN and see everything QCLS knows — FoundationReady™ scores, CARES domain findings, Phorsyte™ funding chain trajectory, governance network analysis, and overall organizational health signals. AskQCLS™ tells funders what the evidence says before they invest — not what an organization says about itself in a grant application. Request a full FoundationReady™ assessment directly from the portal. Every query feeds qOHR™ with funder intelligence that strengthens the community funding ecosystem.',
+    target: '#askqcls'
+  },
+  'en-co': {
+    label: 'Contributors',
+    title: 'Contributor Dashboard',
+    body: 'A Contributor gives time, money, or both — and the Contributor Dashboard inside Marjy™ honors all forms equally. See your complete giving history, fund designations, tax receipts, volunteer hours logged through weCARES™, in-kind contribution value, and your combined community impact in one verified view. Contributors who fund FoundationReady™ assessments see the outcomes. Contributors who volunteer through weCARES™ see the field intelligence their hours generated. Every contribution — time or money — is connected to measurable change in Henry and Madison County.',
+    target: '#contributors'
+  },
+  'en-mj': {
+    label: 'The Human Interface',
+    title: 'Marjy™',
+    body: 'Marjy™ is the authenticated access layer for the entire UnoSphere™ — one secure login that opens every portal you belong to. Individuals check their OurWalk™ case status and Access Confirmed notifications. Nonprofit leaders review their FoundationReady™ score and Phorsyte™ ecosystem map. Volunteers check in to weCARES™ events and submit field intelligence. Contributors see their giving and volunteer impact together. Providers manage qPartner™ referrals and confirm access. One login, multiple roles, one continuous relationship with the community. Named for the founder’s mother, Marjorie. Coming 2026.',
+    target: '#marjy'
+  },
 };
 
-const tooltip  = document.getElementById('ecoTooltip');
-const ttLabel  = document.getElementById('ttLabel');
-const ttTitle  = document.getElementById('ttTitle');
-const modal    = document.getElementById('ecoModal');
+const ecoTooltip = document.getElementById('ecoTooltip');
+const ttLabel    = document.getElementById('ttLabel');
+const ttTitle    = document.getElementById('ttTitle');
+const ecoModal   = document.getElementById('ecoModal');
 const modalNode  = document.getElementById('modalNode');
 const modalTitle = document.getElementById('modalTitle');
 const modalBody  = document.getElementById('modalBody');
 const modalLearn = document.getElementById('modalLearn');
 const modalClose = document.getElementById('modalClose');
 const modalX     = document.getElementById('ecoModalX');
+let currentTarget = null;
 
-let tooltipTimer = null;
-let touched = false;
-
-// ── Tooltip ──
-function showTooltip(label, title, x, y){
+function showTip(label, title, x, y){
   ttLabel.textContent = label;
   ttTitle.textContent = title;
-  positionTooltip(x, y);
-  tooltip.classList.add('show');
-}
-function positionTooltip(x, y){
   const tw = 210;
   const left = (x + 16 + tw > window.innerWidth) ? x - tw - 10 : x + 16;
-  const top  = Math.min(y - 20, window.innerHeight - 140);
-  tooltip.style.left = left + 'px';
-  tooltip.style.top  = top  + 'px';
+  ecoTooltip.style.left = left + 'px';
+  ecoTooltip.style.top  = Math.min(y - 20, window.innerHeight - 140) + 'px';
+  ecoTooltip.classList.add('show');
 }
-function hideTooltip(){
-  tooltip.classList.remove('show');
-}
+function hideTip(){ ecoTooltip.classList.remove('show'); }
 
-// ── Modal ──
-function openModal(nodeId){
-  const d = nodeData[nodeId];
-  if(!d) return;
-  modalNode.textContent  = d.label;
-  modalTitle.textContent = d.title;
-  modalBody.textContent  = d.body;
+function openModal(id){
+  const d = ecoNodes[id]; if(!d) return;
+  modalNode.innerHTML  = d.label;
+  modalTitle.innerHTML = d.title;
+  modalBody.innerHTML  = d.body;
+  currentTarget = d.target;
   modalLearn.setAttribute('href', d.target);
-  modalLearn.onclick = (e)=>{
-    e.preventDefault();
-    closeModal();
-    setTimeout(()=>{
-      const el = document.querySelector(d.target);
-      if(el) el.scrollIntoView({behavior:'smooth'});
-    }, 280);
-  };
-  modal.classList.add('open');
+  ecoModal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeModal(){
-  modal.classList.remove('open');
+  ecoModal.classList.remove('open');
   document.body.style.overflow = '';
 }
 
-modalClose.addEventListener('click', closeModal);
-modalX.addEventListener('click', closeModal);
-modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+Object.keys(ecoNodes).forEach(id => {
+  const el = document.getElementById(id);
+  if(!el) return;
+  const d = ecoNodes[id];
 
-// ── Node interactions ──
-let guidanceHidden = false;
-
-Object.keys(nodeData).forEach(nodeId => {
-  const hEl = document.getElementById(nodeId);
-  const vEl = document.getElementById(nodeData[nodeId].sv);
-  if(!hEl) return;
-
-  hEl.addEventListener('mouseenter', e=>{
-    if(!guidanceHidden){
-      guidanceHidden = true;
-      const ring = document.getElementById('gRing');
-      if(ring){ring.style.transition='opacity .6s';ring.style.opacity='0';setTimeout(()=>{ring.style.display='none'},700);}
-    }
-    if(tooltipTimer){clearTimeout(tooltipTimer);tooltipTimer=null;}
-    const rect = e.target.getBoundingClientRect();
-    showTooltip(nodeData[nodeId].label, nodeData[nodeId].title, rect.right, rect.top + rect.height/2);
-    if(vEl) vEl.style.filter='brightness(1.25) drop-shadow(0 0 12px rgba(232,160,32,.5))';
+  el.addEventListener('mouseenter', e => {
+    const r = el.getBoundingClientRect();
+    showTip(d.label, d.title, r.right, r.top + r.height/2);
   });
-
-  hEl.addEventListener('mousemove', e=>{
-    positionTooltip(e.clientX, e.clientY);
+  el.addEventListener('mousemove', e => {
+    const tw = 210;
+    const left = (e.clientX + 16 + tw > window.innerWidth) ? e.clientX - tw - 10 : e.clientX + 16;
+    ecoTooltip.style.left = left + 'px';
+    ecoTooltip.style.top  = Math.min(e.clientY - 20, window.innerHeight - 140) + 'px';
   });
-
-  hEl.addEventListener('mouseleave', ()=>{
-    tooltipTimer = setTimeout(hideTooltip, 300);
-    if(vEl) vEl.style.filter='';
-  });
-
-  hEl.addEventListener('click', ()=>{
-    hideTooltip();
-    openModal(nodeId);
-  });
-
-  hEl.addEventListener('touchstart', e=>{
-    e.preventDefault();
-    hideTooltip();
-    openModal(nodeId);
-  },{passive:false});
+  el.addEventListener('mouseleave', hideTip);
+  el.addEventListener('click', () => { hideTip(); openModal(id); });
+  el.addEventListener('touchstart', e => { e.preventDefault(); hideTip(); openModal(id); }, {passive:false});
 });
 
-// ═══════════════════════════════════════
-// CONTACT FORM
-// Currently: mailto fallback (opens email client)
-// Future: POST to Make.com webhook
-// To upgrade: change form action to Make webhook URL
-// and change method to "post", add hidden field for source
-// ═══════════════════════════════════════
-const form = document.getElementById('contactForm');
-if(form){
-  form.addEventListener('submit',function(e){
-    // Currently using mailto — let it submit
-    // When Make webhook is ready, uncomment below:
-    /*
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    const data = new FormData(form);
-    fetch('https://hook.make.com/YOUR_WEBHOOK_URL', {
-      method:'POST',
-      body: JSON.stringify(Object.fromEntries(data)),
-      headers:{'Content-Type':'application/json'}
-    }).then(()=>{
-      btn.textContent = 'Message Sent ✓';
-      btn.style.background = '#0A4A3A';
-      btn.disabled = true;
-      form.reset();
-    }).catch(()=>{
-      btn.textContent = 'Error — Try Again';
-      btn.style.background = '#E8644A';
-    });
-    */
-  });
-}
+modalClose.addEventListener('click', closeModal);
+modalX.addEventListener('click', closeModal);
+ecoModal.addEventListener('click', e => { if(e.target === ecoModal) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
-// ═══════════════════════════════════════
-// SCROLL REVEAL
-// ═══════════════════════════════════════
+modalLearn.addEventListener('click', e => {
+  e.preventDefault();
+  closeModal();
+  setTimeout(() => {
+    const el = document.querySelector(currentTarget);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }, 280);
+});
+
 if('IntersectionObserver' in window){
   const obs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
@@ -1471,9 +1741,6 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 }
 
-// ═══════════════════════════════════════
-// SMOOTH SCROLL for nav links
-// ═══════════════════════════════════════
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const href = a.getAttribute('href');
