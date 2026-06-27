@@ -1501,7 +1501,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
     <div class="contact-form reveal">
       <h3>Tell Us About Your Needs</h3>
       <p>We'll respond within one business day.</p>
-      <form id="contactForm" action="mailto:info@quest4care.org" method="post" enctype="text/plain">
+      <form id="contactForm" novalidate>
         <div class="fg"><label>Your Name *</label><input type="text" name="name" placeholder="Full name" required/></div>
         <div class="fg"><label>Email Address *</label><input type="email" name="email" placeholder="your@email.com" required/></div>
         <div class="fg"><label>Organization</label><input type="text" name="organization" placeholder="Organization name (if applicable)"/></div>
@@ -1520,6 +1520,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         </div>
         <div class="fg"><label>Message</label><textarea name="message" rows="4" placeholder="Tell us more about your needs..."></textarea></div>
         <button type="submit" class="form-btn" id="submitBtn">Send Message →</button>
+        <p id="formStatus" style="display:none;margin-top:1rem;font-size:.9rem;"></p>
         <p class="form-note">Your information is used only to respond to your inquiry. We do not sell or share contact data.</p>
       </form>
     </div>
@@ -1758,5 +1759,48 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 </script>
+
+<script>
+// QCLS Contact Form → Make.com → Neon | Scenario A | June 27, 2026
+(function(){
+  const WEBHOOK = 'https://hook.us2.make.com/npm3u8f46xjxrabxxzxkr1ma6yrsa3pc';
+  document.getElementById('contactForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn    = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+    const form   = e.target;
+    const name   = form.querySelector('[name="name"]').value.trim();
+    const email  = form.querySelector('[name="email"]').value.trim();
+    const type   = form.querySelector('[name="type"]').value;
+    if(!name || !email || !type){
+      status.style.display='block'; status.style.color='#E8644A';
+      status.textContent='Please complete all required fields.'; return;
+    }
+    btn.disabled=true; btn.textContent='Sending...'; status.style.display='none';
+    const payload={
+      name, email,
+      organization: form.querySelector('[name="organization"]').value.trim(),
+      phone:        form.querySelector('[name="phone"]').value.trim(),
+      type,
+      message:      form.querySelector('[name="message"]').value.trim(),
+      source:       'quest4care.org contact form',
+      submitted_at: new Date().toISOString()
+    };
+    try{
+      const res = await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      if(res.ok){
+        form.reset(); btn.textContent='Message Sent ✓'; btn.style.background='#1D9E75';
+        status.style.display='block'; status.style.color='#1D9E75';
+        status.textContent='Thank you. We will respond within one business day.';
+      } else { throw new Error(res.status); }
+    } catch(err){
+      btn.disabled=false; btn.textContent='Send Message →';
+      status.style.display='block'; status.style.color='#E8644A';
+      status.textContent='Something went wrong. Please email us directly at info@quest4care.org.';
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
