@@ -1425,8 +1425,8 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
                 return;
               }
             }
-            const recurrence = donFreq === 'monthly' ? 'MONTHLY' : 'ONETIME';
-            const url = `https://quest4care.app.neoncrm.com/forms/donate?amount=${amount}&recurrenceType=${recurrence}`;
+            const recurrence = donFreq === 'monthly' ? 'true' : 'false';
+            const url = `https://quest4care.app.neoncrm.com/forms/donate?donationAmount=${amount}&recurring=${recurrence}`;
             window.open(url, '_blank');
           };
 
