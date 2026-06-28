@@ -1267,24 +1267,173 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <a href="https://quest4care.app.neoncrm.com/forms/donate" target="_blank" rel="noopener" class="btn btn-deep" style="margin-top:1.5rem">Contribute to QCLS</a>
       </div>
       <div class="reveal">
-        <div style="display:flex;flex-direction:column;gap:1.25rem">
-          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-top:3px solid var(--deep)">
-            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Fund a FoundationReady™ Assessment</h4>
-            <p style="font-size:.85rem;color:var(--mid);line-height:1.6">Invest directly in a local nonprofit's capacity. Your contribution produces a CARES score, a Phorsyte™ foresight map, and a theShift™ action plan that follows the organization forward.</p>
+        <!-- CUSTOM DONATION EXPERIENCE -->
+        <div id="donationWidget" style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--amber);border-radius:4px;padding:1.75rem">
+
+          <!-- Eyebrow -->
+          <div style="font-family:'Oswald',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:.4rem;margin-bottom:.6rem">
+            <span style="display:inline-block;width:20px;height:1px;background:var(--amber)"></span>
+            Contribute · Make an impact
           </div>
-          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-top:3px solid var(--teal)">
-            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Support OurWalk™ Navigation</h4>
-            <p style="font-size:.85rem;color:var(--mid);line-height:1.6">Fund human navigators who walk individuals from need to Access Confirmed. Not a referral. A confirmed outcome. Every case tracked, every result documented.</p>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--void);line-height:1.1;margin-bottom:.25rem">Every dollar confirms access.</div>
+          <div style="width:32px;height:2px;background:var(--amber);margin-bottom:1.25rem"></div>
+
+          <!-- Frequency toggle -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.25rem">
+            <button id="don-monthly" class="don-freq don-freq-active" onclick="donSetFreq('monthly')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              <span>Monthly</span>
+            </button>
+            <button id="don-once" class="don-freq" onclick="donSetFreq('once')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+              <span>One-time</span>
+            </button>
           </div>
-          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-top:3px solid var(--amber)">
-            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Volunteer Through weCARES™</h4>
-            <p style="font-size:.85rem;color:var(--mid);line-height:1.6">Your time is a contribution. weCARES™ volunteers capture field intelligence, support navigation, and build the UnoSphere™ in real time. Every hour logged is tracked and counted.</p>
+
+          <!-- Amount cards -->
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem">Choose an amount</div>
+          <div id="don-amounts" style="display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-bottom:1rem">
+            <button class="don-amt" data-val="10" onclick="donSetAmt(this)">
+              <span class="don-amt-val">$10</span>
+              <span class="don-amt-sub" id="sub-10">Per month</span>
+            </button>
+            <button class="don-amt" data-val="25" onclick="donSetAmt(this)">
+              <span class="don-amt-val">$25</span>
+              <span class="don-amt-sub" id="sub-25">Per month</span>
+            </button>
+            <button class="don-amt don-amt-active" data-val="50" onclick="donSetAmt(this)">
+              <span class="don-amt-val">$50</span>
+              <span class="don-amt-sub" id="sub-50">Per month</span>
+            </button>
+            <button class="don-amt" data-val="100" onclick="donSetAmt(this)">
+              <span class="don-amt-val">$100</span>
+              <span class="don-amt-sub" id="sub-100">Per month</span>
+            </button>
+            <button class="don-amt" data-val="250" onclick="donSetAmt(this)">
+              <span class="don-amt-val">$250</span>
+              <span class="don-amt-sub" id="sub-250">Per month</span>
+            </button>
+            <button class="don-amt" data-val="other" onclick="donSetAmt(this)">
+              <span class="don-amt-val">Other</span>
+              <span class="don-amt-sub">Custom</span>
+            </button>
           </div>
-          <div style="background:var(--nw);border-radius:4px;padding:1.5rem;border-top:3px solid var(--coral)">
-            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void);margin-bottom:.5rem">Invest in QCLS Operations</h4>
-            <p style="font-size:.85rem;color:var(--mid);line-height:1.6">Strengthen the UnoSphere™ infrastructure that makes every other investment in this community more effective. The platform, the intelligence, the navigation system — all of it runs on operational capacity.</p>
+
+          <!-- Custom amount input -->
+          <div id="don-custom-wrap" style="display:none;margin-bottom:1rem">
+            <label style="font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:.25rem">Enter amount</label>
+            <div style="display:flex;align-items:center;border:1.5px solid var(--amber);border-radius:3px;overflow:hidden">
+              <span style="padding:.5rem .75rem;background:rgba(232,160,32,.08);font-size:.9rem;font-weight:600;color:var(--amber);border-right:1.5px solid var(--amber)">$</span>
+              <input type="number" id="don-custom-input" min="1" placeholder="Enter amount" style="border:none;outline:none;padding:.5rem .75rem;font-size:.9rem;font-family:'Plus Jakarta Sans',sans-serif;color:var(--void);width:100%;background:#fff"/>
+            </div>
           </div>
+
+          <!-- Impact chips -->
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem">Your impact at <span id="don-impact-label" style="color:var(--amber)">$50/month</span></div>
+          <div id="don-impact-chips" style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.25rem">
+            <!-- populated by JS -->
+          </div>
+
+          <!-- CTA -->
+          <button id="don-cta" onclick="donProceed()" style="width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s">
+            Contribute $50 / month →
+          </button>
+          <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.6rem;line-height:1.6">Secure · Tax-deductible · EIN 33-3036616 · Cancel anytime</p>
         </div>
+
+        <style>
+        .don-freq{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.5rem;border:1.5px solid var(--border);border-radius:3px;background:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);cursor:pointer;transition:all .18s}
+        .don-freq svg{stroke:currentColor}
+        .don-freq:hover{border-color:var(--amber);color:var(--amber)}
+        .don-freq-active{border-color:var(--amber)!important;background:rgba(232,160,32,.08)!important;color:var(--amber)!important}
+        .don-amt{border:1.5px solid var(--border);border-radius:3px;padding:.6rem .4rem;background:#fff;cursor:pointer;text-align:center;transition:all .18s;display:flex;flex-direction:column;align-items:center}
+        .don-amt:hover{border-color:var(--amber);background:rgba(232,160,32,.04)}
+        .don-amt-active{border-color:var(--amber)!important;background:rgba(232,160,32,.08)!important}
+        .don-amt-val{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--void);display:block;line-height:1.1}
+        .don-amt-active .don-amt-val{color:var(--amber)}
+        .don-amt-sub{font-size:.58rem;color:var(--mid);display:block;margin-top:.15rem;font-family:'Plus Jakarta Sans',sans-serif}
+        .don-chip{display:inline-flex;flex-direction:column;align-items:center;border:1px solid var(--border);border-radius:3px;padding:.35rem .6rem;background:var(--nw);min-width:72px}
+        .don-chip-active{border-color:var(--teal)!important;background:rgba(29,158,117,.06)!important}
+        .don-chip svg{stroke:var(--teal);width:14px;height:14px;margin-bottom:.15rem}
+        .don-chip-label{font-size:.58rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--void)}
+        .don-chip-sub{font-size:.55rem;color:var(--mid);margin-top:.1rem}
+        </style>
+
+        <script>
+        (function(){
+          let donFreq = 'monthly';
+          let donAmt = 50;
+
+          const impactMap = {
+            10:  [{icon:'map-pin',label:'Navigation',sub:'1 case/mo'},{icon:'wifi',label:'Platform',sub:'Infrastructure'}],
+            25:  [{icon:'map-pin',label:'Navigation',sub:'2 cases/mo'},{icon:'users',label:'Outreach',sub:'1 event/mo'},{icon:'wifi',label:'Platform',sub:'Infrastructure'}],
+            50:  [{icon:'map-pin',label:'Navigation',sub:'4 cases/mo'},{icon:'users',label:'Outreach',sub:'2 events/mo'},{icon:'wifi',label:'Platform',sub:'Infrastructure'}],
+            100: [{icon:'clipboard',label:'Assessment',sub:'Partial fund'},{icon:'map-pin',label:'Navigation',sub:'8 cases/mo'},{icon:'users',label:'Outreach',sub:'4 events/mo'}],
+            250: [{icon:'clipboard',label:'Assessment',sub:'Full fund'},{icon:'map-pin',label:'Navigation',sub:'20 cases/mo'},{icon:'users',label:'Outreach',sub:'1 wk of events'}],
+          };
+
+          const svgPath = {
+            'map-pin': '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+            'users': '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+            'wifi': '<path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>',
+            'clipboard': '<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>',
+          };
+
+          function makeChip(icon, label, sub) {
+            return `<div class="don-chip don-chip-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${svgPath[icon]||''}</svg><span class="don-chip-label">${label}</span><span class="don-chip-sub">${sub}</span></div>`;
+          }
+
+          function updateImpact() {
+            const key = donAmt === 'other' ? 25 : donAmt;
+            const chips = impactMap[key] || impactMap[25];
+            document.getElementById('don-impact-chips').innerHTML = chips.map(c => makeChip(c.icon, c.label, c.sub)).join('');
+            const freqLabel = donFreq === 'monthly' ? '/month' : ' one-time';
+            const amtLabel = donAmt === 'other' ? 'your gift' : `$${donAmt}${freqLabel}`;
+            document.getElementById('don-impact-label').textContent = amtLabel;
+            const btnAmt = donAmt === 'other' ? 'my contribution' : `$${donAmt}${freqLabel}`;
+            document.getElementById('don-cta').textContent = `Contribute ${btnAmt} →`;
+          }
+
+          window.donSetFreq = function(freq) {
+            donFreq = freq;
+            document.getElementById('don-monthly').classList.toggle('don-freq-active', freq === 'monthly');
+            document.getElementById('don-once').classList.toggle('don-freq-active', freq === 'once');
+            // Update amount sublabels
+            const label = freq === 'monthly' ? 'Per month' : 'One-time';
+            [10,25,50,100,250].forEach(v => {
+              const el = document.getElementById('sub-' + v);
+              if (el) el.textContent = label;
+            });
+            updateImpact();
+          };
+
+          window.donSetAmt = function(btn) {
+            document.querySelectorAll('.don-amt').forEach(b => b.classList.remove('don-amt-active'));
+            btn.classList.add('don-amt-active');
+            const val = btn.getAttribute('data-val');
+            donAmt = val === 'other' ? 'other' : parseInt(val);
+            document.getElementById('don-custom-wrap').style.display = val === 'other' ? 'block' : 'none';
+            updateImpact();
+          };
+
+          window.donProceed = function() {
+            let amount = donAmt;
+            if (amount === 'other') {
+              amount = parseInt(document.getElementById('don-custom-input').value) || 0;
+              if (!amount || amount < 1) {
+                document.getElementById('don-custom-input').focus();
+                return;
+              }
+            }
+            const recurrence = donFreq === 'monthly' ? 'MONTHLY' : 'ONETIME';
+            const url = `https://quest4care.app.neoncrm.com/forms/donate?amount=${amount}&recurrenceType=${recurrence}`;
+            window.open(url, '_blank');
+          };
+
+          // Initialize
+          updateImpact();
+        })();
+        </script>
       </div>
     </div>
   </div>
@@ -1724,6 +1873,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           <div class="qsuccess-icon">✓</div>
           <h4>Inquiry received.</h4>
           <p>We'll follow up within two business days to discuss next steps.</p>
+          <button class="qbtn-outline" onclick="qResetForm('organization')" style="margin-top:1rem">Submit another inquiry</button>
         </div>
         <div class="qerror-msg qhidden" id="org-error"></div>
         <p class="qform-note">No account required · Your information is kept confidential</p>
@@ -1800,6 +1950,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           <div class="qsuccess-icon">✓</div>
           <h4>Application received.</h4>
           <p>We'll review your application and follow up within three business days.</p>
+          <button class="qbtn-outline" onclick="qResetForm('provider')" style="margin-top:1rem">Submit another application</button>
         </div>
         <div class="qerror-msg qhidden" id="prov-error"></div>
         <p class="qform-note">No account required · Provider listings are verified before publishing</p>
@@ -1863,6 +2014,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           <div class="qsuccess-icon">✓</div>
           <h4>Application received.</h4>
           <p>We'll be in touch within two business days with next steps.</p>
+          <button class="qbtn-outline" onclick="qResetForm('volunteer')" style="margin-top:1rem">Submit another application</button>
         </div>
         <div class="qerror-msg qhidden" id="vol-error"></div>
         <p class="qform-note">No account required · 574-CARE-NOW</p>
@@ -2374,6 +2526,41 @@ function qResetForm(formType) {
     });
     document.getElementById('ind-county').value = '';
     document.getElementById('ind-sms').checked = false;
+    // Reset who cards
+    document.querySelectorAll('#ind-step1 .qwho-card').forEach((c,i) => {
+      c.classList.toggle('qwho-active', i === 0);
+    });
+  } else if (formType === 'organization') {
+    ['org-name','org-ein','org-contact','org-title','org-email','org-phone','org-message'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.value = '';
+    });
+    document.getElementById('org-county').value = '';
+    document.getElementById('org-interest').selectedIndex = 0;
+    document.getElementById('org-success').classList.add('qhidden');
+    const btn = document.getElementById('org-submit');
+    if (btn) { btn.classList.remove('qhidden'); btn.disabled = false; btn.textContent = 'Send inquiry →'; }
+    qHideError('org-error');
+  } else if (formType === 'provider') {
+    ['prov-org','prov-name','prov-title','prov-email','prov-phone'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.value = '';
+    });
+    document.getElementById('prov-category').value = '';
+    document.getElementById('prov-county').selectedIndex = 0;
+    document.getElementById('prov-referrals').selectedIndex = 0;
+    document.getElementById('prov-success').classList.add('qhidden');
+    const btn = document.getElementById('prov-submit');
+    if (btn) { btn.classList.remove('qhidden'); btn.disabled = false; btn.textContent = 'Apply to qPartner™ →'; }
+    qHideError('prov-error');
+  } else if (formType === 'volunteer') {
+    ['vol-fname','vol-lname','vol-email','vol-phone','vol-message'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.value = '';
+    });
+    document.getElementById('vol-county').value = '';
+    document.getElementById('vol-avail').selectedIndex = 0;
+    document.getElementById('vol-success').classList.add('qhidden');
+    const btn = document.getElementById('vol-submit');
+    if (btn) { btn.classList.remove('qhidden'); btn.disabled = false; btn.textContent = 'Apply to weCARES™ →'; }
+    qHideError('vol-error');
   }
 }
 
