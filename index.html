@@ -642,7 +642,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
   </a>
   <div class="nav-right">
     <span class="nav-hint">Hover a node to explore the UnoSphere™</span>
-    <a href="#contributors" class="nav-donate">Contribute</a>
+    <a href="https://quest4care.app.neoncrm.com/forms/donate" target="_blank" rel="noopener" class="nav-donate">Contribute</a>
     <a href="#contact" class="nav-cta">Get Started</a>
   </div>
 </nav>
@@ -1264,7 +1264,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <div style="margin-top:1.5rem;padding:1.25rem;background:var(--nw);border-radius:4px;border-left:3px solid var(--deep)">
           <p style="font-size:.88rem;color:var(--mid);line-height:1.7"><strong style="color:var(--void)">Contributor Dashboard coming in Marjy™ 2026.</strong> Your giving history, volunteer hours, fund designations, tax receipts, in-kind contribution value, and combined community impact — all in one verified, real-time view inside the UnoSphere™ portal.</p>
         </div>
-        <a href="#contributors" class="btn btn-deep" style="margin-top:1.5rem">Contribute to QCLS</a>
+        <a href="https://quest4care.app.neoncrm.com/forms/donate" target="_blank" rel="noopener" class="btn btn-deep" style="margin-top:1.5rem">Contribute to QCLS</a>
       </div>
       <div class="reveal">
         <div style="display:flex;flex-direction:column;gap:1.25rem">
@@ -1482,56 +1482,481 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
   </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
-<section class="section" id="contact" style="background:var(--void);position:relative;overflow:hidden">
-  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(29,158,117,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(29,158,117,.04) 1px,transparent 1px);background-size:48px 48px"></div>
-  <div class="contact-inner" style="position:relative;z-index:2">
-    <div class="reveal">
-      <span class="sec-eyebrow" style="color:var(--amber)">Get In Touch</span>
-      <h2 class="contact-h2">Ready to Start<br/><strong>the Conversation?</strong></h2>
-      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:2.5rem">Every program at QuestCare starts with a conversation. Whether you're a nonprofit ready to know where you stand, an individual who needs a navigator in their corner, a provider who wants to be part of something accountable, a volunteer ready to serve, or a funder who wants to invest where it matters — tell us where you are and what you need. We respond within one business day.</p>
-      <div class="ci"><div class="ci-icon">✉</div><span><a href="mailto:info@quest4care.org">info@quest4care.org</a> <span style="color:rgba(255,255,255,.3);font-size:.82rem">— General Inquiries</span></span></div>
-      <div class="ci"><div class="ci-icon">☎</div><span><a href="tel:5742273669">574-227-3669</a></span></div>
-      <div class="ci"><div class="ci-icon">◎</div><span>P.O. Box 236, Spiceland, IN 47385<br/>Henry &amp; Madison County, Indiana</span></div>
-      <div class="ci"><div class="ci-icon">⊕</div><span>quest4care.org</span></div>
-      <p style="font-size:.75rem;color:rgba(255,255,255,.2);margin-top:2rem;line-height:1.6">
-        <strong style="color:rgba(255,255,255,.3)">Note on form submission:</strong> Messages are currently sent directly to info@quest4care.org. A Neon One workflow integration is planned for 2026 that will automate intake routing and trigger appropriate follow-up sequences.
-      </p>
+<!-- ══ CONTACT — TABBED PORTAL EXPERIENCE ══ -->
+<section class="section" id="contact" style="background:var(--void);position:relative;overflow:hidden;padding:0">
+<div style="position:absolute;inset:0;background-image:linear-gradient(rgba(29,158,117,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(29,158,117,.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none"></div>
+
+<!-- Section header -->
+<div style="position:relative;z-index:2;padding:clamp(3rem,5vw,5rem) clamp(1.25rem,4vw,4rem) 2rem">
+  <span class="sec-eyebrow" style="color:var(--amber)">Connect With QCLS</span>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3.5rem);font-weight:300;color:#fff;line-height:1.05;letter-spacing:-.02em;margin-bottom:.75rem">Every program starts<br/><strong style="font-weight:700">with a conversation.</strong></h2>
+  <p style="font-size:.95rem;color:rgba(255,255,255,.45);line-height:1.75;max-width:560px">Tell us who you are and what you need. We respond within one business day. No account required.</p>
+</div>
+
+<!-- Floating tab bar -->
+<div id="qFormTabBar" style="position:sticky;top:80px;z-index:150;background:rgba(10,26,18,.97);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.06);border-bottom:2px solid rgba(232,160,32,.3)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(1rem,3vw,3rem);display:flex;align-items:center;justify-content:space-between;gap:.5rem;overflow-x:auto;scrollbar-width:none">
+    <div style="display:flex;gap:.35rem;padding:.6rem 0">
+      <button class="qtab qtab-active" data-tab="individual" onclick="qSwitchTab('individual')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span>I need help</span>
+      </button>
+      <button class="qtab" data-tab="organization" onclick="qSwitchTab('organization')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        <span>My organization</span>
+      </button>
+      <button class="qtab" data-tab="provider" onclick="qSwitchTab('provider')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Become a provider</span>
+      </button>
+      <button class="qtab" data-tab="volunteer" onclick="qSwitchTab('volunteer')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span>Volunteer</span>
+      </button>
     </div>
-    <div class="contact-form reveal">
-      <h3>Tell Us About Your Needs</h3>
-      <p>We'll respond within one business day.</p>
-      <form id="contactForm" novalidate>
-        <div class="fg"><label>Your Name *</label><input type="text" name="name" placeholder="Full name" required/></div>
-        <div class="fg"><label>Email Address *</label><input type="email" name="email" placeholder="your@email.com" required/></div>
-        <div class="fg"><label>Organization</label><input type="text" name="organization" placeholder="Organization name (if applicable)"/></div>
-        <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="765-000-0000"/></div>
-        <div class="fg">
-          <label>I am reaching out as a... *</label>
-          <select name="type" required>
-            <option value="">Select one</option>
-            <option>FoundationReady™</option>
-            <option>OurWalk™</option>
-            <option>qPartner™</option>
-            <option>Phorsyte™</option>
-            <option>weCARES™</option>
-            <option>AskQCLS™</option>
-            <option>theShift™</option>
+    <a href="https://quest4care.app.neoncrm.com/forms/donate" target="_blank" rel="noopener" class="qtab-donate">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span>Contribute</span>
+    </a>
+  </div>
+</div>
+
+<!-- Form panels -->
+<div style="position:relative;z-index:2;padding:2.5rem clamp(1.25rem,4vw,4rem) clamp(3rem,5vw,5rem);max-width:1200px;margin:0 auto">
+
+  <!-- ── INDIVIDUAL PANEL ── -->
+  <div id="qPanel-individual" class="qpanel">
+    <div class="qform-layout">
+      <div class="qform-intro">
+        <div class="qform-eyebrow-teal">OurWalk™ · Individual Intake</div>
+        <h3 class="qform-title">We walk with you.<br/>No one navigates alone.</h3>
+        <div class="qform-rule-amber"></div>
+        <p class="qform-desc">Whether you need housing support, healthcare access, food assistance, transportation, or help navigating a system that wasn't built for you — tell us where you are. A QCLS navigator will follow up within one business day and stay with your case until access is confirmed.</p>
+        <div class="qform-contact-pills">
+          <a href="tel:5742273669" class="qpill-teal">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.39 2 2 0 0 1 3.59 2.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17"/></svg>
+            574-CARE-NOW
+          </a>
+          <a href="mailto:info@quest4care.org" class="qpill-outline">info@quest4care.org</a>
+        </div>
+      </div>
+      <div class="qform-card qform-card-teal">
+        <!-- Step indicator -->
+        <div class="qstep-bar" id="ind-steps">
+          <div class="qstep qstep-done" data-step="1"><div class="qstep-circle">✓</div><div class="qstep-label">Who</div></div>
+          <div class="qstep-line qstep-line-done"></div>
+          <div class="qstep qstep-active" data-step="2"><div class="qstep-circle">2</div><div class="qstep-label">You</div></div>
+          <div class="qstep-line"></div>
+          <div class="qstep" data-step="3"><div class="qstep-circle">3</div><div class="qstep-label">Need</div></div>
+          <div class="qstep-line"></div>
+          <div class="qstep" data-step="4"><div class="qstep-circle">4</div><div class="qstep-label">Send</div></div>
+        </div>
+
+        <!-- Step 1: Who -->
+        <div class="qstep-panel" id="ind-step1">
+          <div class="qfield-label" style="margin-bottom:.75rem">I am reaching out for</div>
+          <div class="qwho-grid">
+            <button class="qwho-card qwho-active" onclick="qWhoSelect(this,'ind-step1')">
+              <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              <span class="qwho-label">Myself</span>
+              <span class="qwho-sub">I need help</span>
+            </button>
+            <button class="qwho-card" onclick="qWhoSelect(this,'ind-step1')">
+              <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span class="qwho-label">Someone else</span>
+              <span class="qwho-sub">Family or friend</span>
+            </button>
+          </div>
+          <button class="qbtn-teal" onclick="qIndStep(2)">Continue →</button>
+          <p class="qform-note">No account required · Your information is private</p>
+        </div>
+
+        <!-- Step 2: Your info -->
+        <div class="qstep-panel qhidden" id="ind-step2">
+          <div class="qfrow">
+            <div class="qfield"><label class="qfield-label">First name *</label><input class="qinput" type="text" id="ind-fname" placeholder="First name"/></div>
+            <div class="qfield"><label class="qfield-label">Last name *</label><input class="qinput" type="text" id="ind-lname" placeholder="Last name"/></div>
+          </div>
+          <div class="qfrow">
+            <div class="qfield"><label class="qfield-label">Email *</label><input class="qinput" type="email" id="ind-email" placeholder="your@email.com"/></div>
+            <div class="qfield"><label class="qfield-label">Phone</label><input class="qinput" type="tel" id="ind-phone" placeholder="(765) 000-0000"/></div>
+          </div>
+          <div class="qfrow">
+            <div class="qfield"><label class="qfield-label">County *</label>
+              <select class="qinput" id="ind-county">
+                <option value="">Select county</option>
+                <option>Henry County</option>
+                <option>Madison County</option>
+                <option>Other Indiana County</option>
+              </select>
+            </div>
+            <div class="qfield"><label class="qfield-label">Preferred contact</label>
+              <select class="qinput" id="ind-contact-pref">
+                <option>Phone call</option>
+                <option>Text message</option>
+                <option>Email</option>
+              </select>
+            </div>
+          </div>
+          <div class="qfrow-btns">
+            <button class="qbtn-outline" onclick="qIndStep(1)">← Back</button>
+            <button class="qbtn-teal" onclick="qIndStep(3)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Need -->
+        <div class="qstep-panel qhidden" id="ind-step3">
+          <div class="qfield" style="margin-bottom:.75rem"><label class="qfield-label">Primary need *</label>
+            <select class="qinput" id="ind-need">
+              <option value="">Select what you need most</option>
+              <option>Healthcare access</option>
+              <option>Housing or shelter</option>
+              <option>Food assistance</option>
+              <option>Transportation</option>
+              <option>Disability services</option>
+              <option>Mental health support</option>
+              <option>Employment assistance</option>
+              <option>Benefits navigation</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="qfield" style="margin-bottom:.75rem"><label class="qfield-label">Tell us more</label>
+            <textarea class="qinput qtextarea" id="ind-message" placeholder="Describe your situation. The more you share, the better we can help."></textarea>
+          </div>
+          <div class="qfield" style="margin-bottom:.85rem">
+            <label class="qcheck-row">
+              <input type="checkbox" id="ind-sms" style="accent-color:var(--teal)"/>
+              <span class="qcheck-label">I consent to receive SMS messages from QCLS regarding my request.</span>
+            </label>
+          </div>
+          <div class="qfrow-btns">
+            <button class="qbtn-outline" onclick="qIndStep(2)">← Back</button>
+            <button class="qbtn-teal" onclick="qIndStep(4)">Review →</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Confirm & Send -->
+        <div class="qstep-panel qhidden" id="ind-step4">
+          <div class="qreview-box" id="ind-review"></div>
+          <div class="qfrow-btns" style="margin-top:1rem">
+            <button class="qbtn-outline" onclick="qIndStep(3)">← Edit</button>
+            <button class="qbtn-teal" id="ind-submit" onclick="qSubmitForm('individual')">Submit my request →</button>
+          </div>
+          <p class="qform-note">We respond within one business day · 574-CARE-NOW</p>
+        </div>
+
+        <!-- Success -->
+        <div class="qstep-panel qhidden" id="ind-success">
+          <div class="qsuccess-box">
+            <div class="qsuccess-icon">✓</div>
+            <h4>Request received.</h4>
+            <p>A QCLS navigator will follow up within one business day. Your case will not be closed until access is confirmed.</p>
+            <button class="qbtn-outline" onclick="qResetForm('individual')" style="margin-top:1rem">Submit another request</button>
+          </div>
+        </div>
+
+        <div class="qerror-msg qhidden" id="ind-error"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ORGANIZATION PANEL ── -->
+  <div id="qPanel-organization" class="qpanel qhidden">
+    <div class="qform-layout">
+      <div class="qform-intro">
+        <div class="qform-eyebrow-teal">FoundationReady™ · Nonprofit Inquiry</div>
+        <h3 class="qform-title">Where does your organization stand?</h3>
+        <div class="qform-rule-amber"></div>
+        <p class="qform-desc">FoundationReady™ is an honest, evidence-based picture of your organization's capacity across six CARES domains — not what you believe about yourself, but what the evidence shows. Start with an inquiry. We'll be in touch within two business days.</p>
+        <div class="qwho-grid" style="margin-top:1.5rem">
+          <div class="qwho-card qwho-active qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+            <span class="qwho-label">FoundationReady™</span>
+            <span class="qwho-sub">CARES assessment</span>
+          </div>
+          <div class="qwho-card qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span class="qwho-label">Phorsyte™</span>
+            <span class="qwho-sub">Foresight &amp; trajectory</span>
+          </div>
+          <div class="qwho-card qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            <span class="qwho-label">theShift™</span>
+            <span class="qwho-sub">90-day action plan</span>
+          </div>
+        </div>
+      </div>
+      <div class="qform-card qform-card-teal">
+        <div class="qfield"><label class="qfield-label">Organization name *</label><input class="qinput" type="text" id="org-name" placeholder="Legal organization name"/></div>
+        <div class="qfield"><label class="qfield-label">EIN (optional)</label><input class="qinput" type="text" id="org-ein" placeholder="XX-XXXXXXX"/></div>
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">Your name *</label><input class="qinput" type="text" id="org-contact" placeholder="First and last name"/></div>
+          <div class="qfield"><label class="qfield-label">Your title</label><input class="qinput" type="text" id="org-title" placeholder="Executive Director, etc."/></div>
+        </div>
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">Email *</label><input class="qinput" type="email" id="org-email" placeholder="you@organization.org"/></div>
+          <div class="qfield"><label class="qfield-label">Phone</label><input class="qinput" type="tel" id="org-phone" placeholder="(765) 000-0000"/></div>
+        </div>
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">County *</label>
+            <select class="qinput" id="org-county">
+              <option value="">Select county</option>
+              <option>Henry County</option>
+              <option>Madison County</option>
+              <option>Other Indiana County</option>
+            </select>
+          </div>
+          <div class="qfield"><label class="qfield-label">I'm interested in</label>
+            <select class="qinput" id="org-interest">
+              <option>FoundationReady™ Assessment</option>
+              <option>Phorsyte™ Foresight</option>
+              <option>theShift™ Action Plan</option>
+              <option>Full UnoSphere™ Suite</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="qfield"><label class="qfield-label">Current challenges</label>
+          <textarea class="qinput qtextarea" id="org-message" placeholder="Briefly describe what your organization is working through..."></textarea>
+        </div>
+        <button class="qbtn-teal" id="org-submit" onclick="qSubmitForm('organization')">Send inquiry →</button>
+        <div class="qsuccess-box qhidden" id="org-success">
+          <div class="qsuccess-icon">✓</div>
+          <h4>Inquiry received.</h4>
+          <p>We'll follow up within two business days to discuss next steps.</p>
+        </div>
+        <div class="qerror-msg qhidden" id="org-error"></div>
+        <p class="qform-note">No account required · Your information is kept confidential</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROVIDER PANEL ── -->
+  <div id="qPanel-provider" class="qpanel qhidden">
+    <div class="qform-layout">
+      <div class="qform-intro">
+        <div class="qform-eyebrow-teal">qPartner™ · Provider Network</div>
+        <h3 class="qform-title">Join a network built on accountability.</h3>
+        <div class="qform-rule-amber"></div>
+        <p class="qform-desc">qPartner™ is the verified provider network of the UnoSphere™. OurWalk™ navigators refer individuals to qPartner™ members because they've been vetted, verified, and confirmed to accept referrals. If you serve Henry or Madison County and you're ready to be part of an accountable referral system — apply here.</p>
+        <div class="qwho-grid" style="margin-top:1.5rem">
+          <div class="qwho-card qwho-active qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span class="qwho-label">Verified listing</span>
+            <span class="qwho-sub">In the directory</span>
+          </div>
+          <div class="qwho-card qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span class="qwho-label">Receive referrals</span>
+            <span class="qwho-sub">From OurWalk™</span>
+          </div>
+        </div>
+      </div>
+      <div class="qform-card qform-card-teal">
+        <div class="qfield"><label class="qfield-label">Organization name *</label><input class="qinput" type="text" id="prov-org" placeholder="Legal organization name"/></div>
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">Contact name *</label><input class="qinput" type="text" id="prov-name" placeholder="First and last name"/></div>
+          <div class="qfield"><label class="qfield-label">Title</label><input class="qinput" type="text" id="prov-title" placeholder="Your title"/></div>
+        </div>
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">Email *</label><input class="qinput" type="email" id="prov-email" placeholder="you@org.org"/></div>
+          <div class="qfield"><label class="qfield-label">Phone *</label><input class="qinput" type="tel" id="prov-phone" placeholder="(765) 000-0000"/></div>
+        </div>
+        <div class="qfield"><label class="qfield-label">Service categories *</label>
+          <select class="qinput" id="prov-category">
+            <option value="">Select primary category</option>
+            <option>Healthcare / Medical</option>
+            <option>Mental Health</option>
+            <option>Housing / Shelter</option>
+            <option>Food Assistance</option>
+            <option>Transportation</option>
+            <option>Disability Services</option>
+            <option>Employment / Workforce</option>
+            <option>Benefits Navigation</option>
+            <option>Youth Services</option>
+            <option>Senior Services</option>
             <option>Other</option>
           </select>
         </div>
-        <div class="fg"><label>Message</label><textarea name="message" rows="4" placeholder="Tell us more about your needs..."></textarea></div>
-        <button type="submit" class="form-btn" id="submitBtn">Send Message →</button>
-        <div id="formSuccess" style="display:none;margin-top:1.25rem;text-align:center;">
-          <p style="color:#1D9E75;font-size:1rem;font-weight:600;margin-bottom:.75rem;">✓ Message sent. We'll respond within one business day.</p>
-          <button type="button" id="sendAnotherBtn" style="background:transparent;border:1.5px solid #1D9E75;color:#1D9E75;padding:.5rem 1.25rem;border-radius:4px;cursor:pointer;font-size:.9rem;">Send another message</button>
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">Counties served *</label>
+            <select class="qinput" id="prov-county">
+              <option>Henry County</option>
+              <option>Madison County</option>
+              <option>Both counties</option>
+              <option>Other Indiana County</option>
+            </select>
+          </div>
+          <div class="qfield"><label class="qfield-label">Accepting referrals?</label>
+            <select class="qinput" id="prov-referrals">
+              <option>Yes — accepting referrals now</option>
+              <option>Limited — case by case</option>
+              <option>Not currently</option>
+            </select>
+          </div>
         </div>
-        <p id="formError" style="display:none;color:#E8644A;font-size:.9rem;margin-top:.75rem;"></p>
-        <p class="form-note">Your information is used only to respond to your inquiry. We do not sell or share contact data.</p>
-      </form>
+        <button class="qbtn-teal" id="prov-submit" onclick="qSubmitForm('provider')">Apply to qPartner™ →</button>
+        <div class="qsuccess-box qhidden" id="prov-success">
+          <div class="qsuccess-icon">✓</div>
+          <h4>Application received.</h4>
+          <p>We'll review your application and follow up within three business days.</p>
+        </div>
+        <div class="qerror-msg qhidden" id="prov-error"></div>
+        <p class="qform-note">No account required · Provider listings are verified before publishing</p>
+      </div>
     </div>
   </div>
+
+  <!-- ── VOLUNTEER PANEL ── -->
+  <div id="qPanel-volunteer" class="qpanel qhidden">
+    <div class="qform-layout">
+      <div class="qform-intro">
+        <div class="qform-eyebrow-teal">weCARES™ · Volunteer</div>
+        <h3 class="qform-title">We chose to show up.</h3>
+        <div class="qform-rule-amber"></div>
+        <p class="qform-desc">weCARES™ volunteers don't just hand out flyers. They capture field intelligence, support navigation, and build the UnoSphere™ in real time. Every hour you give is tracked, counted, and connected to confirmed community outcomes.</p>
+        <div class="qwho-grid" style="margin-top:1.5rem">
+          <div class="qwho-card qwho-active qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="qwho-label">Field work</span>
+            <span class="qwho-sub">Community events</span>
+          </div>
+          <div class="qwho-card qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span class="qwho-label">Digital support</span>
+            <span class="qwho-sub">Remote work</span>
+          </div>
+        </div>
+      </div>
+      <div class="qform-card qform-card-teal">
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">First name *</label><input class="qinput" type="text" id="vol-fname" placeholder="First name"/></div>
+          <div class="qfield"><label class="qfield-label">Last name *</label><input class="qinput" type="text" id="vol-lname" placeholder="Last name"/></div>
+        </div>
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">Email *</label><input class="qinput" type="email" id="vol-email" placeholder="your@email.com"/></div>
+          <div class="qfield"><label class="qfield-label">Phone</label><input class="qinput" type="tel" id="vol-phone" placeholder="(765) 000-0000"/></div>
+        </div>
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">County *</label>
+            <select class="qinput" id="vol-county">
+              <option value="">Select county</option>
+              <option>Henry County</option>
+              <option>Madison County</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="qfield"><label class="qfield-label">Availability</label>
+            <select class="qinput" id="vol-avail">
+              <option>Weekends</option>
+              <option>Weekdays</option>
+              <option>Evenings</option>
+              <option>Flexible</option>
+            </select>
+          </div>
+        </div>
+        <div class="qfield"><label class="qfield-label">Why do you want to volunteer?</label>
+          <textarea class="qinput qtextarea" id="vol-message" placeholder="Tell us about yourself and what you hope to contribute..."></textarea>
+        </div>
+        <button class="qbtn-teal" id="vol-submit" onclick="qSubmitForm('volunteer')">Apply to weCARES™ →</button>
+        <div class="qsuccess-box qhidden" id="vol-success">
+          <div class="qsuccess-icon">✓</div>
+          <h4>Application received.</h4>
+          <p>We'll be in touch within two business days with next steps.</p>
+        </div>
+        <div class="qerror-msg qhidden" id="vol-error"></div>
+        <p class="qform-note">No account required · 574-CARE-NOW</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end form panels -->
 </section>
+
+<style>
+/* ── TAB BAR ── */
+.qtab{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .85rem;border-radius:3px;border:1.5px solid rgba(255,255,255,.1);background:transparent;color:rgba(255,255,255,.4);font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.07em;cursor:pointer;transition:all .2s;white-space:nowrap}
+.qtab svg{stroke:currentColor;flex-shrink:0}
+.qtab:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)}
+.qtab-active{background:rgba(29,158,117,.15)!important;border-color:var(--teal)!important;color:var(--teal)!important}
+.qtab-donate{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .85rem;border-radius:3px;border:1.5px solid rgba(232,160,32,.35);background:transparent;color:var(--amber);font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.07em;cursor:pointer;transition:all .2s;white-space:nowrap;text-decoration:none;flex-shrink:0}
+.qtab-donate svg{stroke:currentColor}
+.qtab-donate:hover{background:rgba(232,160,32,.1);border-color:var(--amber);color:var(--amber)}
+/* ── LAYOUT ── */
+.qpanel{animation:qfade .25s ease}
+.qhidden{display:none!important}
+@keyframes qfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.qform-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start}
+@media(max-width:860px){.qform-layout{grid-template-columns:1fr}}
+/* ── INTRO ── */
+.qform-eyebrow-teal{font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}
+.qform-eyebrow-teal::before{content:'';width:24px;height:1px;background:var(--teal)}
+.qform-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.8rem);font-weight:300;color:#fff;line-height:1.05;letter-spacing:-.02em;margin-bottom:.75rem}
+.qform-rule-amber{width:40px;height:2px;background:var(--amber);margin-bottom:1.25rem}
+.qform-desc{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.85;margin-bottom:1.5rem}
+.qform-contact-pills{display:flex;gap:.5rem;flex-wrap:wrap}
+.qpill-teal{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .85rem;border-radius:3px;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);color:var(--teal);font-size:.75rem;font-weight:600;text-decoration:none;transition:all .2s}
+.qpill-teal:hover{background:rgba(29,158,117,.2);border-color:var(--teal)}
+.qpill-outline{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .85rem;border-radius:3px;background:transparent;border:1.5px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45);font-size:.75rem;font-weight:600;text-decoration:none;transition:all .2s}
+.qpill-outline:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7)}
+/* ── FORM CARD ── */
+.qform-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--teal);border-radius:4px;padding:1.75rem}
+.qform-card-amber{border-top-color:var(--amber)}
+/* ── STEP BAR ── */
+.qstep-bar{display:flex;align-items:center;margin-bottom:1.5rem}
+.qstep{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
+.qstep-circle{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--mid)}
+.qstep-active .qstep-circle{border-color:var(--teal);background:var(--teal);color:#fff}
+.qstep-done .qstep-circle{border-color:var(--teal);background:var(--teal);color:#fff}
+.qstep-label{font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--light);margin-top:.25rem}
+.qstep-active .qstep-label{color:var(--teal)}
+.qstep-line{flex:1;height:1.5px;background:var(--border);margin:0 .25rem;margin-bottom:1.1rem}
+.qstep-line-done{background:var(--teal)}
+/* ── WHO CARDS ── */
+.qwho-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1rem}
+.qwho-grid-3{grid-template-columns:1fr 1fr 1fr}
+.qwho-card{border:1.5px solid var(--border);border-radius:4px;padding:.75rem .6rem;background:#fff;cursor:pointer;text-align:center;transition:all .18s;display:flex;flex-direction:column;align-items:center}
+.qwho-card:hover{border-color:var(--teal);background:rgba(29,158,117,.04)}
+.qwho-active{border-color:var(--teal)!important;background:rgba(29,158,117,.06)!important}
+.qwho-static{cursor:default}
+.qwho-icon{width:22px;height:22px;stroke:var(--teal);margin-bottom:.3rem}
+.qwho-active .qwho-icon{stroke:var(--teal)}
+.qwho-label{font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--void);display:block}
+.qwho-sub{font-size:.62rem;color:var(--mid);display:block;margin-top:.15rem;line-height:1.3}
+/* ── FIELDS ── */
+.qfrow{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.5rem}
+@media(max-width:520px){.qfrow{grid-template-columns:1fr}}
+.qfield{margin-bottom:.5rem}
+.qfield-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:.22rem}
+.qinput{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:3px;padding:.5rem .7rem;font-size:.88rem;color:var(--void);font-family:'Plus Jakarta Sans',sans-serif;transition:border-color .2s;outline:none}
+.qinput:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(29,158,117,.1)}
+.qtextarea{height:80px;resize:vertical}
+.qcheck-row{display:flex;align-items:flex-start;gap:.5rem;cursor:pointer}
+.qcheck-label{font-size:.78rem;color:var(--mid);line-height:1.55}
+/* ── BUTTONS ── */
+.qbtn-teal{width:100%;background:var(--teal);color:#fff;border:none;border-radius:3px;padding:.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:background .2s;margin-top:.5rem}
+.qbtn-teal:hover{background:var(--deep)}
+.qbtn-amber{width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:background .2s;margin-top:.5rem}
+.qbtn-amber:hover{background:#f0b030}
+.qbtn-outline{flex:1;background:transparent;color:var(--mid);border:1.5px solid var(--border);border-radius:3px;padding:.65rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s}
+.qbtn-outline:hover{border-color:var(--mid);color:var(--void)}
+.qfrow-btns{display:flex;gap:.6rem;margin-top:.5rem}
+/* ── REVIEW BOX ── */
+.qreview-box{background:var(--nw);border:1px solid var(--border);border-radius:4px;padding:1rem;font-size:.82rem;color:var(--void);line-height:1.8}
+.qreview-row{display:flex;gap:.5rem}
+.qreview-label{color:var(--mid);min-width:90px;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+/* ── SUCCESS ── */
+.qsuccess-box{text-align:center;padding:2rem 1rem}
+.qsuccess-icon{width:44px;height:44px;border-radius:50%;background:rgba(29,158,117,.1);border:2px solid var(--teal);color:var(--teal);font-size:1.1rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.qsuccess-box h4{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--void);margin-bottom:.5rem}
+.qsuccess-box p{font-size:.85rem;color:var(--mid);line-height:1.7}
+/* ── ERROR ── */
+.qerror-msg{background:rgba(232,100,74,.08);border:1px solid rgba(232,100,74,.25);border-left:3px solid var(--coral);border-radius:3px;padding:.75rem 1rem;font-size:.82rem;color:var(--coral);margin-top:.75rem;line-height:1.6}
+/* ── MISC ── */
+.qform-note{font-size:.65rem;color:var(--light);text-align:center;margin-top:.6rem;line-height:1.5}
+/* ── MOBILE TAB SCROLLBAR HIDE ── */
+#qFormTabBar div::-webkit-scrollbar{display:none}
+</style>
 
 <!-- ══ FOOTER ══ -->
 <footer>
@@ -1767,99 +2192,199 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 </script>
 
 <script>
-// QCLS Contact Form → Make.com → Neon | Scenario A | June 27, 2026
-(function(){
-  const WEBHOOK = 'https://hook.us2.make.com/npm3u8f46xjxrabxxzxkr1ma6yrsa3pc';
+// QCLS Portal Forms → Vercel API → Neon One
+// Replaced Make.com webhook June 28, 2026
 
-  function formatPhone(raw) {
-    const digits = raw.replace(/\D/g, '');
-    if (!digits) return '';
-    if (digits.length === 10) return '(' + digits.slice(0,3) + ') ' + digits.slice(3,6) + '-' + digits.slice(6);
-    if (digits.length === 11 && digits[0] === '1') return '+1 (' + digits.slice(1,4) + ') ' + digits.slice(4,7) + '-' + digits.slice(7);
-    return raw.trim();
+/* ── TAB SWITCHING ── */
+function qSwitchTab(tab) {
+  document.querySelectorAll('.qtab').forEach(b => b.classList.remove('qtab-active'));
+  document.querySelector(`.qtab[data-tab="${tab}"]`).classList.add('qtab-active');
+  document.querySelectorAll('.qpanel').forEach(p => p.classList.add('qhidden'));
+  document.getElementById('qPanel-' + tab).classList.remove('qhidden');
+}
+
+/* ── INDIVIDUAL STEP NAVIGATION ── */
+let indCurrentStep = 1;
+function qIndStep(step) {
+  // Validate before advancing
+  if (step > indCurrentStep) {
+    if (indCurrentStep === 2) {
+      const fname = document.getElementById('ind-fname').value.trim();
+      const email = document.getElementById('ind-email').value.trim();
+      const county = document.getElementById('ind-county').value;
+      if (!fname || !email || !county) {
+        qShowError('ind-error', 'Please complete all required fields before continuing.');
+        return;
+      }
+    }
+    if (indCurrentStep === 3) {
+      const need = document.getElementById('ind-need').value;
+      if (!need) {
+        qShowError('ind-error', 'Please select your primary need.');
+        return;
+      }
+    }
+  }
+  qHideError('ind-error');
+
+  // Update step UI
+  for (let i = 1; i <= 4; i++) {
+    const stepEl = document.querySelector(`#ind-steps .qstep[data-step="${i}"]`);
+    if (!stepEl) continue;
+    stepEl.classList.remove('qstep-active', 'qstep-done');
+    if (i < step) stepEl.classList.add('qstep-done');
+    if (i === step) stepEl.classList.add('qstep-active');
+    // Update circle text
+    const circle = stepEl.querySelector('.qstep-circle');
+    if (i < step) circle.textContent = '✓';
+    else if (i === step) circle.textContent = i;
+    else circle.textContent = i;
+  }
+  // Update step lines
+  const lines = document.querySelectorAll('#ind-steps .qstep-line');
+  lines.forEach((l, idx) => {
+    l.classList.toggle('qstep-line-done', idx < step - 1);
+  });
+
+  // Show correct panel
+  for (let i = 1; i <= 4; i++) {
+    document.getElementById('ind-step' + i).classList.toggle('qhidden', i !== step);
   }
 
-  function splitName(full) {
-    const parts = full.trim().split(/\s+/);
-    if (parts.length === 1) return { firstName: parts[0], lastName: '' };
-    const lastName = parts.pop();
-    return { firstName: parts.join(' '), lastName };
-  }
+  // Build review on step 4
+  if (step === 4) qBuildReview();
+  indCurrentStep = step;
+}
 
-  function resetForm() {
-    const form = document.getElementById('contactForm');
-    const btn = document.getElementById('submitBtn');
-    const success = document.getElementById('formSuccess');
-    const err = document.getElementById('formError');
-    form.reset();
-    btn.disabled = false;
-    btn.textContent = 'Send Message →';
-    btn.style.background = '';
-    success.style.display = 'none';
-    err.style.display = 'none';
-    btn.style.display = '';
-  }
+function qBuildReview() {
+  const fname = document.getElementById('ind-fname').value.trim();
+  const lname = document.getElementById('ind-lname').value.trim();
+  const email = document.getElementById('ind-email').value.trim();
+  const phone = document.getElementById('ind-phone').value.trim();
+  const county = document.getElementById('ind-county').value;
+  const need = document.getElementById('ind-need').value;
+  const msg = document.getElementById('ind-message').value.trim();
+  document.getElementById('ind-review').innerHTML = `
+    <div class="qreview-row"><span class="qreview-label">Name</span><span>${fname} ${lname}</span></div>
+    <div class="qreview-row"><span class="qreview-label">Email</span><span>${email}</span></div>
+    ${phone ? `<div class="qreview-row"><span class="qreview-label">Phone</span><span>${phone}</span></div>` : ''}
+    <div class="qreview-row"><span class="qreview-label">County</span><span>${county}</span></div>
+    <div class="qreview-row"><span class="qreview-label">Primary need</span><span>${need}</span></div>
+    ${msg ? `<div class="qreview-row"><span class="qreview-label">Message</span><span>${msg}</span></div>` : ''}
+  `;
+}
 
-  document.getElementById('sendAnotherBtn').addEventListener('click', resetForm);
+/* ── WHO CARD SELECTION ── */
+function qWhoSelect(btn, panelId) {
+  document.querySelectorAll(`#${panelId} .qwho-card`).forEach(c => c.classList.remove('qwho-active'));
+  btn.classList.add('qwho-active');
+}
 
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn     = document.getElementById('submitBtn');
-    const success = document.getElementById('formSuccess');
-    const err     = document.getElementById('formError');
-    const form    = e.target;
+/* ── FORM SUBMISSION ── */
+async function qSubmitForm(formType) {
+  const submitBtn = document.getElementById(formType === 'individual' ? 'ind-submit' : `${formType.slice(0,3)}-submit`);
+  const errorEl = document.getElementById(formType === 'individual' ? 'ind-error' : `${formType.slice(0,3)}-error`);
+  const successEl = document.getElementById(formType === 'individual' ? 'ind-success' : `${formType.slice(0,3)}-success`);
 
-    const fullName = form.querySelector('[name="name"]').value.trim();
-    const email    = form.querySelector('[name="email"]').value.trim();
-    const type     = form.querySelector('[name="type"]').value;
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+  qHideError(errorEl?.id);
 
-    if (!fullName || !email || !type) {
-      err.style.display = 'block';
-      err.textContent = 'Please complete all required fields.';
+  let payload = { formType, source: 'quest4care.org', submitted_at: new Date().toISOString() };
+
+  if (formType === 'individual') {
+    payload.name = `${document.getElementById('ind-fname').value.trim()} ${document.getElementById('ind-lname').value.trim()}`.trim();
+    payload.email = document.getElementById('ind-email').value.trim();
+    payload.phone = document.getElementById('ind-phone').value.trim();
+    payload.county = document.getElementById('ind-county').value;
+    payload.primaryNeed = document.getElementById('ind-need').value;
+    payload.message = document.getElementById('ind-message').value.trim();
+    payload.smsConsent = document.getElementById('ind-sms').checked;
+  } else if (formType === 'organization') {
+    payload.organization = document.getElementById('org-name').value.trim();
+    payload.ein = document.getElementById('org-ein').value.trim();
+    payload.name = document.getElementById('org-contact').value.trim();
+    payload.email = document.getElementById('org-email').value.trim();
+    payload.phone = document.getElementById('org-phone').value.trim();
+    payload.county = document.getElementById('org-county').value;
+    payload.interest = document.getElementById('org-interest').value;
+    payload.message = document.getElementById('org-message').value.trim();
+    if (!payload.organization || !payload.name || !payload.email) {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send inquiry →'; }
+      qShowError('org-error', 'Please complete all required fields.');
       return;
     }
-
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    err.style.display = 'none';
-
-    const { firstName, lastName } = splitName(fullName);
-    const rawPhone = form.querySelector('[name="phone"]').value.trim();
-
-    const payload = {
-      name:         fullName,
-      firstName:    firstName,
-      lastName:     lastName,
-      email:        email,
-      organization: form.querySelector('[name="organization"]').value.trim(),
-      phone:        formatPhone(rawPhone),
-      type,
-      message:      form.querySelector('[name="message"]').value.trim(),
-      source:       'quest4care.org contact form',
-      submitted_at: new Date().toISOString()
-    };
-
-    try {
-      const res = await fetch(WEBHOOK, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if (res.ok) {
-        btn.style.display = 'none';
-        success.style.display = 'block';
-      } else {
-        throw new Error(res.status);
-      }
-    } catch(e) {
-      btn.disabled = false;
-      btn.textContent = 'Send Message →';
-      err.style.display = 'block';
-      err.textContent = 'Something went wrong. Please email us directly at info@quest4care.org.';
+  } else if (formType === 'provider') {
+    payload.organization = document.getElementById('prov-org').value.trim();
+    payload.name = document.getElementById('prov-name').value.trim();
+    payload.email = document.getElementById('prov-email').value.trim();
+    payload.phone = document.getElementById('prov-phone').value.trim();
+    payload.serviceCategory = document.getElementById('prov-category').value;
+    payload.county = document.getElementById('prov-county').value;
+    payload.acceptingReferrals = document.getElementById('prov-referrals').value;
+    if (!payload.organization || !payload.name || !payload.email) {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Apply to qPartner™ →'; }
+      qShowError('prov-error', 'Please complete all required fields.');
+      return;
     }
-  });
-})();
+  } else if (formType === 'volunteer') {
+    payload.name = `${document.getElementById('vol-fname').value.trim()} ${document.getElementById('vol-lname').value.trim()}`.trim();
+    payload.email = document.getElementById('vol-email').value.trim();
+    payload.phone = document.getElementById('vol-phone').value.trim();
+    payload.county = document.getElementById('vol-county').value;
+    payload.availability = document.getElementById('vol-avail').value;
+    payload.message = document.getElementById('vol-message').value.trim();
+    if (!payload.name || !payload.email) {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Apply to weCARES™ →'; }
+      qShowError('vol-error', 'Please complete all required fields.');
+      return;
+    }
+  }
+
+  try {
+    const res = await fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      if (formType === 'individual') {
+        for (let i = 1; i <= 4; i++) document.getElementById('ind-step' + i).classList.add('qhidden');
+        document.getElementById('ind-success').classList.remove('qhidden');
+      } else {
+        if (submitBtn) submitBtn.classList.add('qhidden');
+        if (successEl) successEl.classList.remove('qhidden');
+      }
+    } else {
+      throw new Error(res.status);
+    }
+  } catch(e) {
+    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.label || 'Submit →'; }
+    const errId = formType === 'individual' ? 'ind-error' : `${formType.slice(0,3)}-error`;
+    qShowError(errId, 'Something went wrong. Please call 574-CARE-NOW or email info@quest4care.org.');
+  }
+}
+
+function qResetForm(formType) {
+  if (formType === 'individual') {
+    document.getElementById('ind-success').classList.add('qhidden');
+    qIndStep(1);
+    indCurrentStep = 1;
+    ['ind-fname','ind-lname','ind-email','ind-phone','ind-need','ind-message'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.value = '';
+    });
+    document.getElementById('ind-county').value = '';
+    document.getElementById('ind-sms').checked = false;
+  }
+}
+
+function qShowError(id, msg) {
+  const el = document.getElementById(id);
+  if (el) { el.textContent = msg; el.classList.remove('qhidden'); }
+}
+function qHideError(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.add('qhidden');
+}
 </script>
 
 </body>
