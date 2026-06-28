@@ -642,7 +642,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
   </a>
   <div class="nav-right">
     <span class="nav-hint">Hover a node to explore the UnoSphere™</span>
-    <a href="https://quest4care.app.neoncrm.com/forms/donate" target="_blank" rel="noopener" class="nav-donate">Contribute</a>
+    <a href="#contributors" class="nav-donate" onclick="event.preventDefault();document.getElementById('contributors').scrollIntoView({behavior:'smooth'})">Contribute</a>
     <a href="#contact" class="nav-cta">Get Started</a>
   </div>
 </nav>
@@ -2572,6 +2572,343 @@ function qHideError(id) {
   const el = document.getElementById(id);
   if (el) el.classList.add('qhidden');
 }
+</script>
+
+<!-- ══ FLOATING SIDE TABS ══ -->
+<div id="sideTabs">
+
+  <!-- Tab stack -->
+  <div id="sideTabStack">
+    <button id="sideTabConnect" class="side-tab side-tab-teal" onclick="sideToggle('connect')" aria-label="Connect with QCLS">
+      <span>Connect</span>
+    </button>
+    <button id="sideTabContrib" class="side-tab side-tab-amber" onclick="sideToggle('contrib')" aria-label="Contribute to QCLS">
+      <span>Contribute</span>
+    </button>
+  </div>
+
+  <!-- Connect panel -->
+  <div id="sidePanelConnect" class="side-panel">
+    <div class="side-panel-inner">
+      <div class="side-panel-head">
+        <div>
+          <div class="side-panel-eyebrow side-eyebrow-teal">Connect · Get Started</div>
+          <div class="side-panel-title">How can we help?</div>
+        </div>
+        <button onclick="sideClose()" class="side-close">✕</button>
+      </div>
+      <div style="width:24px;height:2px;background:var(--amber);margin-bottom:1rem"></div>
+
+      <!-- Who cards -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.85rem">
+        <button class="sc-who sc-who-active" onclick="scSetWho(this,'individual')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span class="sc-who-label">I need help</span>
+          <span class="sc-who-sub">Individual</span>
+        </button>
+        <button class="sc-who" onclick="scSetWho(this,'organization')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          <span class="sc-who-label">Organization</span>
+          <span class="sc-who-sub">Nonprofit/Partner</span>
+        </button>
+        <button class="sc-who" onclick="scSetWho(this,'provider')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="sc-who-label">Provider</span>
+          <span class="sc-who-sub">Join qPartner™</span>
+        </button>
+        <button class="sc-who" onclick="scSetWho(this,'volunteer')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="sc-who-label">Volunteer</span>
+          <span class="sc-who-sub">weCARES™</span>
+        </button>
+      </div>
+
+      <!-- Fields -->
+      <div id="sc-fields">
+        <div class="sc-field"><label class="sc-label" id="sc-name-label">First name *</label><input class="sc-input" type="text" id="sc-fname" placeholder="First name"/></div>
+        <div class="sc-field" id="sc-org-wrap" style="display:none"><label class="sc-label">Organization *</label><input class="sc-input" type="text" id="sc-org" placeholder="Organization name"/></div>
+        <div class="sc-field"><label class="sc-label">Email *</label><input class="sc-input" type="email" id="sc-email" placeholder="your@email.com"/></div>
+        <div class="sc-field"><label class="sc-label">Phone</label><input class="sc-input" type="tel" id="sc-phone" placeholder="(765) 000-0000"/></div>
+        <div class="sc-field"><label class="sc-label">County</label>
+          <select class="sc-input" id="sc-county">
+            <option value="">Select county</option>
+            <option>Henry County</option>
+            <option>Madison County</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="sc-field"><label class="sc-label">Message</label><textarea class="sc-input sc-textarea" id="sc-message" placeholder="Tell us what you need..."></textarea></div>
+      </div>
+
+      <button id="sc-submit" class="sc-btn-teal" onclick="scSubmit()">Send →</button>
+      <div id="sc-success" class="sc-success" style="display:none">
+        <div style="font-size:1.5rem;margin-bottom:.5rem">✓</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void)">Received.</div>
+        <div style="font-size:.78rem;color:var(--mid);margin-top:.35rem;line-height:1.5">We'll follow up within one business day.</div>
+        <button onclick="scReset()" class="sc-btn-outline" style="margin-top:.75rem">Send another →</button>
+      </div>
+      <div id="sc-error" class="sc-error" style="display:none"></div>
+      <p style="font-size:.58rem;color:var(--light);text-align:center;margin-top:.5rem">No account required · 574-CARE-NOW</p>
+    </div>
+  </div>
+
+  <!-- Contribute panel -->
+  <div id="sidePanelContrib" class="side-panel">
+    <div class="side-panel-inner">
+      <div class="side-panel-head">
+        <div>
+          <div class="side-panel-eyebrow side-eyebrow-amber">Contribute</div>
+          <div class="side-panel-title">Every dollar<br/>confirms access.</div>
+        </div>
+        <button onclick="sideClose()" class="side-close">✕</button>
+      </div>
+      <div style="width:24px;height:2px;background:var(--amber);margin-bottom:1rem"></div>
+
+      <!-- Frequency -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.85rem">
+        <button id="fp-monthly" class="fp-freq fp-freq-active" onclick="fpSetFreq('monthly')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Monthly
+        </button>
+        <button id="fp-once" class="fp-freq" onclick="fpSetFreq('once')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/></svg>
+          One-time
+        </button>
+      </div>
+
+      <!-- Amounts -->
+      <div style="font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem">Amount</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem;margin-bottom:.75rem">
+        <button class="fp-amt" data-val="10" onclick="fpSetAmt(this)"><span class="fp-amt-val">$10</span></button>
+        <button class="fp-amt" data-val="25" onclick="fpSetAmt(this)"><span class="fp-amt-val">$25</span></button>
+        <button class="fp-amt fp-amt-active" data-val="50" onclick="fpSetAmt(this)"><span class="fp-amt-val">$50</span></button>
+        <button class="fp-amt" data-val="100" onclick="fpSetAmt(this)"><span class="fp-amt-val">$100</span></button>
+        <button class="fp-amt" data-val="250" onclick="fpSetAmt(this)"><span class="fp-amt-val">$250</span></button>
+        <button class="fp-amt" data-val="other" onclick="fpSetAmt(this)"><span class="fp-amt-val">Other</span></button>
+      </div>
+
+      <!-- Custom input -->
+      <div id="fp-custom-wrap" style="display:none;margin-bottom:.75rem">
+        <div style="display:flex;align-items:center;border:1.5px solid var(--amber);border-radius:3px;overflow:hidden">
+          <span style="padding:.4rem .6rem;background:rgba(232,160,32,.08);font-size:.85rem;font-weight:600;color:var(--amber);border-right:1.5px solid var(--amber)">$</span>
+          <input type="number" id="fp-custom-input" min="1" placeholder="Amount" style="border:none;outline:none;padding:.4rem .6rem;font-size:.85rem;font-family:'Plus Jakarta Sans',sans-serif;color:var(--void);width:100%;background:#fff"/>
+        </div>
+      </div>
+
+      <!-- Impact -->
+      <div id="fp-impact" style="font-size:.7rem;color:var(--mid);margin-bottom:.85rem;line-height:1.5;padding:.5rem .75rem;background:var(--nw);border-radius:3px;border-left:2px solid var(--teal)"></div>
+
+      <button id="fp-cta" onclick="fpProceed()" style="width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s;margin-bottom:.5rem">Contribute $50 / month →</button>
+      <p style="font-size:.58rem;color:var(--light);text-align:center;line-height:1.5">Secure · Tax-deductible · EIN 33-3036616</p>
+    </div>
+  </div>
+
+</div>
+
+<style>
+/* ── SIDE TAB SYSTEM ── */
+#sideTabs{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:300;display:flex;flex-direction:row;align-items:center}
+#sideTabStack{display:flex;flex-direction:column;gap:6px}
+.side-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;width:28px;padding:1.1rem .4rem;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:all .2s;writing-mode:vertical-lr;text-orientation:mixed;border-radius:20px 0 0 20px}
+.side-tab span{writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg)}
+.side-tab svg{writing-mode:horizontal-tb;flex-shrink:0}
+.side-tab-teal{background:var(--teal);color:#fff;box-shadow:-3px 0 16px rgba(29,158,117,.25)}
+.side-tab-teal:hover,.side-tab-teal.active{background:var(--deep);width:34px;box-shadow:-4px 0 20px rgba(29,158,117,.35)}
+.side-tab-amber{background:var(--amber);color:var(--void);box-shadow:-3px 0 16px rgba(232,160,32,.25)}
+.side-tab-amber:hover,.side-tab-amber.active{background:#f0b030;width:34px;box-shadow:-4px 0 20px rgba(232,160,32,.35)}
+/* ── PANELS ── */
+.side-panel{background:#fff;border:1px solid var(--border);border-right:none;border-radius:8px 0 0 8px;width:300px;box-shadow:-8px 0 40px rgba(10,26,18,.15);transform:translateX(100%);opacity:0;pointer-events:none;transition:all .25s ease;max-height:90vh;overflow-y:auto;position:absolute;right:32px;top:50%;transform:translateY(-50%) translateX(100%)}
+.side-panel.open{transform:translateY(-50%) translateX(0);opacity:1;pointer-events:auto}
+.side-panel-inner{padding:1.25rem}
+.side-panel-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.6rem}
+.side-panel-eyebrow{font-family:'Oswald',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.25rem}
+.side-eyebrow-teal{color:var(--teal)}
+.side-eyebrow-amber{color:var(--amber)}
+.side-panel-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--void);line-height:1.1}
+.side-close{background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1.1rem;line-height:1;padding:.2rem;flex-shrink:0}
+/* ── CONNECT FORM ── */
+.sc-who{display:flex;flex-direction:column;align-items:center;gap:.2rem;border:1.5px solid var(--border);border-radius:4px;padding:.5rem .3rem;background:#fff;cursor:pointer;transition:all .15s}
+.sc-who:hover{border-color:var(--teal)}
+.sc-who-active{border-color:var(--teal)!important;background:rgba(29,158,117,.06)!important}
+.sc-who svg{stroke:var(--teal)}
+.sc-who-label{font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--void)}
+.sc-who-sub{font-size:.55rem;color:var(--mid)}
+.sc-field{margin-bottom:.45rem}
+.sc-label{font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:.18rem}
+.sc-input{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:3px;padding:.4rem .55rem;font-size:.82rem;color:var(--void);font-family:'Plus Jakarta Sans',sans-serif;transition:border-color .2s;outline:none}
+.sc-input:focus{border-color:var(--teal);box-shadow:0 0 0 2px rgba(29,158,117,.1)}
+.sc-textarea{height:64px;resize:none}
+.sc-btn-teal{width:100%;background:var(--teal);color:#fff;border:none;border-radius:3px;padding:.65rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;transition:background .2s;margin-top:.35rem}
+.sc-btn-teal:hover{background:var(--deep)}
+.sc-btn-outline{background:transparent;border:1.5px solid var(--border);border-radius:3px;padding:.45rem .85rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;color:var(--mid);cursor:pointer;transition:all .15s}
+.sc-btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+.sc-success{text-align:center;padding:.75rem;background:rgba(29,158,117,.06);border:1px solid rgba(29,158,117,.2);border-radius:4px;margin-top:.5rem}
+.sc-error{font-size:.75rem;color:var(--coral);background:rgba(232,100,74,.06);border:1px solid rgba(232,100,74,.2);border-left:3px solid var(--coral);border-radius:3px;padding:.5rem .75rem;margin-top:.5rem;line-height:1.5}
+/* ── MOBILE ── */
+@media(max-width:600px){
+  #sideTabs{top:auto;bottom:5rem;transform:none}
+  .side-panel{top:auto;bottom:0;transform:translateX(100%);max-height:80vh;border-radius:8px 8px 0 0;border-right:1px solid var(--border);width:calc(100vw - 36px)}
+  .side-panel.open{transform:translateX(0)}
+}
+</style>
+
+<script>
+(function(){
+  let activePanel = null;
+  let scWhoType = 'individual';
+  let fpFreq = 'monthly';
+  let fpAmt = 50;
+
+  /* ── SIDE PANEL TOGGLE ── */
+  window.sideToggle = function(panel) {
+    const panelEl = document.getElementById('sidePanelConnect'.replace('Connect', panel === 'connect' ? 'Connect' : 'Contrib'));
+    const id = panel === 'connect' ? 'sidePanelConnect' : 'sidePanelContrib';
+    const tabId = panel === 'connect' ? 'sideTabConnect' : 'sideTabContrib';
+
+    if (activePanel === panel) {
+      sideClose();
+      return;
+    }
+    // Close any open panel
+    document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('open'));
+    document.querySelectorAll('.side-tab').forEach(t => t.classList.remove('active'));
+
+    document.getElementById(id).classList.add('open');
+    document.getElementById(tabId).classList.add('active');
+    activePanel = panel;
+  };
+
+  window.sideClose = function() {
+    document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('open'));
+    document.querySelectorAll('.side-tab').forEach(t => t.classList.remove('active'));
+    activePanel = null;
+  };
+
+  /* ── CONNECT FORM ── */
+  window.scSetWho = function(btn, type) {
+    scWhoType = type;
+    document.querySelectorAll('.sc-who').forEach(c => c.classList.remove('sc-who-active'));
+    btn.classList.add('sc-who-active');
+    const isOrg = type === 'organization' || type === 'provider';
+    document.getElementById('sc-org-wrap').style.display = isOrg ? 'block' : 'none';
+    document.getElementById('sc-name-label').textContent = isOrg ? 'Your name *' : 'First name *';
+    document.getElementById('sc-fname').placeholder = isOrg ? 'Your name' : 'First name';
+  };
+
+  window.scSubmit = async function() {
+    const fname = document.getElementById('sc-fname').value.trim();
+    const email = document.getElementById('sc-email').value.trim();
+    const org = document.getElementById('sc-org').value.trim();
+
+    if (!fname || !email) { scShowError('Please enter your name and email.'); return; }
+    if ((scWhoType === 'organization' || scWhoType === 'provider') && !org) {
+      scShowError('Please enter your organization name.'); return;
+    }
+
+    const btn = document.getElementById('sc-submit');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    scHideError();
+
+    const payload = {
+      formType: scWhoType,
+      name: fname,
+      email,
+      organization: org,
+      phone: document.getElementById('sc-phone').value.trim(),
+      county: document.getElementById('sc-county').value,
+      message: document.getElementById('sc-message').value.trim(),
+      source: 'quest4care.org side panel',
+      submitted_at: new Date().toISOString()
+    };
+
+    try {
+      const res = await fetch('/api/submit', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      if (res.ok) {
+        btn.style.display = 'none';
+        document.getElementById('sc-success').style.display = 'block';
+      } else { throw new Error(res.status); }
+    } catch(e) {
+      btn.disabled = false; btn.textContent = 'Send →';
+      scShowError('Something went wrong. Call 574-CARE-NOW or email info@quest4care.org.');
+    }
+  };
+
+  window.scReset = function() {
+    ['sc-fname','sc-email','sc-phone','sc-message'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+    document.getElementById('sc-county').value = '';
+    document.getElementById('sc-org').value = '';
+    document.getElementById('sc-org-wrap').style.display = 'none';
+    document.getElementById('sc-success').style.display = 'none';
+    const btn = document.getElementById('sc-submit');
+    btn.style.display = ''; btn.disabled = false; btn.textContent = 'Send →';
+    document.querySelectorAll('.sc-who').forEach((c,i) => c.classList.toggle('sc-who-active', i === 0));
+    scWhoType = 'individual';
+    scHideError();
+  };
+
+  function scShowError(msg) { const el = document.getElementById('sc-error'); el.textContent = msg; el.style.display = 'block'; }
+  function scHideError() { document.getElementById('sc-error').style.display = 'none'; }
+
+  /* ── DONATE PANEL ── */
+  const impactLines = {
+    10: 'Supports 1 navigation case and platform infrastructure.',
+    25: 'Funds 2 navigation cases and 1 community outreach event.',
+    50: 'Funds 4 navigation cases and 2 outreach events per month.',
+    100: 'Partially funds a FoundationReady™ assessment and 8 navigation cases.',
+    250: 'Fully funds a FoundationReady™ assessment and 20 navigation cases.',
+  };
+
+  function fpUpdateUI() {
+    const key = fpAmt === 'other' ? 25 : fpAmt;
+    document.getElementById('fp-impact').textContent = impactLines[key] || impactLines[25];
+    const freqLabel = fpFreq === 'monthly' ? '/month' : ' one-time';
+    const amtLabel = fpAmt === 'other' ? 'my contribution' : `$${fpAmt}${freqLabel}`;
+    document.getElementById('fp-cta').textContent = `Contribute ${amtLabel} →`;
+  }
+
+  window.fpSetFreq = function(freq) {
+    fpFreq = freq;
+    document.getElementById('fp-monthly').classList.toggle('fp-freq-active', freq === 'monthly');
+    document.getElementById('fp-once').classList.toggle('fp-freq-active', freq === 'once');
+    fpUpdateUI();
+  };
+
+  window.fpSetAmt = function(btn) {
+    document.querySelectorAll('.fp-amt').forEach(b => b.classList.remove('fp-amt-active'));
+    btn.classList.add('fp-amt-active');
+    const val = btn.getAttribute('data-val');
+    fpAmt = val === 'other' ? 'other' : parseInt(val);
+    document.getElementById('fp-custom-wrap').style.display = val === 'other' ? 'block' : 'none';
+    fpUpdateUI();
+  };
+
+  window.fpProceed = function() {
+    let amount = fpAmt;
+    if (amount === 'other') {
+      amount = parseInt(document.getElementById('fp-custom-input').value) || 0;
+      if (!amount || amount < 1) { document.getElementById('fp-custom-input').focus(); return; }
+    }
+    const recurrence = fpFreq === 'monthly' ? 'true' : 'false';
+    window.open(`https://quest4care.app.neoncrm.com/forms/donate?donationAmount=${amount}&recurring=${recurrence}`, '_blank');
+    sideClose();
+  };
+
+  /* ── HIDE TABS WHEN SECTIONS VISIBLE ── */
+  if ('IntersectionObserver' in window) {
+    ['contributors','contact'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          document.getElementById('sideTabs').style.opacity = e.isIntersecting ? '0' : '1';
+          document.getElementById('sideTabs').style.pointerEvents = e.isIntersecting ? 'none' : 'auto';
+        });
+      }, { threshold: 0.25 }).observe(el);
+    });
+  }
+
+  fpUpdateUI();
+})();
 </script>
 
 </body>
