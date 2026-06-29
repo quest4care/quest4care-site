@@ -13,10 +13,7 @@ function authHeader() {
 async function findAccountByEmail(email) {
   const res = await fetch(`${NEON_BASE}/accounts/search`, {
     method: 'POST',
-    headers: {
-      'Authorization': authHeader(),
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Authorization': authHeader(), 'Content-Type': 'application/json' },
     body: JSON.stringify({
       searchFields: [{ field: 'Email', operator: 'EQUAL', value: email }],
       outputFields: ['Account ID', 'First Name', 'Last Name', 'Company Name'],
@@ -27,11 +24,15 @@ async function findAccountByEmail(email) {
   return data.searchResults?.[0] || null;
 }
 
-async function createIndividualAccount(payload) {
-  const nameParts = (payload.name || '').trim().split(/\s+/);
-  const firstName = nameParts[0] || '';
-  const lastName = nameParts.slice(1).join(' ') || '';
+function splitName(full) {
+  const parts = (full || '').trim().split(/\s+/);
+  if (parts.length === 1) return { firstName: parts[0], lastName: '' };
+  const lastName = parts.pop();
+  return { firstName: parts.join(' '), lastName };
+}
 
+async function createIndividualAccount(payload) {
+  const { firstName, lastName } = splitName(payload.name);
   const body = {
     individualAccount: {
       primaryContact: {
@@ -42,13 +43,9 @@ async function createIndividualAccount(payload) {
       }
     }
   };
-
   const res = await fetch(`${NEON_BASE}/accounts`, {
     method: 'POST',
-    headers: {
-      'Authorization': authHeader(),
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Authorization': authHeader(), 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   });
   const data = await res.json();
@@ -56,24 +53,16 @@ async function createIndividualAccount(payload) {
 }
 
 async function createCompanyAccount(payload) {
+  const { firstName, lastName } = splitName(payload.name);
   const body = {
     companyAccount: {
       name: payload.organization,
-      primaryContact: {
-        firstName: (payload.name || '').split(' ')[0] || '',
-        lastName: (payload.name || '').split(' ').slice(1).join(' ') || '',
-        email1: payload.email,
-        phone1: payload.phone || ''
-      }
+      primaryContact: { firstName, lastName, email1: payload.email, phone1: payload.phone || '' }
     }
   };
-
   const res = await fetch(`${NEON_BASE}/accounts`, {
     method: 'POST',
-    headers: {
-      'Authorization': authHeader(),
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Authorization': authHeader(), 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   });
   const data = await res.json();
@@ -83,16 +72,20 @@ async function createCompanyAccount(payload) {
 async function updateAccountCustomFields(accountId, fields) {
   await fetch(`${NEON_BASE}/accounts/${accountId}`, {
     method: 'PATCH',
-    headers: {
-      'Authorization': authHeader(),
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Authorization': authHeader(), 'Content-Type': 'application/json' },
     body: JSON.stringify({ customFields: fields })
   });
 }
 
+async function addAccountNote(accountId, note) {
+  await fetch(`${NEON_BASE}/accounts/${accountId}/notes`, {
+    method: 'POST',
+    headers: { 'Authorization': authHeader(), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ note })
+  });
+}
+
 export default async function handler(req, res) {
-  // CORS
   res.setHeader('Access-Control-Allow-Origin', 'https://quest4care.org');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -106,11 +99,11 @@ export default async function handler(req, res) {
 
     if (!email) return res.status(400).json({ error: 'Email is required' });
 
-    // Check for existing account
+    // Duplicate detection
     const existing = await findAccountByEmail(email);
     let accountId = existing?.['Account ID'] || null;
 
-    // Determine account type
+    // Create account if not found
     const isOrg = formType === 'organization' || formType === 'provider' || (organization && organization.trim().length > 0);
 
     if (!accountId) {
@@ -121,14 +114,41 @@ export default async function handler(req, res) {
       }
     }
 
-    // Set follow-up flag via custom fields (fallback for activities bug ticket 676995)
     if (accountId) {
-      await updateAccountCustomFields(accountId, [
-        { id: '153', value: 'Yes' },      // QCLS Follow-Up Needed
-        { id: '154', value: formType },    // Follow-Up Type
-        { id: '155', value: new Date().toISOString().split('T')[0] }, // Due Date
-        { id: '156', value: 'quest4care.org' } // Source
-      ]);
+      // Build custom fields array
+      const customFields = [
+        { id: '153', value: 'Yes' },
+        { id: '154', value: formType },
+        { id: '155', value: new Date().toISOString().split('T')[0] },
+        { id: '156', value: payload.source || 'quest4care.org' }
+      ];
+
+      // Map county to field ID 6 (County field in Intake & Program group)
+      if (payload.county) {
+        customFields.push({ id: '6', value: payload.county });
+      }
+
+      // Map program interest / form type to field ID 1
+      if (payload.interest || payload.primaryNeed) {
+        customFields.push({ id: '1', value: payload.interest || payload.primaryNeed });
+      }
+
+      await updateAccountCustomFields(accountId, customFields);
+
+      // Write message/notes to account note
+      const noteParts = [];
+      if (payload.message) noteParts.push(`Message: ${payload.message}`);
+      if (payload.county) noteParts.push(`County: ${payload.county}`);
+      if (payload.availability) noteParts.push(`Availability: ${payload.availability}`);
+      if (payload.serviceCategory) noteParts.push(`Service Category: ${payload.serviceCategory}`);
+      if (payload.acceptingReferrals) noteParts.push(`Accepting Referrals: ${payload.acceptingReferrals}`);
+      if (payload.ein) noteParts.push(`EIN: ${payload.ein}`);
+      if (payload.donationAmount) noteParts.push(`Intended Donation: $${payload.donationAmount} ${payload.donationFrequency || ''}`);
+      noteParts.push(`Form: ${formType} · Source: ${payload.source || 'quest4care.org'} · ${new Date().toISOString()}`);
+
+      if (noteParts.length) {
+        await addAccountNote(accountId, noteParts.join('\n'));
+      }
     }
 
     return res.status(200).json({ success: true, accountId });
