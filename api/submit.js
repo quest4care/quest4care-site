@@ -165,12 +165,12 @@ async function updateCustomFields(accountId, formType, payload) {
   // Fetch account to determine type
   const acct = await neonGet(`/accounts/${accountId}`);
   const isCompany = !!acct.data?.companyAccount;
-  
-  const patchBody = isCompany
-    ? { companyAccount: { customFields } }
-    : { individualAccount: { customFields } };
 
-  return neonPatch(`/accounts/${accountId}`, patchBody);
+  const wrapper = isCompany ? 'companyAccount' : 'individualAccount';
+
+  return neonPatch(`/accounts/${accountId}`, {
+    [wrapper]: { accountCustomFields: customFields }
+  });
 }
 
 // ── Add account to Provisional group ──
