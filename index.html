@@ -1689,8 +1689,122 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           <a href="mailto:info@quest4care.org" class="qpill-outline">info@quest4care.org</a>
         </div>
       </div>
-      <div class="qform-card qform-card-teal" style="padding:1rem">
-        <script src='https://quest4care.app.neoncrm.com/forms/share/Rk9STS1FTUJFRFNIQVJJTkctQ09ERTc='></script>
+      <div class="qform-card qform-card-teal">
+        <!-- Step indicator -->
+        <div class="qstep-bar" id="ind-steps">
+          <div class="qstep qstep-done" data-step="1"><div class="qstep-circle">✓</div><div class="qstep-label">Who</div></div>
+          <div class="qstep-line qstep-line-done"></div>
+          <div class="qstep qstep-active" data-step="2"><div class="qstep-circle">2</div><div class="qstep-label">You</div></div>
+          <div class="qstep-line"></div>
+          <div class="qstep" data-step="3"><div class="qstep-circle">3</div><div class="qstep-label">Need</div></div>
+          <div class="qstep-line"></div>
+          <div class="qstep" data-step="4"><div class="qstep-circle">4</div><div class="qstep-label">Send</div></div>
+        </div>
+
+        <!-- Step 1: Who -->
+        <div class="qstep-panel" id="ind-step1">
+          <div class="qfield-label" style="margin-bottom:.75rem">I am reaching out for</div>
+          <div class="qwho-grid">
+            <button class="qwho-card qwho-active" onclick="qWhoSelect(this,'ind-step1')">
+              <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              <span class="qwho-label">Myself</span>
+              <span class="qwho-sub">I need help</span>
+            </button>
+            <button class="qwho-card" onclick="qWhoSelect(this,'ind-step1')">
+              <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span class="qwho-label">Someone else</span>
+              <span class="qwho-sub">Family or friend</span>
+            </button>
+          </div>
+          <button class="qbtn-teal" onclick="qIndStep(2)">Continue →</button>
+          <p class="qform-note">No account required · Your information is private</p>
+        </div>
+
+        <!-- Step 2: Your info -->
+        <div class="qstep-panel qhidden" id="ind-step2">
+          <div class="qfrow">
+            <div class="qfield"><label class="qfield-label">First name *</label><input class="qinput" type="text" id="ind-fname" placeholder="First name"/></div>
+            <div class="qfield"><label class="qfield-label">Last name *</label><input class="qinput" type="text" id="ind-lname" placeholder="Last name"/></div>
+          </div>
+          <div class="qfrow">
+            <div class="qfield"><label class="qfield-label">Email *</label><input class="qinput" type="email" id="ind-email" placeholder="your@email.com"/></div>
+            <div class="qfield"><label class="qfield-label">Phone</label><input class="qinput" type="tel" id="ind-phone" placeholder="(765) 000-0000"/></div>
+          </div>
+          <div class="qfrow">
+            <div class="qfield"><label class="qfield-label">County *</label>
+              <select class="qinput" id="ind-county">
+                <option value="">Select county</option>
+                <option>Henry County</option>
+                <option>Madison County</option>
+                <option>Other Indiana County</option>
+              </select>
+            </div>
+            <div class="qfield"><label class="qfield-label">Preferred contact</label>
+              <select class="qinput" id="ind-contact-pref">
+                <option>Phone call</option>
+                <option>Text message</option>
+                <option>Email</option>
+              </select>
+            </div>
+          </div>
+          <div class="qfrow-btns">
+            <button class="qbtn-outline" onclick="qIndStep(1)">← Back</button>
+            <button class="qbtn-teal" onclick="qIndStep(3)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Need -->
+        <div class="qstep-panel qhidden" id="ind-step3">
+          <div class="qfield" style="margin-bottom:.75rem"><label class="qfield-label">Primary need *</label>
+            <select class="qinput" id="ind-need">
+              <option value="">Select what you need most</option>
+              <option>Healthcare access</option>
+              <option>Housing or shelter</option>
+              <option>Food assistance</option>
+              <option>Transportation</option>
+              <option>Disability services</option>
+              <option>Mental health support</option>
+              <option>Employment assistance</option>
+              <option>Benefits navigation</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="qfield" style="margin-bottom:.75rem"><label class="qfield-label">Tell us more</label>
+            <textarea class="qinput qtextarea" id="ind-message" placeholder="Describe your situation. The more you share, the better we can help."></textarea>
+          </div>
+          <div class="qfield" style="margin-bottom:.85rem">
+            <label class="qcheck-row">
+              <input type="checkbox" id="ind-sms" style="accent-color:var(--teal)"/>
+              <span class="qcheck-label">I consent to receive SMS messages from QCLS regarding my request.</span>
+            </label>
+          </div>
+          <div class="qfrow-btns">
+            <button class="qbtn-outline" onclick="qIndStep(2)">← Back</button>
+            <button class="qbtn-teal" onclick="qIndStep(4)">Review →</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Confirm & Send -->
+        <div class="qstep-panel qhidden" id="ind-step4">
+          <div class="qreview-box" id="ind-review"></div>
+          <div class="qfrow-btns" style="margin-top:1rem">
+            <button class="qbtn-outline" onclick="qIndStep(3)">← Edit</button>
+            <button class="qbtn-teal" id="ind-submit" onclick="qSubmitForm('individual')">Submit my request →</button>
+          </div>
+          <p class="qform-note">We respond within one business day · 574-CARE-NOW</p>
+        </div>
+
+        <!-- Success -->
+        <div class="qstep-panel qhidden" id="ind-success">
+          <div class="qsuccess-box">
+            <div class="qsuccess-icon">✓</div>
+            <h4>Request received.</h4>
+            <p>A QCLS navigator will follow up within one business day. Your case will not be closed until access is confirmed.</p>
+            <button class="qbtn-outline" onclick="qResetForm('individual')" style="margin-top:1rem">Submit another request</button>
+          </div>
+        </div>
+
+        <div class="qerror-msg qhidden" id="ind-error"></div>
       </div>
     </div>
   </div>
@@ -1704,17 +1818,17 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <div class="qform-rule-amber"></div>
         <p class="qform-desc">FoundationReady™ is an honest, evidence-based picture of your organization's capacity across six CARES domains — not what you believe about yourself, but what the evidence shows. Start with an inquiry. We'll be in touch within two business days.</p>
         <div class="qwho-grid" style="margin-top:1.5rem">
-          <div class="qwho-card qwho-active" id="org-card-fr" onclick="orgCardToggle('FoundationReady™ Assessment','org-card-fr')">
+          <div class="qwho-card qwho-active qwho-static">
             <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
             <span class="qwho-label">FoundationReady™</span>
             <span class="qwho-sub">CARES assessment</span>
           </div>
-          <div class="qwho-card" id="org-card-ph" onclick="orgCardToggle('Phorsyte™ Foresight','org-card-ph')">
+          <div class="qwho-card qwho-static">
             <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             <span class="qwho-label">Phorsyte™</span>
             <span class="qwho-sub">Foresight &amp; trajectory</span>
           </div>
-          <div class="qwho-card" id="org-card-ts" onclick="orgCardToggle('theShift™ Action Plan','org-card-ts')">
+          <div class="qwho-card qwho-static">
             <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
             <span class="qwho-label">theShift™</span>
             <span class="qwho-sub">90-day action plan</span>
@@ -1746,10 +1860,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
               <option>FoundationReady™ Assessment</option>
               <option>Phorsyte™ Foresight</option>
               <option>theShift™ Action Plan</option>
-              <option>FoundationReady™ Assessment, Phorsyte™ Foresight</option>
-              <option>FoundationReady™ Assessment, theShift™ Action Plan</option>
-              <option>Phorsyte™ Foresight, theShift™ Action Plan</option>
-              <option>FoundationReady™ Assessment, Phorsyte™ Foresight, theShift™ Action Plan</option>
+              <option>Full UnoSphere™ Suite</option>
               <option>Not sure yet</option>
             </select>
           </div>
@@ -1778,19 +1889,16 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <h3 class="qform-title">Join a network built on accountability.</h3>
         <div class="qform-rule-amber"></div>
         <p class="qform-desc">qPartner™ is the verified provider network of the UnoSphere™. OurWalk™ navigators refer individuals to qPartner™ members because they've been vetted, verified, and confirmed to accept referrals. If you serve Henry or Madison County and you're ready to be part of an accountable referral system — apply here.</p>
-        <div style="margin-top:1.5rem">
-          <div style="font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.6rem">What best describes your organization?</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem">
-            <button class="qwho-card qwho-active" id="prov-type-verified" onclick="provToggle(this,'Verified Directory Listing')">
-              <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span class="qwho-label">Directory listing</span>
-              <span class="qwho-sub">Get verified & listed</span>
-            </button>
-            <button class="qwho-card" id="prov-type-referrals" onclick="provToggle(this,'Accepting Referrals from OurWalk™')">
-              <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              <span class="qwho-label">Receive referrals</span>
-              <span class="qwho-sub">From OurWalk™</span>
-            </button>
+        <div class="qwho-grid" style="margin-top:1.5rem">
+          <div class="qwho-card qwho-active qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span class="qwho-label">Verified listing</span>
+            <span class="qwho-sub">In the directory</span>
+          </div>
+          <div class="qwho-card qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span class="qwho-label">Receive referrals</span>
+            <span class="qwho-sub">From OurWalk™</span>
           </div>
         </div>
       </div>
@@ -1804,32 +1912,21 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           <div class="qfield"><label class="qfield-label">Email *</label><input class="qinput" type="email" id="prov-email" placeholder="you@org.org"/></div>
           <div class="qfield"><label class="qfield-label">Phone *</label><input class="qinput" type="tel" id="prov-phone" placeholder="(765) 000-0000"/></div>
         </div>
-        <div class="qfield">
-          <label class="qfield-label">Service categories * <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--light)">(select all that apply)</span></label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem;margin-top:.35rem" id="prov-cat-grid">
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Healthcare / Medical" checked onchange="provCatUpdate()"/> Healthcare / Medical</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Behavioral Health / Mental Health" onchange="provCatUpdate()"/> Behavioral Health</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Substance Use Treatment" onchange="provCatUpdate()"/> Substance Use Treatment</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Housing / Emergency Shelter" onchange="provCatUpdate()"/> Housing / Shelter</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Transitional Housing" onchange="provCatUpdate()"/> Transitional Housing</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Disability Services" onchange="provCatUpdate()"/> Disability Services</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Medicaid Waiver Services" onchange="provCatUpdate()"/> Medicaid Waiver Services</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Supported Employment" onchange="provCatUpdate()"/> Supported Employment</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Independent Living" onchange="provCatUpdate()"/> Independent Living</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Food Assistance" onchange="provCatUpdate()"/> Food Assistance</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Transportation / NEMT" onchange="provCatUpdate()"/> Transportation / NEMT</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Benefits Navigation" onchange="provCatUpdate()"/> Benefits Navigation</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="SNAP / Medicaid Enrollment" onchange="provCatUpdate()"/> SNAP / Medicaid Enrollment</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Childcare" onchange="provCatUpdate()"/> Childcare</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Youth Services" onchange="provCatUpdate()"/> Youth Services</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Senior Services" onchange="provCatUpdate()"/> Senior Services</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Legal Aid" onchange="provCatUpdate()"/> Legal Aid</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Financial Coaching" onchange="provCatUpdate()"/> Financial Coaching</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Utility Assistance" onchange="provCatUpdate()"/> Utility Assistance</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Clothing & Basic Needs" onchange="provCatUpdate()"/> Clothing & Basic Needs</label>
-            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Other" onchange="provCatUpdate()"/> Other</label>
-          </div>
-          <input type="hidden" id="prov-category" value="Healthcare / Medical"/>
+        <div class="qfield"><label class="qfield-label">Service categories *</label>
+          <select class="qinput" id="prov-category">
+            <option value="">Select primary category</option>
+            <option>Healthcare / Medical</option>
+            <option>Mental Health</option>
+            <option>Housing / Shelter</option>
+            <option>Food Assistance</option>
+            <option>Transportation</option>
+            <option>Disability Services</option>
+            <option>Employment / Workforce</option>
+            <option>Benefits Navigation</option>
+            <option>Youth Services</option>
+            <option>Senior Services</option>
+            <option>Other</option>
+          </select>
         </div>
         <div class="qfrow">
           <div class="qfield"><label class="qfield-label">Counties served *</label>
@@ -1869,29 +1966,16 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <h3 class="qform-title">We chose to show up.</h3>
         <div class="qform-rule-amber"></div>
         <p class="qform-desc">weCARES™ volunteers don't just hand out flyers. They capture field intelligence, support navigation, and build the UnoSphere™ in real time. Every hour you give is tracked, counted, and connected to confirmed community outcomes.</p>
-        <div style="margin-top:1.5rem">
-          <div style="font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.6rem">How would you like to serve?</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem">
-            <button class="qwho-card qwho-active" id="vol-type-field" onclick="volToggle(this,'Field Work / Community Events')">
-              <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span class="qwho-label">Field work</span>
-              <span class="qwho-sub">Community events</span>
-            </button>
-            <button class="qwho-card" id="vol-type-nav" onclick="volToggle(this,'OurWalk™ Navigation Support')">
-              <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-              <span class="qwho-label">Navigation support</span>
-              <span class="qwho-sub">OurWalk™ cases</span>
-            </button>
-            <button class="qwho-card" id="vol-type-digital" onclick="volToggle(this,'Digital / Remote Support')">
-              <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              <span class="qwho-label">Digital support</span>
-              <span class="qwho-sub">Remote work</span>
-            </button>
-            <button class="qwho-card" id="vol-type-tech" onclick="volToggle(this,'Technology / UnoSphere™ Build')">
-              <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              <span class="qwho-label">Technology</span>
-              <span class="qwho-sub">Platform build</span>
-            </button>
+        <div class="qwho-grid" style="margin-top:1.5rem">
+          <div class="qwho-card qwho-active qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="qwho-label">Field work</span>
+            <span class="qwho-sub">Community events</span>
+          </div>
+          <div class="qwho-card qwho-static">
+            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span class="qwho-label">Digital support</span>
+            <span class="qwho-sub">Remote work</span>
           </div>
         </div>
       </div>
@@ -1921,26 +2005,6 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
               <option>Flexible</option>
             </select>
           </div>
-        </div>
-        <div class="qfield">
-          <label class="qfield-label">Skills & interests <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--light)">(select all that apply)</span></label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem;margin-top:.35rem">
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="OurWalk™ Navigation Support" onchange="volSkillUpdate()"/> Navigation Support</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Field Intelligence Capture" onchange="volSkillUpdate()"/> Field Intelligence</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="FoundationReady™ Support" onchange="volSkillUpdate()"/> FoundationReady™ Support</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Administrative Support" onchange="volSkillUpdate()"/> Administrative</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Research & Data" onchange="volSkillUpdate()"/> Research & Data</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Event Support" onchange="volSkillUpdate()"/> Event Support</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Community Outreach" onchange="volSkillUpdate()"/> Community Outreach</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Transportation Assistance" onchange="volSkillUpdate()"/> Transportation</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Interpreter / Language Access" onchange="volSkillUpdate()"/> Interpreter / Language</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Photography & Media" onchange="volSkillUpdate()"/> Photography & Media</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Graphic Design" onchange="volSkillUpdate()"/> Graphic Design</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Grant Writing Support" onchange="volSkillUpdate()"/> Grant Writing</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Technology / UnoSphere™ Build" onchange="volSkillUpdate()"/> Technology Build</label>
-            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Board Development Support" onchange="volSkillUpdate()"/> Board Development</label>
-          </div>
-          <input type="hidden" id="vol-skills" value=""/>
         </div>
         <div class="qfield"><label class="qfield-label">Why do you want to volunteer?</label>
           <textarea class="qinput qtextarea" id="vol-message" placeholder="Tell us about yourself and what you hope to contribute..."></textarea>
@@ -2044,12 +2108,6 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
 .qform-note{font-size:.65rem;color:var(--light);text-align:center;margin-top:.6rem;line-height:1.5}
 /* ── MOBILE TAB SCROLLBAR HIDE ── */
 #qFormTabBar div::-webkit-scrollbar{display:none}
-/* ── CHECKBOX CARDS ── */
-.qcheck-card{display:flex;align-items:center;gap:.45rem;border:1.5px solid var(--border);border-radius:3px;padding:.4rem .55rem;background:#fff;cursor:pointer;font-size:.72rem;font-weight:500;color:var(--void);transition:all .15s;line-height:1.3}
-.qcheck-card:hover{border-color:var(--teal);background:rgba(29,158,117,.04)}
-.qcheck-card input{accent-color:var(--teal);flex-shrink:0;cursor:pointer}
-.qcheck-card input:checked + *{color:var(--void)}
-.qcheck-card:has(input:checked){border-color:var(--teal);background:rgba(29,158,117,.06)}
 </style>
 
 <!-- ══ FOOTER ══ -->
@@ -2289,62 +2347,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 // QCLS Portal Forms → Vercel API → Neon One
 // Replaced Make.com webhook June 28, 2026
 
-/* ── ORG CARD MULTI-SELECT ── */
-const orgSelected = new Set(['FoundationReady™ Assessment']);
-window.orgCardToggle = function(val, cardId) {
-  const card = document.getElementById(cardId);
-  if (orgSelected.has(val)) {
-    if (orgSelected.size === 1) return;
-    orgSelected.delete(val);
-    card.classList.remove('qwho-active');
-  } else {
-    orgSelected.add(val);
-    card.classList.add('qwho-active');
-  }
-  const sel = document.getElementById('org-interest');
-  if (sel) sel.value = Array.from(orgSelected).join(', ');
-};
-
-/* ── PROVIDER TYPE TOGGLE ── */
-const provTypeSelected = new Set(['Verified Directory Listing']);
-window.provToggle = function(btn, val) {
-  if (provTypeSelected.has(val)) {
-    if (provTypeSelected.size === 1) return;
-    provTypeSelected.delete(val);
-    btn.classList.remove('qwho-active');
-  } else {
-    provTypeSelected.add(val);
-    btn.classList.add('qwho-active');
-  }
-};
-
-/* ── PROVIDER CATEGORY CHECKBOXES ── */
-window.provCatUpdate = function() {
-  const checked = [...document.querySelectorAll('input[name="prov-cat"]:checked')].map(c => c.value);
-  const hidden = document.getElementById('prov-category');
-  if (hidden) hidden.value = checked.join(', ') || 'Not specified';
-};
-
-/* ── VOLUNTEER TYPE TOGGLE ── */
-const volTypeSelected = new Set(['Field Work / Community Events']);
-window.volToggle = function(btn, val) {
-  if (volTypeSelected.has(val)) {
-    if (volTypeSelected.size === 1) return;
-    volTypeSelected.delete(val);
-    btn.classList.remove('qwho-active');
-  } else {
-    volTypeSelected.add(val);
-    btn.classList.add('qwho-active');
-  }
-};
-
-/* ── VOLUNTEER SKILL CHECKBOXES ── */
-window.volSkillUpdate = function() {
-  const checked = [...document.querySelectorAll('input[name="vol-skill"]:checked')].map(c => c.value);
-  const hidden = document.getElementById('vol-skills');
-  if (hidden) hidden.value = checked.join(', ');
-};
-
 /* ── TAB SWITCHING ── */
 function qSwitchTab(tab) {
   document.querySelectorAll('.qtab').forEach(b => b.classList.remove('qtab-active'));
@@ -2469,7 +2471,6 @@ async function qSubmitForm(formType) {
     payload.email = document.getElementById('prov-email').value.trim();
     payload.phone = document.getElementById('prov-phone').value.trim();
     payload.serviceCategory = document.getElementById('prov-category').value;
-    payload.providerTypes = Array.from(provTypeSelected).join(', ');
     payload.county = document.getElementById('prov-county').value;
     payload.acceptingReferrals = document.getElementById('prov-referrals').value;
     if (!payload.organization || !payload.name || !payload.email) {
@@ -2483,8 +2484,6 @@ async function qSubmitForm(formType) {
     payload.phone = document.getElementById('vol-phone').value.trim();
     payload.county = document.getElementById('vol-county').value;
     payload.availability = document.getElementById('vol-avail').value;
-    payload.skills = document.getElementById('vol-skills').value;
-    payload.volunteerTypes = Array.from(volTypeSelected).join(', ');
     payload.message = document.getElementById('vol-message').value.trim();
     if (!payload.name || !payload.email) {
       if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Apply to weCARES™ →'; }
@@ -2546,10 +2545,6 @@ function qResetForm(formType) {
       const el = document.getElementById(id); if (el) el.value = '';
     });
     document.getElementById('prov-category').value = '';
-    document.querySelectorAll('input[name="prov-cat"]').forEach(c => c.checked = false);
-    provTypeSelected.clear(); provTypeSelected.add('Verified Directory Listing');
-    document.getElementById('prov-type-verified')?.classList.add('qwho-active');
-    document.getElementById('prov-type-referrals')?.classList.remove('qwho-active');
     document.getElementById('prov-county').selectedIndex = 0;
     document.getElementById('prov-referrals').selectedIndex = 0;
     document.getElementById('prov-success').classList.add('qhidden');
@@ -2562,11 +2557,6 @@ function qResetForm(formType) {
     });
     document.getElementById('vol-county').value = '';
     document.getElementById('vol-avail').selectedIndex = 0;
-    document.getElementById('vol-skills').value = '';
-    document.querySelectorAll('input[name="vol-skill"]').forEach(c => c.checked = false);
-    volTypeSelected.clear(); volTypeSelected.add('Field Work / Community Events');
-    document.getElementById('vol-type-field')?.classList.add('qwho-active');
-    ['vol-type-nav','vol-type-digital','vol-type-tech'].forEach(id => document.getElementById(id)?.classList.remove('qwho-active'));
     document.getElementById('vol-success').classList.add('qhidden');
     const btn = document.getElementById('vol-submit');
     if (btn) { btn.classList.remove('qhidden'); btn.disabled = false; btn.textContent = 'Apply to weCARES™ →'; }
