@@ -2625,8 +2625,11 @@ function qHideError(id) {
 
       <!-- Fields -->
       <div id="sc-fields">
-        <div class="sc-field"><label class="sc-label" id="sc-name-label">First name *</label><input class="sc-input" type="text" id="sc-fname" placeholder="First name"/></div>
         <div class="sc-field" id="sc-org-wrap" style="display:none"><label class="sc-label">Organization *</label><input class="sc-input" type="text" id="sc-org" placeholder="Organization name"/></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.45rem">
+          <div class="sc-field" style="margin-bottom:0"><label class="sc-label" id="sc-name-label">First name *</label><input class="sc-input" type="text" id="sc-fname" placeholder="First name"/></div>
+          <div class="sc-field" style="margin-bottom:0"><label class="sc-label">Last name</label><input class="sc-input" type="text" id="sc-lname" placeholder="Last name"/></div>
+        </div>
         <div class="sc-field"><label class="sc-label">Email *</label><input class="sc-input" type="email" id="sc-email" placeholder="your@email.com"/></div>
         <div class="sc-field"><label class="sc-label">Phone</label><input class="sc-input" type="tel" id="sc-phone" placeholder="(765) 000-0000"/></div>
         <div class="sc-field"><label class="sc-label">County</label>
@@ -2811,7 +2814,7 @@ function qHideError(id) {
 
     const payload = {
       formType: scWhoType,
-      name: fname,
+      name: `${fname} ${document.getElementById('sc-lname').value.trim()}`.trim(),
       email,
       organization: org,
       phone: document.getElementById('sc-phone').value.trim(),
@@ -2834,7 +2837,7 @@ function qHideError(id) {
   };
 
   window.scReset = function() {
-    ['sc-fname','sc-email','sc-phone','sc-message'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+    ['sc-fname','sc-lname','sc-email','sc-phone','sc-message'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
     document.getElementById('sc-county').value = '';
     document.getElementById('sc-org').value = '';
     document.getElementById('sc-org-wrap').style.display = 'none';
