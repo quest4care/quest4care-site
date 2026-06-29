@@ -1818,17 +1818,17 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <div class="qform-rule-amber"></div>
         <p class="qform-desc">FoundationReady™ is an honest, evidence-based picture of your organization's capacity across six CARES domains — not what you believe about yourself, but what the evidence shows. Start with an inquiry. We'll be in touch within two business days.</p>
         <div class="qwho-grid" style="margin-top:1.5rem">
-          <div class="qwho-card qwho-active qwho-static">
+          <div class="qwho-card qwho-active" id="org-card-fr" onclick="orgCardToggle('FoundationReady™ Assessment','org-card-fr')">
             <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
             <span class="qwho-label">FoundationReady™</span>
             <span class="qwho-sub">CARES assessment</span>
           </div>
-          <div class="qwho-card qwho-static">
+          <div class="qwho-card" id="org-card-ph" onclick="orgCardToggle('Phorsyte™ Foresight','org-card-ph')">
             <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             <span class="qwho-label">Phorsyte™</span>
             <span class="qwho-sub">Foresight &amp; trajectory</span>
           </div>
-          <div class="qwho-card qwho-static">
+          <div class="qwho-card" id="org-card-ts" onclick="orgCardToggle('theShift™ Action Plan','org-card-ts')">
             <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
             <span class="qwho-label">theShift™</span>
             <span class="qwho-sub">90-day action plan</span>
@@ -1860,7 +1860,10 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
               <option>FoundationReady™ Assessment</option>
               <option>Phorsyte™ Foresight</option>
               <option>theShift™ Action Plan</option>
-              <option>Full UnoSphere™ Suite</option>
+              <option>FoundationReady™ Assessment, Phorsyte™ Foresight</option>
+              <option>FoundationReady™ Assessment, theShift™ Action Plan</option>
+              <option>Phorsyte™ Foresight, theShift™ Action Plan</option>
+              <option>FoundationReady™ Assessment, Phorsyte™ Foresight, theShift™ Action Plan</option>
               <option>Not sure yet</option>
             </select>
           </div>
@@ -2346,6 +2349,22 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 <script>
 // QCLS Portal Forms → Vercel API → Neon One
 // Replaced Make.com webhook June 28, 2026
+
+/* ── ORG CARD MULTI-SELECT ── */
+const orgSelected = new Set(['FoundationReady™ Assessment']);
+window.orgCardToggle = function(val, cardId) {
+  const card = document.getElementById(cardId);
+  if (orgSelected.has(val)) {
+    if (orgSelected.size === 1) return; // keep at least one selected
+    orgSelected.delete(val);
+    card.classList.remove('qwho-active');
+  } else {
+    orgSelected.add(val);
+    card.classList.add('qwho-active');
+  }
+  const sel = document.getElementById('org-interest');
+  if (sel) sel.value = Array.from(orgSelected).join(', ');
+};
 
 /* ── TAB SWITCHING ── */
 function qSwitchTab(tab) {
