@@ -87,7 +87,7 @@ async function updateAccountCustomFields(accountId, fields) {
       'Authorization': authHeader(),
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ individualAccount: { customFields: fields } })
+    body: JSON.stringify({ customFields: fields })
   });
 }
 
