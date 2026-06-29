@@ -2698,13 +2698,6 @@ function qHideError(id) {
       <!-- Impact -->
       <div id="fp-impact" style="font-size:.7rem;color:var(--mid);margin-bottom:.85rem;line-height:1.5;padding:.5rem .75rem;background:var(--nw);border-radius:3px;border-left:2px solid var(--teal)"></div>
 
-      <!-- Contributor info -->
-      <div style="font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem">Your information</div>
-      <div class="sc-field"><label class="sc-label">Name *</label><input class="sc-input" type="text" id="fp-name" placeholder="First and last name"/></div>
-      <div class="sc-field" style="margin-bottom:.75rem"><label class="sc-label">Email *</label><input class="sc-input" type="email" id="fp-email" placeholder="your@email.com"/></div>
-
-      <div id="fp-error" style="display:none;font-size:.72rem;color:var(--coral);background:rgba(232,100,74,.06);border-left:3px solid var(--coral);border-radius:3px;padding:.4rem .65rem;margin-bottom:.5rem;line-height:1.5"></div>
-
       <button id="fp-cta" onclick="fpProceed()" style="width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s;margin-bottom:.5rem">Contribute $50 / month →</button>
       <p style="font-size:.58rem;color:var(--light);text-align:center;line-height:1.5">Secure · Tax-deductible · EIN 33-3036616</p>
     </div>
@@ -2889,55 +2882,14 @@ function qHideError(id) {
     fpUpdateUI();
   };
 
-  window.fpProceed = async function() {
+  window.fpProceed = function() {
     let amount = fpAmt;
     if (amount === 'other') {
       amount = parseInt(document.getElementById('fp-custom-input').value) || 0;
       if (!amount || amount < 1) { document.getElementById('fp-custom-input').focus(); return; }
     }
-
-    const name = document.getElementById('fp-name').value.trim();
-    const email = document.getElementById('fp-email').value.trim();
-    const errEl = document.getElementById('fp-error');
-
-    if (!name || !email) {
-      errEl.textContent = 'Please enter your name and email to continue.';
-      errEl.style.display = 'block';
-      return;
-    }
-    errEl.style.display = 'none';
-
-    const btn = document.getElementById('fp-cta');
-    btn.disabled = true;
-    btn.textContent = 'Recording your information...';
-
-    // POST to Neon via serverless function
-    try {
-      await fetch('/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          formType: 'donation',
-          name,
-          email,
-          donationAmount: amount,
-          donationFrequency: fpFreq,
-          source: 'quest4care.org contribute panel',
-          submitted_at: new Date().toISOString()
-        })
-      });
-    } catch(e) {
-      // Non-blocking — proceed to Neon even if API call fails
-      console.warn('Neon record creation failed:', e);
-    }
-
-    // Open Neon payment page
     const recurrence = fpFreq === 'monthly' ? 'true' : 'false';
     window.open(`https://quest4care.app.neoncrm.com/forms/donate?donationAmount=${amount}&recurring=${recurrence}`, '_blank');
-
-    // Reset button and close panel
-    btn.disabled = false;
-    btn.textContent = `Contribute $${amount}${fpFreq === 'monthly' ? '/month' : ' one-time'} →`;
     sideClose();
   };
 
