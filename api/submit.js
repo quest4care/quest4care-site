@@ -142,44 +142,30 @@ async function updateCustomFields(accountId, formType, payload) {
   const countyId = COUNTY_IDS[payload.county] || null;
   const programId = PROGRAM_INTEREST[formType] || PROGRAM_INTEREST.default;
   const followUpTypeId = FOLLOWUP_TYPE[formType] || FOLLOWUP_TYPE.default;
+  const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
 
   const customFields = [
-    // QCLS Follow-Up Needed = Yes
-    {
-      id: FIELD_IDS.followUpNeeded,
-      optionValues: [{ id: FIELD_IDS.followUpNeededYes }]
-    },
-    // QCLS Follow-Up Type
-    {
-      id: FIELD_IDS.followUpType,
-      optionValues: [{ id: followUpTypeId }]
-    },
-    // QCLS Follow-Up Source (text field)
-    {
-      id: FIELD_IDS.followUpSource,
-      value: payload.source || 'quest4care.org'
-    },
-    // QCLS Follow-Up Due Date (text field — tomorrow's date)
-    {
-      id: FIELD_IDS.followUpDueDate,
-      value: new Date(Date.now() + 86400000).toISOString().split('T')[0]
-    },
-    // Program Interest
-    {
-      id: FIELD_IDS.programInterest,
-      optionValues: [{ id: programId }]
-    },
+    // QCLS Follow-Up Needed = Yes (dropdown — needs optionValues)
+    { id: FIELD_IDS.followUpNeeded, optionValues: [{ id: FIELD_IDS.followUpNeededYes }] },
+    // QCLS Follow-Up Type (dropdown — needs optionValues)
+    { id: FIELD_IDS.followUpType, optionValues: [{ id: followUpTypeId }] },
+    // QCLS Follow-Up Source (text field — uses value)
+    { id: FIELD_IDS.followUpSource, value: payload.source || 'quest4care.org' },
+    // QCLS Follow-Up Due Date (text field — uses value)
+    { id: '155', value: tomorrow },
+    // Program Interest (dropdown — needs optionValues)
+    { id: FIELD_IDS.programInterest, optionValues: [{ id: programId }] },
   ];
 
-  // County (if provided)
+  // County (dropdown — needs optionValues)
   if (countyId) {
-    customFields.push({
-      id: FIELD_IDS.county,
-      optionValues: [{ id: countyId }]
-    });
+    customFields.push({ id: FIELD_IDS.county, optionValues: [{ id: countyId }] });
   }
 
-  return neonPatch(`/accounts/${accountId}`, { customFields });
+  // Wrap in individualAccount per Neon PATCH requirement
+  return neonPatch(`/accounts/${accountId}`, {
+    individualAccount: { customFields }
+  });
 }
 
 // ── Add account to Provisional group ──
@@ -213,13 +199,15 @@ async function createActivity(accountId, formType, payload) {
     volunteer:    'weCARES™ Volunteer Application',
   };
 
+  const today = new Date().toISOString().split('T')[0];
+
   return neonPost('/activities', {
-    activityDate: new Date().toISOString().split('T')[0],
     subject: subjectMap[formType] || 'Website Inquiry',
-    status: { id: '2' }, // Not Started
+    status: { id: '2' },     // Not Started
     priority: 'High',
+    activityDates: [{ startDate: today }],
     details,
-    account: { id: accountId }
+    account: { id: String(accountId) }
   });
 }
 
