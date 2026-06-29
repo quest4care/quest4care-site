@@ -162,15 +162,20 @@ async function createActivity(accountId, payload, formType) {
 
   const { firstName } = splitName(payload.name);
 
+  const nowISO = new Date().toISOString();
+  const tomorrowISO = new Date(Date.now() + 86400000).toISOString();
+
   const activityBody = {
-    accountId,
     subject: subjectMap[formType] || 'QCLS Inquiry',
     note: `New inquiry received via quest4care.org. Follow up within one business day.\n\nName: ${payload.name || ''}\nEmail: ${payload.email || ''}\nPhone: ${payload.phone || ''}\nCounty: ${payload.county || ''}\nMessage: ${payload.message || ''}`,
     priority: 'High',
     status: { id: ACTIVITY_STATUS.NOT_STARTED },
     activityDates: [{
-      startDate: todayISO(),
-      dueDate: dueDateISO(1),
+      startDate: nowISO,
+      endDate: tomorrowISO,
+    }],
+    clientAccount: [{
+      accountId: String(accountId),
     }],
   };
 
