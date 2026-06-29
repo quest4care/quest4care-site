@@ -642,7 +642,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
   </a>
   <div class="nav-right">
     <span class="nav-hint">Hover a node to explore the UnoSphere™</span>
-    <a href="#contributors" class="nav-donate" onclick="event.preventDefault();document.getElementById('contributors').scrollIntoView({behavior:'smooth'})">Contribute</a>
+    <a href="#contributors" class="nav-donate" onclick="event.preventDefault();(function(){const el=document.getElementById('contributors');const navH=document.querySelector('nav')?document.querySelector('nav').offsetHeight:70;const top=el.getBoundingClientRect().top+window.scrollY-navH-20;window.scrollTo({top,behavior:'smooth'});})()">Contribute</a>
     <a href="#contact" class="nav-cta">Get Started</a>
   </div>
 </nav>
@@ -1680,8 +1680,46 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <div class="qform-eyebrow-teal">OurWalk™ · Individual Intake</div>
         <h3 class="qform-title">We walk with you.<br/>No one navigates alone.</h3>
         <div class="qform-rule-amber"></div>
-        <p class="qform-desc">Whether you need housing support, healthcare access, food assistance, transportation, or help navigating a system that wasn't built for you — tell us where you are. A QCLS navigator will follow up within one business day and stay with your case until access is confirmed.</p>
-        <div class="qform-contact-pills">
+        <p class="qform-desc">Whether you need housing support, healthcare access, food assistance, transportation, or help navigating a system that wasn't built for you — tell us where you are. A QCLS navigator will follow up within one business day.</p>
+        <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.85rem">
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Not a referral. A confirmed connection.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Your case stays open until you have confirmed access — not just a list of phone numbers.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">One business day response.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">A real navigator — not an automated response — will contact you directly within one business day.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">No account required. No judgment.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Your information is private. You do not need to create an account or explain your situation to anyone before we respond.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">We serve Henry &amp; Madison County.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Currently serving Indiana residents in Henry and Madison County. If you are outside these counties, we will do our best to connect you to the right resource.</div>
+            </div>
+          </div>
+        </div>
+        <div class="qform-contact-pills" style="margin-top:1.5rem">
           <a href="tel:5742273669" class="qpill-teal">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.39 2 2 0 0 1 3.59 2.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17"/></svg>
             574-CARE-NOW
@@ -1736,6 +1774,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
                 <option value="">Select county</option>
                 <option>Henry County</option>
                 <option>Madison County</option>
+                <option>Both Counties</option>
                 <option>Other Indiana County</option>
               </select>
             </div>
@@ -1816,28 +1855,43 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <div class="qform-eyebrow-teal">FoundationReady™ · Nonprofit Inquiry</div>
         <h3 class="qform-title">Where does your organization stand?</h3>
         <div class="qform-rule-amber"></div>
-        <p class="qform-desc">FoundationReady™ is an honest, evidence-based picture of your organization's capacity across six CARES domains — not what you believe about yourself, but what the evidence shows. Start with an inquiry. We'll be in touch within two business days.</p>
-        <div class="qwho-grid" style="margin-top:1.5rem">
-          <div class="qwho-card qwho-active" id="org-card-fr" onclick="orgCardToggle('FoundationReady™ Assessment','org-card-fr')">
-            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
-            <span class="qwho-label">FoundationReady™</span>
-            <span class="qwho-sub">CARES assessment</span>
+        <p class="qform-desc">FoundationReady™ is an honest, evidence-based picture of your organization's capacity across six CARES domains — not what you believe about yourself, but what the evidence shows.</p>
+        <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.85rem">
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(232,160,32,.12);border:1.5px solid rgba(232,160,32,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">FoundationReady™ — Know where you stand.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">An evidence-based assessment across six CARES domains — Compliance, Accountability, Reporting, Effectiveness, and Sustainability. Funders are already asking these questions. We help you answer them honestly.</div>
+            </div>
           </div>
-          <div class="qwho-card" id="org-card-ph" onclick="orgCardToggle('Phorsyte™ Foresight','org-card-ph')">
-            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            <span class="qwho-label">Phorsyte™</span>
-            <span class="qwho-sub">Foresight &amp; trajectory</span>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(232,160,32,.12);border:1.5px solid rgba(232,160,32,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Phorsyte™ — Know where you're headed.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Funding chain stability, governance risk, ecosystem opportunity mapping. Phorsyte™ follows FoundationReady™ and tells you what happens next if nothing changes — and what changes matter most.</div>
+            </div>
           </div>
-          <div class="qwho-card" id="org-card-ts" onclick="orgCardToggle('theShift™ Action Plan','org-card-ts')">
-            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-            <span class="qwho-label">theShift™</span>
-            <span class="qwho-sub">90-day action plan</span>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(232,160,32,.12);border:1.5px solid rgba(232,160,32,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">theShift™ — Know what to do about it.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">A 90-day action plan calibrated to what your organization can actually execute — not aspirational goals, but sequenced steps tied to your specific CARES gaps and funder expectations.</div>
+            </div>
+          </div>
+          <div style="margin-top:.5rem;padding:.75rem;background:rgba(232,160,32,.06);border:1px solid rgba(232,160,32,.2);border-left:3px solid var(--amber);border-radius:3px">
+            <div style="font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.6">Start with an inquiry. We'll be in touch within two business days to discuss your organization's situation and determine the right starting point.</div>
           </div>
         </div>
       </div>
       <div class="qform-card qform-card-teal">
         <div class="qfield"><label class="qfield-label">Organization name *</label><input class="qinput" type="text" id="org-name" placeholder="Legal organization name"/></div>
-        <div class="qfield"><label class="qfield-label">EIN (optional)</label><input class="qinput" type="text" id="org-ein" placeholder="XX-XXXXXXX"/></div>
+        <div class="qfield"><label class="qfield-label">EIN <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--light)">(optional)</span></label><input class="qinput" type="text" id="org-ein" placeholder="XX-XXXXXXX"/></div>
         <div class="qfrow">
           <div class="qfield"><label class="qfield-label">Your name *</label><input class="qinput" type="text" id="org-contact" placeholder="First and last name"/></div>
           <div class="qfield"><label class="qfield-label">Your title</label><input class="qinput" type="text" id="org-title" placeholder="Executive Director, etc."/></div>
@@ -1846,27 +1900,29 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           <div class="qfield"><label class="qfield-label">Email *</label><input class="qinput" type="email" id="org-email" placeholder="you@organization.org"/></div>
           <div class="qfield"><label class="qfield-label">Phone</label><input class="qinput" type="tel" id="org-phone" placeholder="(765) 000-0000"/></div>
         </div>
-        <div class="qfrow">
-          <div class="qfield"><label class="qfield-label">County *</label>
-            <select class="qinput" id="org-county">
-              <option value="">Select county</option>
-              <option>Henry County</option>
-              <option>Madison County</option>
-              <option>Other Indiana County</option>
-            </select>
+        <div class="qfield"><label class="qfield-label">County *</label>
+          <select class="qinput" id="org-county">
+            <option value="">Select county</option>
+            <option>Henry County</option>
+            <option>Madison County</option>
+            <option>Both Counties</option>
+            <option>Other Indiana County</option>
+          </select>
+        </div>
+        <div class="qfield">
+          <label class="qfield-label">I'm interested in <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--light)">(select all that apply)</span></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem;margin-top:.4rem">
+            <label class="qcheck-card"><input type="checkbox" name="org-service" value="FoundationReady™ Assessment" checked onchange="orgInterestUpdate()"/>
+              <span style="display:flex;flex-direction:column;gap:.1rem"><span style="font-weight:600;font-size:.72rem">FoundationReady™</span><span style="font-size:.62rem;color:var(--mid)">CARES assessment</span></span>
+            </label>
+            <label class="qcheck-card"><input type="checkbox" name="org-service" value="Phorsyte™ Foresight" onchange="orgInterestUpdate()"/>
+              <span style="display:flex;flex-direction:column;gap:.1rem"><span style="font-weight:600;font-size:.72rem">Phorsyte™</span><span style="font-size:.62rem;color:var(--mid)">Foresight</span></span>
+            </label>
+            <label class="qcheck-card"><input type="checkbox" name="org-service" value="theShift™ Action Plan" onchange="orgInterestUpdate()"/>
+              <span style="display:flex;flex-direction:column;gap:.1rem"><span style="font-weight:600;font-size:.72rem">theShift™</span><span style="font-size:.62rem;color:var(--mid)">Action plan</span></span>
+            </label>
           </div>
-          <div class="qfield"><label class="qfield-label">I'm interested in</label>
-            <select class="qinput" id="org-interest">
-              <option>FoundationReady™ Assessment</option>
-              <option>Phorsyte™ Foresight</option>
-              <option>theShift™ Action Plan</option>
-              <option>FoundationReady™ Assessment, Phorsyte™ Foresight</option>
-              <option>FoundationReady™ Assessment, theShift™ Action Plan</option>
-              <option>Phorsyte™ Foresight, theShift™ Action Plan</option>
-              <option>FoundationReady™ Assessment, Phorsyte™ Foresight, theShift™ Action Plan</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
+          <input type="hidden" id="org-interest" value="FoundationReady™ Assessment"/>
         </div>
         <div class="qfield"><label class="qfield-label">Current challenges</label>
           <textarea class="qinput qtextarea" id="org-message" placeholder="Briefly describe what your organization is working through..."></textarea>
@@ -1891,29 +1947,58 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <div class="qform-eyebrow-teal">qPartner™ · Provider Network</div>
         <h3 class="qform-title">Join a network built on accountability.</h3>
         <div class="qform-rule-amber"></div>
-        <p class="qform-desc">qPartner™ is the verified provider network of the UnoSphere™. OurWalk™ navigators refer individuals to qPartner™ members because they've been vetted, verified, and confirmed to accept referrals. If you serve Henry or Madison County and you're ready to be part of an accountable referral system — apply here.</p>
-        <div class="qwho-grid" style="margin-top:1.5rem">
-          <div class="qwho-card qwho-active" id="prov-type-verified" onclick="provToggle(this,'Verified Directory Listing')">
-            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            <span class="qwho-label">Directory listing</span>
-            <span class="qwho-sub">Get verified &amp; listed</span>
+        <p class="qform-desc">qPartner™ is the verified provider network of the UnoSphere™. OurWalk™ navigators refer individuals to qPartner™ members because they've been vetted, verified, and confirmed to accept referrals.</p>
+        <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.85rem">
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Verified, not just listed.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Every qPartner™ member is vetted before they appear in the directory. We confirm your service area, capacity, and referral readiness — so navigators can trust every connection they make.</div>
+            </div>
           </div>
-          <div class="qwho-card" id="prov-type-referrals" onclick="provToggle(this,'Accepting Referrals from OurWalk™')">
-            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <span class="qwho-label">Receive referrals</span>
-            <span class="qwho-sub">From OurWalk™</span>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Receive confirmed-need referrals.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">OurWalk™ navigators don't send random leads. They send individuals whose needs have been assessed and matched to your specific services — reducing intake burden and improving connection rates.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Always-current directory listing.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Your listing reflects what you can actually offer right now — hours, capacity, referral status. Navigators see real-time information, not a static page that hasn't been updated in two years.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Serving Henry &amp; Madison County.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Provider listings are verified before publishing. If you serve individuals in Henry or Madison County, Indiana, we want you in the network.</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="qform-card qform-card-teal">
         <div class="qfield"><label class="qfield-label">Organization name *</label><input class="qinput" type="text" id="prov-org" placeholder="Legal organization name"/></div>
         <div class="qfrow">
-          <div class="qfield"><label class="qfield-label">Contact name *</label><input class="qinput" type="text" id="prov-name" placeholder="First and last name"/></div>
+          <div class="qfield"><label class="qfield-label">EIN <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--light)">(optional)</span></label><input class="qinput" type="text" id="prov-ein" placeholder="XX-XXXXXXX"/></div>
           <div class="qfield"><label class="qfield-label">Title</label><input class="qinput" type="text" id="prov-title" placeholder="Your title"/></div>
         </div>
         <div class="qfrow">
-          <div class="qfield"><label class="qfield-label">Email *</label><input class="qinput" type="email" id="prov-email" placeholder="you@org.org"/></div>
+          <div class="qfield"><label class="qfield-label">Contact name *</label><input class="qinput" type="text" id="prov-name" placeholder="First and last name"/></div>
           <div class="qfield"><label class="qfield-label">Phone *</label><input class="qinput" type="tel" id="prov-phone" placeholder="(765) 000-0000"/></div>
+        </div>
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">Email *</label><input class="qinput" type="email" id="prov-email" placeholder="you@org.org"/></div>
         </div>
         <div class="qfield"><label class="qfield-label">Service categories * <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--light)">(select all that apply)</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem;margin-top:.35rem">
@@ -1937,6 +2022,11 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
             <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Financial Coaching" onchange="provCatUpdate()"/> Financial Coaching</label>
             <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Utility Assistance" onchange="provCatUpdate()"/> Utility Assistance</label>
             <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Clothing &amp; Basic Needs" onchange="provCatUpdate()"/> Clothing &amp; Basic Needs</label>
+            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Board Development Services" onchange="provCatUpdate()"/> Board Development</label>
+            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Legal Aid / Pro Bono" onchange="provCatUpdate()"/> Legal Aid / Pro Bono</label>
+            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Strategic Planning / Consulting" onchange="provCatUpdate()"/> Strategic Planning</label>
+            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Volunteer Management" onchange="provCatUpdate()"/> Volunteer Management</label>
+            <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Community Collaboration / Joint Projects" onchange="provCatUpdate()"/> Community Collaboration</label>
             <label class="qcheck-card"><input type="checkbox" name="prov-cat" value="Other" onchange="provCatUpdate()"/> Other</label>
           </div>
           <input type="hidden" id="prov-category" value=""/>
@@ -1946,7 +2036,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
             <select class="qinput" id="prov-county">
               <option>Henry County</option>
               <option>Madison County</option>
-              <option>Both counties</option>
+              <option>Both Counties</option>
               <option>Other Indiana County</option>
             </select>
           </div>
@@ -1979,26 +2069,42 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <h3 class="qform-title">We chose to show up.</h3>
         <div class="qform-rule-amber"></div>
         <p class="qform-desc">weCARES™ volunteers don't just hand out flyers. They capture field intelligence, support navigation, and build the UnoSphere™ in real time. Every hour you give is tracked, counted, and connected to confirmed community outcomes.</p>
-        <div class="qwho-grid" style="margin-top:1.5rem;grid-template-columns:1fr 1fr">
-          <div class="qwho-card qwho-active" id="vol-type-field" onclick="volToggle(this,'Field Work / Community Events')">
-            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span class="qwho-label">Field work</span>
-            <span class="qwho-sub">Community events</span>
+        <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.85rem">
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Real work, real outcomes.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">weCARES™ volunteers support active navigation cases, capture field intelligence that improves the ecosystem, and build the platform infrastructure that makes everything else work.</div>
+            </div>
           </div>
-          <div class="qwho-card" id="vol-type-nav" onclick="volToggle(this,'OurWalk™ Navigation Support')">
-            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-            <span class="qwho-label">Navigation support</span>
-            <span class="qwho-sub">OurWalk™ cases</span>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Skill-matched, not just warm bodies.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">We match volunteers to roles that fit their skills and availability — legal pro bono, board service, grant writing, technology, field work, or navigation support. Your skills matter here.</div>
+            </div>
           </div>
-          <div class="qwho-card" id="vol-type-digital" onclick="volToggle(this,'Digital / Remote Support')">
-            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            <span class="qwho-label">Digital support</span>
-            <span class="qwho-sub">Remote work</span>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Every hour tracked to outcomes.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Volunteer hours are logged in the UnoSphere™ and connected to confirmed community outcomes — not counted in a spreadsheet no one reads. Your contribution is visible and documented.</div>
+            </div>
           </div>
-          <div class="qwho-card" id="vol-type-tech" onclick="volToggle(this,'Technology / UnoSphere™ Build')">
-            <svg class="qwho-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            <span class="qwho-label">Technology</span>
-            <span class="qwho-sub">Platform build</span>
+          <div style="display:flex;gap:.75rem;align-items:flex-start">
+            <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Background check required for direct-service roles.</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Field intelligence and navigation support roles require background check consent. Digital, technology, board, and administrative roles do not. We'll discuss the right fit with you.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -2017,7 +2123,8 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
               <option value="">Select county</option>
               <option>Henry County</option>
               <option>Madison County</option>
-              <option>Other</option>
+              <option>Both Counties</option>
+              <option>Other Indiana County</option>
             </select>
           </div>
           <div class="qfield"><label class="qfield-label">Availability</label>
@@ -2046,6 +2153,11 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
             <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Grant Writing Support" onchange="volSkillUpdate()"/> Grant Writing</label>
             <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Technology / UnoSphere™ Build" onchange="volSkillUpdate()"/> Technology Build</label>
             <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Board Development Support" onchange="volSkillUpdate()"/> Board Development</label>
+            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Board Service — QCLS" onchange="volSkillUpdate()"/> Board Service — QCLS</label>
+            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Board Service — Partner Organization" onchange="volSkillUpdate()"/> Board Service — Partner Org</label>
+            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Legal Pro Bono Support" onchange="volSkillUpdate()"/> Legal Pro Bono</label>
+            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Nonprofit Governance Support" onchange="volSkillUpdate()"/> Nonprofit Governance</label>
+            <label class="qcheck-card"><input type="checkbox" name="vol-skill" value="Strategic Planning Support" onchange="volSkillUpdate()"/> Strategic Planning</label>
           </div>
           <input type="hidden" id="vol-skills" value=""/>
         </div>
@@ -2395,7 +2507,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 // QCLS Portal Forms → Vercel API → Neon One
 // Replaced Make.com webhook June 28, 2026
 
-/* ── ORG CARD MULTI-SELECT ── */
+/* ── ORG INTEREST CHECKBOXES ── */
+window.orgInterestUpdate = function() {
+  const checked = [...document.querySelectorAll('input[name="org-service"]:checked')].map(c => c.value);
+  const hidden = document.getElementById('org-interest');
+  if (hidden) hidden.value = checked.join(', ') || 'Not specified';
+};
+
+/* ── ORG CARD MULTI-SELECT (legacy — kept for overlay) ── */
 const orgSelected = new Set(['FoundationReady™ Assessment']);
 window.orgCardToggle = function(val, cardId) {
   const card = document.getElementById(cardId);
@@ -2408,7 +2527,19 @@ window.orgCardToggle = function(val, cardId) {
     card.classList.add('qwho-active');
   }
   const sel = document.getElementById('org-interest');
-  if (sel) sel.value = Array.from(orgSelected).join(', ');
+  if (!sel) return;
+  const combined = Array.from(orgSelected).join(', ');
+  // Find matching option
+  let matched = false;
+  for (let i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].value === combined || sel.options[i].text === combined) {
+      sel.selectedIndex = i;
+      matched = true;
+      break;
+    }
+  }
+  // If no exact match (shouldn't happen with full combo list) just set value
+  if (!matched) sel.value = combined;
 };
 
 /* ── PROVIDER TYPE TOGGLE ── */
@@ -2458,6 +2589,23 @@ function qSwitchTab(tab) {
   document.querySelectorAll('.qpanel').forEach(p => p.classList.add('qhidden'));
   document.getElementById('qPanel-' + tab).classList.remove('qhidden');
 }
+
+/* ── AUTO-CLOSE OVERLAY WHEN CONTACT SECTION VISIBLE ── */
+(function() {
+  const contactSection = document.getElementById('contact');
+  if (!contactSection || !window.IntersectionObserver) return;
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        const overlay = document.getElementById('sideOverlayConnect');
+        if (overlay && overlay.classList.contains('open')) {
+          sideClose();
+        }
+      }
+    });
+  }, { threshold: 0.15 });
+  observer.observe(contactSection);
+})();
 
 /* ── INDIVIDUAL STEP NAVIGATION ── */
 let indCurrentStep = 1;
@@ -2571,6 +2719,7 @@ async function qSubmitForm(formType) {
     }
   } else if (formType === 'provider') {
     payload.organization = document.getElementById('prov-org').value.trim();
+    payload.ein = document.getElementById('prov-ein').value.trim();
     payload.name = document.getElementById('prov-name').value.trim();
     payload.email = document.getElementById('prov-email').value.trim();
     payload.phone = document.getElementById('prov-phone').value.trim();
@@ -2642,7 +2791,8 @@ function qResetForm(formType) {
       const el = document.getElementById(id); if (el) el.value = '';
     });
     document.getElementById('org-county').value = '';
-    document.getElementById('org-interest').selectedIndex = 0;
+    document.getElementById('org-interest').value = 'FoundationReady™ Assessment';
+    document.querySelectorAll('input[name="org-service"]').forEach((c,i) => { c.checked = i === 0; });
     // Reset org cards
     orgSelected.clear(); orgSelected.add('FoundationReady™ Assessment');
     document.getElementById('org-card-fr')?.classList.add('qwho-active');
@@ -2653,7 +2803,7 @@ function qResetForm(formType) {
     if (btn) { btn.classList.remove('qhidden'); btn.disabled = false; btn.textContent = 'Send inquiry →'; }
     qHideError('org-error');
   } else if (formType === 'provider') {
-    ['prov-org','prov-name','prov-title','prov-email','prov-phone'].forEach(id => {
+    ['prov-org','prov-ein','prov-name','prov-title','prov-email','prov-phone'].forEach(id => {
       const el = document.getElementById(id); if (el) el.value = '';
     });
     // Reset checkboxes
@@ -2712,74 +2862,6 @@ function qHideError(id) {
     </button>
   </div>
 
-  <!-- Connect panel -->
-  <div id="sidePanelConnect" class="side-panel">
-    <div class="side-panel-inner">
-      <div class="side-panel-head">
-        <div>
-          <div class="side-panel-eyebrow side-eyebrow-teal">Connect · Get Started</div>
-          <div class="side-panel-title">How can we help?</div>
-        </div>
-        <button onclick="sideClose()" class="side-close">✕</button>
-      </div>
-      <div style="width:24px;height:2px;background:var(--amber);margin-bottom:1rem"></div>
-
-      <!-- Who cards -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.85rem">
-        <button class="sc-who sc-who-active" onclick="scSetWho(this,'individual')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          <span class="sc-who-label">I need help</span>
-          <span class="sc-who-sub">Individual</span>
-        </button>
-        <button class="sc-who" onclick="scSetWho(this,'organization')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-          <span class="sc-who-label">Organization</span>
-          <span class="sc-who-sub">Nonprofit/Partner</span>
-        </button>
-        <button class="sc-who" onclick="scSetWho(this,'provider')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <span class="sc-who-label">Provider</span>
-          <span class="sc-who-sub">Join qPartner™</span>
-        </button>
-        <button class="sc-who" onclick="scSetWho(this,'volunteer')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          <span class="sc-who-label">Volunteer</span>
-          <span class="sc-who-sub">weCARES™</span>
-        </button>
-      </div>
-
-      <!-- Fields -->
-      <div id="sc-fields">
-        <div class="sc-field" id="sc-org-wrap" style="display:none"><label class="sc-label">Organization *</label><input class="sc-input" type="text" id="sc-org" placeholder="Organization name"/></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.45rem">
-          <div class="sc-field" style="margin-bottom:0"><label class="sc-label" id="sc-name-label">First name *</label><input class="sc-input" type="text" id="sc-fname" placeholder="First name"/></div>
-          <div class="sc-field" style="margin-bottom:0"><label class="sc-label">Last name</label><input class="sc-input" type="text" id="sc-lname" placeholder="Last name"/></div>
-        </div>
-        <div class="sc-field"><label class="sc-label">Email *</label><input class="sc-input" type="email" id="sc-email" placeholder="your@email.com"/></div>
-        <div class="sc-field"><label class="sc-label">Phone</label><input class="sc-input" type="tel" id="sc-phone" placeholder="(765) 000-0000"/></div>
-        <div class="sc-field"><label class="sc-label">County</label>
-          <select class="sc-input" id="sc-county">
-            <option value="">Select county</option>
-            <option>Henry County</option>
-            <option>Madison County</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="sc-field"><label class="sc-label">Message</label><textarea class="sc-input sc-textarea" id="sc-message" placeholder="Tell us what you need..."></textarea></div>
-      </div>
-
-      <button id="sc-submit" class="sc-btn-teal" onclick="scSubmit()">Send →</button>
-      <div id="sc-success" class="sc-success" style="display:none">
-        <div style="font-size:1.5rem;margin-bottom:.5rem">✓</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--void)">Received.</div>
-        <div style="font-size:.78rem;color:var(--mid);margin-top:.35rem;line-height:1.5">We'll follow up within one business day.</div>
-        <button onclick="scReset()" class="sc-btn-outline" style="margin-top:.75rem">Send another →</button>
-      </div>
-      <div id="sc-error" class="sc-error" style="display:none"></div>
-      <p style="font-size:.58rem;color:var(--light);text-align:center;margin-top:.5rem">No account required · 574-CARE-NOW</p>
-    </div>
-  </div>
-
   <!-- Contribute panel -->
   <div id="sidePanelContrib" class="side-panel">
     <div class="side-panel-inner">
@@ -2833,6 +2915,150 @@ function qHideError(id) {
 
 </div>
 
+<!-- ── CONNECT OVERLAY ── -->
+<div id="sideOverlayConnect">
+  <div class="overlay-head">
+    <div>
+      <div style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.2rem">Connect · Get Started</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--void);line-height:1.1">How can we help?</div>
+    </div>
+    <button id="sideOverlay-close" onclick="sideClose()" aria-label="Close">✕</button>
+  </div>
+  <div class="overlay-body">
+    <div style="font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.6rem">I am reaching out as</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;margin-bottom:1.25rem">
+      <button class="sc-who sc-who-active" id="sc-who-ind" onclick="scSetWho('individual',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span class="sc-who-label">Individual</span>
+        <span class="sc-who-sub">I need help</span>
+      </button>
+      <button class="sc-who" id="sc-who-org" onclick="scSetWho('organization',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        <span class="sc-who-label">Organization</span>
+        <span class="sc-who-sub">Nonprofit/Partner</span>
+      </button>
+      <button class="sc-who" id="sc-who-prov" onclick="scSetWho('provider',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span class="sc-who-label">Provider</span>
+        <span class="sc-who-sub">Join qPartner™</span>
+      </button>
+      <button class="sc-who" id="sc-who-vol" onclick="scSetWho('volunteer',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="sc-who-label">Volunteer</span>
+        <span class="sc-who-sub">weCARES™</span>
+      </button>
+    </div>
+    <div id="sc-fields">
+      <!-- Org fields (org + provider only) -->
+      <div class="sc-field" id="sc-org-wrap" style="display:none"><label class="sc-label">Organization name *</label><input class="sc-input" type="text" id="sc-org" placeholder="Legal organization name"/></div>
+      <div class="sc-field" id="sc-ein-wrap" style="display:none"><label class="sc-label">EIN <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label><input class="sc-input" type="text" id="sc-ein" placeholder="XX-XXXXXXX"/></div>
+      <div class="sc-field" id="sc-title-wrap" style="display:none"><label class="sc-label">Your title</label><input class="sc-input" type="text" id="sc-title" placeholder="Executive Director, etc."/></div>
+
+      <!-- Name row -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.45rem">
+        <div class="sc-field" style="margin-bottom:0"><label class="sc-label">First name *</label><input class="sc-input" type="text" id="sc-fname" placeholder="First name"/></div>
+        <div class="sc-field" style="margin-bottom:0"><label class="sc-label">Last name</label><input class="sc-input" type="text" id="sc-lname" placeholder="Last name"/></div>
+      </div>
+      <div class="sc-field"><label class="sc-label">Email *</label><input class="sc-input" type="email" id="sc-email" placeholder="your@email.com"/></div>
+      <div class="sc-field"><label class="sc-label">Phone</label><input class="sc-input" type="tel" id="sc-phone" placeholder="(765) 000-0000"/></div>
+      <div class="sc-field" id="sc-county-wrap"><label class="sc-label" id="sc-county-label">County</label>
+        <select class="sc-input" id="sc-county">
+          <option value="">Select county</option>
+          <option>Henry County</option>
+          <option>Madison County</option>
+          <option>Both Counties</option>
+          <option>Other Indiana County</option>
+          <option>Out of state</option>
+        </select>
+      </div>
+
+      <!-- Individual: primary need -->
+      <div class="sc-field" id="sc-need-wrap">
+        <label class="sc-label">Primary need</label>
+        <select class="sc-input" id="sc-need">
+          <option value="">Select what you need most</option>
+          <option>Healthcare access</option>
+          <option>Housing or shelter</option>
+          <option>Food assistance</option>
+          <option>Transportation</option>
+          <option>Disability services</option>
+          <option>Mental health support</option>
+          <option>Employment assistance</option>
+          <option>Benefits navigation</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- Organization: interest cards -->
+      <div class="sc-field" id="sc-interest-wrap" style="display:none">
+        <label class="sc-label">I'm interested in</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.35rem;margin-top:.25rem">
+          <button class="sc-who sc-who-active" id="sc-int-fr" onclick="scIntToggle(this,'FoundationReady™')"><span class="sc-who-label" style="font-size:.58rem">FoundationReady™</span><span class="sc-who-sub">CARES assessment</span></button>
+          <button class="sc-who" id="sc-int-ph" onclick="scIntToggle(this,'Phorsyte™')"><span class="sc-who-label" style="font-size:.58rem">Phorsyte™</span><span class="sc-who-sub">Foresight</span></button>
+          <button class="sc-who" id="sc-int-ts" onclick="scIntToggle(this,'theShift™')"><span class="sc-who-label" style="font-size:.58rem">theShift™</span><span class="sc-who-sub">Action plan</span></button>
+        </div>
+        <input type="hidden" id="sc-interest-val" value="FoundationReady™"/>
+      </div>
+
+      <!-- Provider: service categories -->
+      <div class="sc-field" id="sc-prov-cats-wrap" style="display:none">
+        <label class="sc-label">Service categories <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--light)">(select all that apply)</span></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.25rem;margin-top:.3rem;max-height:200px;overflow-y:auto">
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Healthcare / Medical"/> Healthcare / Medical</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Behavioral Health"/> Behavioral Health</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Substance Use Treatment"/> Substance Use</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Housing / Emergency Shelter"/> Housing / Shelter</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Disability Services"/> Disability Services</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Medicaid Waiver Services"/> Medicaid Waiver</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Food Assistance"/> Food Assistance</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Transportation / NEMT"/> Transportation</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Benefits Navigation"/> Benefits Navigation</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Youth Services"/> Youth Services</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Senior Services"/> Senior Services</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Legal Aid / Pro Bono"/> Legal Aid / Pro Bono</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Board Development"/> Board Development</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Community Collaboration"/> Community Collaboration</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-prov-cat" value="Other"/> Other</label>
+        </div>
+      </div>
+
+      <!-- Volunteer: skills -->
+      <div class="sc-field" id="sc-vol-skills-wrap" style="display:none">
+        <label class="sc-label">Skills & interests <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--light)">(select all that apply)</span></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.25rem;margin-top:.3rem;max-height:200px;overflow-y:auto">
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Navigation Support"/> Navigation Support</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Field Intelligence"/> Field Intelligence</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="FoundationReady™ Support"/> FoundationReady™</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Administrative Support"/> Administrative</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Research & Data"/> Research & Data</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Event Support"/> Event Support</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Community Outreach"/> Community Outreach</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Grant Writing"/> Grant Writing</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Graphic Design"/> Graphic Design</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Photography & Media"/> Photography & Media</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Technology Build"/> Technology Build</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Board Service — QCLS"/> Board Service — QCLS</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Board Service — Partner"/> Board Service — Partner</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Legal Pro Bono"/> Legal Pro Bono</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Nonprofit Governance"/> Nonprofit Governance</label>
+          <label class="qcheck-card"><input type="checkbox" name="sc-vol-skill" value="Strategic Planning"/> Strategic Planning</label>
+        </div>
+      </div>
+
+      <div class="sc-field"><label class="sc-label">Message</label><textarea class="sc-input sc-textarea" id="sc-message" placeholder="Tell us what you need..."></textarea></div>
+    </div>
+    <div id="sc-error" class="sc-error" style="display:none"></div>
+    <div id="sc-success" class="sc-success" style="display:none">
+      <div style="font-size:1.5rem;margin-bottom:.4rem">✓</div>
+      <div style="font-weight:600;color:var(--teal);margin-bottom:.3rem">Request received.</div>
+      <div style="font-size:.8rem;color:var(--mid)">We'll follow up within one business day.</div>
+      <button class="sc-btn-outline" onclick="scReset()" style="margin-top:.75rem">Submit another</button>
+    </div>
+    <button class="sc-btn-teal" id="sc-submit" onclick="scSubmit()">Send my request →</button>
+    <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.5rem">No account required · 574-CARE-NOW</p>
+  </div>
+</div>
+
 <style>
 /* ── SIDE TAB SYSTEM ── */
 #sideTabs{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:300;display:flex;flex-direction:row;align-items:center}
@@ -2843,7 +3069,16 @@ function qHideError(id) {
 .side-tab-teal:hover,.side-tab-teal.active{background:var(--deep);width:32px;box-shadow:-3px 3px 18px rgba(10,74,58,.35)}
 .side-tab-amber{background:var(--amber);color:var(--void);box-shadow:-2px 2px 12px rgba(232,160,32,.3)}
 .side-tab-amber:hover,.side-tab-amber.active{background:#d4911c;color:#fff;width:32px;box-shadow:-3px 3px 18px rgba(232,160,32,.4)}
-/* ── PANELS ── */
+
+/* ── CONNECT OVERLAY ── */
+#sideOverlayConnect{position:fixed;top:0;right:0;bottom:0;width:0;max-width:520px;background:#fff;box-shadow:-12px 0 60px rgba(10,26,18,.18);z-index:400;overflow:hidden;transition:width .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+#sideOverlayConnect.open{width:520px}
+#sideOverlayConnect .overlay-head{flex-shrink:0;padding:1.25rem 1.5rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;background:#fff}
+#sideOverlayConnect .overlay-body{flex:1;overflow-y:auto;padding:1.25rem 1.5rem}
+#sideOverlay-close{background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1.3rem;line-height:1;padding:.2rem;flex-shrink:0;transition:color .15s}
+#sideOverlay-close:hover{color:var(--void)}
+
+/* ── CONTRIBUTE PANEL (unchanged) ── */
 .side-panel{background:#fff;border:1px solid var(--border);border-right:none;border-radius:8px 0 0 8px;width:300px;box-shadow:-8px 0 40px rgba(10,26,18,.15);transform:translateX(100%);opacity:0;pointer-events:none;transition:all .25s ease;max-height:90vh;overflow-y:auto;position:absolute;right:32px;top:50%;transform:translateY(-50%) translateX(100%)}
 .side-panel.open{transform:translateY(-50%) translateX(0);opacity:1;pointer-events:auto}
 .side-panel-inner{padding:1.25rem}
@@ -2853,8 +3088,9 @@ function qHideError(id) {
 .side-eyebrow-amber{color:var(--amber)}
 .side-panel-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--void);line-height:1.1}
 .side-close{background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1.1rem;line-height:1;padding:.2rem;flex-shrink:0}
-/* ── CONNECT FORM ── */
-.sc-who{display:flex;flex-direction:column;align-items:center;gap:.2rem;border:1.5px solid var(--border);border-radius:4px;padding:.5rem .3rem;background:#fff;cursor:pointer;transition:all .15s}
+
+/* ── CONNECT FORM (inside overlay) ── */
+.sc-who{display:flex;flex-direction:column;align-items:center;gap:.2rem;border:1.5px solid var(--border);border-radius:4px;padding:.65rem .4rem;background:#fff;cursor:pointer;transition:all .15s}
 .sc-who:hover{border-color:var(--teal)}
 .sc-who-active{border-color:var(--teal)!important;background:rgba(29,158,117,.06)!important}
 .sc-who svg{stroke:var(--teal)}
@@ -2862,18 +3098,20 @@ function qHideError(id) {
 .sc-who-sub{font-size:.55rem;color:var(--mid)}
 .sc-field{margin-bottom:.45rem}
 .sc-label{font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:.18rem}
-.sc-input{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:3px;padding:.4rem .55rem;font-size:.82rem;color:var(--void);font-family:'Plus Jakarta Sans',sans-serif;transition:border-color .2s;outline:none}
+.sc-input{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:3px;padding:.45rem .6rem;font-size:.85rem;color:var(--void);font-family:'Plus Jakarta Sans',sans-serif;transition:border-color .2s;outline:none}
 .sc-input:focus{border-color:var(--teal);box-shadow:0 0 0 2px rgba(29,158,117,.1)}
-.sc-textarea{height:64px;resize:none}
-.sc-btn-teal{width:100%;background:var(--teal);color:#fff;border:none;border-radius:3px;padding:.65rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;transition:background .2s;margin-top:.35rem}
+.sc-textarea{height:80px;resize:none}
+.sc-btn-teal{width:100%;background:var(--teal);color:#fff;border:none;border-radius:3px;padding:.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .2s;margin-top:.5rem}
 .sc-btn-teal:hover{background:var(--deep)}
 .sc-btn-outline{background:transparent;border:1.5px solid var(--border);border-radius:3px;padding:.45rem .85rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;color:var(--mid);cursor:pointer;transition:all .15s}
 .sc-btn-outline:hover{border-color:var(--teal);color:var(--teal)}
 .sc-success{text-align:center;padding:.75rem;background:rgba(29,158,117,.06);border:1px solid rgba(29,158,117,.2);border-radius:4px;margin-top:.5rem}
 .sc-error{font-size:.75rem;color:var(--coral);background:rgba(232,100,74,.06);border:1px solid rgba(232,100,74,.2);border-left:3px solid var(--coral);border-radius:3px;padding:.5rem .75rem;margin-top:.5rem;line-height:1.5}
+
 /* ── MOBILE ── */
 @media(max-width:600px){
   #sideTabs{top:auto;bottom:5rem;transform:none}
+  #sideOverlayConnect.open{width:100vw}
   .side-panel{top:auto;bottom:0;transform:translateX(100%);max-height:80vh;border-radius:8px 8px 0 0;border-right:1px solid var(--border);width:calc(100vw - 36px)}
   .side-panel.open{transform:translateX(0)}
 }
@@ -2889,9 +3127,14 @@ function qHideError(id) {
   /* ── SIDE PANEL TOGGLE ── */
   window.sideToggle = function(panel) {
     if (panel === 'connect') {
+      if (activePanel === 'connect') {
+        sideClose();
+        return;
+      }
       sideClose();
-      const contactEl = document.getElementById('contact');
-      if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('sideOverlayConnect').classList.add('open');
+      document.getElementById('sideTabConnect').classList.add('active');
+      activePanel = 'connect';
       return;
     }
     const id = 'sidePanelContrib';
@@ -2903,6 +3146,7 @@ function qHideError(id) {
     }
     document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('open'));
     document.querySelectorAll('.side-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('sideOverlayConnect').classList.remove('open');
 
     document.getElementById(id).classList.add('open');
     document.getElementById(tabId).classList.add('active');
@@ -2912,19 +3156,50 @@ function qHideError(id) {
   window.sideClose = function() {
     document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('open'));
     document.querySelectorAll('.side-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('sideOverlayConnect').classList.remove('open');
+    activePanel = null;
+  };
+
+  /* ── SC WHO SELECTOR ── */
+  window.scSetWho = function(type, btn) {
+    scWhoType = type;
+    document.querySelectorAll('.sc-who[id^="sc-who-"]').forEach(b => b.classList.remove('sc-who-active'));
+    btn.classList.add('sc-who-active');
+    const isOrg = type === 'organization' || type === 'provider';
+    document.getElementById('sc-org-wrap').style.display = isOrg ? '' : 'none';
+    document.getElementById('sc-ein-wrap').style.display = isOrg ? '' : 'none';
+    document.getElementById('sc-title-wrap').style.display = isOrg ? '' : 'none';
+    document.getElementById('sc-need-wrap').style.display = type === 'individual' ? '' : 'none';
+    document.getElementById('sc-interest-wrap').style.display = type === 'organization' ? '' : 'none';
+    document.getElementById('sc-prov-cats-wrap').style.display = type === 'provider' ? '' : 'none';
+    document.getElementById('sc-vol-skills-wrap').style.display = type === 'volunteer' ? '' : 'none';
+    // Update county label
+    document.getElementById('sc-county-label').textContent = isOrg ? 'Counties served' : 'County';
+  };
+
+  /* ── SC INTEREST TOGGLE (org) ── */
+  const scIntSelected = new Set(['FoundationReady™']);
+  window.scIntToggle = function(btn, val) {
+    if (scIntSelected.has(val)) {
+      if (scIntSelected.size === 1) return;
+      scIntSelected.delete(val);
+      btn.classList.remove('sc-who-active');
+    } else {
+      scIntSelected.add(val);
+      btn.classList.add('sc-who-active');
+    }
+    document.getElementById('sc-interest-val').value = Array.from(scIntSelected).join(', ');
+  };
+
+  window.sideClose = function() {
+    document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('open'));
+    document.querySelectorAll('.side-tab').forEach(t => t.classList.remove('active'));
+    const overlay = document.getElementById('sideOverlayConnect');
+    if (overlay) overlay.classList.remove('open');
     activePanel = null;
   };
 
   /* ── CONNECT FORM ── */
-  window.scSetWho = function(btn, type) {
-    scWhoType = type;
-    document.querySelectorAll('.sc-who').forEach(c => c.classList.remove('sc-who-active'));
-    btn.classList.add('sc-who-active');
-    const isOrg = type === 'organization' || type === 'provider';
-    document.getElementById('sc-org-wrap').style.display = isOrg ? 'block' : 'none';
-    document.getElementById('sc-name-label').textContent = isOrg ? 'Your name *' : 'First name *';
-    document.getElementById('sc-fname').placeholder = isOrg ? 'Your name' : 'First name';
-  };
 
   window.scSubmit = async function() {
     const fname = document.getElementById('sc-fname').value.trim();
@@ -2940,15 +3215,25 @@ function qHideError(id) {
     btn.disabled = true; btn.textContent = 'Sending...';
     scHideError();
 
+    // Collect checkboxes
+    const provCats = [...document.querySelectorAll('input[name="sc-prov-cat"]:checked')].map(c => c.value).join(', ');
+    const volSkills = [...document.querySelectorAll('input[name="sc-vol-skill"]:checked')].map(c => c.value).join(', ');
+
     const payload = {
       formType: scWhoType,
       name: `${fname} ${document.getElementById('sc-lname').value.trim()}`.trim(),
       email,
       organization: org,
+      ein: document.getElementById('sc-ein')?.value.trim() || '',
+      title: document.getElementById('sc-title')?.value.trim() || '',
       phone: document.getElementById('sc-phone').value.trim(),
       county: document.getElementById('sc-county').value,
+      primaryNeed: document.getElementById('sc-need').value,
+      interest: document.getElementById('sc-interest-val')?.value || '',
+      serviceCategory: provCats,
+      skills: volSkills,
       message: document.getElementById('sc-message').value.trim(),
-      source: 'quest4care.org side panel',
+      source: 'quest4care.org connect panel',
       submitted_at: new Date().toISOString()
     };
 
@@ -2959,20 +3244,27 @@ function qHideError(id) {
         document.getElementById('sc-success').style.display = 'block';
       } else { throw new Error(res.status); }
     } catch(e) {
-      btn.disabled = false; btn.textContent = 'Send →';
+      btn.disabled = false; btn.textContent = 'Send my request →';
       scShowError('Something went wrong. Call 574-CARE-NOW or email info@quest4care.org.');
     }
   };
 
   window.scReset = function() {
-    ['sc-fname','sc-lname','sc-email','sc-phone','sc-message'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+    ['sc-fname','sc-lname','sc-email','sc-phone','sc-message','sc-org','sc-ein','sc-title'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
     document.getElementById('sc-county').value = '';
-    document.getElementById('sc-org').value = '';
+    document.getElementById('sc-need').value = '';
     document.getElementById('sc-org-wrap').style.display = 'none';
+    document.getElementById('sc-ein-wrap').style.display = 'none';
+    document.getElementById('sc-title-wrap').style.display = 'none';
+    document.getElementById('sc-need-wrap').style.display = '';
+    document.getElementById('sc-interest-wrap').style.display = 'none';
+    document.getElementById('sc-prov-cats-wrap').style.display = 'none';
+    document.getElementById('sc-vol-skills-wrap').style.display = 'none';
+    document.querySelectorAll('input[name="sc-prov-cat"], input[name="sc-vol-skill"]').forEach(c => c.checked = false);
     document.getElementById('sc-success').style.display = 'none';
     const btn = document.getElementById('sc-submit');
-    btn.style.display = ''; btn.disabled = false; btn.textContent = 'Send →';
-    document.querySelectorAll('.sc-who').forEach((c,i) => c.classList.toggle('sc-who-active', i === 0));
+    btn.style.display = ''; btn.disabled = false; btn.textContent = 'Send my request →';
+    document.querySelectorAll('.sc-who[id^="sc-who-"]').forEach((c,i) => c.classList.toggle('sc-who-active', i === 0));
     scWhoType = 'individual';
     scHideError();
   };
