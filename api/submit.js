@@ -162,10 +162,15 @@ async function updateCustomFields(accountId, formType, payload) {
     customFields.push({ id: FIELD_IDS.county, optionValues: [{ id: countyId }] });
   }
 
-  // Wrap in individualAccount per Neon PATCH requirement
-  return neonPatch(`/accounts/${accountId}`, {
-    individualAccount: { customFields }
-  });
+  // Fetch account to determine type
+  const acct = await neonGet(`/accounts/${accountId}`);
+  const isCompany = !!acct.data?.companyAccount;
+  
+  const patchBody = isCompany
+    ? { companyAccount: { customFields } }
+    : { individualAccount: { customFields } };
+
+  return neonPatch(`/accounts/${accountId}`, patchBody);
 }
 
 // ── Add account to Provisional group ──
@@ -248,15 +253,15 @@ export default async function handler(req, res) {
 
     // 3. Update custom fields (triggers conditional workflow)
     const fieldResult = await updateCustomFields(accountId, formType, payload);
-    console.log('Custom fields update:', fieldResult.status);
+    console.log('Custom fields status:', fieldResult.status, JSON.stringify(fieldResult.data).substring(0,200));
 
     // 4. Add to Provisional group
     const groupResult = await addToProvisionalGroup(accountId);
-    console.log('Provisional group:', groupResult.status);
+    console.log('Provisional group status:', groupResult.status, JSON.stringify(groupResult.data).substring(0,200));
 
     // 5. Create activity
     const activityResult = await createActivity(accountId, formType, payload);
-    console.log('Activity:', activityResult.status);
+    console.log('Activity status:', activityResult.status, JSON.stringify(activityResult.data).substring(0,200));
 
     return res.status(200).json({ success: true, accountId });
 
