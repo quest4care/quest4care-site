@@ -2643,6 +2643,11 @@ function qResetForm(formType) {
     });
     document.getElementById('org-county').value = '';
     document.getElementById('org-interest').selectedIndex = 0;
+    // Reset org cards
+    orgSelected.clear(); orgSelected.add('FoundationReady™ Assessment');
+    document.getElementById('org-card-fr')?.classList.add('qwho-active');
+    document.getElementById('org-card-ph')?.classList.remove('qwho-active');
+    document.getElementById('org-card-ts')?.classList.remove('qwho-active');
     document.getElementById('org-success').classList.add('qhidden');
     const btn = document.getElementById('org-submit');
     if (btn) { btn.classList.remove('qhidden'); btn.disabled = false; btn.textContent = 'Send inquiry →'; }
@@ -2651,22 +2656,35 @@ function qResetForm(formType) {
     ['prov-org','prov-name','prov-title','prov-email','prov-phone'].forEach(id => {
       const el = document.getElementById(id); if (el) el.value = '';
     });
+    // Reset checkboxes
+    document.querySelectorAll('input[name="prov-cat"]').forEach(c => c.checked = false);
     document.getElementById('prov-category').value = '';
+    // Reset provider type cards
+    provTypeSelected.clear(); provTypeSelected.add('Verified Directory Listing');
+    document.getElementById('prov-type-verified')?.classList.add('qwho-active');
+    document.getElementById('prov-type-referrals')?.classList.remove('qwho-active');
     document.getElementById('prov-county').selectedIndex = 0;
     document.getElementById('prov-referrals').selectedIndex = 0;
     document.getElementById('prov-success').classList.add('qhidden');
-    const btn = document.getElementById('prov-submit');
-    if (btn) { btn.classList.remove('qhidden'); btn.disabled = false; btn.textContent = 'Apply to qPartner™ →'; }
+    const provBtn = document.getElementById('prov-submit');
+    if (provBtn) { provBtn.classList.remove('qhidden'); provBtn.disabled = false; provBtn.textContent = 'Apply to qPartner™ →'; }
     qHideError('prov-error');
   } else if (formType === 'volunteer') {
     ['vol-fname','vol-lname','vol-email','vol-phone','vol-message'].forEach(id => {
       const el = document.getElementById(id); if (el) el.value = '';
     });
+    // Reset skill checkboxes
+    document.querySelectorAll('input[name="vol-skill"]').forEach(c => c.checked = false);
+    document.getElementById('vol-skills').value = '';
+    // Reset volunteer type cards
+    volTypeSelected.clear(); volTypeSelected.add('Field Work / Community Events');
+    document.getElementById('vol-type-field')?.classList.add('qwho-active');
+    ['vol-type-nav','vol-type-digital','vol-type-tech'].forEach(id => document.getElementById(id)?.classList.remove('qwho-active'));
     document.getElementById('vol-county').value = '';
     document.getElementById('vol-avail').selectedIndex = 0;
     document.getElementById('vol-success').classList.add('qhidden');
-    const btn = document.getElementById('vol-submit');
-    if (btn) { btn.classList.remove('qhidden'); btn.disabled = false; btn.textContent = 'Apply to weCARES™ →'; }
+    const volBtn = document.getElementById('vol-submit');
+    if (volBtn) { volBtn.classList.remove('qhidden'); volBtn.disabled = false; volBtn.textContent = 'Apply to weCARES™ →'; }
     qHideError('vol-error');
   }
 }
@@ -2686,10 +2704,10 @@ function qHideError(id) {
 
   <!-- Tab stack -->
   <div id="sideTabStack">
-    <button id="sideTabConnect" class="side-tab side-tab-teal" onclick="sideToggle('connect')" aria-label="Connect with QCLS">
-      <span>Connect</span>
+    <button id="sideTabConnect" class="side-tab side-tab-amber" onclick="sideToggle('connect')" aria-label="Get Started with QCLS">
+      <span>Get Started</span>
     </button>
-    <button id="sideTabContrib" class="side-tab side-tab-amber" onclick="sideToggle('contrib')" aria-label="Contribute to QCLS">
+    <button id="sideTabContrib" class="side-tab side-tab-teal" onclick="sideToggle('contrib')" aria-label="Contribute to QCLS">
       <span>Contribute</span>
     </button>
   </div>
@@ -2819,13 +2837,12 @@ function qHideError(id) {
 /* ── SIDE TAB SYSTEM ── */
 #sideTabs{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:300;display:flex;flex-direction:row;align-items:center}
 #sideTabStack{display:flex;flex-direction:column;gap:6px}
-.side-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;width:28px;padding:1.1rem .4rem;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:all .2s;writing-mode:vertical-lr;text-orientation:mixed;border-radius:20px 0 0 20px}
-.side-tab span{writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg)}
-.side-tab svg{writing-mode:horizontal-tb;flex-shrink:0}
-.side-tab-teal{background:var(--teal);color:#fff;box-shadow:-3px 0 16px rgba(29,158,117,.25)}
-.side-tab-teal:hover,.side-tab-teal.active{background:var(--deep);width:34px;box-shadow:-4px 0 20px rgba(29,158,117,.35)}
-.side-tab-amber{background:var(--amber);color:var(--void);box-shadow:-3px 0 16px rgba(232,160,32,.25)}
-.side-tab-amber:hover,.side-tab-amber.active{background:#f0b030;width:34px;box-shadow:-4px 0 20px rgba(232,160,32,.35)}
+.side-tab{display:flex;align-items:center;justify-content:center;width:26px;padding:1.25rem .3rem;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:all .22s cubic-bezier(.4,0,.2,1);border-radius:12px 0 0 12px;line-height:1}
+.side-tab span{writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);display:block}
+.side-tab-teal{background:var(--teal);color:#fff;box-shadow:-2px 2px 12px rgba(29,158,117,.3)}
+.side-tab-teal:hover,.side-tab-teal.active{background:var(--deep);width:32px;box-shadow:-3px 3px 18px rgba(10,74,58,.35)}
+.side-tab-amber{background:var(--amber);color:var(--void);box-shadow:-2px 2px 12px rgba(232,160,32,.3)}
+.side-tab-amber:hover,.side-tab-amber.active{background:#d4911c;color:#fff;width:32px;box-shadow:-3px 3px 18px rgba(232,160,32,.4)}
 /* ── PANELS ── */
 .side-panel{background:#fff;border:1px solid var(--border);border-right:none;border-radius:8px 0 0 8px;width:300px;box-shadow:-8px 0 40px rgba(10,26,18,.15);transform:translateX(100%);opacity:0;pointer-events:none;transition:all .25s ease;max-height:90vh;overflow-y:auto;position:absolute;right:32px;top:50%;transform:translateY(-50%) translateX(100%)}
 .side-panel.open{transform:translateY(-50%) translateX(0);opacity:1;pointer-events:auto}
@@ -2871,15 +2888,19 @@ function qHideError(id) {
 
   /* ── SIDE PANEL TOGGLE ── */
   window.sideToggle = function(panel) {
-    const panelEl = document.getElementById('sidePanelConnect'.replace('Connect', panel === 'connect' ? 'Connect' : 'Contrib'));
-    const id = panel === 'connect' ? 'sidePanelConnect' : 'sidePanelContrib';
-    const tabId = panel === 'connect' ? 'sideTabConnect' : 'sideTabContrib';
+    if (panel === 'connect') {
+      sideClose();
+      const contactEl = document.getElementById('contact');
+      if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    const id = 'sidePanelContrib';
+    const tabId = 'sideTabContrib';
 
     if (activePanel === panel) {
       sideClose();
       return;
     }
-    // Close any open panel
     document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('open'));
     document.querySelectorAll('.side-tab').forEach(t => t.classList.remove('active'));
 
