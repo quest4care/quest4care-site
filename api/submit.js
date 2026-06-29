@@ -1,100 +1,111 @@
-// QCLS Form Submission Handler
-// Vercel Serverless Function → Neon One API v2
-// Creates account, adds to Provisional group, writes activity, updates custom fields
+// QCLS Form Submission Handler v6
+// Vercel Serverless Function → Neon One API
+// Creates account, adds to Provisional group, sets custom fields, triggers workflow
 
 const NEON_ORG = 'quest4care';
 const NEON_BASE = 'https://api.neoncrm.com/v2';
 
-// Activity Status IDs (from /v2/properties/activityStatuses)
-const ACTIVITY_STATUS = {
-  NOT_STARTED: 2,
-  IN_PROGRESS: 3,
-  COMPLETED: 4,
-  WAITING: 5,
-  DEFERRED: 6,
-  OTHER: 7
-};
-
-// Custom field IDs
-const FIELDS = {
-  PROGRAM_INTEREST: '87',   // Account custom field
-  COUNTY: '91',             // Account custom field
-  INTEREST_AREA: '83',      // Account custom field
-  FOLLOW_UP_NEEDED: '153',  // QCLS Follow-Up Needed
-  FOLLOW_UP_TYPE: '154',    // QCLS Follow-Up Type
-  FOLLOW_UP_DUE: '155',     // QCLS Follow-Up Due Date
-  FOLLOW_UP_SOURCE: '156',  // QCLS Follow-Up Source
+// ── Field IDs from neon_config.txt (generated 2026-06-29) ──
+const FIELD_IDS = {
+  followUpNeeded:    '153',
+  followUpNeededYes: '198',  // "Yes"
+  followUpNeededNo:  '199',  // "No"
+  followUpType:      '154',
+  followUpSource:    '156',
+  programInterest:   '87',
+  county:            '91',
+  interestArea:      '83',
 };
 
 // Program Interest option IDs
-const PROGRAM_IDS = {
+const PROGRAM_INTEREST = {
   individual:   '31', // Community Access Navigation
   organization: '32', // FoundationReady Assessment
   provider:     '33', // Provider Network
   volunteer:    '34', // Volunteer
+  donation:     '35', // General Inquiry
   default:      '35', // General Inquiry
 };
 
 // County option IDs
 const COUNTY_IDS = {
-  'Henry County': '59',
-  'Madison County': '60',
-  'Other': '61',
+  'Henry County':        '59',
+  'Madison County':      '60',
+  'Both Counties':       '59', // map to Henry, note both in message
   'Other Indiana County': '61',
+  'Other':               '61',
 };
+
+// Follow-Up Type option IDs
+const FOLLOWUP_TYPE = {
+  individual:   '209', // Navigation Follow-Up
+  organization: '208', // Grant Readiness Review
+  provider:     '209', // Navigation Follow-Up
+  volunteer:    '209', // Navigation Follow-Up
+  default:      '210', // Other
+};
+
+const PROVISIONAL_GROUP_ID = '31';
 
 function authHeader() {
   const key = process.env.NEON_API_KEY;
   return 'Basic ' + Buffer.from(`${NEON_ORG}:${key}`).toString('base64');
 }
 
-function splitName(full) {
-  const parts = (full || '').trim().split(/\s+/);
-  if (parts.length === 1) return { firstName: parts[0], lastName: '' };
-  const lastName = parts.pop();
-  return { firstName: parts.join(' '), lastName };
-}
-
-function todayISO() {
-  return new Date().toISOString().split('T')[0];
-}
-
-function dueDateISO(daysFromNow = 1) {
-  const d = new Date();
-  d.setDate(d.getDate() + daysFromNow);
-  return d.toISOString().split('T')[0];
-}
+const headers = () => ({
+  'Authorization': authHeader(),
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+});
 
 async function neonPost(path, body) {
   const res = await fetch(`${NEON_BASE}${path}`, {
     method: 'POST',
-    headers: { 'Authorization': authHeader(), 'Content-Type': 'application/json' },
+    headers: headers(),
     body: JSON.stringify(body)
   });
-  return res.json().catch(() => ({}));
+  const text = await res.text();
+  try { return { status: res.status, data: JSON.parse(text) }; }
+  catch(e) { return { status: res.status, data: {} }; }
 }
 
 async function neonPatch(path, body) {
   const res = await fetch(`${NEON_BASE}${path}`, {
     method: 'PATCH',
-    headers: { 'Authorization': authHeader(), 'Content-Type': 'application/json' },
+    headers: headers(),
     body: JSON.stringify(body)
   });
-  return res.json().catch(() => ({}));
+  const text = await res.text();
+  try { return { status: res.status, data: JSON.parse(text) }; }
+  catch(e) { return { status: res.status, data: {} }; }
 }
 
+async function neonGet(path) {
+  const res = await fetch(`${NEON_BASE}${path}`, {
+    method: 'GET',
+    headers: headers()
+  });
+  const text = await res.text();
+  try { return { status: res.status, data: JSON.parse(text) }; }
+  catch(e) { return { status: res.status, data: {} }; }
+}
+
+// ── Find existing account by email ──
 async function findAccountByEmail(email) {
-  const data = await neonPost('/accounts/search', {
+  const r = await neonPost('/accounts/search', {
     searchFields: [{ field: 'Email', operator: 'EQUAL', value: email }],
     outputFields: ['Account ID', 'First Name', 'Last Name'],
     pagination: { currentPage: 0, pageSize: 1 }
   });
-  return data.searchResults?.[0] || null;
+  return r.data?.searchResults?.[0]?.['Account ID'] || null;
 }
 
-async function createIndividualAccount(payload) {
-  const { firstName, lastName } = splitName(payload.name);
-  const data = await neonPost('/accounts', {
+// ── Create individual account ──
+async function createIndividual(payload) {
+  const parts = (payload.name || '').trim().split(/\s+/);
+  const firstName = parts[0] || '';
+  const lastName = parts.slice(1).join(' ') || '';
+  const r = await neonPost('/accounts', {
     individualAccount: {
       primaryContact: {
         firstName,
@@ -104,84 +115,115 @@ async function createIndividualAccount(payload) {
       }
     }
   });
-  return data.id || null;
+  return r.data?.id || null;
 }
 
-async function createCompanyAccount(payload) {
-  const { firstName, lastName } = splitName(payload.name);
-  const data = await neonPost('/accounts', {
+// ── Create company account ──
+async function createCompany(payload) {
+  const parts = (payload.name || '').trim().split(/\s+/);
+  const firstName = parts[0] || '';
+  const lastName = parts.slice(1).join(' ') || '';
+  const r = await neonPost('/accounts', {
     companyAccount: {
       name: payload.organization,
-      primaryContact: { firstName, lastName, email1: payload.email, phone1: payload.phone || '' }
+      primaryContact: {
+        firstName,
+        lastName,
+        email1: payload.email,
+        phone1: payload.phone || ''
+      }
     }
   });
-  return data.id || null;
+  return r.data?.id || null;
 }
 
+// ── Update custom fields using correct optionValues structure ──
 async function updateCustomFields(accountId, formType, payload) {
+  const countyId = COUNTY_IDS[payload.county] || null;
+  const programId = PROGRAM_INTEREST[formType] || PROGRAM_INTEREST.default;
+  const followUpTypeId = FOLLOWUP_TYPE[formType] || FOLLOWUP_TYPE.default;
+
   const customFields = [
-    { id: FIELDS.FOLLOW_UP_NEEDED, value: 'Yes' },
-    { id: FIELDS.FOLLOW_UP_TYPE, value: formType },
-    { id: FIELDS.FOLLOW_UP_DUE, value: dueDateISO(1) },
-    { id: FIELDS.FOLLOW_UP_SOURCE, value: payload.source || 'quest4care.org' },
+    // QCLS Follow-Up Needed = Yes
+    {
+      id: FIELD_IDS.followUpNeeded,
+      optionValues: [{ id: FIELD_IDS.followUpNeededYes }]
+    },
+    // QCLS Follow-Up Type
+    {
+      id: FIELD_IDS.followUpType,
+      optionValues: [{ id: followUpTypeId }]
+    },
+    // QCLS Follow-Up Source (text field)
+    {
+      id: FIELD_IDS.followUpSource,
+      value: payload.source || 'quest4care.org'
+    },
+    // QCLS Follow-Up Due Date (text field — tomorrow's date)
+    {
+      id: FIELD_IDS.followUpDueDate,
+      value: new Date(Date.now() + 86400000).toISOString().split('T')[0]
+    },
+    // Program Interest
+    {
+      id: FIELD_IDS.programInterest,
+      optionValues: [{ id: programId }]
+    },
   ];
 
-  if (payload.county && COUNTY_IDS[payload.county]) {
-    customFields.push({ id: FIELDS.COUNTY, value: COUNTY_IDS[payload.county] });
+  // County (if provided)
+  if (countyId) {
+    customFields.push({
+      id: FIELD_IDS.county,
+      optionValues: [{ id: countyId }]
+    });
   }
-
-  customFields.push({ id: FIELDS.PROGRAM_INTEREST, value: PROGRAM_IDS[formType] || PROGRAM_IDS.default });
 
   return neonPatch(`/accounts/${accountId}`, { customFields });
 }
 
-async function addNote(accountId, payload, formType) {
-  const parts = [
-    `Form: ${formType} · Source: quest4care.org · ${new Date().toISOString()}`,
-  ];
-  if (payload.county) parts.push(`County: ${payload.county}`);
-  if (payload.message) parts.push(`Message: ${payload.message}`);
-  if (payload.serviceCategory) parts.push(`Service Categories: ${payload.serviceCategory}`);
-  if (payload.providerTypes) parts.push(`Provider Type: ${payload.providerTypes}`);
-  if (payload.skills) parts.push(`Skills: ${payload.skills}`);
-  if (payload.volunteerTypes) parts.push(`Volunteer Type: ${payload.volunteerTypes}`);
-  if (payload.availability) parts.push(`Availability: ${payload.availability}`);
-  if (payload.ein) parts.push(`EIN: ${payload.ein}`);
-  if (payload.interest) parts.push(`Interest: ${payload.interest}`);
-
-  return neonPost(`/accounts/${accountId}/notes`, { note: parts.join('\n') });
+// ── Add account to Provisional group ──
+async function addToProvisionalGroup(accountId) {
+  return neonPost(`/accounts/${accountId}/groups`, {
+    id: PROVISIONAL_GROUP_ID
+  });
 }
 
-async function createActivity(accountId, payload, formType) {
+// ── Create activity (follow-up task) ──
+async function createActivity(accountId, formType, payload) {
+  const details = [
+    payload.organization ? `Organization: ${payload.organization}` : null,
+    payload.ein ? `EIN: ${payload.ein}` : null,
+    payload.title ? `Title: ${payload.title}` : null,
+    payload.county ? `County: ${payload.county}` : null,
+    payload.primaryNeed ? `Primary Need: ${payload.primaryNeed}` : null,
+    payload.interest ? `Interest: ${payload.interest}` : null,
+    payload.serviceCategory ? `Service Categories: ${payload.serviceCategory}` : null,
+    payload.skills ? `Skills: ${payload.skills}` : null,
+    payload.availability ? `Availability: ${payload.availability}` : null,
+    payload.message ? `Message: ${payload.message}` : null,
+    `Source: ${payload.source || 'quest4care.org'}`,
+    `Submitted: ${payload.submitted_at || new Date().toISOString()}`,
+  ].filter(Boolean).join('\n');
+
   const subjectMap = {
-    individual: 'OurWalk™ Navigation Request',
+    individual:   'OurWalk™ Navigation Request',
     organization: 'FoundationReady™ Inquiry',
-    provider: 'qPartner™ Provider Application',
-    volunteer: 'weCARES™ Volunteer Application',
+    provider:     'qPartner™ Provider Application',
+    volunteer:    'weCARES™ Volunteer Application',
   };
 
-  const { firstName } = splitName(payload.name);
-
-  const nowISO = new Date().toISOString();
-  const tomorrowISO = new Date(Date.now() + 86400000).toISOString();
-
-  const activityBody = {
-    subject: subjectMap[formType] || 'QCLS Inquiry',
-    note: `New inquiry received via quest4care.org. Follow up within one business day.\n\nName: ${payload.name || ''}\nEmail: ${payload.email || ''}\nPhone: ${payload.phone || ''}\nCounty: ${payload.county || ''}\nMessage: ${payload.message || ''}`,
+  return neonPost('/activities', {
+    activityDate: new Date().toISOString().split('T')[0],
+    subject: subjectMap[formType] || 'Website Inquiry',
+    status: { id: '2' }, // Not Started
     priority: 'High',
-    status: { id: ACTIVITY_STATUS.NOT_STARTED },
-    activityDates: [{
-      startDate: nowISO,
-      endDate: tomorrowISO,
-    }],
-    clientAccount: [{
-      accountId: String(accountId),
-    }],
-  };
-
-  return neonPost('/activities', activityBody);
+    details,
+    account: { id: accountId }
+  });
 }
 
+// ── Main handler ──
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://quest4care.org');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -196,38 +238,42 @@ export default async function handler(req, res) {
 
     if (!email) return res.status(400).json({ error: 'Email is required' });
 
-    // Duplicate detection
-    const existing = await findAccountByEmail(email);
-    let accountId = existing?.['Account ID'] || null;
+    // 1. Check for existing account
+    let accountId = await findAccountByEmail(email);
 
-    // Create account if not found
-    const isOrg = ['organization', 'provider'].includes(formType) || (organization && organization.trim().length > 0);
-
+    // 2. Create account if not found
     if (!accountId) {
+      const isOrg = formType === 'organization' || formType === 'provider' || organization?.trim();
       if (isOrg && organization) {
-        accountId = await createCompanyAccount(payload);
+        accountId = await createCompany(payload);
       } else {
-        accountId = await createIndividualAccount(payload);
+        accountId = await createIndividual(payload);
       }
     }
 
-    if (accountId) {
-      // Run in parallel — custom fields, note, activity
-      const [fieldsResult, noteResult, activityResult] = await Promise.all([
-        updateCustomFields(accountId, formType, payload),
-        addNote(accountId, payload, formType),
-        createActivity(accountId, payload, formType),
-      ]);
-
-      console.log('Custom fields:', JSON.stringify(fieldsResult));
-      console.log('Note:', JSON.stringify(noteResult));
-      console.log('Activity:', JSON.stringify(activityResult));
+    if (!accountId) {
+      console.error('Failed to create/find account for:', email);
+      return res.status(200).json({ success: true, warning: 'Account creation failed silently' });
     }
+
+    console.log(`Account ID: ${accountId} for ${email}`);
+
+    // 3. Update custom fields (triggers conditional workflow)
+    const fieldResult = await updateCustomFields(accountId, formType, payload);
+    console.log('Custom fields update:', fieldResult.status);
+
+    // 4. Add to Provisional group
+    const groupResult = await addToProvisionalGroup(accountId);
+    console.log('Provisional group:', groupResult.status);
+
+    // 5. Create activity
+    const activityResult = await createActivity(accountId, formType, payload);
+    console.log('Activity:', activityResult.status);
 
     return res.status(200).json({ success: true, accountId });
 
-  } catch (err) {
+  } catch(err) {
     console.error('Submit error:', err);
-    return res.status(500).json({ error: 'Submission failed. Please email info@quest4care.org.' });
+    return res.status(500).json({ error: 'Submission failed. Please email info@quest4care.org or call 574-CARE-NOW.' });
   }
 }
