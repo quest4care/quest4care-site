@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Navigation Intake Survey | QuestCare LifeStyle Solutions</title>
+<meta name="robots" content="noindex"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Oswald:wght@500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#0A1A12;--deep:#0A4A3A;--teal:#1D9E75;
+  --amber:#E8A020;--coral:#E8644A;--sand:#F0E6D0;
+  --nw:#F8F5EE;--border:#E0D8C8;--mid:#4A6558;--light:#7A9588;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--void);color:var(--void);line-height:1.6;min-height:100vh}
+.s-topbar{display:flex;align-items:center;gap:.75rem;padding:1.25rem clamp(1.25rem,4vw,3rem);border-bottom:1px solid rgba(255,255,255,.08)}
+.s-mark{width:36px;height:36px;flex-shrink:0}
+.s-wm{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--sand);line-height:1}
+.s-wm strong{font-weight:700}
+.s-tag{font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:1px}
+.s-wrap{max-width:1100px;margin:0 auto;padding:clamp(2rem,5vw,4rem) clamp(1.25rem,4vw,3rem) 5rem}
+
+/* ── exact component set reused from quest4care.org contact forms ── */
+.qform-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start}
+.qform-eyebrow-teal{font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}
+.qform-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.8rem);font-weight:300;color:#fff;line-height:1.05;letter-spacing:-.02em;margin-bottom:.75rem}
+.qform-title strong{font-weight:700}
+.qform-rule-amber{width:40px;height:2px;background:var(--amber);margin-bottom:1.25rem}
+.qform-desc{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.85;margin-bottom:1.5rem}
+.qform-contact-pills{display:flex;gap:.5rem;flex-wrap:wrap}
+.qpill-teal{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .85rem;border-radius:3px;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);color:var(--teal);font-size:.75rem;font-weight:600;text-decoration:none}
+.qpill-outline{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .85rem;border-radius:3px;background:transparent;border:1.5px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45);font-size:.75rem;font-weight:600;text-decoration:none}
+.qform-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--teal);border-radius:4px;padding:1.75rem}
+.qstep-bar{display:flex;align-items:center;margin-bottom:1.5rem}
+.qstep{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
+.qstep-circle{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--mid)}
+.qstep-active .qstep-circle{border-color:var(--teal);background:var(--teal);color:#fff}
+.qstep-done .qstep-circle{border-color:var(--teal);background:var(--teal);color:#fff}
+.qstep-label{font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--light);margin-top:.25rem}
+.qstep-line{flex:1;height:1.5px;background:var(--border);margin:0 .25rem;margin-bottom:1.1rem}
+.qstep-line-done{background:var(--teal)}
+.qhidden{display:none!important}
+.qfield{margin-bottom:.85rem}
+.qfield-label{font-size:.78rem;font-weight:600;color:var(--void);display:block;margin-bottom:.45rem;line-height:1.5;letter-spacing:0;text-transform:none}
+.qfield-hint{font-size:.7rem;color:var(--light);font-weight:400;display:block;margin-top:.2rem;line-height:1.5}
+.qinput{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:3px;padding:.55rem .7rem;font-size:.85rem;color:var(--void);font-family:'Plus Jakarta Sans',sans-serif;transition:border-color .2s;outline:none}
+.qinput:focus{border-color:var(--teal)}
+.qfrow{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.5rem}
+.qfrow-btns{display:flex;gap:.6rem;margin-top:.75rem}
+.qtextarea{height:80px;resize:vertical}
+.qcheck-card{display:flex;align-items:center;gap:.45rem;border:1.5px solid var(--border);border-radius:3px;padding:.55rem .65rem;background:#fff;cursor:pointer;font-size:.78rem;font-weight:500;color:var(--void);transition:all .15s;line-height:1.35}
+.qcheck-card:hover{border-color:var(--teal);background:rgba(29,158,117,.04)}
+.qcheck-card input{accent-color:var(--teal);flex-shrink:0;cursor:pointer}
+.qcheck-card:has(input:checked){border-color:var(--teal);background:rgba(29,158,117,.06)}
+.qopt-card{display:flex;align-items:flex-start;gap:.55rem;border:1.5px solid var(--border);border-radius:4px;padding:.65rem .75rem;background:#fff;cursor:pointer;font-size:.82rem;font-weight:500;color:var(--void);transition:all .15s;line-height:1.4;margin-bottom:.45rem}
+.qopt-card:hover{border-color:var(--teal)}
+.qopt-card:has(input:checked){border-color:var(--teal);background:rgba(29,158,117,.06)}
+.qopt-card input{accent-color:var(--teal);flex-shrink:0;margin-top:.2rem}
+.qbtn-teal{width:100%;background:var(--teal);color:#fff;border:none;border-radius:3px;padding:.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:background .2s}
+.qbtn-teal:hover{background:#178a64}
+.qbtn-outline{flex:1;background:transparent;color:var(--mid);border:1.5px solid var(--border);border-radius:3px;padding:.65rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s}
+.qbtn-outline:hover{border-color:var(--mid)}
+.qsuccess-box{text-align:center;padding:2rem 1rem}
+.qsuccess-icon{width:44px;height:44px;border-radius:50%;background:rgba(29,158,117,.1);border:2px solid var(--teal);color:var(--teal);font-size:1.1rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.qerror-msg{background:rgba(232,100,74,.08);border:1px solid rgba(232,100,74,.25);border-left:3px solid var(--coral);border-radius:3px;padding:.75rem 1rem;font-size:.82rem;color:var(--coral);margin-top:.75rem;line-height:1.6}
+.qform-note{font-size:.68rem;color:var(--light);text-align:center;margin-top:.75rem;line-height:1.5}
+.qreflect{background:var(--nw);border-left:3px solid var(--teal);border-radius:0 4px 4px 0;padding:.75rem .9rem;font-size:.78rem;color:var(--mid);line-height:1.65;margin:.65rem 0 1rem}
+.qsafety{background:rgba(232,100,74,.07);border:1.5px solid rgba(232,100,74,.3);border-radius:4px;padding:.9rem 1rem;margin-bottom:1rem}
+.qsafety strong{color:var(--coral)}
+.qsafety a{color:var(--coral);font-weight:700;text-decoration:underline}
+@media(max-width:860px){.qform-layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="s-topbar">
+  <svg class="s-mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="60" r="6" fill="#E8A020"/>
+    <circle cx="60" cy="20" r="5" fill="#1D9E75"/><circle cx="95" cy="40" r="5" fill="#1D9E75"/>
+    <circle cx="95" cy="80" r="5" fill="#1D9E75"/><circle cx="60" cy="100" r="5" fill="#1D9E75"/>
+    <circle cx="25" cy="80" r="5" fill="#1D9E75"/><circle cx="25" cy="40" r="5" fill="#1D9E75"/>
+    <g stroke="#1D9E75" stroke-width="1.5" opacity=".5">
+      <line x1="60" y1="60" x2="60" y2="20"/><line x1="60" y1="60" x2="95" y2="40"/>
+      <line x1="60" y1="60" x2="95" y2="80"/><line x1="60" y1="60" x2="60" y2="100"/>
+      <line x1="60" y1="60" x2="25" y2="80"/><line x1="60" y1="60" x2="25" y2="40"/>
+    </g>
+  </svg>
+  <div><div class="s-wm">Quest<strong>Care</strong></div><span class="s-tag">LifeStyle Solutions</span></div>
+</div>
+
+<div class="s-wrap">
+  <div class="qform-layout">
+
+    <!-- Left: rapport / context copy -->
+    <div class="qform-intro">
+      <div class="qform-eyebrow-teal">OurWalk™ · Navigation Intake</div>
+      <h3 class="qform-title">A few more details<br/><strong>help your navigator prepare.</strong></h3>
+      <div class="qform-rule-amber"></div>
+      <p class="qform-desc" id="introDesc">This is optional and takes about three minutes. Nothing here affects whether you're helped — it just helps your navigator make the first call count.</p>
+      <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.85rem">
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Every question here is optional.</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Answer what you're comfortable with. Skip anything you're not.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">We're looking for patterns, not faults.</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">If something keeps coming back, that usually points to what needs to change in the system around it — not in you.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(29,158,117,.12);border:1.5px solid rgba(29,158,117,.3);display:flex;align-items:center;justify-content:center">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.15rem">Never shared outside QCLS.</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6">Your answers go to your navigator only.</div>
+          </div>
+        </div>
+      </div>
+      <div class="qform-contact-pills" style="margin-top:1.5rem">
+        <a href="tel:5742273669" class="qpill-teal">574-CARE-NOW</a>
+        <a href="mailto:info@quest4care.org" class="qpill-outline">info@quest4care.org</a>
+      </div>
+    </div>
+
+    <!-- Right: step wizard -->
+    <div class="qform-card">
+      <div class="qstep-bar" id="surveySteps">
+        <div class="qstep qstep-active" data-step="1"><div class="qstep-circle">1</div><div class="qstep-label">What</div></div>
+        <div class="qstep-line"></div>
+        <div class="qstep" data-step="2"><div class="qstep-circle">2</div><div class="qstep-label">Why</div></div>
+        <div class="qstep-line"></div>
+        <div class="qstep" data-step="3"><div class="qstep-circle">3</div><div class="qstep-label">Pattern</div></div>
+        <div class="qstep-line"></div>
+        <div class="qstep" data-step="4"><div class="qstep-circle">4</div><div class="qstep-label">Send</div></div>
+      </div>
+
+      <p style="font-size:.85rem;color:var(--teal);font-weight:600;margin-bottom:1.1rem" id="greeting"></p>
+
+      <!-- STEP 1: WHAT (tree-driven) -->
+      <div class="qstep-panel" id="s-step1">
+        <div class="qfield" id="treeQuestionWrap"></div>
+        <div class="qfrow-btns" id="treeNavButtons"></div>
+      </div>
+
+      <!-- STEP 2: WHY -->
+      <div class="qstep-panel qhidden" id="s-step2">
+        <div class="qfield">
+          <label class="qfield-label">How urgent is your situation right now? *</label>
+          <label class="qopt-card"><input type="radio" name="urgency" value="Critical — need help today or tomorrow" required/> Critical — I need help today or tomorrow</label>
+          <label class="qopt-card"><input type="radio" name="urgency" value="Urgent — within this week"/> Urgent — within this week</label>
+          <label class="qopt-card"><input type="radio" name="urgency" value="Important — sometime this month"/> Important — sometime this month</label>
+          <label class="qopt-card"><input type="radio" name="urgency" value="Exploring options, no immediate deadline"/> I'm exploring my options, no immediate deadline</label>
+        </div>
+        <div class="qfield">
+          <label class="qfield-label">What would it look like if this were taken care of?</label>
+          <span class="qfield-hint" style="display:block;margin-bottom:.4rem">Optional — this helps your navigator understand what "solved" looks like to you, not just to us.</span>
+          <textarea class="qinput qtextarea" id="goalText" placeholder="Optional"></textarea>
+        </div>
+        <div class="qfrow-btns">
+          <button class="qbtn-outline" onclick="sStep(1)">← Back</button>
+          <button class="qbtn-teal" onclick="sStep(3)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: PATTERN -->
+      <div class="qstep-panel qhidden" id="s-step3">
+        <div class="qfield">
+          <label class="qfield-label">Is this the first time this has come up, or has it happened before?</label>
+          <select class="qinput" id="patternSelect" onchange="patternChange()">
+            <option value="">Prefer not to say</option>
+            <option value="First time this has come up">First time this has come up</option>
+            <option value="It's come up before, but we got through it">It's come up before, but we got through it</option>
+            <option value="It keeps coming back, no matter what we try">It keeps coming back, no matter what we try</option>
+          </select>
+        </div>
+        <div class="qreflect qhidden" id="patternReflect">
+          That's really common, and it usually means something in the system around the problem needs to change — not you. This is exactly what your navigator needs to know to help break the cycle instead of just patching it again.
+        </div>
+        <div class="qfield qhidden" id="patternDetailWrap">
+          <label class="qfield-label">What's usually gotten in the way of it staying solved before?</label>
+          <span class="qfield-hint" style="display:block;margin-bottom:.4rem">Optional</span>
+          <textarea class="qinput qtextarea" id="patternDetail" placeholder="Optional"></textarea>
+        </div>
+        <div class="qfield">
+          <label class="qfield-label">What's made this harder to deal with? <span class="qfield-hint" style="display:inline">Select all that apply — none of these are on you</span></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-top:.5rem" id="barriersGroup">
+            <label class="qcheck-card"><input type="checkbox" name="barriers" value="Transportation"/> Transportation</label>
+            <label class="qcheck-card"><input type="checkbox" name="barriers" value="Unreliable phone or internet"/> Unreliable phone/internet</label>
+            <label class="qcheck-card"><input type="checkbox" name="barriers" value="Work schedule conflicts"/> Work schedule conflicts</label>
+            <label class="qcheck-card"><input type="checkbox" name="barriers" value="Childcare"/> Childcare</label>
+            <label class="qcheck-card"><input type="checkbox" name="barriers" value="Language barrier"/> Language barrier</label>
+            <label class="qcheck-card"><input type="checkbox" name="barriers" value="Didn't know where to start"/> Didn't know where to start</label>
+            <label class="qcheck-card"><input type="checkbox" name="barriers" value="A bad experience with an agency before"/> Bad experience with an agency</label>
+            <label class="qcheck-card"><input type="checkbox" name="barriers" value="Uncomfortable with formal systems"/> Uncomfortable with formal systems</label>
+            <label class="qcheck-card"><input type="checkbox" name="barriers" value="A disability or mobility limitation"/> Disability/mobility limitation</label>
+            <label class="qcheck-card"><input type="checkbox" name="barriers" value="Other"/> Other</label>
+          </div>
+          <div class="qhidden" id="barriersDetailWrap" style="margin-top:.5rem">
+            <input class="qinput" type="text" id="barriersDetail" placeholder="Tell us more"/>
+          </div>
+        </div>
+        <div class="qfield">
+          <label class="qfield-label">Do you have reliable transportation to appointments?</label>
+          <select class="qinput" id="transportSelect">
+            <option value="">Prefer not to say</option>
+            <option>Yes</option><option>No</option><option>Sometimes</option>
+          </select>
+        </div>
+        <div class="qfrow-btns">
+          <button class="qbtn-outline" onclick="sStep(2)">← Back</button>
+          <button class="qbtn-teal" onclick="sStep(4)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: SEND -->
+      <div class="qstep-panel qhidden" id="s-step4">
+        <div class="qfrow">
+          <div class="qfield"><label class="qfield-label">Best time to reach you</label>
+            <select class="qinput" id="contactTimeSelect">
+              <option value="">No preference</option>
+              <option>Morning</option><option>Afternoon</option><option>Evening</option><option>Anytime</option>
+            </select>
+          </div>
+          <div class="qfield"><label class="qfield-label">Voicemail/text okay?</label>
+            <select class="qinput" id="voicemailSelect">
+              <option value="">No preference</option>
+              <option>Yes, that's fine</option>
+              <option>No — please don't reference QCLS</option>
+              <option>Please call only</option>
+            </select>
+          </div>
+        </div>
+        <div class="qfield">
+          <label class="qfield-label">Anything else that would help your navigator prepare?</label>
+          <span class="qfield-hint" style="display:block;margin-bottom:.4rem">Optional</span>
+          <textarea class="qinput qtextarea" id="additionalText" placeholder="Optional"></textarea>
+        </div>
+        <div class="qfrow-btns">
+          <button class="qbtn-outline" onclick="sStep(3)">← Back</button>
+          <button class="qbtn-teal" id="submitBtn" onclick="submitSurvey()">Submit survey →</button>
+        </div>
+        <p class="qform-note">Your answers go directly to your navigator and are never shared outside QCLS.</p>
+        <div class="qerror-msg qhidden" id="errBox"></div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="qstep-panel qhidden" id="s-success">
+        <div class="qsuccess-box">
+          <div class="qsuccess-icon">✓</div>
+          <h4>Thank you. This helps more than you know.</h4>
+          <p style="margin-top:.5rem;color:var(--mid);font-size:.88rem;line-height:1.7">Your navigator now has what they need for your first conversation. We'll be in touch within one business day.</p>
+          <a href="https://quest4care.org" class="qbtn-outline" style="display:inline-block;margin-top:1rem;text-decoration:none">Return to quest4care.org</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get('name') || '';
+  const email = params.get('email') || '';
+  const need = params.get('need') || '';
+
+  if (name) document.getElementById('greeting').textContent = `Hi ${name.split(' ')[0]} — glad you're here.`;
+
+  // ══════════════════════════════════════════════════════════
+  // DECISION TREE — each answer determines the next question.
+  // Add/edit branches here; the walker below handles rendering,
+  // back-navigation, and answer collection generically.
+  // ══════════════════════════════════════════════════════════
+  const SAFETY_NOTES = {
+    crisis988: `<strong>If you're in crisis right now, please don't wait for us.</strong><br/>Call or text <a href="tel:988">988</a> (Suicide &amp; Crisis Lifeline) — available 24/7, free, confidential. We will still follow up within one business day, but help is available right now.`,
+    housingUnsafe: `<strong>If you need a safe place tonight, please don't wait for the online process.</strong><br/>Call <a href="tel:211">211</a> or 574-CARE-NOW right now for emergency shelter help. We will still follow up within one business day either way.`
+  };
+
+  const TREE = {
+    'need-healthcare': { text: 'What\u2019s the healthcare need, specifically?', type: 'radio', field: 'needSpecific', options: [
+      { value: 'No health insurance', next: 'hc-coverage-status' },
+      { value: 'Have insurance but can\u2019t find a provider taking new patients', next: 'hc-condition-type' },
+      { value: 'Need to see a specialist', next: 'hc-specialist-type' },
+      { value: 'Can\u2019t afford medications', next: 'hc-med-cost-type' },
+      { value: 'Need help understanding a diagnosis or care plan', next: 'hc-appointment-help' },
+      { value: 'Other', next: 'leaf-other' }
+    ]},
+    'hc-coverage-status': { text: 'Are you currently employed, unemployed, disabled, or retired?', type: 'select', field: 'hcCoverageStatus', options: [
+      { value: 'Employed', next: null }, { value: 'Unemployed', next: null },
+      { value: 'Disabled or unable to work', next: null }, { value: 'Retired', next: null }
+    ]},
+    'hc-condition-type': { text: 'Is this for an ongoing condition, or general primary care?', type: 'select', field: 'hcConditionType', options: [
+      { value: 'An ongoing condition', next: null }, { value: 'General primary care / checkup', next: null }
+    ]},
+    'hc-specialist-type': { text: 'What type of specialist?', type: 'text', field: 'hcSpecialistType', next: null },
+    'hc-med-cost-type': { text: 'Is this a one-time gap, or an ongoing cost problem?', type: 'select', field: 'hcMedCostType', options: [
+      { value: 'One-time gap', next: null }, { value: 'Ongoing cost problem', next: null }
+    ]},
+    'hc-appointment-help': { text: 'Would it help to have your navigator join an appointment with you, or just help with paperwork afterward?', type: 'select', field: 'hcAppointmentHelp', options: [
+      { value: 'Join an appointment', next: null }, { value: 'Help with paperwork after', next: null }, { value: 'Not sure yet', next: null }
+    ]},
+
+    'need-housing': { text: 'What\u2019s happening with your housing right now?', type: 'radio', field: 'needSpecific', options: [
+      { value: 'Facing eviction or already served notice', next: 'housing-court-status' },
+      { value: 'Already without stable housing', next: 'housing-tonight' },
+      { value: 'Staying with family or friends temporarily', next: 'housing-temp-duration' },
+      { value: 'Utilities at risk of shutoff', next: 'housing-utility-detail' },
+      { value: 'Looking for housing assistance programs', next: 'housing-currently-housed' },
+      { value: 'Other', next: 'leaf-other' }
+    ]},
+    'housing-court-status': { text: 'Do you have a court date yet?', type: 'radio', field: 'housingCourtStatus', options: [
+      { value: 'Yes, I have a date', next: 'housing-court-date' },
+      { value: 'I have a notice but no court date set', next: null },
+      { value: 'Nothing in writing yet', next: null }
+    ]},
+    'housing-court-date': { text: 'When is it?', type: 'text', field: 'housingCourtDate', next: null },
+    'housing-tonight': { text: 'Where are you staying tonight?', type: 'radio', field: 'housingTonight', options: [
+      { value: 'In a car, outside, or somewhere not meant for housing', next: null, safety: 'housingUnsafe' },
+      { value: 'With family or friends temporarily', next: 'housing-temp-duration' },
+      { value: 'In a shelter already', next: 'housing-shelter-name' }
+    ]},
+    'housing-temp-duration': { text: 'Do you know how long that\u2019s available to you?', type: 'select', field: 'housingTempDuration', options: [
+      { value: 'A few more days', next: null }, { value: 'A few more weeks', next: null },
+      { value: 'Not sure', next: null }
+    ]},
+    'housing-shelter-name': { text: 'Which one, if you don\u2019t mind sharing?', type: 'text', field: 'housingShelterName', next: null },
+    'housing-utility-detail': { text: 'Which utility, and is there a shutoff date?', type: 'text', field: 'housingUtilityDetail', next: null },
+    'housing-currently-housed': { text: 'Are you currently housed, or also looking for housing?', type: 'select', field: 'housingCurrentlyHoused', options: [
+      { value: 'Currently housed', next: null }, { value: 'Also looking for housing', next: null }
+    ]},
+
+    'need-food': { text: 'What would help most right now?', type: 'radio', field: 'needSpecific', options: [
+      { value: 'Groceries to get through the week', next: 'food-duration' },
+      { value: 'Help applying for SNAP or WIC', next: 'food-applied-before' },
+      { value: 'Hot meals', next: 'food-household' },
+      { value: 'A specific dietary or medical need', next: 'leaf-other' },
+      { value: 'Other', next: 'leaf-other' }
+    ]},
+    'food-duration': { text: 'Is this a one-time need, or something ongoing?', type: 'select', field: 'foodDuration', options: [
+      { value: 'One-time', next: null }, { value: 'Ongoing', next: null }
+    ]},
+    'food-applied-before': { text: 'Have you applied for this before, or is this your first time?', type: 'select', field: 'foodAppliedBefore', options: [
+      { value: 'First time applying', next: null }, { value: 'Applied before', next: null }
+    ]},
+    'food-household': { text: 'Just for you, or for your household?', type: 'select', field: 'foodHousehold', options: [
+      { value: 'Just me', next: null }, { value: 'My household', next: null }
+    ]},
+
+    'need-transportation': { text: 'What\u2019s the transportation gap?', type: 'radio', field: 'needSpecific', options: [
+      { value: 'Getting to medical appointments', next: 'transport-recurring' },
+      { value: 'Getting to work or interviews', next: 'transport-hours' },
+      { value: 'No reliable vehicle at all', next: 'transport-license' },
+      { value: 'Public transit doesn\u2019t reach where I need to go', next: 'transport-destination' },
+      { value: 'Other', next: 'leaf-other' }
+    ]},
+    'transport-recurring': { text: 'Is this a recurring appointment (like dialysis or therapy), or a one-time visit?', type: 'select', field: 'transportRecurring', options: [
+      { value: 'Recurring', next: null }, { value: 'One-time', next: null }
+    ]},
+    'transport-hours': { text: 'What are your typical hours or shift?', type: 'text', field: 'transportHours', next: null },
+    'transport-license': { text: 'Do you have a license, just no working vehicle, or neither?', type: 'select', field: 'transportLicense', options: [
+      { value: 'Have a license, no working vehicle', next: null }, { value: 'Neither', next: null }
+    ]},
+    'transport-destination': { text: 'Where are you usually needing to go?', type: 'text', field: 'transportDestination', next: null },
+
+    'need-disability': { text: 'What kind of support are you looking for?', type: 'radio', field: 'needSpecific', options: [
+      { value: 'Help applying for disability benefits', next: 'disability-application-status' },
+      { value: 'In-home or personal care support', next: 'disability-hours' },
+      { value: 'Accessible housing or equipment', next: 'disability-housing-equipment' },
+      { value: 'Help navigating Medicaid waiver services', next: 'disability-medicaid-status' },
+      { value: 'Other', next: 'leaf-other' }
+    ]},
+    'disability-application-status': { text: 'Is this your first application, or are you appealing a denial?', type: 'select', field: 'disabilityApplicationStatus', options: [
+      { value: 'First application', next: null }, { value: 'Appealing a denial', next: null }
+    ]},
+    'disability-hours': { text: 'About how many hours a week would help?', type: 'text', field: 'disabilityHours', next: null },
+    'disability-housing-equipment': { text: 'A housing modification, or a specific piece of equipment?', type: 'select', field: 'disabilityHousingEquipment', options: [
+      { value: 'Housing modification', next: null }, { value: 'Specific equipment', next: null }
+    ]},
+    'disability-medicaid-status': { text: 'Already on Medicaid, or applying for the first time?', type: 'select', field: 'disabilityMedicaidStatus', options: [
+      { value: 'Already on Medicaid', next: null }, { value: 'Applying for the first time', next: null }
+    ]},
+
+    'need-mentalhealth': { text: 'What would be most helpful right now?', type: 'radio', field: 'needSpecific', options: [
+      { value: 'Finding a counselor or therapist taking new clients', next: 'mh-insurance' },
+      { value: 'I need help during a crisis right now', next: null, safety: 'crisis988' },
+      { value: 'Ongoing support for an existing diagnosis', next: 'mh-provider-status' },
+      { value: 'Help for a family member', next: 'mh-family-relationship' },
+      { value: 'Other', next: 'leaf-other' }
+    ]},
+    'mh-insurance': { text: 'Insurance you\u2019d like to use, or free/sliding-scale options?', type: 'select', field: 'mhInsurance', options: [
+      { value: 'Use my insurance', next: null }, { value: 'Free or sliding-scale options', next: null }
+    ]},
+    'mh-provider-status': { text: 'Are you currently between providers, or just starting to look for support?', type: 'select', field: 'mhProviderStatus', options: [
+      { value: 'Between providers', next: null }, { value: 'Just starting to look', next: null }
+    ]},
+    'mh-family-relationship': { text: 'What\u2019s your relationship to them, and do they know you\u2019re reaching out?', type: 'text', field: 'mhFamilyRelationship', next: null },
+
+    'need-employment': { text: 'What stage are you at?', type: 'radio', field: 'needSpecific', options: [
+      { value: 'Looking for a first job or a new job', next: 'employment-field' },
+      { value: 'Help with a resume or applications', next: 'employment-resume-status' },
+      { value: 'Job training or certification', next: 'employment-training-field' },
+      { value: 'Lost a job recently', next: 'employment-job-loss-timing' },
+      { value: 'Other', next: 'leaf-other' }
+    ]},
+    'employment-field': { text: 'What kind of work are you looking for?', type: 'text', field: 'employmentField', next: null },
+    'employment-resume-status': { text: 'Starting from scratch, or refining something you already have?', type: 'select', field: 'employmentResumeStatus', options: [
+      { value: 'Starting from scratch', next: null }, { value: 'Refining what I have', next: null }
+    ]},
+    'employment-training-field': { text: 'What field or certification?', type: 'text', field: 'employmentTrainingField', next: null },
+    'employment-job-loss-timing': { text: 'Less than a month ago, or longer?', type: 'select', field: 'employmentJobLossTiming', options: [
+      { value: 'Less than a month', next: null }, { value: 'Longer than a month', next: null }
+    ]},
+
+    'need-benefits': { text: 'Which benefits are you looking into?', type: 'radio', field: 'needSpecific', options: [
+      { value: 'SNAP or food assistance', next: 'benefits-applied-before' },
+      { value: 'Medicaid or healthcare coverage', next: 'benefits-medicaid-for-whom' },
+      { value: 'Social Security or disability benefits', next: 'benefits-application-status' },
+      { value: 'Unemployment', next: 'benefits-unemployment-status' },
+      { value: 'Not sure \u2014 just need help figuring out what I qualify for', next: 'leaf-other' },
+      { value: 'Other', next: 'leaf-other' }
+    ]},
+    'benefits-applied-before': { text: 'Have you applied for this before?', type: 'select', field: 'benefitsAppliedBefore', options: [
+      { value: 'Yes, applied before', next: null }, { value: 'No, first time', next: null }
+    ]},
+    'benefits-medicaid-for-whom': { text: 'For yourself, or for family members too?', type: 'select', field: 'benefitsMedicaidForWhom', options: [
+      { value: 'Just myself', next: null }, { value: 'Myself and family', next: null }
+    ]},
+    'benefits-application-status': { text: 'A new application, or appealing a denial?', type: 'select', field: 'benefitsApplicationStatus', options: [
+      { value: 'New application', next: null }, { value: 'Appealing a denial', next: null }
+    ]},
+    'benefits-unemployment-status': { text: 'Already filed, or just starting?', type: 'select', field: 'benefitsUnemploymentStatus', options: [
+      { value: 'Already filed', next: null }, { value: 'Just starting', next: null }
+    ]},
+
+    'leaf-other': { text: 'Tell us more, in your own words.', type: 'textarea', field: 'needOtherDetail', next: null }
+  };
+
+  const NEED_ROOTS = {
+    'Healthcare access': 'need-healthcare',
+    'Housing or shelter': 'need-housing',
+    'Food assistance': 'need-food',
+    'Transportation': 'need-transportation',
+    'Disability services': 'need-disability',
+    'Mental health support': 'need-mentalhealth',
+    'Employment assistance': 'need-employment',
+    'Benefits navigation': 'need-benefits'
+  };
+
+  // ── Generic tree walker ──
+  const treeAnswers = {};
+  let pathStack = [NEED_ROOTS[need] || 'leaf-other'];
+
+  function renderNode() {
+    const nodeId = pathStack[pathStack.length - 1];
+    const node = TREE[nodeId];
+    const qWrap = document.getElementById('treeQuestionWrap');
+
+    let html = `<label class="qfield-label">${node.text}</label>`;
+
+    if (node.type === 'radio') {
+      node.options.forEach((opt, i) => {
+        html += `<label class="qopt-card"><input type="radio" name="treeQ-${nodeId}" value="${i}"/> ${opt.value}</label>`;
+      });
+      html += `<div class="qsafety qhidden" id="treeSafetyNote"></div>`;
+    } else if (node.type === 'select') {
+      html += `<select class="qinput" id="treeSelectInput"><option value="">Select one</option>`;
+      node.options.forEach((opt, i) => { html += `<option value="${i}">${opt.value}</option>`; });
+      html += `</select>`;
+    } else if (node.type === 'text') {
+      html += `<input class="qinput" type="text" id="treeTextInput" placeholder="Type your answer"/>`;
+    } else if (node.type === 'textarea') {
+      html += `<textarea class="qinput qtextarea" id="treeTextInput" placeholder="In your own words"></textarea>`;
+    }
+
+    qWrap.innerHTML = html;
+
+    if (node.type === 'radio') {
+      qWrap.querySelectorAll(`input[name="treeQ-${nodeId}"]`).forEach(input => {
+        input.addEventListener('change', () => {
+          const opt = node.options[parseInt(input.value)];
+          treeAnswers[node.field] = opt.value;
+          const safetyEl = document.getElementById('treeSafetyNote');
+          if (opt.safety) {
+            safetyEl.innerHTML = SAFETY_NOTES[opt.safety];
+            safetyEl.classList.remove('qhidden');
+            renderNavButtons(nodeId, opt.next, true);
+          } else {
+            safetyEl.classList.add('qhidden');
+            if (opt.next) {
+              setTimeout(() => { pathStack.push(opt.next); renderNode(); }, 220);
+            } else {
+              renderNavButtons(nodeId, null, false);
+            }
+          }
+        });
+      });
+      renderNavButtons(nodeId, undefined, false);
+    } else if (node.type === 'select') {
+      const sel = document.getElementById('treeSelectInput');
+      sel.addEventListener('change', () => {
+        if (sel.value === '') return;
+        const opt = node.options[parseInt(sel.value)];
+        treeAnswers[node.field] = opt.value;
+        if (opt.next) {
+          setTimeout(() => { pathStack.push(opt.next); renderNode(); }, 180);
+        } else {
+          renderNavButtons(nodeId, null, false);
+        }
+      });
+      renderNavButtons(nodeId, undefined, false);
+    } else {
+      renderNavButtons(nodeId, 'text', false);
+    }
+  }
+
+  function renderNavButtons(nodeId, pendingNext, awaitingSafetyContinue) {
+    const navWrap = document.getElementById('treeNavButtons');
+    const node = TREE[nodeId];
+    let html = '';
+    if (pathStack.length > 1) html += `<button class="qbtn-outline" onclick="treeBack()">\u2190 Back</button>`;
+
+    if (node.type === 'text' || node.type === 'textarea') {
+      html += `<button class="qbtn-teal" onclick="treeTextContinue('${nodeId}')">Continue \u2192</button>`;
+    } else if (awaitingSafetyContinue) {
+      html += `<button class="qbtn-teal" onclick="sStep(2)">Continue \u2192</button>`;
+    } else if (pendingNext === null) {
+      html += `<button class="qbtn-teal" onclick="sStep(2)">Continue \u2192</button>`;
+    }
+    navWrap.innerHTML = html;
+  }
+
+  window.treeTextContinue = function(nodeId) {
+    const node = TREE[nodeId];
+    const val = document.getElementById('treeTextInput').value.trim();
+    treeAnswers[node.field] = val;
+    if (node.next) {
+      pathStack.push(node.next);
+      renderNode();
+    } else {
+      sStep(2);
+    }
+  };
+
+  window.treeBack = function() {
+    if (pathStack.length > 1) { pathStack.pop(); renderNode(); }
+  };
+
+  renderNode();
+
+
+  window.patternChange = function() {
+    const val = document.getElementById('patternSelect').value;
+    document.getElementById('patternReflect').classList.toggle('qhidden', val !== 'It keeps coming back, no matter what we try');
+    document.getElementById('patternDetailWrap').classList.toggle('qhidden', val === '' || val === 'First time this has come up');
+  };
+
+  document.querySelectorAll('input[name="barriers"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const otherChecked = document.querySelector('input[name="barriers"][value="Other"]').checked;
+      document.getElementById('barriersDetailWrap').classList.toggle('qhidden', !otherChecked);
+    });
+  });
+
+  let currentStep = 1;
+  window.sStep = function(step) {
+    document.querySelectorAll('.qstep-panel').forEach(p => p.classList.add('qhidden'));
+    document.getElementById('s-step' + step).classList.remove('qhidden');
+    document.querySelectorAll('#surveySteps .qstep').forEach(s => {
+      const n = parseInt(s.dataset.step);
+      s.classList.remove('qstep-active','qstep-done');
+      if (n < step) s.classList.add('qstep-done');
+      if (n === step) s.classList.add('qstep-active');
+    });
+    document.querySelectorAll('#surveySteps .qstep-line').forEach((line, i) => {
+      line.classList.toggle('qstep-line-done', (i+1) < step);
+    });
+    currentStep = step;
+  };
+
+  window.submitSurvey = async function() {
+    const btn = document.getElementById('submitBtn');
+    const errBox = document.getElementById('errBox');
+    errBox.classList.add('qhidden');
+
+    if (!email) {
+      errBox.textContent = "We couldn't match this survey to your request — please call 574-CARE-NOW and a navigator can take these details directly.";
+      errBox.classList.remove('qhidden');
+      return;
+    }
+
+    const barriers = Array.from(document.querySelectorAll('input[name="barriers"]:checked')).map(i => i.value);
+
+    const payload = {
+      email, name,
+      primaryNeed: need,
+      needAnswers: treeAnswers,
+      needPath: pathStack.join(' \u2192 '),
+      urgency: document.querySelector('input[name="urgency"]:checked')?.value || '',
+      goalText: document.getElementById('goalText').value.trim(),
+      pattern: document.getElementById('patternSelect').value,
+      patternDetail: document.getElementById('patternDetail').value.trim(),
+      barriers: barriers.join(', '),
+      barriersDetail: document.getElementById('barriersDetail').value.trim(),
+      transportation: document.getElementById('transportSelect').value,
+      contactTime: document.getElementById('contactTimeSelect').value,
+      voicemailOk: document.getElementById('voicemailSelect').value,
+      additionalContext: document.getElementById('additionalText').value.trim(),
+      submitted_at: new Date().toISOString()
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    try {
+      const res = await fetch('/api/survey-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error(res.status);
+      document.querySelectorAll('.qstep-panel').forEach(p => p.classList.add('qhidden'));
+      document.getElementById('s-success').classList.remove('qhidden');
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = 'Submit survey →';
+      errBox.textContent = 'Something went wrong submitting this. Please call 574-CARE-NOW or email info@quest4care.org — your navigator can take these details directly.';
+      errBox.classList.remove('qhidden');
+    }
+  };
+})();
+</script>
+</body>
+</html>
