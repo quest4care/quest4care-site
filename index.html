@@ -21,6 +21,8 @@
   --nw:#F8F5EE;--border:#E0D8C8;--mid:#4A6558;--light:#7A9588;
 }
 html{scroll-behavior:smooth}
+#don-cta:hover,#fp-cta:hover{background:#f0ad33!important;transform:translateY(-1px);box-shadow:0 4px 14px rgba(232,160,32,.35)!important}
+#don-cta:active,#fp-cta:active{transform:translateY(0)}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(--void);overflow-x:hidden;line-height:1.6}
 html{overflow-x:hidden}
 
@@ -1276,100 +1278,23 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
             Contribute · Make an impact
           </div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--void);line-height:1.1;margin-bottom:.25rem">Every dollar confirms access.</div>
-          <div style="width:32px;height:2px;background:var(--amber);margin-bottom:1.25rem"></div>
+          <div style="width:32px;height:2px;background:var(--amber);margin-bottom:1.5rem"></div>
 
-          <!-- Static ways-to-give messaging (no interactive selector — Neon's own form handles amount + frequency) -->
-          <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.25rem">
-            <div style="display:flex;align-items:flex-start;gap:.6rem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" style="flex-shrink:0;margin-top:.1rem"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span style="font-size:.82rem;color:var(--mid);line-height:1.5"><strong style="color:var(--void)">Navigation</strong> — funds OurWalk™ cases from intake to confirmed access</span>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:.6rem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" style="flex-shrink:0;margin-top:.1rem"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
-              <span style="font-size:.82rem;color:var(--mid);line-height:1.5"><strong style="color:var(--void)">FoundationReady™</strong> — underwrites independent capacity assessments</span>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:.6rem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" style="flex-shrink:0;margin-top:.1rem"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-              <span style="font-size:.82rem;color:var(--mid);line-height:1.5"><strong style="color:var(--void)">Platform infrastructure</strong> — keeps the UnoSphere™ running for every county resident</span>
+          <!-- Rotating impact story — fixed height, content never shifts layout -->
+          <div id="don-carousel" style="position:relative;height:195px;margin-bottom:2.1rem;border-radius:6px;background:linear-gradient(135deg,var(--void) 0%,var(--deep) 100%);overflow:hidden;padding:1.8rem 1.9rem;display:flex;align-items:center">
+            <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:var(--amber)"></div>
+            <div id="don-carousel-track" style="opacity:0;transition:opacity .8s ease;width:100%">
+              <div id="don-carousel-text" style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:#fff;line-height:1.4;font-style:italic"></div>
+              <div id="don-carousel-amt" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.08em;color:rgba(232,160,32,.85);margin-top:.85rem;text-transform:uppercase"></div>
             </div>
           </div>
 
-          <!-- CTA — single click reveals Neon's own secure form, which handles amount + one-time/monthly itself -->
-          <button id="don-cta" onclick="donProceed()" style="width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s">
+          <!-- CTA — links directly to Neon's secure donation form -->
+          <a id="don-cta" href="https://quest4care.app.neoncrm.com/forms/donate" target="_blank" rel="noopener" style="display:block;text-align:center;width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.95rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.92rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s,transform .15s;text-decoration:none;box-shadow:0 2px 8px rgba(232,160,32,.25)">
             Contribute to QCLS →
-          </button>
-          <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.6rem;line-height:1.6">Secure · Tax-deductible · EIN 33-3036616 · Cancel anytime</p>
-
-          <!-- Embedded Neon form reveal — branded wrapper -->
-          <div id="don-embed-wrap" style="display:none;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-              <div>
-                <div style="font-family:'Oswald',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.2rem">Secure Giving Form</div>
-                <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--void)">Complete your contribution</div>
-              </div>
-              <button onclick="donCloseEmbed()" style="background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1.1rem;line-height:1;padding:.2rem" aria-label="Close">✕</button>
-            </div>
-            <div id="don-neon-embed-target" style="border:1px solid var(--border);border-radius:4px;overflow:visible;background:#fff;min-height:120px;display:flex;align-items:center;justify-content:center">
-              <div style="text-align:center;padding:2rem;color:var(--light);font-size:.8rem">Loading secure form…</div>
-            </div>
-            <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.75rem;line-height:1.6">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:.2rem"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              Processed securely by Neon One · QuestCare LifeStyle Solutions, Inc. · EIN 33-3036616
-            </p>
-          </div>
+          </a>
+          <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.65rem;line-height:1.6">Secure · Tax-deductible · EIN 33-3036616 · Cancel anytime</p>
         </div>
-
-        <style>
-        /* ── Skin the embedded Neon form to match QCLS brand ── */
-        #don-neon-embed-target iframe{width:100%!important;border:none!important}
-        #don-neon-embed-target{font-family:'Plus Jakarta Sans',sans-serif!important}
-        #don-neon-embed-target input,
-        #don-neon-embed-target select,
-        #don-neon-embed-target textarea{
-          font-family:'Plus Jakarta Sans',sans-serif!important;
-          border-color:var(--border)!important;
-          border-radius:3px!important;
-        }
-        #don-neon-embed-target input:focus,
-        #don-neon-embed-target select:focus{
-          border-color:var(--teal)!important;
-          box-shadow:0 0 0 2px rgba(29,158,117,.1)!important;
-        }
-        #don-neon-embed-target button[type="submit"],
-        #don-neon-embed-target .btn-primary,
-        #don-neon-embed-target input[type="submit"]{
-          background:var(--teal)!important;
-          border-color:var(--teal)!important;
-          font-family:'Plus Jakarta Sans',sans-serif!important;
-          font-weight:600!important;
-          border-radius:3px!important;
-        }
-        #don-neon-embed-target button[type="submit"]:hover,
-        #don-neon-embed-target input[type="submit"]:hover{
-          background:var(--deep)!important;
-        }
-        </style>
-
-        <script>
-        (function(){
-          window.donProceed = function() {
-            const wrap = document.getElementById('don-embed-wrap');
-            wrap.style.display = 'block';
-            wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-            // Load the Neon embed exactly once — Neon's own form handles amount + frequency from scratch
-            const target = document.getElementById('don-neon-embed-target');
-            if (!target.dataset.loaded) {
-              target.dataset.loaded = 'true';
-              window.loadNeonDonationEmbed(target);
-            }
-          };
-
-          window.donCloseEmbed = function() {
-            document.getElementById('don-embed-wrap').style.display = 'none';
-          };
-        })();
-        </script>
       </div>
     </div>
   </div>
@@ -2810,24 +2735,17 @@ function qHideError(id) {
       </div>
       <div style="width:24px;height:2px;background:var(--amber);margin-bottom:1rem"></div>
 
-      <!-- Static ways-to-give messaging (no interactive selector — Neon's own form handles amount + frequency) -->
-      <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:.85rem">
-        <div style="font-size:.74rem;color:var(--mid);line-height:1.5">Your gift funds OurWalk™ navigation, FoundationReady™ assessments, and the platform infrastructure behind both.</div>
+      <!-- Rotating impact story — fixed height, content never shifts layout -->
+      <div id="fp-carousel" style="position:relative;height:155px;margin-bottom:1.4rem;border-radius:5px;background:linear-gradient(135deg,var(--void) 0%,var(--deep) 100%);overflow:hidden;padding:1.2rem 1.35rem;display:flex;align-items:center">
+        <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:var(--amber)"></div>
+        <div id="fp-carousel-track" style="opacity:0;transition:opacity .8s ease;width:100%">
+          <div id="fp-carousel-text" style="font-family:'Cormorant Garamond',serif;font-size:.98rem;font-weight:500;color:#fff;line-height:1.4;font-style:italic"></div>
+          <div id="fp-carousel-amt" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.07em;color:rgba(232,160,32,.85);margin-top:.65rem;text-transform:uppercase"></div>
+        </div>
       </div>
 
-      <button id="fp-cta" onclick="fpProceed()" style="width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s;margin-bottom:.5rem">Contribute to QCLS →</button>
+      <a id="fp-cta" href="https://quest4care.app.neoncrm.com/forms/donate" target="_blank" rel="noopener" style="display:block;text-align:center;width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.85rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s,transform .15s;margin-bottom:.55rem;text-decoration:none;box-shadow:0 2px 8px rgba(232,160,32,.25)">Contribute to QCLS →</a>
       <p style="font-size:.58rem;color:var(--light);text-align:center;line-height:1.5">Secure · Tax-deductible · EIN 33-3036616</p>
-
-      <!-- Embedded Neon form reveal -->
-      <div id="fp-embed-wrap" style="display:none;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--void)">Complete your gift</div>
-          <button onclick="fpCloseEmbed()" style="background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1rem;line-height:1" aria-label="Close">✕</button>
-        </div>
-        <div id="fp-neon-embed-target" style="border:1px solid var(--border);border-radius:3px;overflow:visible;background:#fff;min-height:100px;display:flex;align-items:center;justify-content:center">
-          <div style="text-align:center;padding:1.5rem;color:var(--light);font-size:.75rem">Loading secure form…</div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -3188,107 +3106,72 @@ function qHideError(id) {
   function scShowError(msg) { const el = document.getElementById('sc-error'); el.textContent = msg; el.style.display = 'block'; }
   function scHideError() { document.getElementById('sc-error').style.display = 'none'; }
 
-  /* ── DONATE PANEL ── */
-  window.fpProceed = function() {
-    const wrap = document.getElementById('fp-embed-wrap');
-    wrap.style.display = 'block';
-    wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  /* ── DONATION IMPACT STORY — shared statements, two instances ── */
+  const donationImpactChapters = [
+    { text: 'A mother in Henry County called after three other agencies sent her in circles. Her case stayed open eleven days, until housing was confirmed...', amt: 'Funded by recurring gifts of $10 per month' },
+    { text: 'Every month, the most common gift QCLS receives, quietly and consistently, funds four navigation cases and two community outreach events...', amt: 'A recurring gift of $50 per month' },
+    { text: 'A small Madison County nonprofit had never seen its own capacity scored honestly. The evidence finally gave its board permission to ask for help...', amt: 'A gift of $400 funds a full Tier 1 assessment, a $750 value' },
+    { text: 'A retired teacher in Anderson now spends six hours a month capturing field intelligence, data that shapes where QCLS shows up next...', amt: 'Time given alongside recurring monthly gifts' },
+    { text: 'qOHR™ now holds patterns from hundreds of cases, turning individual stories into intelligence that makes every future case faster to resolve...', amt: 'Built through ongoing, recurring support' },
+    { text: 'A nonprofit board finally saw their governance gaps in writing, evidence a funder later cited as the reason they approved a six-figure grant...', amt: 'A gift toward a $3,500 Tier 2 assessment, offered at $1,500 for founding clients' },
+    { text: 'Two cases, one outreach event. A recurring gift this size keeps a navigator in the field every week, meeting people where the system loses them...', amt: 'A recurring gift of $25 per month' },
+    { text: 'A young father lost his job and his apartment in the same week. He found QCLS through a flyer at a food pantry. His case is still open, by design...', amt: 'Every gift keeps a case open until access is confirmed' },
+    { text: 'A faith community in Spiceland began referring families directly to OurWalk™ navigators instead of guessing where to send them...', amt: 'Trust, built one recurring gift at a time' },
+    { text: 'Recurring or one-time, every contribution becomes part of a system built to prove outcomes, not just count activity...', amt: 'Monthly or single gift, both fund the same standard' },
+    { text: 'A single grandmother raising two grandchildren found OurWalk™ through a school counselor. Six weeks later, both kids had stable healthcare coverage...', amt: 'A recurring gift of $15 per month' },
+    { text: 'A year-long capacity rebuild gave one nonprofit the governance structure to finally pursue multi-year funding instead of chasing grants one cycle at a time...', amt: 'A gift toward a $8,500 Tier 3 engagement, offered at $4,500 for founding clients' },
+    { text: 'A weCARES™ volunteer logged a small detail in a field report, a transportation gap, that later shaped how three other cases were routed...', amt: 'Recurring gifts of $20 per month keep volunteers in the field' },
+    { text: 'A Henry County food pantry partnered with QCLS after seeing how many of its visitors needed navigation help they could not provide themselves...', amt: 'A recurring gift of $75 per month' },
+    { text: 'An elderly veteran nearly lost his housing voucher over a paperwork deadline. A navigator caught it three days before the cutoff...', amt: 'A one-time gift of $35 covers urgent case support' },
+    { text: 'A Madison County church youth group now volunteers monthly at weCARES™ events, logging hours that show up in the same intelligence record as every other contribution...', amt: 'A recurring gift of $5 per month adds up alongside hundreds of others' },
+    { text: 'Phorsyte™ flagged a funding chain risk for one nonprofit eighteen months before its largest grant unexpectedly ended. The board had time to prepare...', amt: 'A gift toward the full cost of one Phorsyte™ trajectory analysis' },
+    { text: 'A young mother who once needed OurWalk™ navigation now volunteers as a weCARES™ field intelligence contributor in the same neighborhood...', amt: 'Recurring gifts of $30 per month sustain the cycle' },
+    { text: 'A local business owner set up a recurring monthly gift after seeing how long QCLS stayed on one employee\'s housing case...', amt: 'A recurring gift of $200 per month funds sixteen navigation cases' },
+    { text: 'Every dollar given, large or small, recurring or once, lands in the same record, the same accountability, the same standard for every person served...', amt: 'No gift is too small to count, and none is counted twice' },
+  ];
 
-    const target = document.getElementById('fp-neon-embed-target');
-    if (!target.dataset.loaded) {
-      target.dataset.loaded = 'true';
-      window.loadNeonDonationEmbed(target);
+  function initDonationCarousel(prefix) {
+    const amtEl = document.getElementById(prefix + '-carousel-amt');
+    const textEl = document.getElementById(prefix + '-carousel-text');
+    const trackEl = document.getElementById(prefix + '-carousel-track');
+    if (!amtEl || !textEl || !trackEl) return;
+
+    let idx = 0;
+    let timer = null;
+
+    function render(newIdx) {
+      idx = newIdx;
+      trackEl.style.opacity = '0';
+      setTimeout(() => {
+        const c = donationImpactChapters[idx];
+        textEl.textContent = c.text;
+        amtEl.textContent = c.amt;
+        trackEl.style.opacity = '1';
+      }, 600);
     }
-  };
 
-  /* ── SHARED EMBED LOADER — used by both main widget and side panel ── */
-  window.loadNeonDonationEmbed = function(target) {
-    target.innerHTML = '';
-    const iframe = document.createElement('iframe');
-    iframe.style.width = '100%';
-    iframe.style.border = 'none';
-    iframe.style.minHeight = '600px';
-    iframe.setAttribute('scrolling', 'no');
-    target.appendChild(iframe);
-    const doc = iframe.contentWindow.document;
-    const embedUrl = `https://quest4care.app.neoncrm.com/forms/share/Rk9STS1FTUJFRFNIQVJJTkctQ09ERTQ=`;
-    doc.open();
-    doc.write(`<html><head><style>
-      body{margin:0;padding:10px;font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:#fff;color:#1A1A18}
-      input, select, textarea{
-        font-family:'Plus Jakarta Sans',-apple-system,sans-serif!important;
-        border:1.5px solid #E0D8CC!important;
-        border-radius:4px!important;
-        padding:.45rem .6rem!important;
-        font-size:.85rem!important;
-      }
-      input:focus, select:focus, textarea:focus{
-        border-color:#1D9E75!important;
-        outline:none!important;
-        box-shadow:0 0 0 2px rgba(29,158,117,.12)!important;
-      }
-      label{font-size:.74rem!important;color:#3C4144!important;font-weight:600!important}
-      button, input[type="submit"], .btn, .submit-button, [type="submit"]{
-        background:#1D9E75!important;
-        color:#fff!important;
-        border:none!important;
-        border-radius:4px!important;
-        padding:.6rem 1.1rem!important;
-        font-weight:700!important;
-        font-family:'Plus Jakarta Sans',-apple-system,sans-serif!important;
-        cursor:pointer!important;
-      }
-      button:hover, input[type="submit"]:hover{background:#0A4A3A!important}
-      h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif!important;color:#0A1A12!important}
-      table{width:100%!important}
-    </style></head><body>`);
-    doc.write(`<script src="${embedUrl}"></scr` + `ipt>`);
-    doc.write('</body></html>');
-    doc.close();
-    let lastHeight = 0;
-    let stableCount = 0;
-    const MAX_HEIGHT = 1600;
-    const resizeIframe = () => {
-      try {
-        // Reset to a tiny height first so any percentage-based (height:100%) rules
-        // inside the iframe's document don't inherit our last artificial height —
-        // otherwise scrollHeight grows every tick in a feedback loop that never stops.
-        iframe.style.height = '1px';
-        const h = Math.min(
-          Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight),
-          MAX_HEIGHT
-        );
-        const target = (h > 100 ? h : 600) + 20;
-        iframe.style.height = target + 'px';
+    function next() {
+      render((idx + 1) % donationImpactChapters.length);
+    }
 
-        if (Math.abs(target - lastHeight) < 5) {
-          stableCount++;
-        } else {
-          stableCount = 0;
-        }
-        lastHeight = target;
+    function resetTimer() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(next, 8000);
+    }
 
-        // Once height hasn't meaningfully changed for ~8 checks (~6s), stop polling.
-        // A fresh load (new step in Neon's form) will trigger iframe.onload again if needed,
-        // and the interval is recreated below only on initial load — this just prevents
-        // an endless timer from running indefinitely in the background.
-        if (stableCount >= 8 && resizeTimer) {
-          clearInterval(resizeTimer);
-          resizeTimer = null;
-        }
-      } catch(e) {}
-    };
-    let resizeTimer = setInterval(resizeIframe, 800);
-    iframe.onload = () => {
-      stableCount = 0;
-      if (!resizeTimer) resizeTimer = setInterval(resizeIframe, 800);
-      resizeIframe();
-    };
-  };
+    render(0);
+    resetTimer();
 
-  window.fpCloseEmbed = function() {
-    document.getElementById('fp-embed-wrap').style.display = 'none';
-  };
+    // Pause on hover, resume on leave
+    const wrap = document.getElementById(prefix + '-carousel');
+    if (wrap) {
+      wrap.addEventListener('mouseenter', () => { if (timer) clearInterval(timer); });
+      wrap.addEventListener('mouseleave', resetTimer);
+    }
+  }
+
+  initDonationCarousel('don');
+  initDonationCarousel('fp');
 
   /* ── HIDE TABS WHEN SECTIONS VISIBLE ── */
   if ('IntersectionObserver' in window) {
