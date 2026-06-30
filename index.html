@@ -1484,42 +1484,15 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
             wrap.style.display = 'block';
             wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-            // Load the Neon embed script only once
+            // Load the Neon embed script — reload if amount/frequency changed
             const target = document.getElementById('don-neon-embed-target');
-            if (!target.dataset.loaded) {
-              target.dataset.loaded = 'true';
-              loadNeonEmbed(target);
+            const recurring = donFreq === 'monthly' ? 'true' : 'false';
+            const cacheKey = `${amount}-${recurring}`;
+            if (target.dataset.loadedFor !== cacheKey) {
+              target.dataset.loadedFor = cacheKey;
+              window.loadNeonDonationEmbed(target, amount, recurring);
             }
           };
-
-          function loadNeonEmbed(target) {
-            target.innerHTML = '';
-            // Neon's embed script may use document.write, which fails when
-            // appended directly. Create an iframe sandbox and write the
-            // script tag into its own document so document.write works.
-            const iframe = document.createElement('iframe');
-            iframe.style.width = '100%';
-            iframe.style.border = 'none';
-            iframe.style.minHeight = '600px';
-            iframe.setAttribute('scrolling', 'no');
-            target.innerHTML = '';
-            target.appendChild(iframe);
-            const doc = iframe.contentWindow.document;
-            doc.open();
-            doc.write('<html><head><style>body{margin:0;font-family:Plus Jakarta Sans,sans-serif}</style></head><body>');
-            doc.write('<script src="https://quest4care.app.neoncrm.com/forms/share/Rk9STS1FTUJFRFNIQVJJTkctQ09ERTQ="></scr' + 'ipt>');
-            doc.write('</body></html>');
-            doc.close();
-            // Auto-resize iframe to content height
-            const resizeIframe = () => {
-              try {
-                const h = doc.body.scrollHeight;
-                if (h > 100) iframe.style.height = h + 'px';
-              } catch(e) {}
-            };
-            iframe.onload = resizeIframe;
-            setInterval(resizeIframe, 800);
-          }
 
           window.donCloseEmbed = function() {
             document.getElementById('don-embed-wrap').style.display = 'none';
@@ -3429,13 +3402,16 @@ function qHideError(id) {
     wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
     const target = document.getElementById('fp-neon-embed-target');
-    if (!target.dataset.loaded) {
-      target.dataset.loaded = 'true';
-      loadNeonEmbedFp(target);
+    const recurring = fpFreq === 'monthly' ? 'true' : 'false';
+    const cacheKey = `${amount}-${recurring}`;
+    if (target.dataset.loadedFor !== cacheKey) {
+      target.dataset.loadedFor = cacheKey;
+      window.loadNeonDonationEmbed(target, amount, recurring);
     }
   };
 
-  function loadNeonEmbedFp(target) {
+  /* ── SHARED EMBED LOADER — used by both main widget and side panel ── */
+  window.loadNeonDonationEmbed = function(target, amount, recurring) {
     target.innerHTML = '';
     const iframe = document.createElement('iframe');
     iframe.style.width = '100%';
@@ -3444,20 +3420,49 @@ function qHideError(id) {
     iframe.setAttribute('scrolling', 'no');
     target.appendChild(iframe);
     const doc = iframe.contentWindow.document;
+    const embedUrl = `https://quest4care.app.neoncrm.com/forms/share/Rk9STS1FTUJFRFNIQVJJTkctQ09ERTQ=?donationAmount=${amount}&recurring=${recurring}`;
     doc.open();
-    doc.write('<html><head><style>body{margin:0;font-family:Plus Jakarta Sans,sans-serif}</style></head><body>');
-    doc.write('<script src="https://quest4care.app.neoncrm.com/forms/share/Rk9STS1FTUJFRFNIQVJJTkctQ09ERTQ="></scr' + 'ipt>');
+    doc.write(`<html><head><style>
+      body{margin:0;padding:10px;font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:#fff;color:#1A1A18}
+      input, select, textarea{
+        font-family:'Plus Jakarta Sans',-apple-system,sans-serif!important;
+        border:1.5px solid #E0D8CC!important;
+        border-radius:4px!important;
+        padding:.45rem .6rem!important;
+        font-size:.85rem!important;
+      }
+      input:focus, select:focus, textarea:focus{
+        border-color:#1D9E75!important;
+        outline:none!important;
+        box-shadow:0 0 0 2px rgba(29,158,117,.12)!important;
+      }
+      label{font-size:.74rem!important;color:#3C4144!important;font-weight:600!important}
+      button, input[type="submit"], .btn, .submit-button, [type="submit"]{
+        background:#1D9E75!important;
+        color:#fff!important;
+        border:none!important;
+        border-radius:4px!important;
+        padding:.6rem 1.1rem!important;
+        font-weight:700!important;
+        font-family:'Plus Jakarta Sans',-apple-system,sans-serif!important;
+        cursor:pointer!important;
+      }
+      button:hover, input[type="submit"]:hover{background:#0A4A3A!important}
+      h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif!important;color:#0A1A12!important}
+      table{width:100%!important}
+    </style></head><body>`);
+    doc.write(`<script src="${embedUrl}"></scr` + `ipt>`);
     doc.write('</body></html>');
     doc.close();
     const resizeIframe = () => {
       try {
         const h = doc.body.scrollHeight;
-        if (h > 100) iframe.style.height = h + 'px';
+        if (h > 100) iframe.style.height = (h + 20) + 'px';
       } catch(e) {}
     };
     iframe.onload = resizeIframe;
     setInterval(resizeIframe, 800);
-  }
+  };
 
   window.fpCloseEmbed = function() {
     document.getElementById('fp-embed-wrap').style.display = 'none';
