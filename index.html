@@ -1278,65 +1278,25 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--void);line-height:1.1;margin-bottom:.25rem">Every dollar confirms access.</div>
           <div style="width:32px;height:2px;background:var(--amber);margin-bottom:1.25rem"></div>
 
-          <!-- Frequency toggle -->
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.25rem">
-            <button id="don-monthly" class="don-freq don-freq-active" onclick="donSetFreq('monthly')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-              <span>Monthly</span>
-            </button>
-            <button id="don-once" class="don-freq" onclick="donSetFreq('once')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-              <span>One-time</span>
-            </button>
-          </div>
-
-          <!-- Amount cards -->
-          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem">Choose an amount</div>
-          <div id="don-amounts" style="display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-bottom:1rem">
-            <button class="don-amt" data-val="10" onclick="donSetAmt(this)">
-              <span class="don-amt-val">$10</span>
-              <span class="don-amt-sub" id="sub-10">Per month</span>
-            </button>
-            <button class="don-amt" data-val="25" onclick="donSetAmt(this)">
-              <span class="don-amt-val">$25</span>
-              <span class="don-amt-sub" id="sub-25">Per month</span>
-            </button>
-            <button class="don-amt don-amt-active" data-val="50" onclick="donSetAmt(this)">
-              <span class="don-amt-val">$50</span>
-              <span class="don-amt-sub" id="sub-50">Per month</span>
-            </button>
-            <button class="don-amt" data-val="100" onclick="donSetAmt(this)">
-              <span class="don-amt-val">$100</span>
-              <span class="don-amt-sub" id="sub-100">Per month</span>
-            </button>
-            <button class="don-amt" data-val="250" onclick="donSetAmt(this)">
-              <span class="don-amt-val">$250</span>
-              <span class="don-amt-sub" id="sub-250">Per month</span>
-            </button>
-            <button class="don-amt" data-val="other" onclick="donSetAmt(this)">
-              <span class="don-amt-val">Other</span>
-              <span class="don-amt-sub">Custom</span>
-            </button>
-          </div>
-
-          <!-- Custom amount input -->
-          <div id="don-custom-wrap" style="display:none;margin-bottom:1rem">
-            <label style="font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:.25rem">Enter amount</label>
-            <div style="display:flex;align-items:center;border:1.5px solid var(--amber);border-radius:3px;overflow:hidden">
-              <span style="padding:.5rem .75rem;background:rgba(232,160,32,.08);font-size:.9rem;font-weight:600;color:var(--amber);border-right:1.5px solid var(--amber)">$</span>
-              <input type="number" id="don-custom-input" min="1" placeholder="Enter amount" style="border:none;outline:none;padding:.5rem .75rem;font-size:.9rem;font-family:'Plus Jakarta Sans',sans-serif;color:var(--void);width:100%;background:#fff"/>
+          <!-- Static ways-to-give messaging (no interactive selector — Neon's own form handles amount + frequency) -->
+          <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.25rem">
+            <div style="display:flex;align-items:flex-start;gap:.6rem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" style="flex-shrink:0;margin-top:.1rem"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span style="font-size:.82rem;color:var(--mid);line-height:1.5"><strong style="color:var(--void)">Navigation</strong> — funds OurWalk™ cases from intake to confirmed access</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:.6rem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" style="flex-shrink:0;margin-top:.1rem"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+              <span style="font-size:.82rem;color:var(--mid);line-height:1.5"><strong style="color:var(--void)">FoundationReady™</strong> — underwrites independent capacity assessments</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:.6rem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" style="flex-shrink:0;margin-top:.1rem"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+              <span style="font-size:.82rem;color:var(--mid);line-height:1.5"><strong style="color:var(--void)">Platform infrastructure</strong> — keeps the UnoSphere™ running for every county resident</span>
             </div>
           </div>
 
-          <!-- Impact chips -->
-          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:.5rem">Your impact at <span id="don-impact-label" style="color:var(--amber)">$50/month</span></div>
-          <div id="don-impact-chips" style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.25rem">
-            <!-- populated by JS -->
-          </div>
-
-          <!-- CTA -->
+          <!-- CTA — single click reveals Neon's own secure form, which handles amount + one-time/monthly itself -->
           <button id="don-cta" onclick="donProceed()" style="width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.8rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s">
-            Contribute $50 / month →
+            Contribute to QCLS →
           </button>
           <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.6rem;line-height:1.6">Secure · Tax-deductible · EIN 33-3036616 · Cancel anytime</p>
 
@@ -1344,14 +1304,10 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           <div id="don-embed-wrap" style="display:none;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
               <div>
-                <div style="font-family:'Oswald',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.2rem">Step 2 of 2</div>
+                <div style="font-family:'Oswald',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.2rem">Secure Giving Form</div>
                 <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--void)">Complete your contribution</div>
               </div>
               <button onclick="donCloseEmbed()" style="background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1.1rem;line-height:1;padding:.2rem" aria-label="Close">✕</button>
-            </div>
-            <div id="don-embed-summary" style="background:var(--nw);border-radius:4px;padding:.75rem 1rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-              <span style="font-size:.85rem;color:var(--void)"><strong id="don-embed-amt">$50</strong> <span id="don-embed-freq">per month</span> — secure checkout below</span>
             </div>
             <div id="don-neon-embed-target" style="border:1px solid var(--border);border-radius:4px;overflow:hidden;background:#fff;min-height:120px;display:flex;align-items:center;justify-content:center">
               <div style="text-align:center;padding:2rem;color:var(--light);font-size:.8rem">Loading secure form…</div>
@@ -1364,22 +1320,6 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         </div>
 
         <style>
-        .don-freq{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.5rem;border:1.5px solid var(--border);border-radius:3px;background:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);cursor:pointer;transition:all .18s}
-        .don-freq svg{stroke:currentColor}
-        .don-freq:hover{border-color:var(--amber);color:var(--amber)}
-        .don-freq-active{border-color:var(--amber)!important;background:rgba(232,160,32,.08)!important;color:var(--amber)!important}
-        .don-amt{border:1.5px solid var(--border);border-radius:3px;padding:.6rem .4rem;background:#fff;cursor:pointer;text-align:center;transition:all .18s;display:flex;flex-direction:column;align-items:center}
-        .don-amt:hover{border-color:var(--amber);background:rgba(232,160,32,.04)}
-        .don-amt-active{border-color:var(--amber)!important;background:rgba(232,160,32,.08)!important}
-        .don-amt-val{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--void);display:block;line-height:1.1}
-        .don-amt-active .don-amt-val{color:var(--amber)}
-        .don-amt-sub{font-size:.58rem;color:var(--mid);display:block;margin-top:.15rem;font-family:'Plus Jakarta Sans',sans-serif}
-        .don-chip{display:inline-flex;flex-direction:column;align-items:center;border:1px solid var(--border);border-radius:3px;padding:.35rem .6rem;background:var(--nw);min-width:72px}
-        .don-chip-active{border-color:var(--teal)!important;background:rgba(29,158,117,.06)!important}
-        .don-chip svg{stroke:var(--teal);width:14px;height:14px;margin-bottom:.15rem}
-        .don-chip-label{font-size:.58rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--void)}
-        .don-chip-sub{font-size:.55rem;color:var(--mid);margin-top:.1rem}
-
         /* ── Skin the embedded Neon form to match QCLS brand ── */
         #don-neon-embed-target iframe{width:100%!important;border:none!important}
         #don-neon-embed-target{font-family:'Plus Jakarta Sans',sans-serif!important}
@@ -1412,94 +1352,22 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
 
         <script>
         (function(){
-          let donFreq = 'monthly';
-          let donAmt = 50;
-
-          const impactMap = {
-            10:  [{icon:'map-pin',label:'Navigation',sub:'1 case/mo'},{icon:'wifi',label:'Platform',sub:'Infrastructure'}],
-            25:  [{icon:'map-pin',label:'Navigation',sub:'2 cases/mo'},{icon:'users',label:'Outreach',sub:'1 event/mo'},{icon:'wifi',label:'Platform',sub:'Infrastructure'}],
-            50:  [{icon:'map-pin',label:'Navigation',sub:'4 cases/mo'},{icon:'users',label:'Outreach',sub:'2 events/mo'},{icon:'wifi',label:'Platform',sub:'Infrastructure'}],
-            100: [{icon:'clipboard',label:'Assessment',sub:'Partial fund'},{icon:'map-pin',label:'Navigation',sub:'8 cases/mo'},{icon:'users',label:'Outreach',sub:'4 events/mo'}],
-            250: [{icon:'clipboard',label:'Assessment',sub:'Full fund'},{icon:'map-pin',label:'Navigation',sub:'20 cases/mo'},{icon:'users',label:'Outreach',sub:'1 wk of events'}],
-          };
-
-          const svgPath = {
-            'map-pin': '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
-            'users': '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-            'wifi': '<path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>',
-            'clipboard': '<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>',
-          };
-
-          function makeChip(icon, label, sub) {
-            return `<div class="don-chip don-chip-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${svgPath[icon]||''}</svg><span class="don-chip-label">${label}</span><span class="don-chip-sub">${sub}</span></div>`;
-          }
-
-          function updateImpact() {
-            const key = donAmt === 'other' ? 25 : donAmt;
-            const chips = impactMap[key] || impactMap[25];
-            document.getElementById('don-impact-chips').innerHTML = chips.map(c => makeChip(c.icon, c.label, c.sub)).join('');
-            const freqLabel = donFreq === 'monthly' ? '/month' : ' one-time';
-            const amtLabel = donAmt === 'other' ? 'your gift' : `$${donAmt}${freqLabel}`;
-            document.getElementById('don-impact-label').textContent = amtLabel;
-            const btnAmt = donAmt === 'other' ? 'my contribution' : `$${donAmt}${freqLabel}`;
-            document.getElementById('don-cta').textContent = `Contribute ${btnAmt} →`;
-          }
-
-          window.donSetFreq = function(freq) {
-            donFreq = freq;
-            document.getElementById('don-monthly').classList.toggle('don-freq-active', freq === 'monthly');
-            document.getElementById('don-once').classList.toggle('don-freq-active', freq === 'once');
-            // Update amount sublabels
-            const label = freq === 'monthly' ? 'Per month' : 'One-time';
-            [10,25,50,100,250].forEach(v => {
-              const el = document.getElementById('sub-' + v);
-              if (el) el.textContent = label;
-            });
-            updateImpact();
-          };
-
-          window.donSetAmt = function(btn) {
-            document.querySelectorAll('.don-amt').forEach(b => b.classList.remove('don-amt-active'));
-            btn.classList.add('don-amt-active');
-            const val = btn.getAttribute('data-val');
-            donAmt = val === 'other' ? 'other' : parseInt(val);
-            document.getElementById('don-custom-wrap').style.display = val === 'other' ? 'block' : 'none';
-            updateImpact();
-          };
-
           window.donProceed = function() {
-            let amount = donAmt;
-            if (amount === 'other') {
-              amount = parseInt(document.getElementById('don-custom-input').value) || 0;
-              if (!amount || amount < 1) {
-                document.getElementById('don-custom-input').focus();
-                return;
-              }
-            }
-            const freqLabel = donFreq === 'monthly' ? 'per month' : 'one-time';
-            document.getElementById('don-embed-amt').textContent = `$${amount}`;
-            document.getElementById('don-embed-freq').textContent = freqLabel;
-
             const wrap = document.getElementById('don-embed-wrap');
             wrap.style.display = 'block';
             wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-            // Load the Neon embed script — reload if amount/frequency changed
+            // Load the Neon embed exactly once — Neon's own form handles amount + frequency from scratch
             const target = document.getElementById('don-neon-embed-target');
-            const recurring = donFreq === 'monthly' ? 'true' : 'false';
-            const cacheKey = `${amount}-${recurring}`;
-            if (target.dataset.loadedFor !== cacheKey) {
-              target.dataset.loadedFor = cacheKey;
-              window.loadNeonDonationEmbed(target, amount, recurring);
+            if (!target.dataset.loaded) {
+              target.dataset.loaded = 'true';
+              window.loadNeonDonationEmbed(target);
             }
           };
 
           window.donCloseEmbed = function() {
             document.getElementById('don-embed-wrap').style.display = 'none';
           };
-
-          // Initialize
-          updateImpact();
         })();
         </script>
       </div>
@@ -2942,41 +2810,12 @@ function qHideError(id) {
       </div>
       <div style="width:24px;height:2px;background:var(--amber);margin-bottom:1rem"></div>
 
-      <!-- Frequency -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.85rem">
-        <button id="fp-monthly" class="fp-freq fp-freq-active" onclick="fpSetFreq('monthly')">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-          Monthly
-        </button>
-        <button id="fp-once" class="fp-freq" onclick="fpSetFreq('once')">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/></svg>
-          One-time
-        </button>
+      <!-- Static ways-to-give messaging (no interactive selector — Neon's own form handles amount + frequency) -->
+      <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:.85rem">
+        <div style="font-size:.74rem;color:var(--mid);line-height:1.5">Your gift funds OurWalk™ navigation, FoundationReady™ assessments, and the platform infrastructure behind both.</div>
       </div>
 
-      <!-- Amounts -->
-      <div style="font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem">Amount</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem;margin-bottom:.75rem">
-        <button class="fp-amt" data-val="10" onclick="fpSetAmt(this)"><span class="fp-amt-val">$10</span></button>
-        <button class="fp-amt" data-val="25" onclick="fpSetAmt(this)"><span class="fp-amt-val">$25</span></button>
-        <button class="fp-amt fp-amt-active" data-val="50" onclick="fpSetAmt(this)"><span class="fp-amt-val">$50</span></button>
-        <button class="fp-amt" data-val="100" onclick="fpSetAmt(this)"><span class="fp-amt-val">$100</span></button>
-        <button class="fp-amt" data-val="250" onclick="fpSetAmt(this)"><span class="fp-amt-val">$250</span></button>
-        <button class="fp-amt" data-val="other" onclick="fpSetAmt(this)"><span class="fp-amt-val">Other</span></button>
-      </div>
-
-      <!-- Custom input -->
-      <div id="fp-custom-wrap" style="display:none;margin-bottom:.75rem">
-        <div style="display:flex;align-items:center;border:1.5px solid var(--amber);border-radius:3px;overflow:hidden">
-          <span style="padding:.4rem .6rem;background:rgba(232,160,32,.08);font-size:.85rem;font-weight:600;color:var(--amber);border-right:1.5px solid var(--amber)">$</span>
-          <input type="number" id="fp-custom-input" min="1" placeholder="Amount" style="border:none;outline:none;padding:.4rem .6rem;font-size:.85rem;font-family:'Plus Jakarta Sans',sans-serif;color:var(--void);width:100%;background:#fff"/>
-        </div>
-      </div>
-
-      <!-- Impact -->
-      <div id="fp-impact" style="font-size:.7rem;color:var(--mid);margin-bottom:.85rem;line-height:1.5;padding:.5rem .75rem;background:var(--nw);border-radius:3px;border-left:2px solid var(--teal)"></div>
-
-      <button id="fp-cta" onclick="fpProceed()" style="width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s;margin-bottom:.5rem">Contribute $50 / month →</button>
+      <button id="fp-cta" onclick="fpProceed()" style="width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s;margin-bottom:.5rem">Contribute to QCLS →</button>
       <p style="font-size:.58rem;color:var(--light);text-align:center;line-height:1.5">Secure · Tax-deductible · EIN 33-3036616</p>
 
       <!-- Embedded Neon form reveal -->
@@ -2984,9 +2823,6 @@ function qHideError(id) {
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
           <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--void)">Complete your gift</div>
           <button onclick="fpCloseEmbed()" style="background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1rem;line-height:1" aria-label="Close">✕</button>
-        </div>
-        <div id="fp-embed-summary" style="background:var(--nw);border-radius:3px;padding:.5rem .75rem;margin-bottom:.85rem;font-size:.75rem;color:var(--void)">
-          <strong id="fp-embed-amt">$50</strong> <span id="fp-embed-freq">per month</span>
         </div>
         <div id="fp-neon-embed-target" style="border:1px solid var(--border);border-radius:3px;overflow:hidden;background:#fff;min-height:100px;display:flex;align-items:center;justify-content:center">
           <div style="text-align:center;padding:1.5rem;color:var(--light);font-size:.75rem">Loading secure form…</div>
@@ -3203,8 +3039,6 @@ function qHideError(id) {
 (function(){
   let activePanel = null;
   let scWhoType = 'individual';
-  let fpFreq = 'monthly';
-  let fpAmt = 50;
 
   /* ── SIDE PANEL TOGGLE ── */
   window.sideToggle = function(panel) {
@@ -3355,63 +3189,20 @@ function qHideError(id) {
   function scHideError() { document.getElementById('sc-error').style.display = 'none'; }
 
   /* ── DONATE PANEL ── */
-  const impactLines = {
-    10: 'Supports 1 navigation case and platform infrastructure.',
-    25: 'Funds 2 navigation cases and 1 community outreach event.',
-    50: 'Funds 4 navigation cases and 2 outreach events per month.',
-    100: 'Partially funds a FoundationReady™ assessment and 8 navigation cases.',
-    250: 'Fully funds a FoundationReady™ assessment and 20 navigation cases.',
-  };
-
-  function fpUpdateUI() {
-    const key = fpAmt === 'other' ? 25 : fpAmt;
-    document.getElementById('fp-impact').textContent = impactLines[key] || impactLines[25];
-    const freqLabel = fpFreq === 'monthly' ? '/month' : ' one-time';
-    const amtLabel = fpAmt === 'other' ? 'my contribution' : `$${fpAmt}${freqLabel}`;
-    document.getElementById('fp-cta').textContent = `Contribute ${amtLabel} →`;
-  }
-
-  window.fpSetFreq = function(freq) {
-    fpFreq = freq;
-    document.getElementById('fp-monthly').classList.toggle('fp-freq-active', freq === 'monthly');
-    document.getElementById('fp-once').classList.toggle('fp-freq-active', freq === 'once');
-    fpUpdateUI();
-  };
-
-  window.fpSetAmt = function(btn) {
-    document.querySelectorAll('.fp-amt').forEach(b => b.classList.remove('fp-amt-active'));
-    btn.classList.add('fp-amt-active');
-    const val = btn.getAttribute('data-val');
-    fpAmt = val === 'other' ? 'other' : parseInt(val);
-    document.getElementById('fp-custom-wrap').style.display = val === 'other' ? 'block' : 'none';
-    fpUpdateUI();
-  };
-
   window.fpProceed = function() {
-    let amount = fpAmt;
-    if (amount === 'other') {
-      amount = parseInt(document.getElementById('fp-custom-input').value) || 0;
-      if (!amount || amount < 1) { document.getElementById('fp-custom-input').focus(); return; }
-    }
-    const freqLabel = fpFreq === 'monthly' ? 'per month' : 'one-time';
-    document.getElementById('fp-embed-amt').textContent = `$${amount}`;
-    document.getElementById('fp-embed-freq').textContent = freqLabel;
-
     const wrap = document.getElementById('fp-embed-wrap');
     wrap.style.display = 'block';
     wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
     const target = document.getElementById('fp-neon-embed-target');
-    const recurring = fpFreq === 'monthly' ? 'true' : 'false';
-    const cacheKey = `${amount}-${recurring}`;
-    if (target.dataset.loadedFor !== cacheKey) {
-      target.dataset.loadedFor = cacheKey;
-      window.loadNeonDonationEmbed(target, amount, recurring);
+    if (!target.dataset.loaded) {
+      target.dataset.loaded = 'true';
+      window.loadNeonDonationEmbed(target);
     }
   };
 
   /* ── SHARED EMBED LOADER — used by both main widget and side panel ── */
-  window.loadNeonDonationEmbed = function(target, amount, recurring) {
+  window.loadNeonDonationEmbed = function(target) {
     target.innerHTML = '';
     const iframe = document.createElement('iframe');
     iframe.style.width = '100%';
@@ -3420,7 +3211,7 @@ function qHideError(id) {
     iframe.setAttribute('scrolling', 'no');
     target.appendChild(iframe);
     const doc = iframe.contentWindow.document;
-    const embedUrl = `https://quest4care.app.neoncrm.com/forms/share/Rk9STS1FTUJFRFNIQVJJTkctQ09ERTQ=?donationAmount=${amount}&recurring=${recurring}`;
+    const embedUrl = `https://quest4care.app.neoncrm.com/forms/share/Rk9STS1FTUJFRFNIQVJJTkctQ09ERTQ=`;
     doc.open();
     doc.write(`<html><head><style>
       body{margin:0;padding:10px;font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:#fff;color:#1A1A18}
@@ -3482,7 +3273,6 @@ function qHideError(id) {
     });
   }
 
-  fpUpdateUI();
 })();
 </script>
 
