@@ -644,7 +644,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
   </a>
   <div class="nav-right">
     <span class="nav-hint">Hover a node to explore the UnoSphere™</span>
-    <a href="#donationWidget" class="nav-donate" onclick="event.preventDefault();(function(){const el=document.getElementById('donationWidget');const navH=document.querySelector('nav')?document.querySelector('nav').offsetHeight:70;const top=el.getBoundingClientRect().top+window.scrollY-navH-20;window.scrollTo({top,behavior:'smooth'});})()">Contribute</a>
+    <a href="#donationWidget" class="nav-donate" onclick="event.preventDefault();(function(){const el=document.getElementById('donationWidget');const navH=document.querySelector('nav')?document.querySelector('nav').offsetHeight:70;const top=el.getBoundingClientRect().top+window.scrollY-navH-10;window.scrollTo({top,behavior:'smooth'});})()">Contribute</a>
     <a href="#contact" class="nav-cta">Get Started</a>
   </div>
 </nav>
@@ -1295,6 +1295,108 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           </a>
           <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.65rem;line-height:1.6">Secure · Tax-deductible · EIN 33-3036616 · Cancel anytime</p>
         </div>
+
+        <!-- Financial transparency dashboard -->
+        <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:0;margin-top:1.25rem;overflow:hidden">
+
+          <!-- Header band -->
+          <div style="background:linear-gradient(135deg,var(--void) 0%,var(--deep) 100%);padding:1.4rem 1.6rem">
+            <div style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem">Financial Transparency · 2025</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#fff;line-height:1.15">A first year built entirely on trust.</div>
+          </div>
+
+          <div style="padding:1.6rem">
+
+            <!-- Hero stat row -->
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem">
+              <div style="text-align:center;padding:.85rem .4rem;background:var(--nw);border-radius:5px">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--teal);line-height:1">$78.5K</div>
+                <div style="font-size:.6rem;color:var(--mid);text-transform:uppercase;letter-spacing:.05em;margin-top:.25rem;font-weight:600">Total Raised</div>
+              </div>
+              <div style="text-align:center;padding:.85rem .4rem;background:var(--nw);border-radius:5px">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--amber);line-height:1">90.8%</div>
+                <div style="font-size:.6rem;color:var(--mid);text-transform:uppercase;letter-spacing:.05em;margin-top:.25rem;font-weight:600">To Programs</div>
+              </div>
+              <div style="text-align:center;padding:.85rem .4rem;background:var(--nw);border-radius:5px">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--void);line-height:1">$0</div>
+                <div style="font-size:.6rem;color:var(--mid);text-transform:uppercase;letter-spacing:.05em;margin-top:.25rem;font-weight:600">Govt. Grants</div>
+              </div>
+            </div>
+
+            <!-- Revenue line -->
+            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:1.5rem;padding-bottom:1.4rem;border-bottom:1px solid var(--border)">
+              <span style="width:10px;height:10px;border-radius:2px;background:var(--teal);flex-shrink:0"></span>
+              <span style="font-size:.78rem;color:var(--void);font-weight:600">100% from contributions &amp; gifts</span>
+              <span style="font-size:.7rem;color:var(--light);margin-left:auto">No government grants · No investment income</span>
+            </div>
+
+            <!-- Expense breakdown — multi-color donut -->
+            <div style="margin-bottom:1.1rem">
+              <div style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)">Where every dollar went</div>
+              <div style="font-size:.68rem;color:var(--light);margin-top:.2rem">$76,500 in total functional expenses, 2025</div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem">
+              <svg width="130" height="130" viewBox="0 0 100 100" style="flex-shrink:0">
+                <circle cx="50" cy="50" r="42" fill="none" stroke="var(--teal)" stroke-width="14" stroke-dasharray="76.00 187.89" transform="rotate(-90 50 50)"/>
+                <circle cx="50" cy="50" r="42" fill="none" stroke="var(--amber)" stroke-width="14" stroke-dasharray="19.00 244.89" transform="rotate(13.68 50 50)"/>
+                <circle cx="50" cy="50" r="42" fill="none" stroke="var(--coral)" stroke-width="14" stroke-dasharray="17.42 246.48" transform="rotate(39.60 50 50)"/>
+                <circle cx="50" cy="50" r="42" fill="none" stroke="var(--deep)" stroke-width="14" stroke-dasharray="17.15 246.74" transform="rotate(63.36 50 50)"/>
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#7B9E89" stroke-width="14" stroke-dasharray="17.15 246.74" transform="rotate(86.76 50 50)"/>
+                <circle cx="50" cy="50" r="42" fill="none" stroke="var(--border)" stroke-width="14" stroke-dasharray="114.53 149.36" transform="rotate(110.16 50 50)"/>
+                <text x="50" y="47" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" font-weight="700" fill="var(--void)">$76.5K</text>
+                <text x="50" y="59" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="5.5" font-weight="600" letter-spacing="0.03em" fill="var(--mid)">TOTAL EXPENSES</text>
+              </svg>
+              <div style="flex:1;display:flex;flex-direction:column;gap:.5rem">
+                <div style="display:flex;align-items:center;gap:.5rem">
+                  <span style="width:9px;height:9px;border-radius:2px;background:var(--teal);flex-shrink:0"></span>
+                  <span style="font-size:.72rem;color:var(--void);flex:1">Information technology</span>
+                  <span style="font-size:.72rem;font-weight:700;color:var(--teal)">28.8%</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:.5rem">
+                  <span style="width:9px;height:9px;border-radius:2px;background:var(--amber);flex-shrink:0"></span>
+                  <span style="font-size:.72rem;color:var(--void);flex:1">Org. development &amp; planning</span>
+                  <span style="font-size:.72rem;font-weight:700;color:var(--mid)">7.2%</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:.5rem">
+                  <span style="width:9px;height:9px;border-radius:2px;background:var(--coral);flex-shrink:0"></span>
+                  <span style="font-size:.72rem;color:var(--void);flex:1">Advertising &amp; promotion</span>
+                  <span style="font-size:.72rem;font-weight:700;color:var(--mid)">6.6%</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:.5rem">
+                  <span style="width:9px;height:9px;border-radius:2px;background:var(--deep);flex-shrink:0"></span>
+                  <span style="font-size:.72rem;color:var(--void);flex:1">Outreach &amp; leadership</span>
+                  <span style="font-size:.72rem;font-weight:700;color:var(--mid)">6.5%</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:.5rem">
+                  <span style="width:9px;height:9px;border-radius:2px;background:#7B9E89;flex-shrink:0"></span>
+                  <span style="font-size:.72rem;color:var(--void);flex:1">Community coordination</span>
+                  <span style="font-size:.72rem;font-weight:700;color:var(--mid)">6.5%</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:.5rem">
+                  <span style="width:9px;height:9px;border-radius:2px;background:var(--border);flex-shrink:0"></span>
+                  <span style="font-size:.72rem;color:var(--light);flex:1">All other expenses</span>
+                  <span style="font-size:.72rem;font-weight:700;color:var(--light)">43.4%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Standard comparison callout -->
+            <div style="padding:1rem 1.1rem;background:linear-gradient(135deg,rgba(29,158,117,.06),rgba(232,160,32,.05));border:1px solid rgba(29,158,117,.18);border-radius:5px;display:flex;align-items:flex-start;gap:.65rem">
+              <div style="flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;margin-top:.05rem">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <span style="font-size:.76rem;color:var(--mid);line-height:1.6"><strong style="color:var(--void)">90.8%</strong> of every dollar went directly to program services. Industry watchdogs including the BBB Wise Giving Alliance consider <strong style="color:var(--void)">65%</strong> the minimum standard for an accountable nonprofit — QCLS exceeded it by <strong style="color:var(--teal)">25.8 points</strong> in its very first year of operation, with <strong style="color:var(--void)">$0</strong> spent on fundraising.</span>
+            </div>
+
+            <div style="margin-top:1.1rem;text-align:center">
+              <a href="Form990Package%20QCLS%202025.pdf" download="QCLS_Form990_2025.pdf" style="color:var(--teal);text-decoration:none;font-weight:700;font-size:.74rem;display:inline-flex;align-items:center;gap:.35rem">
+                View the complete 2025 Form 990
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1365,7 +1467,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           </div>
           <div style="padding:2rem">
             <p style="font-size:.88rem;color:var(--mid);line-height:1.7;margin-bottom:1.5rem">Our 2025 Form 990 is publicly filed and available for download. This includes all program service accomplishments, financial statements, governance disclosures, and board compensation information.</p>
-            <a href="Form990Package_QCLS_2025.pdf" download="QCLS_Form990_2025.pdf"
+            <a href="Form990Package%20QCLS%202025.pdf" download="QCLS_Form990_2025.pdf"
                class="btn btn-deep"
                style="display:inline-flex;align-items:center;gap:.5rem;font-size:.88rem">
               ↓ Download Form 990 (PDF)
@@ -2171,7 +2273,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <li><a href="#about">About QCLS</a></li>
         <li><a href="#transparency">Transparency &amp; 990</a></li>
         <li><a href="#contact">Get In Touch</a></li>
-        <li><a href="#donationWidget">Contribute</a></li>
+        <li><a href="#donationWidget" onclick="event.preventDefault();(function(){const el=document.getElementById('donationWidget');const navH=document.querySelector('nav')?document.querySelector('nav').offsetHeight:70;const top=el.getBoundingClientRect().top+window.scrollY-navH-10;window.scrollTo({top,behavior:'smooth'});})()">Contribute</a></li>
         <li><a href="https://app.candid.org/profile/16181088/questcare-lifestyle-solutions-inc-33-3036616/?pkId=e0a8e154-3152-4a76-a989-9de902af2e60" target="_blank">Candid Profile ↗</a></li>
       </ul>
     </div>
