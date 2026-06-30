@@ -1339,6 +1339,28 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
             Contribute $50 / month →
           </button>
           <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.6rem;line-height:1.6">Secure · Tax-deductible · EIN 33-3036616 · Cancel anytime</p>
+
+          <!-- Embedded Neon form reveal — branded wrapper -->
+          <div id="don-embed-wrap" style="display:none;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+              <div>
+                <div style="font-family:'Oswald',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.2rem">Step 2 of 2</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--void)">Complete your contribution</div>
+              </div>
+              <button onclick="donCloseEmbed()" style="background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1.1rem;line-height:1;padding:.2rem" aria-label="Close">✕</button>
+            </div>
+            <div id="don-embed-summary" style="background:var(--nw);border-radius:4px;padding:.75rem 1rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              <span style="font-size:.85rem;color:var(--void)"><strong id="don-embed-amt">$50</strong> <span id="don-embed-freq">per month</span> — secure checkout below</span>
+            </div>
+            <div id="don-neon-embed-target" style="border:1px solid var(--border);border-radius:4px;overflow:hidden;background:#fff;min-height:120px;display:flex;align-items:center;justify-content:center">
+              <div style="text-align:center;padding:2rem;color:var(--light);font-size:.8rem">Loading secure form…</div>
+            </div>
+            <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.75rem;line-height:1.6">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:.2rem"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Processed securely by Neon One · QuestCare LifeStyle Solutions, Inc. · EIN 33-3036616
+            </p>
+          </div>
         </div>
 
         <style>
@@ -1357,6 +1379,35 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         .don-chip svg{stroke:var(--teal);width:14px;height:14px;margin-bottom:.15rem}
         .don-chip-label{font-size:.58rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--void)}
         .don-chip-sub{font-size:.55rem;color:var(--mid);margin-top:.1rem}
+
+        /* ── Skin the embedded Neon form to match QCLS brand ── */
+        #don-neon-embed-target iframe{width:100%!important;border:none!important}
+        #don-neon-embed-target{font-family:'Plus Jakarta Sans',sans-serif!important}
+        #don-neon-embed-target input,
+        #don-neon-embed-target select,
+        #don-neon-embed-target textarea{
+          font-family:'Plus Jakarta Sans',sans-serif!important;
+          border-color:var(--border)!important;
+          border-radius:3px!important;
+        }
+        #don-neon-embed-target input:focus,
+        #don-neon-embed-target select:focus{
+          border-color:var(--teal)!important;
+          box-shadow:0 0 0 2px rgba(29,158,117,.1)!important;
+        }
+        #don-neon-embed-target button[type="submit"],
+        #don-neon-embed-target .btn-primary,
+        #don-neon-embed-target input[type="submit"]{
+          background:var(--teal)!important;
+          border-color:var(--teal)!important;
+          font-family:'Plus Jakarta Sans',sans-serif!important;
+          font-weight:600!important;
+          border-radius:3px!important;
+        }
+        #don-neon-embed-target button[type="submit"]:hover,
+        #don-neon-embed-target input[type="submit"]:hover{
+          background:var(--deep)!important;
+        }
         </style>
 
         <script>
@@ -1425,9 +1476,53 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
                 return;
               }
             }
-            const recurrence = donFreq === 'monthly' ? 'true' : 'false';
-            const url = `https://quest4care.app.neoncrm.com/forms/donate?donationAmount=${amount}&recurring=${recurrence}`;
-            window.open(url, '_blank');
+            const freqLabel = donFreq === 'monthly' ? 'per month' : 'one-time';
+            document.getElementById('don-embed-amt').textContent = `$${amount}`;
+            document.getElementById('don-embed-freq').textContent = freqLabel;
+
+            const wrap = document.getElementById('don-embed-wrap');
+            wrap.style.display = 'block';
+            wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // Load the Neon embed script only once
+            const target = document.getElementById('don-neon-embed-target');
+            if (!target.dataset.loaded) {
+              target.dataset.loaded = 'true';
+              loadNeonEmbed(target);
+            }
+          };
+
+          function loadNeonEmbed(target) {
+            target.innerHTML = '';
+            // Neon's embed script may use document.write, which fails when
+            // appended directly. Create an iframe sandbox and write the
+            // script tag into its own document so document.write works.
+            const iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.border = 'none';
+            iframe.style.minHeight = '600px';
+            iframe.setAttribute('scrolling', 'no');
+            target.innerHTML = '';
+            target.appendChild(iframe);
+            const doc = iframe.contentWindow.document;
+            doc.open();
+            doc.write('<html><head><style>body{margin:0;font-family:Plus Jakarta Sans,sans-serif}</style></head><body>');
+            doc.write('<script src="https://quest4care.app.neoncrm.com/forms/share/Rk9STS1FTUJFRFNIQVJJTkctQ09ERTQ="></scr' + 'ipt>');
+            doc.write('</body></html>');
+            doc.close();
+            // Auto-resize iframe to content height
+            const resizeIframe = () => {
+              try {
+                const h = doc.body.scrollHeight;
+                if (h > 100) iframe.style.height = h + 'px';
+              } catch(e) {}
+            };
+            iframe.onload = resizeIframe;
+            setInterval(resizeIframe, 800);
+          }
+
+          window.donCloseEmbed = function() {
+            document.getElementById('don-embed-wrap').style.display = 'none';
           };
 
           // Initialize
@@ -2910,6 +3005,20 @@ function qHideError(id) {
 
       <button id="fp-cta" onclick="fpProceed()" style="width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.7rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s;margin-bottom:.5rem">Contribute $50 / month →</button>
       <p style="font-size:.58rem;color:var(--light);text-align:center;line-height:1.5">Secure · Tax-deductible · EIN 33-3036616</p>
+
+      <!-- Embedded Neon form reveal -->
+      <div id="fp-embed-wrap" style="display:none;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--void)">Complete your gift</div>
+          <button onclick="fpCloseEmbed()" style="background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1rem;line-height:1" aria-label="Close">✕</button>
+        </div>
+        <div id="fp-embed-summary" style="background:var(--nw);border-radius:3px;padding:.5rem .75rem;margin-bottom:.85rem;font-size:.75rem;color:var(--void)">
+          <strong id="fp-embed-amt">$50</strong> <span id="fp-embed-freq">per month</span>
+        </div>
+        <div id="fp-neon-embed-target" style="border:1px solid var(--border);border-radius:3px;overflow:hidden;background:#fff;min-height:100px;display:flex;align-items:center;justify-content:center">
+          <div style="text-align:center;padding:1.5rem;color:var(--light);font-size:.75rem">Loading secure form…</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -3311,9 +3420,47 @@ function qHideError(id) {
       amount = parseInt(document.getElementById('fp-custom-input').value) || 0;
       if (!amount || amount < 1) { document.getElementById('fp-custom-input').focus(); return; }
     }
-    const recurrence = fpFreq === 'monthly' ? 'true' : 'false';
-    window.open(`https://quest4care.app.neoncrm.com/forms/donate?donationAmount=${amount}&recurring=${recurrence}`, '_blank');
-    sideClose();
+    const freqLabel = fpFreq === 'monthly' ? 'per month' : 'one-time';
+    document.getElementById('fp-embed-amt').textContent = `$${amount}`;
+    document.getElementById('fp-embed-freq').textContent = freqLabel;
+
+    const wrap = document.getElementById('fp-embed-wrap');
+    wrap.style.display = 'block';
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    const target = document.getElementById('fp-neon-embed-target');
+    if (!target.dataset.loaded) {
+      target.dataset.loaded = 'true';
+      loadNeonEmbedFp(target);
+    }
+  };
+
+  function loadNeonEmbedFp(target) {
+    target.innerHTML = '';
+    const iframe = document.createElement('iframe');
+    iframe.style.width = '100%';
+    iframe.style.border = 'none';
+    iframe.style.minHeight = '600px';
+    iframe.setAttribute('scrolling', 'no');
+    target.appendChild(iframe);
+    const doc = iframe.contentWindow.document;
+    doc.open();
+    doc.write('<html><head><style>body{margin:0;font-family:Plus Jakarta Sans,sans-serif}</style></head><body>');
+    doc.write('<script src="https://quest4care.app.neoncrm.com/forms/share/Rk9STS1FTUJFRFNIQVJJTkctQ09ERTQ="></scr' + 'ipt>');
+    doc.write('</body></html>');
+    doc.close();
+    const resizeIframe = () => {
+      try {
+        const h = doc.body.scrollHeight;
+        if (h > 100) iframe.style.height = h + 'px';
+      } catch(e) {}
+    };
+    iframe.onload = resizeIframe;
+    setInterval(resizeIframe, 800);
+  }
+
+  window.fpCloseEmbed = function() {
+    document.getElementById('fp-embed-wrap').style.display = 'none';
   };
 
   /* ── HIDE TABS WHEN SECTIONS VISIBLE ── */
