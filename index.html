@@ -1268,9 +1268,9 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         </div>
         <a href="https://quest4care.app.neoncrm.com/forms/donate" target="_blank" rel="noopener" class="btn btn-deep" style="margin-top:1.5rem">Contribute to QCLS</a>
       </div>
-      <div class="reveal" style="order:1">
+      <div class="reveal" style="order:1;display:flex">
         <!-- CUSTOM DONATION EXPERIENCE -->
-        <div id="donationWidget" style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--amber);border-radius:4px;padding:1.75rem">
+        <div id="donationWidget" style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--amber);border-radius:4px;padding:1.75rem;width:100%;display:flex;flex-direction:column">
 
           <!-- Eyebrow -->
           <div style="font-family:'Oswald',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:.4rem;margin-bottom:.6rem">
@@ -1290,10 +1290,12 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           </div>
 
           <!-- CTA — links directly to Neon's secure donation form -->
-          <a id="don-cta" href="https://quest4care.app.neoncrm.com/forms/donate" target="_blank" rel="noopener" style="display:block;text-align:center;width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.95rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.92rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s,transform .15s;text-decoration:none;box-shadow:0 2px 8px rgba(232,160,32,.25)">
-            Contribute to QCLS →
-          </a>
-          <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.65rem;line-height:1.6">Secure · Tax-deductible · EIN 33-3036616 · Cancel anytime</p>
+          <div style="margin-top:auto">
+            <a id="don-cta" href="https://quest4care.app.neoncrm.com/forms/donate" target="_blank" rel="noopener" style="display:block;text-align:center;width:100%;background:var(--amber);color:var(--void);border:none;border-radius:3px;padding:.95rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.92rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .2s,transform .15s;text-decoration:none;box-shadow:0 2px 8px rgba(232,160,32,.25)">
+              Contribute to QCLS →
+            </a>
+            <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.65rem;line-height:1.6">Secure · Tax-deductible · EIN 33-3036616 · Cancel anytime</p>
+          </div>
         </div>
       </div>
     </div>
