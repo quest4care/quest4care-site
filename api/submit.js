@@ -142,7 +142,8 @@ async function updateCustomFields(accountId, formType, payload) {
   const countyId = COUNTY_IDS[payload.county] || null;
   const programId = PROGRAM_INTEREST[formType] || PROGRAM_INTEREST.default;
   const followUpTypeId = FOLLOWUP_TYPE[formType] || FOLLOWUP_TYPE.default;
-  const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+  const tomorrow = new Date(Date.now() + 86400000);
+  const tomorrowStr = `${String(tomorrow.getMonth()+1).padStart(2,'0')}/${String(tomorrow.getDate()).padStart(2,'0')}/${tomorrow.getFullYear()}`;
 
   const customFields = [
     // QCLS Follow-Up Needed = Yes (dropdown — needs optionValues)
@@ -152,7 +153,7 @@ async function updateCustomFields(accountId, formType, payload) {
     // QCLS Follow-Up Source (text field — uses value)
     { id: FIELD_IDS.followUpSource, value: payload.source || 'quest4care.org' },
     // QCLS Follow-Up Due Date (text field — uses value)
-    { id: '155', value: tomorrow },
+    { id: '155', value: tomorrowStr },
     // Program Interest (dropdown — needs optionValues)
     { id: FIELD_IDS.programInterest, optionValues: [{ id: programId }] },
   ];
@@ -175,9 +176,7 @@ async function updateCustomFields(accountId, formType, payload) {
 
 // ── Add account to Provisional group ──
 async function addToProvisionalGroup(accountId) {
-  return neonPost(`/accounts/${accountId}/groups`, {
-    id: PROVISIONAL_GROUP_ID
-  });
+  return neonPost(`/accounts/${accountId}/groups/${PROVISIONAL_GROUP_ID}`, {});
 }
 
 // ── Create activity (follow-up task) ──
@@ -204,13 +203,14 @@ async function createActivity(accountId, formType, payload) {
     volunteer:    'weCARES™ Volunteer Application',
   };
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date();
+  const todayStr = `${String(today.getMonth()+1).padStart(2,'0')}/${String(today.getDate()).padStart(2,'0')}/${today.getFullYear()}`;
 
   return neonPost('/activities', {
     subject: subjectMap[formType] || 'Website Inquiry',
-    status: { id: '2' },     // Not Started
+    status: { id: '2' },
     priority: 'High',
-    activityDates: [{ startDate: today }],
+    activityDates: [{ startDate: todayStr }],
     details,
     account: { id: String(accountId) }
   });
