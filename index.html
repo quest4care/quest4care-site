@@ -1309,7 +1309,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
               </div>
               <button onclick="donCloseEmbed()" style="background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1.1rem;line-height:1;padding:.2rem" aria-label="Close">✕</button>
             </div>
-            <div id="don-neon-embed-target" style="border:1px solid var(--border);border-radius:4px;overflow:hidden;background:#fff;min-height:120px;display:flex;align-items:center;justify-content:center">
+            <div id="don-neon-embed-target" style="border:1px solid var(--border);border-radius:4px;overflow-y:auto;max-height:1600px;background:#fff;min-height:120px;display:flex;align-items:center;justify-content:center">
               <div style="text-align:center;padding:2rem;color:var(--light);font-size:.8rem">Loading secure form…</div>
             </div>
             <p style="font-size:.62rem;color:var(--light);text-align:center;margin-top:.75rem;line-height:1.6">
@@ -2824,7 +2824,7 @@ function qHideError(id) {
           <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--void)">Complete your gift</div>
           <button onclick="fpCloseEmbed()" style="background:transparent;border:none;cursor:pointer;color:var(--mid);font-size:1rem;line-height:1" aria-label="Close">✕</button>
         </div>
-        <div id="fp-neon-embed-target" style="border:1px solid var(--border);border-radius:3px;overflow:hidden;background:#fff;min-height:100px;display:flex;align-items:center;justify-content:center">
+        <div id="fp-neon-embed-target" style="border:1px solid var(--border);border-radius:3px;overflow-y:auto;max-height:1600px;background:#fff;min-height:100px;display:flex;align-items:center;justify-content:center">
           <div style="text-align:center;padding:1.5rem;color:var(--light);font-size:.75rem">Loading secure form…</div>
         </div>
       </div>
@@ -3245,14 +3245,45 @@ function qHideError(id) {
     doc.write(`<script src="${embedUrl}"></scr` + `ipt>`);
     doc.write('</body></html>');
     doc.close();
+    let lastHeight = 0;
+    let stableCount = 0;
+    const MAX_HEIGHT = 1600;
     const resizeIframe = () => {
       try {
-        const h = doc.body.scrollHeight;
-        if (h > 100) iframe.style.height = (h + 20) + 'px';
+        // Reset to a tiny height first so any percentage-based (height:100%) rules
+        // inside the iframe's document don't inherit our last artificial height —
+        // otherwise scrollHeight grows every tick in a feedback loop that never stops.
+        iframe.style.height = '1px';
+        const h = Math.min(
+          Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight),
+          MAX_HEIGHT
+        );
+        const target = (h > 100 ? h : 600) + 20;
+        iframe.style.height = target + 'px';
+
+        if (Math.abs(target - lastHeight) < 5) {
+          stableCount++;
+        } else {
+          stableCount = 0;
+        }
+        lastHeight = target;
+
+        // Once height hasn't meaningfully changed for ~8 checks (~6s), stop polling.
+        // A fresh load (new step in Neon's form) will trigger iframe.onload again if needed,
+        // and the interval is recreated below only on initial load — this just prevents
+        // an endless timer from running indefinitely in the background.
+        if (stableCount >= 8 && resizeTimer) {
+          clearInterval(resizeTimer);
+          resizeTimer = null;
+        }
       } catch(e) {}
     };
-    iframe.onload = resizeIframe;
-    setInterval(resizeIframe, 800);
+    let resizeTimer = setInterval(resizeIframe, 800);
+    iframe.onload = () => {
+      stableCount = 0;
+      if (!resizeTimer) resizeTimer = setInterval(resizeIframe, 800);
+      resizeIframe();
+    };
   };
 
   window.fpCloseEmbed = function() {
