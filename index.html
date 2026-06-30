@@ -2546,10 +2546,13 @@ function qWhoSelect(btn, panelId) {
 }
 
 /* ── FORM SUBMISSION ── */
+const QFORM_PREFIX = { individual: 'ind', organization: 'org', provider: 'prov', volunteer: 'vol' };
+
 async function qSubmitForm(formType) {
-  const submitBtn = document.getElementById(formType === 'individual' ? 'ind-submit' : `${formType.slice(0,3)}-submit`);
-  const errorEl = document.getElementById(formType === 'individual' ? 'ind-error' : `${formType.slice(0,3)}-error`);
-  const successEl = document.getElementById(formType === 'individual' ? 'ind-success' : `${formType.slice(0,3)}-success`);
+  const prefix = QFORM_PREFIX[formType];
+  const submitBtn = document.getElementById(`${prefix}-submit`);
+  const errorEl = document.getElementById(`${prefix}-error`);
+  const successEl = document.getElementById(`${prefix}-success`);
 
   if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
   qHideError(errorEl?.id);
@@ -2628,8 +2631,7 @@ async function qSubmitForm(formType) {
     }
   } catch(e) {
     if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.label || 'Submit →'; }
-    const errId = formType === 'individual' ? 'ind-error' : `${formType.slice(0,3)}-error`;
-    qShowError(errId, 'Something went wrong. Please call 574-CARE-NOW or email info@quest4care.org.');
+    qShowError(`${prefix}-error`, 'Something went wrong. Please call 574-CARE-NOW or email info@quest4care.org.');
   }
 }
 
@@ -2994,6 +2996,13 @@ function qHideError(id) {
     activePanel = null;
   };
 
+  /* ── CLICK AWAY TO CLOSE ── */
+  document.addEventListener('click', function(e) {
+    if (!activePanel) return;
+    const clickedInsidePanel = e.target.closest('.side-panel, #sideOverlayConnect, #sideTabs');
+    if (!clickedInsidePanel) sideClose();
+  });
+
   /* ── SC WHO SELECTOR ── */
   window.scSetWho = function(type, btn) {
     scWhoType = type;
@@ -3023,14 +3032,6 @@ function qHideError(id) {
       btn.classList.add('sc-who-active');
     }
     document.getElementById('sc-interest-val').value = Array.from(scIntSelected).join(', ');
-  };
-
-  window.sideClose = function() {
-    document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('open'));
-    document.querySelectorAll('.side-tab').forEach(t => t.classList.remove('active'));
-    const overlay = document.getElementById('sideOverlayConnect');
-    if (overlay) overlay.classList.remove('open');
-    activePanel = null;
   };
 
   /* ── CONNECT FORM ── */
