@@ -429,6 +429,9 @@ export default async function handler(req, res) {
 
   } catch(err) {
     console.error('Survey submit error:', err);
-    return res.status(500).json({ error: 'Submission failed.' });
+    return res.status(500).json({
+      error: 'Submission failed.',
+      debug: { message: err.message, stack: err.stack?.split('\n').slice(0, 5) }
+    });
   }
 }
