@@ -232,21 +232,34 @@ async function updateSurveyFields(accountId, payload, needDetail, constituentSum
 // court dates, or other deeper details from the tree — those stay staff-only in the
 // Activity log and navigator brief. This is shown directly to the person, so nothing
 // goes in here that could feel exposing, clinical, or presumptuous.
+// Maps the fixed urgency options to a natural clause, since the raw option text
+// ("Critical — need help today or tomorrow") doesn't read as prose on its own.
+const URGENCY_PHRASES = {
+  'Critical — need help today or tomorrow': "This feels urgent to you — like something that can't wait.",
+  'Urgent — within this week': "You're hoping to get this moving this week.",
+  'Important — sometime this month': "You'd like to see this addressed sometime this month.",
+  'Exploring options, no immediate deadline': "You're still exploring your options, no immediate rush.",
+};
+
 function buildConstituentSummary(payload) {
   const rootAnswer = payload.needAnswers?.needSpecific;
-  let summary = '';
-  if (payload.primaryNeed) {
-    summary = `You reached out about ${payload.primaryNeed.toLowerCase()}`;
-    if (rootAnswer) summary += ` — specifically, ${rootAnswer.toLowerCase()}`;
-    summary += '.';
+  const need = (rootAnswer || payload.primaryNeed || '').trim();
+  const parts = [];
+
+  if (need) {
+    let needSentence = need.charAt(0).toUpperCase() + need.slice(1);
+    if (!/[.!?]$/.test(needSentence)) needSentence += '.';
+    parts.push(needSentence);
   }
-  if (payload.urgency) {
-    summary += ` You let us know this feels ${payload.urgency.toLowerCase()}.`;
-  }
+
+  const urgencyPhrase = URGENCY_PHRASES[payload.urgency];
+  if (urgencyPhrase) parts.push(urgencyPhrase);
+
   if (payload.goalText) {
-    summary += ` You told us what you're hoping for: "${payload.goalText}"`;
+    parts.push(`In your own words: "${payload.goalText}"`);
   }
-  return summary.trim();
+
+  return parts.join(' ').trim();
 }
 
 // ── Survey-completion membership — fires the instant constituent confirmation email.

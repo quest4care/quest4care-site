@@ -38,14 +38,17 @@ const FIELD_IDS = {
   // NEW — captures whether this submission is for the account holder or someone
   // else (a family member, friend, or client they're helping). The form asked
   // this from the start but the answer was previously discarded entirely.
-  reachingOutFor: null, // e.g. '252'
-  personName: null, // e.g. '253' — the other person's name, if reachingOutFor = someone-else
+  reachingOutFor: '252',
+  personName: '253', // the other person's name, if reachingOutFor = someone-else
 };
 
 // How close together two submissions have to be to count as "the same burst" rather
 // than a genuinely new inquiry. Tune freely — 15 minutes is a reasonable starting
 // point for "probably an accidental double-submit or quick correction," while
 // anything beyond this (hours, days, months later) is treated as a real new case.
+// Controls TWO decisions: whether to re-tag Provisional, and whether to create a
+// new membership/fire a new acknowledgment email. Both should agree on what counts
+// as "the same burst" — a genuinely new inquiry deserves both, not just one.
 const RAPID_RESUBMIT_WINDOW_MS = 15 * 60 * 1000;
 
 // Human-readable labels, used only for the append-only history field so it reads
@@ -175,22 +178,10 @@ async function appendProgramInterestHistory(accountId, formType, prefetchedAccou
 }
 
 // ── Check whether the account already holds a membership at this exact level —
-// prevents duplicate memberships (and duplicate "welcome" emails) when someone with
-// an existing account submits another inquiry in the SAME category. A genuinely
-// different category (e.g. they were OurWalk Navigation Participant, now also weCARES Volunteer)
-// still creates its own membership — that's real, useful history, not a duplicate.
-// If this check itself fails for any reason, defaults to "no existing membership
-// found" so a real first-time submission is never silently blocked by an API hiccup.
-async function hasExistingMembershipAtLevel(accountId, levelId) {
-  try {
-    const res = await neonGet(`/accounts/${accountId}/memberships`);
-    const list = res.data?.memberships || res.data?.membershipList || [];
-    return list.some(m => String(m.membershipLevel?.id) === String(levelId));
-  } catch (err) {
-    console.error('Membership check failed (defaulting to "no existing membership"):', err);
-    return false;
-  }
-}
+// (Previously there was a check here for "does any membership already exist at
+// this level, ever" — replaced by the rapid-resubmit time window above, since
+// that version incorrectly blocked genuinely new inquiries weeks/months later,
+// not just accidental double-submits. See createAcknowledgmentMembership below.)
 
 // ── Read the last-submitted timestamp BEFORE this submission overwrites it —
 // used to decide whether this looks like a rapid duplicate resubmit or a genuinely
@@ -353,13 +344,17 @@ async function updateCustomFields(accountId, formType, payload, prefetchedAccoun
 // This is the confirmed-working alternative to waiting for the daily workflow scan.
 // Membership level maps to inquiry type; each level's acknowledgment email template
 // in Neon should be customized per inquiry type (next session task).
-async function createAcknowledgmentMembership(accountId, formType) {
+async function createAcknowledgmentMembership(accountId, formType, isRapidResubmit) {
   const mapping = MEMBERSHIP_MAP[formType] || MEMBERSHIP_MAP.default;
 
-  const alreadyHasThisLevel = await hasExistingMembershipAtLevel(accountId, mapping.levelId);
-  if (alreadyHasThisLevel) {
-    console.log(`Account ${accountId} already has a membership at level ${mapping.levelId} — skipping duplicate, no acknowledgment email fired this time.`);
-    return { status: 0, data: { skipped: 'duplicate membership at this level' } };
+  // Only skip if this looks like an accidental rapid double-submit (within the
+  // same short window as the Provisional group check). A genuinely new inquiry
+  // weeks or months later — even in the same category — gets its own membership
+  // record and its own email. Multiple records over time for the same person is
+  // real, valuable history (recurring need), not noise to suppress.
+  if (isRapidResubmit) {
+    console.log(`Account ${accountId} resubmitted within the rapid-resubmit window — skipping duplicate membership/email this time.`);
+    return { status: 0, data: { skipped: 'rapid resubmit' } };
   }
 
   const startDate = new Date();
@@ -495,7 +490,7 @@ export default async function handler(req, res) {
       isRapidResubmit
         ? Promise.resolve({ status: 0, data: { skipped: 'rapid resubmit' } })
         : addToProvisionalGroup(accountId),
-      createAcknowledgmentMembership(accountId, formType),
+      createAcknowledgmentMembership(accountId, formType, isRapidResubmit),
       createActivity(accountId, formType, payload),
     ]);
 
