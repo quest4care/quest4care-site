@@ -24,19 +24,19 @@ const SURVEY_COMPLETION_MEMBERSHIP = { levelId: null, termId: null }; // e.g. { 
 // created below — nothing is lost, but they won't be queryable as structured fields
 // until you add the IDs here.
 const SURVEY_FIELD_IDS = {
-  needDetail:        null, // e.g. '160' — joined summary of every tree answer (staff-facing, dense) — CURRENT survey only
-  needHistory:       null, // append-only log of every survey completion, never overwritten — full history across time
-  whatYouShared:     null, // clean 2-3 sentence reflection (constituent-facing, warm) — see buildConstituentSummary()
-  urgency:           null,
-  goalText:          null,
-  pattern:           null,
-  patternDetail:     null,
-  barriers:          null,
-  barriersDetail:    null,
-  transportation:    null,
-  contactTime:       null,
-  voicemailOk:       null,
-  additionalContext: null,
+  needDetail:        '234', // CURRENT survey only — confirmed via neon_field_report.js
+  needHistory:       null, // not yet built — append-only version of needDetail across time, if wanted later
+  whatYouShared:     '236', // confirmed via neon_field_report.js
+  urgency:           '238',
+  goalText:          '239',
+  pattern:           '240',
+  patternDetail:     '241',
+  barriers:          '242',
+  barriersDetail:    '243',
+  transportation:    '244',
+  contactTime:       '245',
+  voicemailOk:       '246',
+  additionalContext: '247',
 };
 
 /* SETUP NOTE — one-time, manual, ~10 minutes in Neon:

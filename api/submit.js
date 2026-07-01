@@ -19,11 +19,11 @@ const FIELD_IDS = {
   // same "Navigation Survey"-style group is fine, or a new "History" group) and paste
   // the resulting ID here. Until filled in, history tracking for Program Interest is
   // skipped — the "live" programInterest field still updates normally either way.
-  programInterestHistory: null, // e.g. '161'
+  programInterestHistory: '248',
   // NEW — plain text field storing an ISO timestamp of the most recent submission.
   // Used only to detect rapid back-to-back resubmits (accidental double-clicks,
   // same-session corrections) vs. a genuinely new inquiry weeks/months later.
-  lastSubmittedAt: null, // e.g. '162'
+  lastSubmittedAt: '249',
 };
 
 // How close together two submissions have to be to count as "the same burst" rather
