@@ -17,7 +17,7 @@ const ANTHROPIC_MODEL = 'claude-sonnet-5';
 // SETUP: create a $0 "OurWalk Survey Completed" membership level in Neon, then paste
 // its levelId/termId below. Until filled in, this step is skipped — nothing breaks,
 // the person just won't get the extra confirmation email yet.
-const SURVEY_COMPLETION_MEMBERSHIP = { levelId: null, termId: null }; // e.g. { levelId: '7', termId: '13' }
+const SURVEY_COMPLETION_MEMBERSHIP = { levelId: '7', termId: '13' };
 
 // ── CONFIG — fill these in after creating the fields in Neon (see SETUP NOTE below) ──
 // Until these are filled in, survey answers still land safely in the Activity record
