@@ -220,7 +220,7 @@ async function createIndividual(payload) {
       }
     }
   });
-  return r.data?.id || null;
+  return { id: r.data?.id || null, status: r.status, raw: r.data };
 }
 
 // ── Create company account ──
@@ -239,7 +239,7 @@ async function createCompany(payload) {
       }
     }
   });
-  return r.data?.id || null;
+  return { id: r.data?.id || null, status: r.status, raw: r.data };
 }
 
 // ── Update custom fields using correct optionValues structure ──
@@ -378,20 +378,29 @@ export default async function handler(req, res) {
 
     // 1. Check for existing account
     let accountId = await findAccountByEmail(email);
+    let creationDebug = null;
 
     // 2. Create account if not found
     if (!accountId) {
       const isOrg = formType === 'organization' || formType === 'provider' || organization?.trim();
-      if (isOrg && organization) {
-        accountId = await createCompany(payload);
-      } else {
-        accountId = await createIndividual(payload);
-      }
+      const creationResult = isOrg && organization
+        ? await createCompany(payload)
+        : await createIndividual(payload);
+      accountId = creationResult.id;
+      creationDebug = { status: creationResult.status, raw: creationResult.raw };
     }
 
     if (!accountId) {
-      console.error('Failed to create/find account for:', email);
-      return res.status(200).json({ success: true, warning: 'Account creation failed silently' });
+      console.error('Failed to create/find account for:', email, JSON.stringify(creationDebug));
+      // Still tells the browser "success" so a real constituent never sees a scary
+      // error mid-submission — but now includes the actual Neon error in the body
+      // itself, visible directly in the browser's Network tab (F12 → Network →
+      // this request → Response), instead of requiring a trip through Vercel's logs.
+      return res.status(200).json({
+        success: true,
+        warning: 'Account creation failed',
+        debug: creationDebug
+      });
     }
 
     console.log(`Account ID: ${accountId} for ${email}`);
