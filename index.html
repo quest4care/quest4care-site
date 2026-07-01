@@ -1728,7 +1728,11 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
               <span class="qwho-sub">Family or friend</span>
             </button>
           </div>
-          <button class="qbtn-teal" onclick="qIndStep(2)">Continue →</button>
+          <div class="qfield qhidden" id="ind-person-name-wrap" style="margin-top:.85rem">
+            <label class="qfield-label">Who needs help? (First name is fine)</label>
+            <input class="qinput" type="text" id="ind-person-name" placeholder="Their first name"/>
+          </div>
+          <button class="qbtn-teal" onclick="qIndStep(2)" style="margin-top:1rem">Continue →</button>
           <p class="qform-note">No account required · Your information is private</p>
         </div>
 
@@ -2655,9 +2659,16 @@ function qBuildReview() {
 }
 
 /* ── WHO CARD SELECTION ── */
+let indReachingOutFor = 'myself';
 function qWhoSelect(btn, panelId) {
   document.querySelectorAll(`#${panelId} .qwho-card`).forEach(c => c.classList.remove('qwho-active'));
   btn.classList.add('qwho-active');
+  if (panelId === 'ind-step1') {
+    const label = btn.querySelector('.qwho-label')?.textContent.trim();
+    indReachingOutFor = (label === 'Someone else') ? 'someone-else' : 'myself';
+    const personFieldWrap = document.getElementById('ind-person-name-wrap');
+    if (personFieldWrap) personFieldWrap.classList.toggle('qhidden', indReachingOutFor !== 'someone-else');
+  }
 }
 
 /* ── FORM SUBMISSION ── */
@@ -2683,6 +2694,10 @@ async function qSubmitForm(formType) {
     payload.primaryNeed = document.getElementById('ind-need').value;
     payload.message = document.getElementById('ind-message').value.trim();
     payload.smsConsent = document.getElementById('ind-sms').checked;
+    payload.reachingOutFor = indReachingOutFor;
+    payload.personName = indReachingOutFor === 'someone-else'
+      ? document.getElementById('ind-person-name').value.trim()
+      : '';
   } else if (formType === 'organization') {
     payload.organization = document.getElementById('org-name').value.trim();
     payload.ein = document.getElementById('org-ein').value.trim();
@@ -2739,7 +2754,7 @@ async function qSubmitForm(formType) {
         for (let i = 1; i <= 4; i++) document.getElementById('ind-step' + i).classList.add('qhidden');
         const surveyCta = document.getElementById('ind-survey-cta');
         if (surveyCta) {
-          const params = new URLSearchParams({ name: payload.name || '', email: payload.email || '', need: payload.primaryNeed || '', message: payload.message || '' });
+          const params = new URLSearchParams({ name: payload.name || '', email: payload.email || '', need: payload.primaryNeed || '', message: payload.message || '', reachingOutFor: payload.reachingOutFor || '', personName: payload.personName || '' });
           surveyCta.href = `/survey/navigation/?${params.toString()}`;
         }
         document.getElementById('ind-success').classList.remove('qhidden');
@@ -2766,6 +2781,9 @@ function qResetForm(formType) {
     });
     document.getElementById('ind-county').value = '';
     document.getElementById('ind-sms').checked = false;
+    document.getElementById('ind-person-name').value = '';
+    document.getElementById('ind-person-name-wrap').classList.add('qhidden');
+    indReachingOutFor = 'myself';
     // Reset who cards
     document.querySelectorAll('#ind-step1 .qwho-card').forEach((c,i) => {
       c.classList.toggle('qwho-active', i === 0);
