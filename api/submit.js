@@ -24,6 +24,22 @@ const FIELD_IDS = {
   // Used only to detect rapid back-to-back resubmits (accidental double-clicks,
   // same-session corrections) vs. a genuinely new inquiry weeks/months later.
   lastSubmittedAt: '249',
+  // NEW — captures whatever the person actually wrote in the "Tell us more" box
+  // on the original form (individual/org/volunteer forms have this; provider
+  // doesn't). Lets the confirmation email show their own words back to them
+  // instead of just Name/County/Source. Cross-pillar, not pillar-prefixed, since
+  // every form type feeds into it the same way.
+  initialMessage: '250', // raw text, passed to the survey's acknowledgment box
+  // NEW — a computed, natural-reading paragraph combining primary need + county +
+  // message into one sentence, for the confirmation email. Replaces a bare
+  // Name/County/Submitted-Via bullet table, which read like a form dump rather
+  // than something a person actually processed.
+  initialSummary: '251',
+  // NEW — captures whether this submission is for the account holder or someone
+  // else (a family member, friend, or client they're helping). The form asked
+  // this from the start but the answer was previously discarded entirely.
+  reachingOutFor: null, // e.g. '252'
+  personName: null, // e.g. '253' — the other person's name, if reachingOutFor = someone-else
 };
 
 // How close together two submissions have to be to count as "the same burst" rather
@@ -243,6 +259,36 @@ async function createCompany(payload) {
 }
 
 // ── Update custom fields using correct optionValues structure ──
+// ── Builds one natural-reading sentence from the initial form's data, for the
+// confirmation email. Replaces a bare Name/County/Submitted-Via bullet table —
+// this is what actually makes the email feel like someone processed the request
+// instead of just logging it. Fully grounded in structured data + their own
+// written words, nothing invented, no AI — same principle as the survey's
+// buildConstituentSummary in survey-submit.js.
+function buildInitialSummary(payload) {
+  const parts = [];
+  const isForSomeoneElse = payload.reachingOutFor === 'someone-else' && payload.personName;
+  const subject = isForSomeoneElse ? payload.personName : "you";
+  const possessive = isForSomeoneElse ? `${payload.personName}'s` : 'your';
+
+  if (payload.primaryNeed) {
+    let s = isForSomeoneElse
+      ? `You reached out on behalf of ${subject} about ${payload.primaryNeed.toLowerCase()}`
+      : `You reached out about ${payload.primaryNeed.toLowerCase()}`;
+    if (payload.county) s += ` in ${payload.county}`;
+    s += '.';
+    parts.push(s);
+  } else if (payload.county) {
+    parts.push(isForSomeoneElse
+      ? `You reached out on behalf of ${subject}, who's in ${payload.county}.`
+      : `You reached out to us from ${payload.county}.`);
+  }
+  if (payload.message) {
+    parts.push(`In your own words: "${payload.message}"`);
+  }
+  return parts.join(' ').trim();
+}
+
 async function updateCustomFields(accountId, formType, payload, prefetchedAccount) {
   const countyId = COUNTY_IDS[payload.county] || null;
   const programId = PROGRAM_INTEREST[formType] || PROGRAM_INTEREST.default;
@@ -271,6 +317,25 @@ async function updateCustomFields(accountId, formType, payload, prefetchedAccoun
   // Record this submission's timestamp for next time's rapid-resubmit check
   if (FIELD_IDS.lastSubmittedAt) {
     customFields.push({ id: FIELD_IDS.lastSubmittedAt, value: new Date().toISOString() });
+  }
+
+  // Their own written message, if the form they used had that field and they filled it in
+  if (FIELD_IDS.initialMessage && payload.message) {
+    customFields.push({ id: FIELD_IDS.initialMessage, value: payload.message });
+  }
+
+  // Computed natural-language summary for the confirmation email
+  if (FIELD_IDS.initialSummary) {
+    const summary = buildInitialSummary(payload);
+    if (summary) customFields.push({ id: FIELD_IDS.initialSummary, value: summary });
+  }
+
+  // Who this is actually for — was being silently discarded before this fix
+  if (FIELD_IDS.reachingOutFor && payload.reachingOutFor) {
+    customFields.push({ id: FIELD_IDS.reachingOutFor, value: payload.reachingOutFor });
+  }
+  if (FIELD_IDS.personName && payload.personName) {
+    customFields.push({ id: FIELD_IDS.personName, value: payload.personName });
   }
 
   // Reuse the already-fetched account instead of asking Neon again
