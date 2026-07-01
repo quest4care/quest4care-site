@@ -132,11 +132,11 @@ async function neonGet(path) {
 // If the field isn't configured yet (programInterestHistory is null) or the read
 // fails for any reason, this just skips — the live programInterest field still
 // updates normally either way, so nothing about the actual submission breaks.
-async function appendProgramInterestHistory(accountId, formType) {
+async function appendProgramInterestHistory(accountId, formType, prefetchedAccount) {
   if (!FIELD_IDS.programInterestHistory) return { status: 0, data: { skipped: 'field not configured yet' } };
 
   try {
-    const acct = await neonGet(`/accounts/${accountId}`);
+    const acct = prefetchedAccount || await neonGet(`/accounts/${accountId}`);
     const isCompany = !!acct.data?.companyAccount;
     const wrapper = isCompany ? 'companyAccount' : 'individualAccount';
     const existingFields = acct.data?.[wrapper]?.accountCustomFields || [];
@@ -180,10 +180,10 @@ async function hasExistingMembershipAtLevel(accountId, levelId) {
 // used to decide whether this looks like a rapid duplicate resubmit or a genuinely
 // new inquiry. Defaults to "treat as new" (null) if the field isn't configured yet
 // or the read fails, so a real submission is never silently short-circuited.
-async function getLastSubmittedAt(accountId) {
+async function getLastSubmittedAt(accountId, prefetchedAccount) {
   if (!FIELD_IDS.lastSubmittedAt) return null;
   try {
-    const acct = await neonGet(`/accounts/${accountId}`);
+    const acct = prefetchedAccount || await neonGet(`/accounts/${accountId}`);
     const isCompany = !!acct.data?.companyAccount;
     const wrapper = isCompany ? 'companyAccount' : 'individualAccount';
     const existingFields = acct.data?.[wrapper]?.accountCustomFields || [];
@@ -243,7 +243,7 @@ async function createCompany(payload) {
 }
 
 // ── Update custom fields using correct optionValues structure ──
-async function updateCustomFields(accountId, formType, payload) {
+async function updateCustomFields(accountId, formType, payload, prefetchedAccount) {
   const countyId = COUNTY_IDS[payload.county] || null;
   const programId = PROGRAM_INTEREST[formType] || PROGRAM_INTEREST.default;
   const followUpTypeId = FOLLOWUP_TYPE[formType] || FOLLOWUP_TYPE.default;
@@ -273,8 +273,8 @@ async function updateCustomFields(accountId, formType, payload) {
     customFields.push({ id: FIELD_IDS.lastSubmittedAt, value: new Date().toISOString() });
   }
 
-  // Fetch account to determine type
-  const acct = await neonGet(`/accounts/${accountId}`);
+  // Reuse the already-fetched account instead of asking Neon again
+  const acct = prefetchedAccount || await neonGet(`/accounts/${accountId}`);
   const isCompany = !!acct.data?.companyAccount;
 
   const wrapper = isCompany ? 'companyAccount' : 'individualAccount';
@@ -405,42 +405,42 @@ export default async function handler(req, res) {
 
     console.log(`Account ID: ${accountId} for ${email}`);
 
+    // Fetch the account ONCE here and reuse it below — updateCustomFields and
+    // appendProgramInterestHistory each used to do their own independent GET for
+    // the exact same data. One fetch, shared.
+    const prefetchedAccount = await neonGet(`/accounts/${accountId}`);
+
     // Read the previous submission timestamp BEFORE this one overwrites it —
     // this is what decides whether this looks like a rapid duplicate resubmit
     // (skip re-tagging Provisional) or a genuinely new inquiry (re-tag normally).
-    const lastSubmittedAt = await getLastSubmittedAt(accountId);
+    // This has to happen before the parallel batch below, since one of those
+    // operations (Provisional group) depends on its result.
+    const lastSubmittedAt = await getLastSubmittedAt(accountId, prefetchedAccount);
     const isRapidResubmit = lastSubmittedAt && (Date.now() - lastSubmittedAt.getTime()) < RAPID_RESUBMIT_WINDOW_MS;
 
-    // 3. Update custom fields (triggers conditional workflow)
-    const fieldResult = await updateCustomFields(accountId, formType, payload);
-    console.log('Custom fields status:', fieldResult.status, JSON.stringify(fieldResult.data).substring(0,200));
+    // Everything below this point writes to different places and none of them
+    // depend on each other's results — they were previously run one at a time
+    // (each waiting for the last to finish before starting), which is why a
+    // single submission was taking as long as all five combined. Running them
+    // together cuts total wait time down to roughly the slowest single one,
+    // not the sum of all five.
+    const [fieldResult, historyResult, groupResult, membershipResult, activityResult] = await Promise.all([
+      updateCustomFields(accountId, formType, payload, prefetchedAccount),
+      appendProgramInterestHistory(accountId, formType, prefetchedAccount),
+      isRapidResubmit
+        ? Promise.resolve({ status: 0, data: { skipped: 'rapid resubmit' } })
+        : addToProvisionalGroup(accountId),
+      createAcknowledgmentMembership(accountId, formType),
+      createActivity(accountId, formType, payload),
+    ]);
 
-    // 3b. Append to the permanent, never-overwritten Program Interest history —
-    // works the same way for every request type (OurWalk, FoundationReady, qPartner, weCARES)
-    const historyResult = await appendProgramInterestHistory(accountId, formType);
-    console.log('Program Interest history status:', historyResult.status, JSON.stringify(historyResult.data).substring(0,200));
-
-    // 4. Add to Provisional group — skipped if this looks like a rapid duplicate
-    //    resubmit (within RAPID_RESUBMIT_WINDOW_MS of their last one). A genuinely
-    //    new inquiry, even from a returning account, re-tags normally.
-    let groupResult;
     if (isRapidResubmit) {
       console.log(`Account ${accountId} resubmitted within ${RAPID_RESUBMIT_WINDOW_MS / 60000} minutes of their last submission — treating as the same burst, skipping Provisional re-tag.`);
-      groupResult = { status: 0, data: { skipped: 'rapid resubmit' } };
-    } else {
-      groupResult = await addToProvisionalGroup(accountId);
     }
+    console.log('Custom fields status:', fieldResult.status, JSON.stringify(fieldResult.data).substring(0,200));
+    console.log('Program Interest history status:', historyResult.status, JSON.stringify(historyResult.data).substring(0,200));
     console.log('Provisional group status:', groupResult.status, JSON.stringify(groupResult.data).substring(0,200));
-
-    // 5. Create acknowledgment membership — fires INSTANT native Neon email
-    //    (skips cleanly if this account already has a membership at this exact level —
-    //    see hasExistingMembershipAtLevel — so repeat inquiries in the same category
-    //    never create duplicates, while a genuinely new category still does)
-    const membershipResult = await createAcknowledgmentMembership(accountId, formType);
     console.log('Membership (instant email) status:', membershipResult.status, JSON.stringify(membershipResult.data).substring(0,200));
-
-    // 6. Create activity
-    const activityResult = await createActivity(accountId, formType, payload);
     console.log('Activity status:', activityResult.status, JSON.stringify(activityResult.data).substring(0,200));
 
     return res.status(200).json({ success: true, accountId });
