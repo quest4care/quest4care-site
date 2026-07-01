@@ -2739,7 +2739,7 @@ async function qSubmitForm(formType) {
         for (let i = 1; i <= 4; i++) document.getElementById('ind-step' + i).classList.add('qhidden');
         const surveyCta = document.getElementById('ind-survey-cta');
         if (surveyCta) {
-          const params = new URLSearchParams({ name: payload.name || '', email: payload.email || '', need: payload.primaryNeed || '' });
+          const params = new URLSearchParams({ name: payload.name || '', email: payload.email || '', need: payload.primaryNeed || '', message: payload.message || '' });
           surveyCta.href = `/survey/navigation/?${params.toString()}`;
         }
         document.getElementById('ind-success').classList.remove('qhidden');
