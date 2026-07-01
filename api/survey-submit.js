@@ -10,7 +10,7 @@ const ANTHROPIC_MODEL = 'claude-sonnet-5';
 
 // ── Survey-completion membership — triggers an INSTANT acknowledgment email to the
 // constituent, same proven mechanism as the initial OurWalk confirmation. Deliberately
-// a SEPARATE $0 membership level (not reusing Navigation Participant) rather than a
+// a SEPARATE $0 membership level (not reusing OurWalk Navigation Participant) rather than a
 // workaround — "who completed the deeper intake survey" is itself a real, useful
 // reportable metric alongside "who first reached out," consistent with how membership
 // tiers already function as living directories elsewhere in this build.

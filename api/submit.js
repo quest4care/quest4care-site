@@ -77,10 +77,10 @@ const PROVISIONAL_GROUP_ID = '31';
 // Used with sendAcknowledgeEmail:true to fire an INSTANT native email
 // (confirmed working live June 29, 2026 — see DOC03 Decision Record)
 const MEMBERSHIP_MAP = {
-  individual:   { levelId: '4', termId: '7' }, // Navigation Participant
+  individual:   { levelId: '4', termId: '7' }, // OurWalk Navigation Participant
   organization: { levelId: '2', termId: '3' }, // FoundationReady Client
-  provider:     { levelId: '3', termId: '5' }, // Provider Network Member
-  volunteer:    { levelId: '1', termId: '1' }, // QCLS Community (pending dedicated Volunteer level)
+  provider:     { levelId: '3', termId: '5' }, // qPartner Provider Network Member
+  volunteer:    { levelId: '8', termId: '15' }, // weCARES Volunteer
   default:      { levelId: '1', termId: '1' }, // QCLS Community
 };
 
@@ -161,7 +161,7 @@ async function appendProgramInterestHistory(accountId, formType) {
 // ── Check whether the account already holds a membership at this exact level —
 // prevents duplicate memberships (and duplicate "welcome" emails) when someone with
 // an existing account submits another inquiry in the SAME category. A genuinely
-// different category (e.g. they were Navigation Participant, now also Volunteer)
+// different category (e.g. they were OurWalk Navigation Participant, now also weCARES Volunteer)
 // still creates its own membership — that's real, useful history, not a duplicate.
 // If this check itself fails for any reason, defaults to "no existing membership
 // found" so a real first-time submission is never silently blocked by an API hiccup.
