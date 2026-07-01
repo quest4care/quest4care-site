@@ -3336,6 +3336,25 @@ function qHideError(id) {
     });
   }
 
+  // Live phone number formatting — the placeholder always showed (765) 000-0000
+  // but nothing actually enforced it, so raw unformatted input (7658675309,
+  // 765-867-5309, etc.) was being stored as typed. This formats on every keystroke.
+  function formatPhoneDigits(digits) {
+    digits = digits.slice(0, 10);
+    if (digits.length === 0) return '';
+    if (digits.length < 4) return `(${digits}`;
+    if (digits.length < 7) return `(${digits.slice(0,3)}) ${digits.slice(3)}`;
+    return `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+  }
+  ['ind-phone', 'org-phone', 'prov-phone', 'vol-phone', 'sc-phone'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', () => {
+      const digits = el.value.replace(/\D/g, '');
+      el.value = formatPhoneDigits(digits);
+    });
+  });
+
 })();
 </script>
 
