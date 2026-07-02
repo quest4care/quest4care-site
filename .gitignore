@@ -1,0 +1,10 @@
+# neon-build/ is a sibling directory OUTSIDE this repo's root — git cannot
+# track anything outside the repo, so this line is a defensive backstop only
+# (e.g. in case it's ever copied or symlinked inside this folder).
+neon-build/
+
+# Never track .env files, at any depth
+.env
+.env.*
+**/.env
+**/.env.*
