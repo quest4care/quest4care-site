@@ -356,8 +356,14 @@ async function updateCustomFields(accountId, formType, payload, prefetchedAccoun
   }
 
   // Who this is actually for — was being silently discarded before this fix
+  // Who this is actually for — was being silently discarded before this fix.
+  // Stores a clean computed phrase, not the raw internal value ('myself' /
+  // 'someone-else'), since staff read this directly in the internal email.
   if (FIELD_IDS.reachingOutFor && payload.reachingOutFor) {
-    customFields.push({ id: FIELD_IDS.reachingOutFor, value: payload.reachingOutFor });
+    const reachingForDisplay = payload.reachingOutFor === 'someone-else' && payload.personName
+      ? `Reaching out on behalf of ${payload.personName}`
+      : 'Reaching out for themselves';
+    customFields.push({ id: FIELD_IDS.reachingOutFor, value: reachingForDisplay });
   }
   if (FIELD_IDS.personName && payload.personName) {
     customFields.push({ id: FIELD_IDS.personName, value: payload.personName });
