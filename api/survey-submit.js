@@ -245,15 +245,23 @@ function buildConstituentSummary(payload) {
   const rootAnswer = payload.needAnswers?.needSpecific;
   const need = (rootAnswer || payload.primaryNeed || '').trim();
   const parts = [];
+  const isForSomeoneElse = payload.reachingOutFor === 'someone-else' && payload.personName;
 
   if (need) {
     let needSentence = need.charAt(0).toUpperCase() + need.slice(1);
     if (!/[.!?]$/.test(needSentence)) needSentence += '.';
+    if (isForSomeoneElse) {
+      needSentence = `For ${payload.personName}: ${needSentence}`;
+    }
     parts.push(needSentence);
   }
 
   const urgencyPhrase = URGENCY_PHRASES[payload.urgency];
-  if (urgencyPhrase) parts.push(urgencyPhrase);
+  if (urgencyPhrase) {
+    parts.push(isForSomeoneElse
+      ? urgencyPhrase.replace(/\byou're\b/i, `${payload.personName} is`).replace(/\byou'd\b/i, `${payload.personName} would`).replace(/\byour\b/i, 'their').replace(/\byou\b/i, payload.personName)
+      : urgencyPhrase);
+  }
 
   if (payload.goalText) {
     parts.push(`In your own words: "${payload.goalText}"`);
