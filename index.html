@@ -859,7 +859,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
           <span style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)">Coming 2026 · Sign Up for Updates</span>
         </div>
         <br/>
-        <a href="#contact" class="btn btn-amber">Stay Informed About Marjy™</a>
+        <button onclick="qNewsletterOpen()" class="btn btn-amber" style="border:none;cursor:pointer">Stay Informed About Marjy™</button>
       </div>
       <div class="reveal">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:1rem">
@@ -1211,7 +1211,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
       <div class="pf-card"><span class="pf-badge">Phase 3</span><h4>Navigation Dashboard</h4><p>Case management, referral tracking, access confirmation, and outcome documentation.</p><span class="pf-status">Planned</span></div>
       <div class="pf-card"><span class="pf-badge">Phase 4</span><h4>Contributor Impact Portal</h4><p>Real-time visibility into funded assessments, individual impact, and community outcomes.</p><span class="pf-status">Planned</span></div>
       <div class="pf-card"><span class="pf-badge">Phase 5</span><h4>Community Data Dashboard</h4><p>Aggregate, anonymized community need data — resource gaps, access barriers, and trend reporting.</p><span class="pf-status">Planned</span></div>
-      <div class="pf-card" style="border-color:rgba(232,160,32,.3)"><span class="pf-badge">Always</span><h4>Stay Updated</h4><p>The platform is being built in public. Sign up to receive updates as each phase launches.</p><a href="#contact" class="btn btn-amber" style="display:inline-block;font-size:.8rem;padding:.6rem 1.25rem;margin-top:1rem">Get Platform Updates</a></div>
+      <div class="pf-card" style="border-color:rgba(232,160,32,.3)"><span class="pf-badge">Always</span><h4>Stay Updated</h4><p>The platform is being built in public. Sign up to receive updates as each phase launches.</p><button onclick="qNewsletterOpen()" class="btn btn-amber" style="display:inline-block;font-size:.8rem;padding:.6rem 1.25rem;margin-top:1rem;border:none;cursor:pointer">Get Platform Updates</button></div>
     </div>
   </div>
 </section>
@@ -2926,6 +2926,19 @@ function qHideError(id) {
       </button>
     </div>
     <div id="sc-fields">
+      <!-- Reaching out for (individual only) -->
+      <div class="sc-field" id="sc-reaching-wrap" style="margin-bottom:.75rem">
+        <label class="sc-label">I am reaching out for</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem">
+          <button type="button" class="sc-who sc-who-active" id="sc-reach-self" style="padding:.5rem" onclick="scSetReachingFor('myself', this)"><span class="sc-who-label" style="font-size:.68rem">Myself</span></button>
+          <button type="button" class="sc-who" id="sc-reach-other" style="padding:.5rem" onclick="scSetReachingFor('someone-else', this)"><span class="sc-who-label" style="font-size:.68rem">Someone else</span></button>
+        </div>
+      </div>
+      <div class="sc-field qhidden" id="sc-person-name-wrap">
+        <label class="sc-label">Who needs help? (First name is fine)</label>
+        <input class="sc-input" type="text" id="sc-person-name" placeholder="Their first name"/>
+      </div>
+
       <!-- Org fields (org + provider only) -->
       <div class="sc-field" id="sc-org-wrap" style="display:none"><label class="sc-label">Organization name *</label><input class="sc-input" type="text" id="sc-org" placeholder="Legal organization name"/></div>
       <div class="sc-field" id="sc-ein-wrap" style="display:none"><label class="sc-label">EIN <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label><input class="sc-input" type="text" id="sc-ein" placeholder="XX-XXXXXXX"/></div>
@@ -3098,6 +3111,13 @@ function qHideError(id) {
 (function(){
   let activePanel = null;
   let scWhoType = 'individual';
+  let scReachingFor = 'myself';
+  window.scSetReachingFor = function(val, btn) {
+    scReachingFor = val;
+    document.querySelectorAll('#sc-reaching-wrap .sc-who').forEach(b => b.classList.remove('sc-who-active'));
+    btn.classList.add('sc-who-active');
+    document.getElementById('sc-person-name-wrap').classList.toggle('qhidden', val !== 'someone-else');
+  };
 
   /* ── SIDE PANEL TOGGLE ── */
   window.sideToggle = function(panel) {
@@ -3128,11 +3148,59 @@ function qHideError(id) {
     activePanel = panel;
   };
 
+  window.qChatbotPlaceholder = function() {
+    const toast = document.getElementById('chatbotToast');
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 4000);
+  };
+
+  /* ── NEWSLETTER SIGNUP ── */
+  window.qNewsletterOpen = function() {
+    document.getElementById('newsletterBackdrop').classList.add('open');
+  };
+  window.qNewsletterClose = function() {
+    document.getElementById('newsletterBackdrop').classList.remove('open');
+    document.getElementById('newsletter-fname').value = '';
+    document.getElementById('newsletter-email').value = '';
+    document.getElementById('newsletter-error').style.display = 'none';
+    document.getElementById('newsletterSuccess').style.display = 'none';
+    document.getElementById('newsletterFormFields').style.display = '';
+  };
+  window.qNewsletterSubmit = async function() {
+    const email = document.getElementById('newsletter-email').value.trim();
+    const fname = document.getElementById('newsletter-fname').value.trim();
+    const errEl = document.getElementById('newsletter-error');
+    if (!email || !email.includes('@')) {
+      errEl.textContent = 'Please enter a valid email address.';
+      errEl.style.display = 'block';
+      return;
+    }
+    errEl.style.display = 'none';
+    const btn = document.getElementById('newsletter-submit');
+    btn.disabled = true; btn.textContent = 'Signing up...';
+    try {
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formType: 'newsletter', email, name: fname, source: 'quest4care.org newsletter modal', submitted_at: new Date().toISOString() })
+      });
+      if (res.ok) {
+        document.getElementById('newsletterFormFields').style.display = 'none';
+        document.getElementById('newsletterSuccess').style.display = 'block';
+      } else { throw new Error(res.status); }
+    } catch (e) {
+      errEl.textContent = 'Something went wrong — please try again or email info@quest4care.org.';
+      errEl.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Sign Up →';
+    }
+  };
+
   window.sideClose = function() {
     document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('open'));
     document.querySelectorAll('.side-tab').forEach(t => t.classList.remove('active'));
     document.getElementById('sideOverlayConnect').classList.remove('open');
     activePanel = null;
+    if (typeof scReset === 'function') scReset();
   };
 
   /* ── CLICK AWAY TO CLOSE ── */
@@ -3155,6 +3223,8 @@ function qHideError(id) {
     document.getElementById('sc-interest-wrap').style.display = type === 'organization' ? '' : 'none';
     document.getElementById('sc-prov-cats-wrap').style.display = type === 'provider' ? '' : 'none';
     document.getElementById('sc-vol-skills-wrap').style.display = type === 'volunteer' ? '' : 'none';
+    document.getElementById('sc-reaching-wrap').classList.toggle('qhidden', type !== 'individual');
+    if (type !== 'individual') document.getElementById('sc-person-name-wrap').classList.add('qhidden');
     // Update county label
     document.getElementById('sc-county-label').textContent = isOrg ? 'Counties served' : 'County';
   };
@@ -3175,6 +3245,8 @@ function qHideError(id) {
 
   /* ── CONNECT FORM ── */
 
+  let scReviewConfirmed = false;
+
   window.scSubmit = async function() {
     const fname = document.getElementById('sc-fname').value.trim();
     const email = document.getElementById('sc-email').value.trim();
@@ -3184,10 +3256,35 @@ function qHideError(id) {
     if ((scWhoType === 'organization' || scWhoType === 'provider') && !org) {
       scShowError('Please enter your organization name.'); return;
     }
+    if (scWhoType === 'individual' && scReachingFor === 'someone-else' && !document.getElementById('sc-person-name').value.trim()) {
+      scShowError('Please let us know who needs help.'); return;
+    }
 
-    const btn = document.getElementById('sc-submit');
-    btn.disabled = true; btn.textContent = 'Sending...';
     scHideError();
+    const btn = document.getElementById('sc-submit');
+
+    // First click: show a quick review instead of sending immediately
+    if (!scReviewConfirmed) {
+      const lname = document.getElementById('sc-lname').value.trim();
+      const phone = document.getElementById('sc-phone').value.trim();
+      const need = document.getElementById('sc-need')?.value || '';
+      let reviewHtml = `<div id="sc-review" style="background:var(--nw);border:1px solid rgba(10,26,18,.1);border-radius:4px;padding:.7rem .8rem;margin-bottom:.6rem;font-size:.72rem;line-height:1.6;color:var(--void)">
+        <div style="font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.6rem;color:var(--teal);margin-bottom:.4rem">Quick check before sending</div>
+        <div><strong>${fname} ${lname}</strong></div>
+        <div>${email}${phone ? ' · ' + phone : ''}</div>
+        ${scWhoType === 'individual' && scReachingFor === 'someone-else' ? `<div>For: ${document.getElementById('sc-person-name').value.trim()}</div>` : ''}
+        ${need ? `<div>Need: ${need}</div>` : ''}
+        ${org ? `<div>Org: ${org}</div>` : ''}
+      </div>`;
+      const existing = document.getElementById('sc-review');
+      if (existing) existing.remove();
+      btn.insertAdjacentHTML('beforebegin', reviewHtml);
+      btn.textContent = 'Confirm & Send →';
+      scReviewConfirmed = true;
+      return;
+    }
+
+    btn.disabled = true; btn.textContent = 'Sending...';
 
     // Collect checkboxes
     const provCats = [...document.querySelectorAll('input[name="sc-prov-cat"]:checked')].map(c => c.value).join(', ');
@@ -3207,6 +3304,10 @@ function qHideError(id) {
       serviceCategory: provCats,
       skills: volSkills,
       message: document.getElementById('sc-message').value.trim(),
+      reachingOutFor: scWhoType === 'individual' ? scReachingFor : '',
+      personName: (scWhoType === 'individual' && scReachingFor === 'someone-else')
+        ? document.getElementById('sc-person-name').value.trim()
+        : '',
       source: 'quest4care.org connect panel',
       submitted_at: new Date().toISOString()
     };
@@ -3215,6 +3316,8 @@ function qHideError(id) {
       const res = await fetch('/api/submit', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
       if (res.ok) {
         btn.style.display = 'none';
+        const reviewBox = document.getElementById('sc-review');
+        if (reviewBox) reviewBox.remove();
         document.getElementById('sc-success').style.display = 'block';
       } else { throw new Error(res.status); }
     } catch(e) {
@@ -3238,8 +3341,16 @@ function qHideError(id) {
     document.getElementById('sc-success').style.display = 'none';
     const btn = document.getElementById('sc-submit');
     btn.style.display = ''; btn.disabled = false; btn.textContent = 'Send my request →';
+    const existingReview = document.getElementById('sc-review');
+    if (existingReview) existingReview.remove();
+    scReviewConfirmed = false;
     document.querySelectorAll('.sc-who[id^="sc-who-"]').forEach((c,i) => c.classList.toggle('sc-who-active', i === 0));
     scWhoType = 'individual';
+    scReachingFor = 'myself';
+    document.getElementById('sc-person-name').value = '';
+    document.getElementById('sc-person-name-wrap').classList.add('qhidden');
+    document.getElementById('sc-reaching-wrap').classList.remove('qhidden');
+    document.querySelectorAll('#sc-reaching-wrap .sc-who').forEach((c,i) => c.classList.toggle('sc-who-active', i === 0));
     scHideError();
   };
 
@@ -3357,6 +3468,31 @@ function qHideError(id) {
 
 })();
 </script>
+
+  <!-- Newsletter Signup Modal -->
+  <div class="eco-modal-backdrop" id="newsletterBackdrop" onclick="if(event.target===this) qNewsletterClose()">
+    <div class="eco-modal" style="padding:2rem;width:min(420px,90vw)">
+      <button onclick="qNewsletterClose()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--sand);font-size:1.2rem;cursor:pointer;opacity:.6">✕</button>
+      <div style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem">Stay Updated</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--sand);margin:0 0 1rem 0">Get platform updates</h3>
+      <p style="font-size:.85rem;color:rgba(240,230,208,.7);line-height:1.6;margin-bottom:1.25rem">Quarterly updates as each phase launches — no case forms, no commitment, just news.</p>
+      <div id="newsletterSuccess" style="display:none;text-align:center;padding:1rem;background:rgba(29,158,117,.1);border-radius:4px;color:var(--teal);font-size:.9rem">You're signed up — thank you.</div>
+      <div id="newsletterFormFields">
+        <input class="qinput" type="text" id="newsletter-fname" placeholder="First name (optional)" style="margin-bottom:.6rem"/>
+        <input class="qinput" type="email" id="newsletter-email" placeholder="your@email.com" style="margin-bottom:.6rem"/>
+        <div id="newsletter-error" style="display:none;color:var(--coral);font-size:.78rem;margin-bottom:.6rem"></div>
+        <button class="qbtn-teal" id="newsletter-submit" onclick="qNewsletterSubmit()" style="width:100%">Sign Up →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chatbot Placeholder — reserves the UI slot for the coming AskQCLS™ chatbot -->
+  <button onclick="qChatbotPlaceholder()" aria-label="Chat with QCLS (coming soon)" style="position:fixed;bottom:1.5rem;right:1.5rem;width:56px;height:56px;border-radius:50%;background:var(--teal);border:none;box-shadow:0 6px 20px rgba(10,26,18,.3);cursor:pointer;z-index:400;display:flex;align-items:center;justify-content:center;transition:transform .15s ease" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:26px;height:26px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+  <div id="chatbotToast" style="display:none;position:fixed;bottom:5.5rem;right:1.5rem;background:var(--void);color:var(--sand);padding:.75rem 1rem;border-radius:6px;font-size:.8rem;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:401;max-width:220px">
+    AskQCLS™ chat is coming soon — for now, call or text <strong>574-CARE-NOW</strong>.
+  </div>
 
 </body>
 </html>
