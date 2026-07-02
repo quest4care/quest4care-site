@@ -40,6 +40,12 @@ const FIELD_IDS = {
   // this from the start but the answer was previously discarded entirely.
   reachingOutFor: '252',
   personName: '253', // the other person's name, if reachingOutFor = someone-else
+  // NEW — append-only, never overwritten. Deliberately SEPARATE from initialMessage
+  // (250) rather than making that field itself append-only — initialMessage still
+  // needs to hold just the CURRENT message, since the survey's acknowledgment box
+  // reads it directly via URL param and would break if it suddenly contained a
+  // whole multi-line history instead of one message.
+  initialMessageHistory: '256',
 };
 
 // How close together two submissions have to be to count as "the same burst" rather
@@ -256,6 +262,33 @@ async function createCompany(payload) {
 // instead of just logging it. Fully grounded in structured data + their own
 // written words, nothing invented, no AI — same principle as the survey's
 // buildConstituentSummary in survey-submit.js.
+// ── Append-only Initial Message history — never overwrites, mirrors the exact
+// same pattern as appendProgramInterestHistory. Reuses the already-fetched
+// account to avoid another redundant GET.
+async function appendInitialMessageHistory(accountId, message, prefetchedAccount) {
+  if (!FIELD_IDS.initialMessageHistory || !message) return { status: 0, data: { skipped: 'field not configured yet or nothing to log' } };
+  try {
+    const acct = prefetchedAccount || await neonGet(`/accounts/${accountId}`);
+    const isCompany = !!acct.data?.companyAccount;
+    const wrapper = isCompany ? 'companyAccount' : 'individualAccount';
+    const existingFields = acct.data?.[wrapper]?.accountCustomFields || [];
+    const existingEntry = existingFields.find(f => String(f.fieldId || f.id) === String(FIELD_IDS.initialMessageHistory));
+    const existingValue = existingEntry?.value || '';
+
+    const today = new Date();
+    const todayStr = `${String(today.getMonth()+1).padStart(2,'0')}/${String(today.getDate()).padStart(2,'0')}/${today.getFullYear()}`;
+    const newEntry = `${todayStr}: ${message}`;
+    const combined = existingValue ? `${existingValue}\n\n${newEntry}` : newEntry;
+
+    return neonPatch(`/accounts/${accountId}`, {
+      [wrapper]: { accountCustomFields: [{ id: FIELD_IDS.initialMessageHistory, value: combined }] }
+    });
+  } catch (err) {
+    console.error('Initial Message history append failed (non-fatal):', err);
+    return { status: 0, data: { error: 'append failed, see logs' } };
+  }
+}
+
 function buildInitialSummary(payload) {
   const parts = [];
   const isForSomeoneElse = payload.reachingOutFor === 'someone-else' && payload.personName;
@@ -422,6 +455,37 @@ async function createActivity(accountId, formType, payload) {
 }
 
 // ── Main handler ──
+const NEWSLETTER_GROUP_ID = null; // e.g. '32' — create a "Newsletter Subscribers" Group in Neon and paste its ID here
+
+// ── Newsletter signup — deliberately lightweight. Just finds/creates an account
+// and adds it to a Group, skipping everything meant for "I need help" inquiries
+// (Follow-Up fields, Activity creation, the OurWalk-style acknowledgment
+// membership/email). Someone signing up for quarterly updates shouldn't get
+// treated like a navigation case.
+async function handleNewsletterSignup(payload, res) {
+  const email = payload.email?.trim();
+  if (!email) return res.status(400).json({ error: 'Email is required' });
+
+  let accountId = await findAccountByEmail(email);
+  if (!accountId) {
+    const parts = (payload.name || '').trim().split(/\s+/);
+    const r = await neonPost('/accounts', {
+      individualAccount: {
+        primaryContact: { firstName: parts[0] || '', lastName: parts.slice(1).join(' ') || '', email1: email }
+      }
+    });
+    accountId = r.data?.id || null;
+  }
+  if (!accountId) {
+    return res.status(200).json({ success: true, warning: 'Newsletter signup account creation failed' });
+  }
+
+  if (NEWSLETTER_GROUP_ID) {
+    await neonPost(`/accounts/${accountId}/groups/${NEWSLETTER_GROUP_ID}`, {});
+  }
+  return res.status(200).json({ success: true, accountId });
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://quest4care.org');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -435,6 +499,10 @@ export default async function handler(req, res) {
     const { formType, email, organization } = payload;
 
     if (!email) return res.status(400).json({ error: 'Email is required' });
+
+    if (formType === 'newsletter') {
+      return await handleNewsletterSignup(payload, res);
+    }
 
     // 1. Check for existing account
     let accountId = await findAccountByEmail(email);
@@ -484,9 +552,10 @@ export default async function handler(req, res) {
     // single submission was taking as long as all five combined. Running them
     // together cuts total wait time down to roughly the slowest single one,
     // not the sum of all five.
-    const [fieldResult, historyResult, groupResult, membershipResult, activityResult] = await Promise.all([
+    const [fieldResult, historyResult, messageHistoryResult, groupResult, membershipResult, activityResult] = await Promise.all([
       updateCustomFields(accountId, formType, payload, prefetchedAccount),
       appendProgramInterestHistory(accountId, formType, prefetchedAccount),
+      appendInitialMessageHistory(accountId, payload.message, prefetchedAccount),
       isRapidResubmit
         ? Promise.resolve({ status: 0, data: { skipped: 'rapid resubmit' } })
         : addToProvisionalGroup(accountId),
@@ -499,6 +568,7 @@ export default async function handler(req, res) {
     }
     console.log('Custom fields status:', fieldResult.status, JSON.stringify(fieldResult.data).substring(0,200));
     console.log('Program Interest history status:', historyResult.status, JSON.stringify(historyResult.data).substring(0,200));
+    console.log('Initial Message history status:', messageHistoryResult.status, JSON.stringify(messageHistoryResult.data).substring(0,200));
     console.log('Provisional group status:', groupResult.status, JSON.stringify(groupResult.data).substring(0,200));
     console.log('Membership (instant email) status:', membershipResult.status, JSON.stringify(membershipResult.data).substring(0,200));
     console.log('Activity status:', activityResult.status, JSON.stringify(activityResult.data).substring(0,200));
