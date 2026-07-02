@@ -2653,6 +2653,7 @@ function qBuildReview() {
     <div class="qreview-row"><span class="qreview-label">Email</span><span>${email}</span></div>
     ${phone ? `<div class="qreview-row"><span class="qreview-label">Phone</span><span>${phone}</span></div>` : ''}
     <div class="qreview-row"><span class="qreview-label">County</span><span>${county}</span></div>
+    ${indReachingOutFor === 'someone-else' ? `<div class="qreview-row"><span class="qreview-label">Reaching out for</span><span>${document.getElementById('ind-person-name').value.trim() || 'Someone else'}</span></div>` : ''}
     <div class="qreview-row"><span class="qreview-label">Primary need</span><span>${need}</span></div>
     ${msg ? `<div class="qreview-row"><span class="qreview-label">Message</span><span>${msg}</span></div>` : ''}
   `;
