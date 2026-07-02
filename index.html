@@ -263,7 +263,9 @@ nav{
   display:inline-block;padding:.9rem 2rem;border-radius:3px;
   font-weight:600;font-size:.88rem;text-decoration:none;
   transition:all .2s;border:none;cursor:pointer;
-  font-family:'Plus Jakarta Sans',sans-serif;
+  font-family:'Plus Jakarta Sans',sans-serif;line-height:inherit;
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  margin:0;
 }
 .btn-deep{background:var(--deep);color:#fff}.btn-deep:hover{background:var(--void)}
 .btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--deep)}
@@ -855,11 +857,11 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:1.25rem">Marjy™ is the authenticated access layer for the entire QCLS UnoSphere™ — one secure login, and every portal you belong to is right there. One relationship with the community that follows you across every interaction.</p>
         <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:1.25rem">Marjy™ is not software. It is a relationship. The human interface between every person the UnoSphere™ serves and the intelligence it holds for them. Named for the founder's mother, Marjorie — whose name now opens the door for thousands of people who need someone to walk with them.</p>
         <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:2rem">Every constituent type has their own portal inside Marjy™. One login recognizes who you are and shows you exactly what is yours — your case status, your assessment results, your volunteer hours, your giving history, your action plan. Nothing more. Nothing less. Exactly what you need.</p>
-        <div style="display:inline-block;padding:.5rem 1.25rem;background:rgba(232,160,32,.12);border:1px solid rgba(232,160,32,.3);border-radius:3px;margin-bottom:2rem">
+        <div style="display:inline-block;padding:.5rem 1.25rem;background:rgba(232,160,32,.12);border:1px solid rgba(232,160,32,.3);border-radius:3px">
           <span style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)">Coming 2026 · Sign Up for Updates</span>
         </div>
         <br/>
-        <button onclick="qNewsletterOpen()" class="btn btn-amber" style="border:none;cursor:pointer">Stay Informed About Marjy™</button>
+        <button onclick="qNewsletterOpen()" class="btn btn-amber" style="margin-top:1.5rem">Stay Informed About Marjy™</button>
       </div>
       <div class="reveal">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:1rem">
@@ -1000,7 +1002,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <a href="#theshift" style="font-size:.82rem;font-weight:600;color:var(--deep);text-decoration:none">Explore theShift™ →</a>
       </div>
     </div>
-    <div style="text-align:center"><a href="#contact" class="btn btn-deep reveal">Start a Nonprofit Inquiry</a></div>
+    <a href="#contact" class="btn btn-deep reveal" style="margin-top:1.5rem">Start a Nonprofit Inquiry</a>
   </div>
 </section>
 
@@ -1129,9 +1131,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
       <div class="pcard reveal"><div class="pcard-icon">🍎</div><h3>Food &amp; Basic Needs</h3><p>Food pantries, meal programs, clothing closets, and emergency assistance — connected to families through OurWalk™ when they need it, not when they can navigate a system alone.</p></div>
       <div class="pcard reveal"><div class="pcard-icon">📋</div><h3>Benefits &amp; Navigation</h3><p>Benefits enrollment, SNAP, Medicaid, SSI, and government program assistance — expertise that turns OurWalk™ referrals into confirmed enrollment.</p></div>
     </div>
-    <div style="text-align:center;margin-top:3rem">
-      <a href="#contact" class="btn btn-teal reveal">Join qPartner™</a>
-    </div>
+    <a href="#contact" class="btn btn-teal reveal" style="margin-top:1.5rem">Join qPartner™</a>
   </div>
 </section>
 
@@ -1147,7 +1147,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <div class="step"><div class="step-num">02</div><div><h4>Verified Referral to qPartner™</h4><p>OurWalk™ connects you to qPartner™ verified service providers — organizations we know are active, accepting, and appropriate. Not a phone number list. A confirmed, active connection.</p></div></div>
         <div class="step"><div class="step-num">03</div><div><h4>Follow-Up &amp; Barrier Removal</h4><p>OurWalk™ follows up to confirm you received the service. If something blocked access — transportation, documentation, capacity — we work to remove that barrier before closing the case.</p></div></div>
         <div class="step"><div class="step-num">04</div><div><h4>Access Confirmed</h4><p>OurWalk™ cases close only when access is confirmed — not when a referral was made. Access Confirmed is the only metric that matters. This is what makes OurWalk™ different from every other navigation service.</p></div></div>
-        <a href="#contact" class="btn btn-teal" style="margin-top:1.5rem;display:inline-block">Start OurWalk™</a>
+        <a href="#contact" class="btn btn-teal" style="margin-top:1.5rem">Start OurWalk™</a>
       </div>
       <div class="reveal">
         <span class="sec-eyebrow" style="margin-bottom:1.25rem;display:block">We Navigate Access To</span>
@@ -1194,7 +1194,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
             <span class="tag">Technology</span><span class="tag">Administrative</span>
             <span class="tag">Research</span><span class="tag">Event Support</span>
           </div>
-          <a href="#contact" class="btn btn-deep">Join weCARES™</a>
+          <a href="#contact" class="btn btn-deep" style="margin-top:1.5rem">Join weCARES™</a>
         </div>
       </div>
     </div>
@@ -1211,7 +1211,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
       <div class="pf-card"><span class="pf-badge">Phase 3</span><h4>Navigation Dashboard</h4><p>Case management, referral tracking, access confirmation, and outcome documentation.</p><span class="pf-status">Planned</span></div>
       <div class="pf-card"><span class="pf-badge">Phase 4</span><h4>Contributor Impact Portal</h4><p>Real-time visibility into funded assessments, individual impact, and community outcomes.</p><span class="pf-status">Planned</span></div>
       <div class="pf-card"><span class="pf-badge">Phase 5</span><h4>Community Data Dashboard</h4><p>Aggregate, anonymized community need data — resource gaps, access barriers, and trend reporting.</p><span class="pf-status">Planned</span></div>
-      <div class="pf-card" style="border-color:rgba(232,160,32,.3)"><span class="pf-badge">Always</span><h4>Stay Updated</h4><p>The platform is being built in public. Sign up to receive updates as each phase launches.</p><button onclick="qNewsletterOpen()" class="btn btn-amber" style="display:inline-block;font-size:.8rem;padding:.6rem 1.25rem;margin-top:1rem;border:none;cursor:pointer">Get Platform Updates</button></div>
+      <div class="pf-card" style="border-color:rgba(232,160,32,.3)"><span class="pf-badge">Always</span><h4>Stay Updated</h4><p>The platform is being built in public. Sign up to receive updates as each phase launches.</p><button onclick="qNewsletterOpen()" class="btn btn-amber" style="margin-top:1.5rem">Get Platform Updates</button></div>
     </div>
   </div>
 </section>
@@ -1227,7 +1227,7 @@ footer{background:#060e09;border-top:2px solid var(--amber)}
         <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:1.25rem">AskQCLS™ is the funder intelligence product of the UnoSphere™. Enter any EIN and see everything QCLS knows about that organization — not what the organization says about itself, but what the evidence shows.</p>
         <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:1.25rem">Every funder in Henry and Madison County — community foundations, corporate giving programs, government agencies, private philanthropists — makes decisions about where to invest community capital. AskQCLS™ gives them an independent, evidence-based view of every organization in the ecosystem before that decision is made.</p>
         <p style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:2rem">AskQCLS™ is also where funders can request a full FoundationReady™ assessment for any nonprofit they are considering. The assessment is conducted independently by QCLS, delivered to the funder and the organization simultaneously, and added to the UnoSphere™ intelligence record.</p>
-        <a href="#contact" class="btn btn-amber">Inquire About AskQCLS™</a>
+        <a href="#contact" class="btn btn-amber" style="margin-top:1.5rem">Inquire About AskQCLS™</a>
       </div>
       <div class="reveal">
         <div style="display:flex;flex-direction:column;gap:1rem">
