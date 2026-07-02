@@ -463,7 +463,7 @@ async function createActivity(accountId, formType, payload) {
 }
 
 // ── Main handler ──
-const NEWSLETTER_GROUP_ID = null; // e.g. '32' — create a "Newsletter Subscribers" Group in Neon and paste its ID here
+const NEWSLETTER_GROUP_ID = '32'; // "Newsletter Subscribers" — confirmed via API testing
 
 // ── Newsletter signup — deliberately lightweight. Just finds/creates an account
 // and adds it to a Group, skipping everything meant for "I need help" inquiries
@@ -489,7 +489,12 @@ async function handleNewsletterSignup(payload, res) {
   }
 
   if (NEWSLETTER_GROUP_ID) {
-    await neonPost(`/accounts/${accountId}/groups/${NEWSLETTER_GROUP_ID}`, {});
+    // Confirmed via live testing: this group is a "Volunteer Groups" type
+    // object in Neon (even though it's just being used as a general mailing
+    // list) — the standard /accounts/{id}/groups/{groupId} pattern returns 404
+    // for this object type. The endpoint that actually works is addVolunteers,
+    // and it requires the account ID as a plain NUMBER, not a string.
+    await neonPost(`/groups/${NEWSLETTER_GROUP_ID}/addVolunteers`, { accountIds: [Number(accountId)] });
   }
   return res.status(200).json({ success: true, accountId });
 }
