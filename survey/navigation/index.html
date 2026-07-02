@@ -128,7 +128,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
         <div class="qstep-line"></div>
         <div class="qstep" data-step="2"><div class="qstep-circle">2</div><div class="qstep-label">Why</div></div>
         <div class="qstep-line"></div>
-        <div class="qstep" data-step="3"><div class="qstep-circle">3</div><div class="qstep-label">Pattern</div></div>
+        <div class="qstep" data-step="3"><div class="qstep-circle">3</div><div class="qstep-label">Before</div></div>
         <div class="qstep-line"></div>
         <div class="qstep" data-step="4"><div class="qstep-circle">4</div><div class="qstep-label">Send</div></div>
       </div>
@@ -305,30 +305,30 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
       { value: 'Need help understanding a diagnosis or care plan', next: 'hc-appointment-help' },
       { value: 'Other', next: 'leaf-other' }
     ]},
-    'hc-coverage-status': { text: 'Are you currently employed, unemployed, disabled, or retired?', type: 'select', field: 'hcCoverageStatus', options: [
+    'hc-coverage-status': { text: 'Are you currently employed, unemployed, disabled, or retired?', textFor: 'Is {{PERSON}} currently employed, unemployed, disabled, or retired?', type: 'select', field: 'hcCoverageStatus', options: [
       { value: 'Employed', next: 'hc-coverage-essence' }, { value: 'Unemployed', next: 'hc-coverage-essence' },
       { value: 'Disabled or unable to work', next: 'hc-coverage-essence' }, { value: 'Retired', next: 'hc-coverage-essence' }
     ]},
-    'hc-coverage-essence': { text: 'Is there a specific health issue you\u2019re putting off because of this, or is it more about being prepared for whatever comes up?', type: 'textarea', field: 'hcCoverageEssence', next: 'hc-other-conditions' },
+    'hc-coverage-essence': { text: 'Is there a specific health issue you\u2019re putting off because of this, or is it more about being prepared for whatever comes up?', textFor: 'Is there a specific health issue {{PERSON}} is putting off because of this, or is it more about being prepared for whatever comes up?', type: 'textarea', field: 'hcCoverageEssence', next: 'hc-other-conditions' },
     'hc-condition-type': { text: 'Is this for an ongoing condition, or general primary care?', type: 'select', field: 'hcConditionType', options: [
       { value: 'An ongoing condition', next: 'hc-condition-essence' }, { value: 'General primary care / checkup', next: 'hc-condition-essence' }
     ]},
-    'hc-condition-essence': { text: 'How long have you been trying to get this taken care of?', type: 'select', field: 'hcConditionEssence', options: [
+    'hc-condition-essence': { text: 'How long have you been trying to get this taken care of?', textFor: 'How long has {{PERSON}} been trying to get this taken care of?', type: 'select', field: 'hcConditionEssence', options: [
       { value: 'Just started looking', next: 'hc-other-conditions' }, { value: 'A few weeks', next: 'hc-other-conditions' }, { value: 'Months or longer', next: 'hc-other-conditions' }
     ]},
     'hc-specialist-type': { text: 'What type of specialist?', type: 'text', field: 'hcSpecialistType', next: 'hc-specialist-essence' },
-    'hc-specialist-essence': { text: 'What\u2019s it been like trying to manage this on your own so far?', type: 'textarea', field: 'hcSpecialistEssence', next: 'hc-other-conditions' },
+    'hc-specialist-essence': { text: 'What\u2019s it been like trying to manage this on your own so far?', textFor: 'What\u2019s it been like for {{PERSON}} trying to manage this so far?', type: 'textarea', field: 'hcSpecialistEssence', next: 'hc-other-conditions' },
     'hc-med-cost-type': { text: 'Is this a one-time gap, or an ongoing cost problem?', type: 'select', field: 'hcMedCostType', options: [
       { value: 'One-time gap', next: 'hc-med-cost-essence' }, { value: 'Ongoing cost problem', next: 'hc-med-cost-essence' }
     ]},
-    'hc-med-cost-essence': { text: 'Have you had to skip or stretch out doses because of the cost?', type: 'select', field: 'hcMedCostEssence', options: [
+    'hc-med-cost-essence': { text: 'Have you had to skip or stretch out doses because of the cost?', textFor: 'Has {{PERSON}} had to skip or stretch out doses because of the cost?', type: 'select', field: 'hcMedCostEssence', options: [
       { value: 'Yes', next: 'hc-other-conditions' }, { value: 'Sometimes', next: 'hc-other-conditions' }, { value: 'No', next: 'hc-other-conditions' }
     ]},
-    'hc-appointment-help': { text: 'Would it help to have your navigator join an appointment with you, or just help with paperwork afterward?', type: 'select', field: 'hcAppointmentHelp', options: [
+    'hc-appointment-help': { text: 'Would it help to have your navigator join an appointment with you, or just help with paperwork afterward?', textFor: 'Would it help to have your navigator join an appointment with {{PERSON}}, or just help with paperwork afterward?', type: 'select', field: 'hcAppointmentHelp', options: [
       { value: 'Join an appointment', next: 'hc-appointment-essence' }, { value: 'Help with paperwork after', next: 'hc-appointment-essence' }, { value: 'Not sure yet', next: 'hc-appointment-essence' }
     ]},
     'hc-appointment-essence': { text: 'What\u2019s the part of this that feels most overwhelming right now?', type: 'textarea', field: 'hcAppointmentEssence', next: 'hc-other-conditions' },
-    'hc-other-conditions': { text: 'Is there anything else about your health right now that makes this harder to manage?', type: 'textarea', field: 'hcOtherConditions', next: null },
+    'hc-other-conditions': { text: 'Is there anything else about your health right now that makes this harder to manage?', textFor: 'Is there anything else about {{PERSON}}\u2019s health right now that makes this harder to manage?', type: 'textarea', field: 'hcOtherConditions', next: null },
 
     'need-housing': { text: 'You mentioned housing or shelter \u2014 which of these matches where things stand right now?', textFor: 'You mentioned {{PERSON}} needs help with housing or shelter \u2014 which of these matches where things stand?', type: 'radio', field: 'needSpecific', options: [
       { value: 'Facing eviction or already served notice', next: 'housing-court-status' },
@@ -338,7 +338,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
       { value: 'Looking for housing assistance programs', next: 'housing-currently-housed' },
       { value: 'Other', next: 'leaf-other' }
     ]},
-    'housing-court-status': { text: 'Do you have a court date yet?', type: 'radio', field: 'housingCourtStatus', options: [
+    'housing-court-status': { text: 'Do you have a court date yet?', textFor: 'Does {{PERSON}} have a court date yet?', type: 'radio', field: 'housingCourtStatus', options: [
       { value: 'Yes, I have a date', next: 'housing-court-date' },
       { value: 'I have a notice but no court date set', next: 'housing-notice-essence' },
       { value: 'Nothing in writing yet', next: 'housing-worry-essence' }
@@ -346,13 +346,13 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
     'housing-court-date': { text: 'When is it?', type: 'text', field: 'housingCourtDate', next: 'housing-court-essence' },
     'housing-court-essence': { text: 'Beyond the court date itself, what\u2019s the one thing that would actually fix this for good?', type: 'textarea', field: 'housingCourtEssence', next: 'housing-household' },
     'housing-notice-essence': { text: 'What\u2019s made it hard to get ahead of this so far?', type: 'textarea', field: 'housingNoticeEssence', next: 'housing-household' },
-    'housing-worry-essence': { text: 'What are you most worried will happen next?', type: 'textarea', field: 'housingWorryEssence', next: 'housing-household' },
-    'housing-tonight': { text: 'Where are you staying tonight?', type: 'radio', field: 'housingTonight', options: [
+    'housing-worry-essence': { text: 'What are you most worried will happen next?', textFor: 'What are you most worried will happen next, for {{PERSON}}?', type: 'textarea', field: 'housingWorryEssence', next: 'housing-household' },
+    'housing-tonight': { text: 'Where are you staying tonight?', textFor: 'Where is {{PERSON}} staying tonight?', type: 'radio', field: 'housingTonight', options: [
       { value: 'In a car, outside, or somewhere not meant for housing', next: null, safety: 'housingUnsafe' },
       { value: 'With family or friends temporarily', next: 'housing-temp-duration' },
       { value: 'In a shelter already', next: 'housing-shelter-name' }
     ]},
-    'housing-temp-duration': { text: 'Do you know how long that\u2019s available to you?', type: 'select', field: 'housingTempDuration', options: [
+    'housing-temp-duration': { text: 'Do you know how long that\u2019s available to you?', textFor: 'Do you know how long that\u2019s available to {{PERSON}}?', type: 'select', field: 'housingTempDuration', options: [
       { value: 'A few more days', next: 'housing-temp-essence' }, { value: 'A few more weeks', next: 'housing-temp-essence' },
       { value: 'Not sure', next: 'housing-temp-essence' }
     ]},
@@ -363,11 +363,11 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
     'housing-utility-essence': { text: 'Is this a one-time crunch, or does it happen most months?', type: 'select', field: 'housingUtilityEssence', options: [
       { value: 'One-time crunch', next: 'housing-household' }, { value: 'Happens most months', next: 'housing-household' }, { value: 'Not sure', next: 'housing-household' }
     ]},
-    'housing-currently-housed': { text: 'Are you currently housed, or also looking for housing?', type: 'select', field: 'housingCurrentlyHoused', options: [
+    'housing-currently-housed': { text: 'Are you currently housed, or also looking for housing?', textFor: 'Is {{PERSON}} currently housed, or also looking for housing?', type: 'select', field: 'housingCurrentlyHoused', options: [
       { value: 'Currently housed', next: 'housing-program-essence' }, { value: 'Also looking for housing', next: 'housing-program-essence' }
     ]},
-    'housing-program-essence': { text: 'What\u2019s prompting you to look into this now?', type: 'textarea', field: 'housingProgramEssence', next: 'housing-household' },
-    'housing-household': { text: 'Are there children or other family members depending on this housing with you?', type: 'select', field: 'housingHousehold', options: [
+    'housing-program-essence': { text: 'What\u2019s prompting you to look into this now?', textFor: 'What\u2019s prompting you to look into this for {{PERSON}} now?', type: 'textarea', field: 'housingProgramEssence', next: 'housing-household' },
+    'housing-household': { text: 'Are there children or other family members depending on this housing with you?', textFor: 'Are there children or other family members depending on this housing with {{PERSON}}?', type: 'select', field: 'housingHousehold', options: [
       { value: 'Just me', next: null }, { value: 'Children in the home', next: null }, { value: 'Other family members', next: null }
     ]},
 
@@ -382,11 +382,11 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
       { value: 'One-time', next: 'food-duration-essence' }, { value: 'Ongoing', next: 'food-duration-essence' }
     ]},
     'food-duration-essence': { text: 'What usually causes the gap \u2014 timing of paychecks or benefits, an unexpected cost, or something else?', type: 'textarea', field: 'foodDurationEssence', next: 'food-people-count' },
-    'food-applied-before': { text: 'Have you applied for this before, or is this your first time?', type: 'select', field: 'foodAppliedBefore', options: [
+    'food-applied-before': { text: 'Have you applied for this before, or is this your first time?', textFor: 'Has {{PERSON}} applied for this before, or is this the first time?', type: 'select', field: 'foodAppliedBefore', options: [
       { value: 'First time applying', next: 'food-applied-essence' }, { value: 'Applied before', next: 'food-applied-essence' }
     ]},
     'food-applied-essence': { text: 'What\u2019s made the application process hard, if anything?', type: 'textarea', field: 'foodAppliedEssence', next: 'food-people-count' },
-    'food-household': { text: 'Just for you, or for your household?', type: 'select', field: 'foodHousehold', options: [
+    'food-household': { text: 'Just for you, or for your household?', textFor: 'Just for {{PERSON}}, or for their household?', type: 'select', field: 'foodHousehold', options: [
       { value: 'Just me', next: 'food-household-essence' }, { value: 'My household', next: 'food-household-essence' }
     ]},
     'food-household-essence': { text: 'Is food the main thing right now, or is it part of a few things piling up at once?', type: 'select', field: 'foodHouseholdEssence', options: [
@@ -406,18 +406,18 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
     'transport-recurring': { text: 'Is this a recurring appointment (like dialysis or therapy), or a one-time visit?', type: 'select', field: 'transportRecurring', options: [
       { value: 'Recurring', next: 'transport-recurring-essence' }, { value: 'One-time', next: 'transport-recurring-essence' }
     ]},
-    'transport-recurring-essence': { text: 'What happens to your care when you miss one of these?', type: 'textarea', field: 'transportRecurringEssence', next: 'transport-distance' },
-    'transport-hours': { text: 'What are your typical hours or shift?', type: 'text', field: 'transportHours', next: 'transport-hours-essence' },
-    'transport-hours-essence': { text: 'Has the lack of reliable transportation already cost you a job or shifts?', type: 'select', field: 'transportHoursEssence', options: [
+    'transport-recurring-essence': { text: 'What happens to your care when you miss one of these?', textFor: 'What happens to {{PERSON}}\u2019s care when they miss one of these?', type: 'textarea', field: 'transportRecurringEssence', next: 'transport-distance' },
+    'transport-hours': { text: 'What are your typical hours or shift?', textFor: 'What are {{PERSON}}\u2019s typical hours or shift?', type: 'text', field: 'transportHours', next: 'transport-hours-essence' },
+    'transport-hours-essence': { text: 'Has the lack of reliable transportation already cost you a job or shifts?', textFor: 'Has the lack of reliable transportation already cost {{PERSON}} a job or shifts?', type: 'select', field: 'transportHoursEssence', options: [
       { value: 'Yes', next: 'transport-distance' }, { value: 'Not yet, but it\u2019s close', next: 'transport-distance' }, { value: 'No', next: 'transport-distance' }
     ]},
-    'transport-license': { text: 'Do you have a license, just no working vehicle, or neither?', type: 'select', field: 'transportLicense', options: [
+    'transport-license': { text: 'Do you have a license, just no working vehicle, or neither?', textFor: 'Does {{PERSON}} have a license, just no working vehicle, or neither?', type: 'select', field: 'transportLicense', options: [
       { value: 'Have a license, no working vehicle', next: 'transport-license-essence' }, { value: 'Neither', next: 'transport-license-essence' }
     ]},
-    'transport-license-essence': { text: 'What would change for you day-to-day if this were solved?', type: 'textarea', field: 'transportLicenseEssence', next: 'transport-distance' },
-    'transport-destination': { text: 'Where are you usually needing to go?', type: 'text', field: 'transportDestination', next: 'transport-destination-essence' },
-    'transport-destination-essence': { text: 'How are you getting there now, if at all?', type: 'textarea', field: 'transportDestinationEssence', next: 'transport-distance' },
-    'transport-distance': { text: 'About how far is the distance you need to travel?', type: 'select', field: 'transportDistance', options: [
+    'transport-license-essence': { text: 'What would change for you day-to-day if this were solved?', textFor: 'What would change for {{PERSON}} day-to-day if this were solved?', type: 'textarea', field: 'transportLicenseEssence', next: 'transport-distance' },
+    'transport-destination': { text: 'Where are you usually needing to go?', textFor: 'Where does {{PERSON}} usually need to go?', type: 'text', field: 'transportDestination', next: 'transport-destination-essence' },
+    'transport-destination-essence': { text: 'How are you getting there now, if at all?', textFor: 'How is {{PERSON}} getting there now, if at all?', type: 'textarea', field: 'transportDestinationEssence', next: 'transport-distance' },
+    'transport-distance': { text: 'About how far is the distance you need to travel?', textFor: 'About how far is the distance {{PERSON}} needs to travel?', type: 'select', field: 'transportDistance', options: [
       { value: 'Under 5 miles', next: null }, { value: '5\u201315 miles', next: null }, { value: 'More than 15 miles', next: null }
     ]},
 
@@ -428,12 +428,12 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
       { value: 'Help navigating Medicaid waiver services', next: 'disability-medicaid-status' },
       { value: 'Other', next: 'leaf-other' }
     ]},
-    'disability-application-status': { text: 'Is this your first application, or are you appealing a denial?', type: 'select', field: 'disabilityApplicationStatus', options: [
+    'disability-application-status': { text: 'Is this your first application, or are you appealing a denial?', textFor: 'Is this {{PERSON}}\u2019s first application, or are they appealing a denial?', type: 'select', field: 'disabilityApplicationStatus', options: [
       { value: 'First application', next: 'disability-application-essence' }, { value: 'Appealing a denial', next: 'disability-application-essence' }
     ]},
     'disability-application-essence': { text: 'What\u2019s made this process hardest so far?', type: 'textarea', field: 'disabilityApplicationEssence', next: 'disability-support-system' },
     'disability-hours': { text: 'About how many hours a week would help?', type: 'text', field: 'disabilityHours', next: 'disability-hours-essence' },
-    'disability-hours-essence': { text: 'What happens on the days you don\u2019t have that support?', type: 'textarea', field: 'disabilityHoursEssence', next: 'disability-support-system' },
+    'disability-hours-essence': { text: 'What happens on the days you don\u2019t have that support?', textFor: 'What happens on the days {{PERSON}} doesn\u2019t have that support?', type: 'textarea', field: 'disabilityHoursEssence', next: 'disability-support-system' },
     'disability-housing-equipment': { text: 'A housing modification, or a specific piece of equipment?', type: 'select', field: 'disabilityHousingEquipment', options: [
       { value: 'Housing modification', next: 'disability-housing-essence' }, { value: 'Specific equipment', next: 'disability-housing-essence' }
     ]},
@@ -441,8 +441,8 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
     'disability-medicaid-status': { text: 'Already on Medicaid, or applying for the first time?', type: 'select', field: 'disabilityMedicaidStatus', options: [
       { value: 'Already on Medicaid', next: 'disability-medicaid-essence' }, { value: 'Applying for the first time', next: 'disability-medicaid-essence' }
     ]},
-    'disability-medicaid-essence': { text: 'What\u2019s the main thing you\u2019re hoping this will make possible?', type: 'textarea', field: 'disabilityMedicaidEssence', next: 'disability-support-system' },
-    'disability-support-system': { text: 'Do you have any other support right now \u2014 family, friends, or other services?', type: 'select', field: 'disabilitySupportSystem', options: [
+    'disability-medicaid-essence': { text: 'What\u2019s the main thing you\u2019re hoping this will make possible?', textFor: 'What\u2019s the main thing you\u2019re hoping this will make possible for {{PERSON}}?', type: 'textarea', field: 'disabilityMedicaidEssence', next: 'disability-support-system' },
+    'disability-support-system': { text: 'Do you have any other support right now \u2014 family, friends, or other services?', textFor: 'Does {{PERSON}} have any other support right now \u2014 family, friends, or other services?', type: 'select', field: 'disabilitySupportSystem', options: [
       { value: 'Yes, some support', next: null }, { value: 'No, mostly on my own', next: null }, { value: 'Not sure', next: null }
     ]},
 
@@ -453,11 +453,11 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
       { value: 'Help for a family member', next: 'mh-family-relationship' },
       { value: 'Other', next: 'leaf-other' }
     ]},
-    'mh-insurance': { text: 'Insurance you\u2019d like to use, or free/sliding-scale options?', type: 'select', field: 'mhInsurance', options: [
+    'mh-insurance': { text: 'Insurance you\u2019d like to use, or free/sliding-scale options?', textFor: 'Insurance {{PERSON}} would like to use, or free/sliding-scale options?', type: 'select', field: 'mhInsurance', options: [
       { value: 'Use my insurance', next: 'mh-insurance-essence' }, { value: 'Free or sliding-scale options', next: 'mh-insurance-essence' }
     ]},
     'mh-insurance-essence': { text: 'What\u2019s made it hard to find the right fit so far \u2014 availability, cost, or something else?', type: 'textarea', field: 'mhInsuranceEssence', next: null },
-    'mh-provider-status': { text: 'Are you currently between providers, or just starting to look for support?', type: 'select', field: 'mhProviderStatus', options: [
+    'mh-provider-status': { text: 'Are you currently between providers, or just starting to look for support?', textFor: 'Is {{PERSON}} currently between providers, or just starting to look for support?', type: 'select', field: 'mhProviderStatus', options: [
       { value: 'Between providers', next: 'mh-provider-essence' }, { value: 'Just starting to look', next: 'mh-provider-essence' }
     ]},
     'mh-provider-essence': { text: 'What\u2019s changed recently that brought this to the front of mind?', type: 'textarea', field: 'mhProviderEssence', next: null },
@@ -471,14 +471,14 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
       { value: 'Lost a job recently', next: 'employment-job-loss-timing' },
       { value: 'Other', next: 'leaf-other' }
     ]},
-    'employment-field': { text: 'What kind of work are you looking for?', type: 'text', field: 'employmentField', next: 'employment-field-essence' },
+    'employment-field': { text: 'What kind of work are you looking for?', textFor: 'What kind of work is {{PERSON}} looking for?', type: 'text', field: 'employmentField', next: 'employment-field-essence' },
     'employment-field-essence': { text: 'What\u2019s been the biggest obstacle in the search so far?', type: 'textarea', field: 'employmentFieldEssence', next: 'employment-dependents' },
-    'employment-resume-status': { text: 'Starting from scratch, or refining something you already have?', type: 'select', field: 'employmentResumeStatus', options: [
+    'employment-resume-status': { text: 'Starting from scratch, or refining something you already have?', textFor: 'Starting from scratch, or refining something {{PERSON}} already has?', type: 'select', field: 'employmentResumeStatus', options: [
       { value: 'Starting from scratch', next: 'employment-resume-essence' }, { value: 'Refining what I have', next: 'employment-resume-essence' }
     ]},
     'employment-resume-essence': { text: 'What\u2019s made applying feel hardest \u2014 knowing what to say, time, or something else?', type: 'textarea', field: 'employmentResumeEssence', next: 'employment-dependents' },
     'employment-training-field': { text: 'What field or certification?', type: 'text', field: 'employmentTrainingField', next: 'employment-training-essence' },
-    'employment-training-essence': { text: 'What would having this certification actually change for you?', type: 'textarea', field: 'employmentTrainingEssence', next: 'employment-dependents' },
+    'employment-training-essence': { text: 'What would having this certification actually change for you?', textFor: 'What would having this certification actually change for {{PERSON}}?', type: 'textarea', field: 'employmentTrainingEssence', next: 'employment-dependents' },
     'employment-job-loss-timing': { text: 'Less than a month ago, or longer?', type: 'select', field: 'employmentJobLossTiming', options: [
       { value: 'Less than a month', next: 'employment-jobloss-essence' }, { value: 'Longer than a month', next: 'employment-jobloss-essence' }
     ]},
@@ -495,23 +495,23 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--nw);color:var(-
       { value: 'Not sure \u2014 just need help figuring out what I qualify for', next: 'leaf-other' },
       { value: 'Other', next: 'leaf-other' }
     ]},
-    'benefits-applied-before': { text: 'Have you applied for this before?', type: 'select', field: 'benefitsAppliedBefore', options: [
+    'benefits-applied-before': { text: 'Have you applied for this before?', textFor: 'Has {{PERSON}} applied for this before?', type: 'select', field: 'benefitsAppliedBefore', options: [
       { value: 'Yes, applied before', next: 'benefits-applied-essence' }, { value: 'No, first time', next: 'benefits-applied-essence' }
     ]},
     'benefits-applied-essence': { text: 'What\u2019s made the process hard, if anything?', type: 'textarea', field: 'benefitsAppliedEssence', next: 'benefits-household-size' },
-    'benefits-medicaid-for-whom': { text: 'For yourself, or for family members too?', type: 'select', field: 'benefitsMedicaidForWhom', options: [
+    'benefits-medicaid-for-whom': { text: 'For yourself, or for family members too?', textFor: 'For {{PERSON}}, or for family members too?', type: 'select', field: 'benefitsMedicaidForWhom', options: [
       { value: 'Just myself', next: 'benefits-medicaid-essence' }, { value: 'Myself and family', next: 'benefits-medicaid-essence' }
     ]},
     'benefits-medicaid-essence': { text: 'Is there a specific care need driving this right now?', type: 'textarea', field: 'benefitsMedicaidEssence', next: 'benefits-household-size' },
     'benefits-application-status': { text: 'A new application, or appealing a denial?', type: 'select', field: 'benefitsApplicationStatus', options: [
       { value: 'New application', next: 'benefits-application-essence' }, { value: 'Appealing a denial', next: 'benefits-application-essence' }
     ]},
-    'benefits-application-essence': { text: 'What\u2019s the situation that made you need this now?', type: 'textarea', field: 'benefitsApplicationEssence', next: 'benefits-household-size' },
+    'benefits-application-essence': { text: 'What\u2019s the situation that made you need this now?', textFor: 'What\u2019s the situation that made {{PERSON}} need this now?', type: 'textarea', field: 'benefitsApplicationEssence', next: 'benefits-household-size' },
     'benefits-unemployment-status': { text: 'Already filed, or just starting?', type: 'select', field: 'benefitsUnemploymentStatus', options: [
       { value: 'Already filed', next: 'benefits-unemployment-essence' }, { value: 'Just starting', next: 'benefits-unemployment-essence' }
     ]},
     'benefits-unemployment-essence': { text: 'What\u2019s the biggest financial pressure point right now?', type: 'textarea', field: 'benefitsUnemploymentEssence', next: 'benefits-household-size' },
-    'benefits-household-size': { text: 'How many people are in your household?', type: 'select', field: 'benefitsHouseholdSize', options: [
+    'benefits-household-size': { text: 'How many people are in your household?', textFor: 'How many people are in {{PERSON}}\u2019s household?', type: 'select', field: 'benefitsHouseholdSize', options: [
       { value: 'Just me', next: null }, { value: '2\u20133 people', next: null }, { value: '4 or more', next: null }
     ]},
 
