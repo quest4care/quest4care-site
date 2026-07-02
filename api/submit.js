@@ -46,6 +46,7 @@ const FIELD_IDS = {
   // reads it directly via URL param and would break if it suddenly contained a
   // whole multi-line history instead of one message.
   initialMessageHistory: '256',
+  smsConsent: '93', // Checkbox, single option id=62 — write only when checked, omit when not
 };
 
 // How close together two submissions have to be to count as "the same burst" rather
@@ -360,6 +361,13 @@ async function updateCustomFields(accountId, formType, payload, prefetchedAccoun
   }
   if (FIELD_IDS.personName && payload.personName) {
     customFields.push({ id: FIELD_IDS.personName, value: payload.personName });
+  }
+
+  // SMS consent — single opt-in checkbox (option id=62). Only written when
+  // actually checked; omitted entirely when not, since there's no "declined"
+  // option to select — absence of the field IS the "no consent" state.
+  if (FIELD_IDS.smsConsent && payload.smsConsent === true) {
+    customFields.push({ id: FIELD_IDS.smsConsent, optionValues: [{ id: '62' }] });
   }
 
   // Reuse the already-fetched account instead of asking Neon again
